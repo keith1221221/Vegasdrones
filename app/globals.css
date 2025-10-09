@@ -37,3 +37,20 @@ a {
     color-scheme: dark;
   }
 }
+
+/* Smooth scrolling for all browsers */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure images are responsive */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent text overflow */
+* {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

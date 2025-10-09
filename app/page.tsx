@@ -79,19 +79,19 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-black">
-          <div className="text-center z-10">
-            <h1 className="text-4xl md:text-6xl font-bold mb-8 text-white">
+        <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-black px-4 sm:px-6 py-20">
+          <div className="text-center z-10 max-w-4xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-white px-4">
               Illuminate the Night with Vegas Drones
             </h1>
-            <div className="mb-8 flex justify-center">
+            <div className="mb-6 sm:mb-8 flex justify-center">
               <div className="relative cursor-pointer" onClick={handleVideoClick} title="Click to interact with our talking alien host">
                 {/* Outer glow ring for alien effect */}
                 <div className="absolute inset-0 bg-neon-cyan opacity-20 rounded-full blur-2xl scale-125 animate-pulse-slow"></div>
                 <div className="absolute inset-0 bg-neon-cyan opacity-30 rounded-full blur-xl scale-110 animate-glow-pulse"></div>
                 
                 {/* Perfect circle container */}
-                <div className="relative w-80 h-80 md:w-96 md:h-96 bg-gradient-to-br from-neon-cyan/10 to-transparent rounded-full p-1">
+                <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-br from-neon-cyan/10 to-transparent rounded-full p-1">
                   {/* Inner circle with border */}
                   <div className="w-full h-full rounded-full border-2 border-neon-cyan shadow-neon overflow-hidden">
                     <video 
@@ -120,17 +120,17 @@ export default function Home() {
                 <div className="absolute inset-0 border border-neon-cyan/50 rounded-full animate-spin-slow"></div>
               </div>
             </div>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 px-4">
               FAA-Certified Drone Light Shows for Events, Conventions, and Weddings
             </p>
             
             {/* Chatbot Button */}
-            <div className="mb-8">
+            <div className="mb-6 sm:mb-8 px-4">
               <Link 
                 href="/chatbot"
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-neon-cyan to-green-400 hover:from-green-400 hover:to-neon-cyan text-black font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-neon transform hover:scale-105 font-orbitron"
+                className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-neon-cyan to-green-400 hover:from-green-400 hover:to-neon-cyan text-black font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-neon transform hover:scale-105 font-orbitron text-sm sm:text-base"
               >
-                <i className="fas fa-robot text-xl"></i>
+                <i className="fas fa-robot text-lg sm:text-xl"></i>
                 Chat with AI Assistant
               </Link>
             </div>
@@ -138,11 +138,11 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 px-8" id="features">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-white">
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8" id="features">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 md:mb-16 text-white">
             Why Vegas Drones?
           </h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
             <div className="text-center p-8 bg-gray-900 rounded-3xl hover:rounded-[2rem] transition-all duration-300 border border-gray-800 hover:border-neon-cyan/50 shadow-lg hover:shadow-neon">
               <i className="fas fa-leaf text-4xl text-neon-cyan mb-4 block"></i>
               <h3 className="text-xl font-bold mb-4 text-white">Eco-Friendly</h3>
@@ -181,16 +181,16 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-white">
             Ready to Light Up the Sky?
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 px-4">
             Contact us today to plan your custom drone light show in Las Vegas!
           </p>
           <a 
             href="/contact" 
-            className="inline-block px-12 py-4 bg-neon-cyan text-black font-bold rounded-full hover:bg-cyan-400 hover:rounded-[2rem] transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-neon border-2 border-neon-cyan hover:border-cyan-400"
+            className="inline-block px-8 sm:px-10 md:px-12 py-3 sm:py-4 bg-neon-cyan text-black font-bold rounded-full hover:bg-cyan-400 hover:rounded-[2rem] transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-neon border-2 border-neon-cyan hover:border-cyan-400 text-sm sm:text-base"
           >
             Get Started
           </a>

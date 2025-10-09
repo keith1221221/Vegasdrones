@@ -419,9 +419,90 @@ button[type="submit"]:disabled {
 }
 
 /* Responsive design */
+/* Mobile (up to 640px) */
 @media (max-width: 640px) {
   .chatbot-container {
-    padding: 40px 16px 32px 16px;
+    padding: 80px 16px 32px 16px;
+    gap: 16px;
+    min-height: 100vh;
+  }
+  
+  .chatbot-container h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .chatbot-container p {
+    font-size: 1rem;
+    padding: 0 8px;
+  }
+  
+  .suggested-questions {
+    gap: 10px;
+    max-width: 100%;
+  }
+  
+  .suggested-button {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    border-radius: 16px;
+    width: 100%;
+  }
+  
+  form {
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100%;
+    padding: 8px;
+    border-radius: 16px;
+  }
+  
+  input[type="text"] {
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    border-radius: 12px;
+  }
+  
+  button[type="submit"] {
+    align-self: stretch;
+    height: 48px;
+    font-size: 1rem;
+    padding: 0 20px;
+    border-radius: 12px;
+    min-width: auto;
+  }
+  
+  .theme-toggle {
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .back-button {
+    font-size: 14px !important;
+    top: 16px !important;
+    left: 16px !important;
+  }
+  
+  .logo-icon {
+    width: 90px;
+    height: 90px;
+    padding: 8px;
+  }
+  
+  .response, .error {
+    max-width: 100%;
+    padding: 16px;
+    font-size: 0.95rem;
+    border-radius: 12px;
+  }
+}
+
+/* Tablet (641px to 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .chatbot-container {
+    padding: 60px 24px 40px 24px;
     gap: 20px;
   }
   
@@ -430,47 +511,27 @@ button[type="submit"]:disabled {
   }
   
   .suggested-questions {
-    gap: 12px;
-    max-width: 100%;
+    gap: 14px;
   }
   
   .suggested-button {
-    padding: 10px 16px;
-    font-size: 0.9rem;
+    padding: 11px 18px;
+    font-size: 0.92rem;
   }
   
   form {
-    flex-direction: column;
-    gap: 12px;
-    max-width: 100%;
-    padding: 4px;
-  }
-  
-  input[type="text"] {
-    padding: 16px 20px;
-    font-size: 1rem;
-  }
-  
-  button[type="submit"] {
-    align-self: stretch;
-    height: 48px;
-    font-size: 1rem;
-  }
-  
-  .theme-toggle {
-    top: 16px;
-    right: 16px;
-  }
-  
-  .logo-icon {
-    width: 100px;
-    height: 100px;
+    max-width: 700px;
   }
   
   .response, .error {
-    max-width: 100%;
-    padding: 20px;
-    font-size: 1rem;
+    max-width: 700px;
+  }
+}
+
+/* Large screens (1025px and above) */
+@media (min-width: 1025px) {
+  .chatbot-container {
+    gap: 24px;
   }
 }
   

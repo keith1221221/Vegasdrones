@@ -51,25 +51,25 @@ export default function FAQ() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-black pt-20">
-          <div className="text-center z-10 px-8">
-            <h1 className="text-4xl md:text-6xl font-bold mb-8 text-white">
+        <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-black pt-20 px-4 sm:px-6">
+          <div className="text-center z-10 px-4 sm:px-8 max-w-4xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-white">
               Drone Light Shows in Las Vegas
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8">
               Experience breathtaking drone light shows for weddings, corporate events, and festivals.
             </p>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 px-8" id="faq-section">
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8" id="faq-section">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 md:mb-16 text-white">
               Frequently Asked Questions
             </h2>
             
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {faqData.map((item, index) => (
                 <div 
                   key={index}
@@ -77,14 +77,14 @@ export default function FAQ() {
                 >
                   <button
                     onClick={() => toggleFAQ(index)}
-                    className="w-full text-left p-6 focus:outline-none hover:bg-gray-800 transition-colors"
+                    className="w-full text-left p-4 sm:p-6 focus:outline-none hover:bg-gray-800 transition-colors"
                   >
-                    <div className="flex justify-between items-center">
-                      <h3 className="text-xl font-bold text-white pr-4">
+                    <div className="flex justify-between items-center gap-3 sm:gap-4">
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-white pr-2 sm:pr-4">
                         {item.question}
                       </h3>
                       <i 
-                        className={`fas fa-chevron-down text-neon-cyan transition-transform duration-300 ${
+                        className={`fas fa-chevron-down text-neon-cyan transition-transform duration-300 flex-shrink-0 ${
                           openItems.has(index) ? 'transform rotate-180' : ''
                         }`}
                       ></i>
@@ -96,8 +96,8 @@ export default function FAQ() {
                       openItems.has(index) ? 'max-h-96' : 'max-h-0'
                     }`}
                   >
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-300 text-lg leading-relaxed">
+                    <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+                      <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
                         {item.answer}
                       </p>
                     </div>
@@ -109,16 +109,16 @@ export default function FAQ() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-8 text-center bg-gray-900">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 text-center bg-gray-900">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-white">
             Ready to Light Up the Sky?
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 px-4">
             Contact us today to plan your custom drone light show in Las Vegas!
           </p>
           <a 
             href="/contact" 
-            className="inline-block px-8 py-4 bg-neon-cyan text-black font-bold rounded-full hover:bg-cyan-400 transition-colors"
+            className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-neon-cyan text-black font-bold rounded-full hover:bg-cyan-400 transition-colors text-sm sm:text-base"
           >
             Get Started
           </a>
