@@ -1,0 +1,25 @@
+﻿# Dependencies
+node_modules/
+bower_components/
+vendor/
+packages/
+.venv/
+venv/
+env/
+virtualenv/
+__pycache__/
+
+# Build outputs
+dist/
+build/
+out/
+target/
+bin/
+obj/
+
+# Tooling caches
+.terraform/
+.gradle/
+.m2/
+.egg-info/
+.cache/
