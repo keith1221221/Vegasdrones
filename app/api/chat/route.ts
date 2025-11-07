@@ -1,9 +1,5 @@
 // src/app/api/chat/route.ts
 import { NextResponse } from "next/server";
-// src/app/layout.tsx
-import "./globals.css";
-import "./chatbot.css"; // add it here
-
 
 export const runtime = "nodejs";          // ensure Node runtime (not Edge)
 export const dynamic = "force-dynamic";   // avoid static optimization

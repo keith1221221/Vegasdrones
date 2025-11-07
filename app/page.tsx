@@ -172,6 +172,7 @@ export default function Home() {
               <iframe 
                 src="https://www.youtube.com/embed/bo3z1mTSc0s?rel=0" 
                 title="Vegas Drones Show" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 loading="lazy"
                 className="w-full h-full rounded-[2rem] shadow-2xl border border-gray-700 hover:border-neon-cyan/50 transition-all duration-300"

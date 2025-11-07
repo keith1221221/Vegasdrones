@@ -71,12 +71,43 @@ body::before {
   50% { transform: translateY(-20px) rotate(180deg); }
 }
 
+/* Wrapper for the entire chatbot */
+.chatbot-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for cleaner look but keep functionality */
+.chatbot-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chatbot-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chatbot-wrapper::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.chatbot-wrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
 /* Main chatbot layout without container */
 .chatbot-container {
   max-width: 100vw;
   min-height: 100vh;
   margin: 0;
-  padding: 60px 20px 40px 20px;
+  padding: 60px 20px 140px 20px; /* Extra bottom padding for fixed form */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,6 +115,15 @@ body::before {
   position: relative;
   animation: slideIn 0.8s ease-out;
   gap: 24px;
+  transition: all 0.5s ease;
+}
+
+/* Compact state after submission */
+.chatbot-container.compact {
+  justify-content: flex-start;
+  padding-top: 80px;
+  padding-bottom: 140px; /* Keep bottom padding for fixed form */
+  gap: 16px;
 }
 
 /* Theme toggle button */
@@ -133,7 +173,13 @@ body::before {
   margin: 0;
   letter-spacing: -0.02em;
   animation: titleGlow 3s ease-in-out infinite alternate;
-  transition: color var(--transition-duration) ease;
+  transition: all 0.5s ease;
+}
+
+/* Compact header */
+.chatbot-container.compact h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 @keyframes titleGlow {
@@ -147,6 +193,7 @@ body::before {
   justify-content: center;
   margin-bottom: 0;
   animation: logoFloat 4s ease-in-out infinite;
+  transition: all 0.5s ease;
 }
 
 .logo-icon {
@@ -157,8 +204,16 @@ body::before {
   backdrop-filter: blur(10px);
   border: 3px solid var(--border-color);
   padding: 12px;
-  transition: all var(--transition-duration) ease;
+  transition: all 0.5s ease;
   box-shadow: 0 8px 32px var(--shadow-color);
+}
+
+/* Compact logo */
+.chatbot-container.compact .logo-icon {
+  width: 50px;
+  height: 50px;
+  padding: 6px;
+  border-width: 2px;
 }
 
 .logo-icon:hover {
@@ -238,14 +293,14 @@ body::before {
   cursor: not-allowed;
 }
 
-/* Form styling with modern input */
+/* Form styling with modern input - Fixed at bottom */
 form {
   display: flex;
   gap: 0;
   margin: 0;
   align-items: stretch;
   max-width: 1200px;
-  width: 100%;
+  width: calc(100% - 40px);
   background: var(--input-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
@@ -253,6 +308,11 @@ form {
   padding: 6px;
   transition: all var(--transition-duration) ease;
   box-shadow: 0 4px 16px var(--shadow-color);
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
 }
 
 form:focus-within {
@@ -389,6 +449,60 @@ button[type="submit"]:disabled {
   max-width: 1200px;
   width: 100%;
   box-sizing: border-box;
+}
+
+/* Chat history container */
+.chat-history {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+}
+
+/* User message styling */
+.user-message {
+  background: var(--button-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-left: auto;
+  max-width: 70%;
+  animation: messageSlideIn 0.3s ease-out;
+}
+
+.user-message p {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Assistant message styling */
+.assistant-message {
+  background: rgba(59, 130, 246, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-right: auto;
+  max-width: 70%;
+  animation: messageSlideIn 0.3s ease-out;
+}
+
+.assistant-message p {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.assistant-message.loading {
+  padding: 12px 20px;
 }
 
 .error {

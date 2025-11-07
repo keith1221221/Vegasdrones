@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense, useEffect } from "react";
+import { useState, Suspense, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import "../chatbot.css"; // make sure src/app/chatbot.css exists
@@ -9,11 +9,14 @@ function ChatbotContent() {
   const searchParams = useSearchParams();
   const initialMessage = searchParams.get("query") || "";
   const [message, setMessage] = useState(initialMessage);
-  const [response, setResponse] = useState("");
+  const [chatHistory, setChatHistory] = useState<Array<{role: string, content: string}>>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const chatHistoryRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   // Animation trigger on mount
   useEffect(() => {
@@ -35,6 +38,17 @@ function ChatbotContent() {
     document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
   }, [isDarkMode]);
 
+  // Auto-scroll to bottom when chat history updates
+  useEffect(() => {
+    if (chatHistoryRef.current && wrapperRef.current) {
+      const wrapper = wrapperRef.current;
+      wrapper.scrollTo({
+        top: wrapper.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  }, [chatHistory, isLoading]);
+
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
@@ -54,9 +68,17 @@ function ChatbotContent() {
 
     if (!inputMessage.trim()) return;
 
+    setHasSubmitted(true); // Mark as submitted to hide intro elements
+    
+    // Add user message to chat history
+    const userMessage = { role: "user", content: inputMessage };
+    setChatHistory(prev => [...prev, userMessage]);
+    
+    // Clear the input field immediately
+    setMessage("");
+    
     setIsLoading(true);
     setError("");
-    setResponse(""); // Clear previous response
 
     try {
       const res = await fetch("/api/chat", {
@@ -70,16 +92,10 @@ function ChatbotContent() {
       const data = await res.json();
 
       if (res.ok) {
-        // Simulate typing effect
         const reply = data.reply ?? "";
-        setResponse("");
         
-        // Type out the response character by character
-        for (let i = 0; i <= reply.length; i++) {
-          setTimeout(() => {
-            setResponse(reply.substring(0, i));
-          }, i * 20);
-        }
+        // Add assistant response to chat history
+        setChatHistory(prev => [...prev, { role: "assistant", content: reply }]);
 
         if (typeof window !== "undefined") {
           window.parent.postMessage("responding", "*");
@@ -95,14 +111,12 @@ function ChatbotContent() {
       setError("Failed to fetch response. Please try again.");
     } finally {
       setIsLoading(false);
-      if (typeof e === "string") {
-        setMessage(""); // Clear input only if it was a suggested question
-      }
     }
   };
 
   return (
-    <div className={`chatbot-container ${isVisible ? 'visible' : ''}`}>
+    <div ref={wrapperRef} className={`chatbot-wrapper ${isVisible ? 'visible' : ''}`}>
+      <div className={`chatbot-container ${hasSubmitted ? 'compact' : ''}`}>
       {/* Back to Home Button */}
       <Link 
         href="/"
@@ -143,21 +157,50 @@ function ChatbotContent() {
       </div>
       
       <h1>Vegas Drones Chatbot</h1>
-      <p>Ask about our spectacular drone light shows!</p>
+      {!hasSubmitted && <p>Ask about our spectacular drone light shows!</p>}
 
-      <div className="suggested-questions">
-        {suggestedQuestions.map((q, i) => (
-          <button
-            key={i}
-            onClick={() => handleSubmit(q)}
-            disabled={isLoading}
-            className="suggested-button"
-            style={{ animationDelay: `${0.1 + i * 0.1}s` }}
-          >
-            {q}
-          </button>
-        ))}
-      </div>
+      {!hasSubmitted && (
+        <div className="suggested-questions">
+          {suggestedQuestions.map((q, i) => (
+            <button
+              key={i}
+              onClick={() => handleSubmit(q)}
+              disabled={isLoading}
+              className="suggested-button"
+              style={{ animationDelay: `${0.1 + i * 0.1}s` }}
+            >
+              {q}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {hasSubmitted && chatHistory.length > 0 && (
+        <div className="chat-history">
+          {chatHistory.map((msg, index) => (
+            <div 
+              key={index} 
+              className={msg.role === "user" ? "user-message" : "assistant-message"}
+            >
+              <p>{msg.content}</p>
+            </div>
+          ))}
+          {isLoading && (
+            <div className="assistant-message loading">
+              <div className="typing-indicator">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+          )}
+          <div ref={chatHistoryRef} />
+        </div>
+      )}
+      
+      {hasSubmitted && error && (
+        <div className="error">
+          <p>⚠️ {error}</p>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit}>
         <input
@@ -194,21 +237,7 @@ function ChatbotContent() {
           )}
         </button>
       </form>
-
-      {response && (
-        <div className="response">
-          <div className="typing-indicator" style={{ display: isLoading ? 'block' : 'none' }}>
-            <span></span><span></span><span></span>
-          </div>
-          <p>{response}</p>
-        </div>
-      )}
-      
-      {error && (
-        <div className="error">
-          <p>⚠️ {error}</p>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
