@@ -1,7 +1,6 @@
 {
   "/page": "app/page.js",
   "/chatbot/page": "app/chatbot/page.js",
-  "/contact/page": "app/contact/page.js",
   "/faq/page": "app/faq/page.js",
-  "/api/chat/route": "app/api/chat/route.js"
+  "/contact/page": "app/contact/page.js"
 }
