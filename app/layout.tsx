@@ -1,23 +1,19 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  // Base URL for building absolute URLs in OpenGraph/canonical, etc.
   metadataBase: new URL("https://www.vegasdrones.com"),
-
-  // Title with template for child pages
   title: {
     default: "Vegas Drones | Spectacular Drone Light Shows in Las Vegas",
     template: "%s | Vegas Drones",
   },
-
   description:
     "Vegas Drones creates spectacular custom drone light shows in Las Vegas for weddings, corporate events, festivals, and brand activations. Book a breathtaking aerial experience today.",
-
-  // Helpful but not magic; still used by some search engines
   keywords: [
     "drone show",
     "drone shows",
@@ -30,8 +26,6 @@ export const metadata: Metadata = {
     "aerial light show",
     "event entertainment Las Vegas",
   ],
-
-  // Controls SERP + social previews
   openGraph: {
     type: "website",
     url: "https://www.vegasdrones.com",
@@ -41,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Vegas Drones",
     images: [
       {
-        url: "/alienhead1.png", // make sure this exists in /public
+        url: "/alienhead1.png",
         width: 1200,
         height: 630,
         alt: "Vegas Drones aerial light show over Las Vegas",
@@ -49,21 +43,14 @@ export const metadata: Metadata = {
     ],
     locale: "en_US",
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Vegas Drones | Spectacular Drone Light Shows in Las Vegas",
     description:
       "Breathtaking drone light shows for weddings, events, and brands in Las Vegas.",
-    images: ["/og-image.jpg"], // same image as OG is fine
+    images: ["/alienhead1.png"],
   },
-
-  // Canonical URL for the root; child pages can override in their own metadata
-  alternates: {
-    canonical: "https://www.vegasdrones.com",
-  },
-
-  // Make sure search engines can index/follow
+  alternates: { canonical: "https://www.vegasdrones.com" },
   robots: {
     index: true,
     follow: true,
@@ -75,21 +62,13 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  icons: { icon: "/favicon.ico", apple: "/apple-touch-icon.png" },
+};
 
-  // Viewport (no need to duplicate in <head>)
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
-
-  // Favicons / icons (put these files in /public)
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-
-  // Optional but nice for theme / browser UI
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
   themeColor: "#000000",
 };
 
@@ -98,11 +77,31 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Vegas Drones",
+    url: "https://www.vegasdrones.com",
+    logo: "https://www.vegasdrones.com/alienhead1.png",
+    image: "https://www.vegasdrones.com/alienhead1.png",
+    description:
+      "Custom drone light shows in Las Vegas for weddings, corporate events, conventions, festivals, and brand activations.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Las Vegas",
+      addressRegion: "NV",
+      addressCountry: "US",
+    },
+    areaServed: "Las Vegas NV",
+    sameAs: [
+      "https://www.instagram.com/vegasdrones",
+      "https://www.facebook.com/vegasdrones",
+    ],
+  };
+
   return (
     <html lang="en">
-      {/* Next will inject SEO/meta tags from `metadata` into <head> */}
       <head>
-        {/* Keep your font + icon CSS here */}
         <link
           href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@400;600;700&display=swap"
           rel="stylesheet"
@@ -111,9 +110,17 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
       </head>
-      <body className={inter.className}>{children}</body>
+
+      <body className={`${inter.className} bg-black text-white`}>
+        <Header />
+        <main className="pt-10 md:pt-14">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
-

@@ -1,216 +1,232 @@
-'use client'
+import Link from "next/link";
+import type { Metadata } from "next";
 
-import { useEffect, useRef, useState } from 'react'
-import Link from 'next/link'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+export const metadata: Metadata = {
+  title: "Las Vegas Drone Light Shows & Aerial Advertising",
+  description:
+    "Vegas Drones creates spectacular custom drone light shows in Las Vegas for weddings, conventions, corporate events, festivals, and brand activations.",
+  keywords: [
+    "Las Vegas drone light shows",
+    "drone light show Las Vegas",
+    "Vegas drone shows",
+    "wedding drone light show",
+    "corporate drone show",
+    "convention drone show",
+    "drone advertising Las Vegas",
+    "aerial light show Vegas",
+  ],
+  alternates: {
+    canonical: "https://www.vegasdrones.com/",
+  },
+  openGraph: {
+    title: "Las Vegas Drone Light Shows & Aerial Advertising | Vegas Drones",
+    description:
+      "Book custom 100–500+ drone light shows for weddings, conventions, festivals, and brand activations across Las Vegas.",
+    url: "https://www.vegasdrones.com/",
+    siteName: "Vegas Drones",
+    images: [
+      {
+        url: "/alienhead1.png",
+        width: 1200,
+        height: 630,
+        alt: "Vegas Drones aerial light show over Las Vegas",
+      },
+    ],
+    type: "website",
+  },
+};
 
-export default function Home() {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
-
+export default function HomePage() {
   return (
-    <>
-      <Header />
+    <main className="bg-black text-white">
+      {/* ================= HERO SECTION ================= */}
+      <section className="w-full pt-24">
+        <div className="relative w-full">
+          <img
+            src="/osmosignalt1.png"
+            alt="Las Vegas drone light show over the Strip"
+            className="w-full h-auto max-h-[90vh] object-cover"
+          />
 
-      <main>
-        {/* ================= HERO IMAGE SECTION ================= */}
-        <section className="w-full bg-black pt-24">
-          <div className="relative w-full">
-            <img
-              src="/osmosign.jpg"
-              alt="Las Vegas drone light show Welcome to Vegas formation"
-              className="w-full h-auto max-h-[90vh] object-cover"
-            />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 px-4">
+          <h1
+  className="font-orbitron whitespace-nowrap text-white font-bold
+  text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-center
+  drop-shadow-[0_0_12px_rgba(0,255,255,0.55)]"
+>
+  Las Vegas Drone Shows
+</h1>
 
-            {/* SEO-friendly main H1 at top */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 px-4">
-              <h1
-                className="font-orbitron whitespace-nowrap text-white font-bold 
-              text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-center 
-              drop-shadow-[0_0_12px_rgba(0,255,255,0.55)]"
-              >
-                Las Vegas Drone Shows
-              </h1>
-            </div>
-          </div>
-        </section>
-
-                {/* Big wave transition with overlaid H2 */}
-                <div className="relative w-full overflow-hidden -mt-1 bg-black">
-          {/* Wave itself */}
-          <svg
-            viewBox="0 0 1440 160"
-            className="w-full h-40 fill-gray-900"
-            preserveAspectRatio="none"
-          >
-            <path d="M0,96 C360,160 1080,0 1440,96 L1440,160 L0,160 Z"></path>
-          </svg>
-
-          {/* H2 sitting over the wave */}
-          <div className="absolute inset-x-0 bottom-20 flex justify-center px-4">
-            <h2
-              className="font-orbitron whitespace-nowrap font-bold text-white text-center
-              text-xl sm:text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(0,0,0,0.8)]"
-            >
-              Drone Light Shows for Events
-            </h2>
           </div>
         </div>
+      </section>
+{/* ================= WAVE DIVIDER ================= */}
+
+<h2 className="font-orbitron text-xl sm:text-2xl md:text-3xl font-bold
+  text-center text-white mt-6 mb-4
+  drop-shadow-[0_0_10px_rgba(0,255,255,0.35)]">
+  Drone Light Shows for Weddings, Events & Brand Activations
+</h2>
 
 
-        {/* ================= ALIEN AI ASSISTANT SECTION ================= */}
-        <section className="relative flex items-center justify-center bg-gradient-to-b from-gray-900 to-black px-4 sm:px-6 py-20">
-          <div className="text-center z-10 max-w-4xl mx-auto">
-            {/* H2 for alien section */}
-            <h2 className="font-orbitron text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
-                font-bold mb-6 sm:mb-8 text-white px-4 
-               drop-shadow-[0_0_12px_rgba(0,255,255,0.55)]
-                mt-[-40px] sm:mt-0">
-              Illuminate the Night with Vegas Drones
-        </h2>
+      
+      {/* ================= AI CHATBOT CTA ================= */}
+            {/* ================= AI ASSISTANT ================= */}
+            <section className="relative py-24 px-4 sm:px-6 bg-gradient-to-b from-gray-900 to-black">
+        <div className="text-center max-w-4xl mx-auto">
+          <h3 className="font-orbitron text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white
+            drop-shadow-[0_0_12px_rgba(0,255,255,0.55)]">
+            Meet the Vegas Drones AI Assistant
+          </h3>
 
-
-            {/* Alien assistant (HALF SIZE NOW) */}
-            <div className="mb-6 sm:mb-8 flex justify-center">
-              <div className="relative cursor-pointer" title="Vegas Drones AI Assistant">
-                {/* Outer glow */}
-                <div className="absolute inset-0 scale-[0.45] sm:scale-[0.55] md:scale-[0.65] bg-neon-cyan opacity-20 rounded-full blur-2xl"></div>
-                <div className="absolute inset-0 scale-[0.45] sm:scale-[0.55] md:scale-[0.65] bg-neon-cyan opacity-30 rounded-full blur-xl"></div>
-
-                {/* Circle container */}
-                <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-gradient-to-br from-neon-cyan/10 to-transparent rounded-full p-1">
-                  {/* SEO static image replacing video */}
-                  <div className="w-full h-full rounded-full border-2 border-neon-cyan shadow-neon overflow-hidden">
-                    <img
-                      src="/alienhead1.png"
-                      alt="Vegas Drones alien drone formation in the sky"
-                      className="w-full h-full object-cover rounded-full"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-
-                {/* Rotating ring */}
-                <div className="absolute inset-0 scale-[0.7] sm:scale-[0.85] md:scale-[0.95] border border-neon-cyan/50 rounded-full animate-spin-slow"></div>
-              </div>
-            </div>
-
-            {/* Chatbot Button */}
-            <div className="mb-4 sm:mb-5 px-4">
-              <Link
-                href="/chatbot"
-                className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-neon-cyan to-green-400 hover:from-green-400 hover:to-neon-cyan text-black font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-neon transform hover:scale-105 font-orbitron text-sm sm:text-base"
-              >
-                <i className="fas fa-robot text-lg sm:text-xl"></i>
-                Chat with AI Assistant
-              </Link>
-            </div>
-
-            {/* Assistant description line */}
-            <p className="font-orbitron text-sm sm:text-base md:text-lg text-neon-cyan text-center mt-10">
-              The Vegas Drones co-pilot can assist with quotes, date availability, or any
-              questions you may have.
-            </p>
-          </div>
-        </section>
-
-        {/* ================= FEATURES SECTION ================= */}
-        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8" id="features">
-          <h2 className="font-orbitron text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 md:mb-16 text-white">
-            Why Vegas Drones?
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 max-w-6xl mx-auto">
-            {/* Eco-Friendly */}
-            <div className="text-center p-8 bg-gray-900 rounded-3xl hover:rounded-[2rem] transition-all duration-300 border border-gray-800 hover:border-neon-cyan/50 shadow-lg hover:shadow-neon">
-              <i className="fas fa-leaf text-4xl text-neon-cyan mb-4 block"></i>
-              <h3 className="font-orbitron text-xl font-bold mb-4 text-white">Eco-Friendly</h3>
-              <p className="text-gray-300">Silent, smokeless drone displays that dazzle responsibly.</p>
-            </div>
-
-            {/* Creative Customization */}
-            <div className="text-center p-8 bg-gray-900 rounded-3xl hover:rounded-[2rem] transition-all duration-300 border border-gray-800 hover:border-neon-cyan/50 shadow-lg hover:shadow-neon">
-              <i className="fas fa-brain text-4xl text-neon-cyan mb-4 block"></i>
-              <h3 className="font-orbitron text-xl font-bold mb-4 text-white">Creative Customization</h3>
-              <p className="text-gray-300">
-                Transform your vision into stunning aerial art with logos and shapes.
-              </p>
-            </div>
-
-            {/* Unforgettable Impact */}
-            <div className="text-center p-8 bg-gray-900 rounded-3xl hover:rounded-[2rem] transition-all duration-300 border border-gray-800 hover:border-neon-cyan/50 shadow-lg hover:shadow-neon">
-              <i className="fas fa-star text-4xl text-neon-cyan mb-4 block"></i>
-              <h3 className="font-orbitron text-xl font-bold mb-4 text-white">Unforgettable Impact</h3>
-              <p className="text-gray-300">
-                Captivate audiences with mesmerizing visuals that elevate your brand.
-              </p>
-            </div>
-
-            {/* Vegas Born */}
-            <div className="text-center p-8 bg-gray-900 rounded-3xl hover:rounded-[2rem] transition-all duration-300 border border-gray-800 hover:border-neon-cyan/50 shadow-lg hover:shadow-neon">
-              <i className="fas fa-city text-4xl text-neon-cyan mb-4 block"></i>
-              <h3 className="font-orbitron text-xl font-bold mb-4 text-white">Vegas Born</h3>
-              <p className="text-gray-300">
-                Proudly operating with a 100% local flight crew that knows Las Vegas inside and
-                out.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ================= GALLERY SECTION ================= */}
-        <section className="py-20 px-8 bg-gray-900">
-          <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-16 text-white">
-            Our Fabulous Shows
-          </h2>
-
-          <div className="max-w-4xl mx-auto space-y-10">
-            {/* Video 1 */}
-            <div className="aspect-video relative">
-              <iframe
-                src="https://www.youtube.com/embed/bo3z1mTSc0s?rel=0"
-                title="Vegas Drones Light Show"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                loading="lazy"
-                className="w-full h-full rounded-[2rem] shadow-2xl border border-gray-700 hover:border-neon-cyan/50 transition-all duration-300"
-              />
-            </div>
-
-            {/* Video 2 */}
-            <div className="aspect-video relative">
-              <iframe
-                src="https://www.youtube.com/embed/XvxnQlQjztE?rel=0"
-                title="Vegas Drones Light Show 2"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                loading="lazy"
-                className="w-full h-full rounded-[2rem] shadow-2xl border border-gray-700 hover:border-neon-cyan/50 transition-all duration-300"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* ================= CTA SECTION ================= */}
-        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 text-center">
-          <h2 className="font-orbitron text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-white">
-            Ready to Light Up the Sky?
-          </h2>
-
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 px-4">
-            Contact us today to plan your custom drone light show in Las Vegas!
+          <p className="text-gray-300 text-lg mb-12">
+            Instantly get pricing, availability, drone counts, and custom show ideas for
+            your Las Vegas event.
           </p>
 
-          <a
-            href="/contact"
-            className="inline-block px-8 sm:px-10 md:px-12 py-3 sm:py-4 bg-neon-cyan text-black font-bold rounded-full hover:bg-cyan-400 hover:rounded-[2rem] transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-neon border-2 border-neon-cyan hover:border-cyan-400 font-orbitron text-sm sm:text-base"
-          >
-            Get Started
-          </a>
-        </section>
-      </main>
+          {/* Alien Head */}
+          <div className="flex justify-center mb-10">
+            <Link href="/chatbot" className="relative group">
+              {/* Glow */}
+              <div className="absolute inset-0 scale-110 bg-[#4DFFFF] opacity-30 rounded-full blur-3xl group-hover:opacity-50 transition" />
+              <div className="absolute inset-0 scale-125 bg-[#4DFFFF] opacity-20 rounded-full blur-2xl" />
 
-      <Footer />
-    </>
-  )
+              {/* Image */}
+              <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full border-2 border-[#4DFFFF] shadow-[0_0_25px_rgba(77,255,255,0.7)] overflow-hidden">
+                <img
+                  src="/alienhead1.png"
+                  alt="Vegas Drones AI Assistant"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Rotating ring */}
+              <div className="absolute inset-0 rounded-full border border-[#4DFFFF]/50 animate-spin-slow" />
+            </Link>
+          </div>
+
+          {/* CTA Button */}
+          <Link
+            href="/chatbot"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#4DFFFF] to-green-400
+              text-black font-bold py-4 px-8 rounded-full transition-all duration-300
+              shadow-lg hover:shadow-[0_0_25px_rgba(77,255,255,0.6)]
+              transform hover:scale-105 font-orbitron"
+          >
+            <i className="fas fa-robot text-xl" />
+            Chat with AI Assistant
+          </Link>
+        </div>
+      </section>
+
+{/* ================= INTERNAL LINKING (SEO CORE) ================= */}
+<section className="px-4 sm:px-6 py-10">
+        <p className="text-gray-300 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed">
+          Vegas Drones specializes in{" "}
+          <Link href="/drone-light-shows" className="text-[#4DFFFF] hover:underline">
+            Las Vegas drone light shows
+          </Link>{" "}
+          for weddings, corporate events, conventions, festivals, and high-impact brand
+          activations. Explore our{" "}
+          <Link href="/weddings" className="text-[#4DFFFF] hover:underline">
+            wedding drone light shows
+          </Link>{" "}
+          for unforgettable celebrations, discover how our{" "}
+          <Link href="/drone-advertising" className="text-[#4DFFFF] hover:underline">
+            drone advertising
+          </Link>{" "}
+          elevates brands, or learn more about our{" "}
+          <Link href="/conventions-trade-shows" className="text-[#4DFFFF] hover:underline">
+            convention & trade show drone shows
+          </Link>{" "}
+          for CES, IMEX, SHOT Show, and major Las Vegas expos.
+        </p>
+      </section>
+      
+
+      {/* ================= FEATURES ================= */}
+      <section className="py-16 px-4 sm:px-6">
+        <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-14">
+          Why Vegas Drones?
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <Feature icon="leaf" title="Eco-Friendly">
+            Quiet, smokeless drone displays with zero fallout.
+          </Feature>
+          <Feature icon="brain" title="Fully Custom Shows">
+            Logos, names, dates, icons, and animated storytelling.
+          </Feature>
+          <Feature icon="star" title="High-Impact Visuals">
+            Built for crowd reaction and social sharing.
+          </Feature>
+          <Feature icon="city" title="Vegas-Based Crew">
+            100% local operators who know Las Vegas airspace.
+          </Feature>
+        </div>
+      </section>
+
+      {/* ================= VIDEO GALLERY ================= */}
+      <section className="py-20 px-6 bg-gray-900">
+        <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-16">
+          Our Drone Light Shows
+        </h2>
+
+        <div className="max-w-4xl mx-auto space-y-10">
+          {[
+            "yEAZil9cE2U",
+            "XvxnQlQjztE",
+            "kpqUduaDwK8",
+          ].map((id) => (
+            <div key={id} className="aspect-video relative">
+              <iframe
+                src={`https://www.youtube.com/embed/${id}?rel=0`}
+                title="Vegas Drones light show"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                className="w-full h-full rounded-[2rem] shadow-2xl border border-gray-700"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================= CTA ================= */}
+      <section className="py-16 text-center px-6">
+        <h2 className="font-orbitron text-3xl md:text-4xl font-bold mb-6">
+          Ready to Light Up the Sky?
+        </h2>
+        <p className="text-lg text-gray-300 mb-8">
+          Contact us today to plan your custom drone light show in Las Vegas.
+        </p>
+        <Link
+          href="/contact"
+          className="inline-block px-10 py-4 bg-[#4DFFFF] text-black font-bold rounded-full hover:bg-white transition font-orbitron"
+        >
+          Get Started
+        </Link>
+      </section>
+    </main>
+  );
+}
+
+/* ================= FEATURE CARD ================= */
+function Feature({
+  icon,
+  title,
+  children,
+}: {
+  icon: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="text-center p-8 bg-gray-900 rounded-3xl border border-gray-800 shadow-lg">
+      <i className={`fas fa-${icon} text-4xl text-[#4DFFFF] mb-4`} />
+      <h3 className="font-orbitron text-xl font-bold mb-3">{title}</h3>
+      <p className="text-gray-300">{children}</p>
+    </div>
+  );
 }
