@@ -4,10 +4,6 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
 
-  // If you're on Next 13/14+ App Router, keep this.
-  // Enforces consistent URLs (optional).
-  // trailingSlash: false,
-
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
@@ -19,14 +15,29 @@ const nextConfig = {
 
   async redirects() {
     return [
-      // Pick ONE primary URL for your money page:
+      // ✅ OLD HTML URLs (from Google Search Console) → NEW Next.js pages
+      {
+        source: "/contact-las-vegas-drone-shows.html",
+        destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/faq-las-vegas-drone-show.html",
+        destination: "/faq",
+        permanent: true,
+      },
+      {
+        source: "/drone-advertising-las-vegas.html",
+        destination: "/drone-advertising",
+        permanent: true,
+      },
+
+      // ✅ Current / preferred slugs
       {
         source: "/drone-light-shows",
         destination: "/las-vegas-drone-light-shows",
         permanent: true,
       },
-
-      // Optional: common variations / typos
       {
         source: "/drone-light-show",
         destination: "/las-vegas-drone-light-shows",
@@ -37,8 +48,6 @@ const nextConfig = {
         destination: "/weddings",
         permanent: true,
       },
-
-      // If you have an older conventions slug, keep equity:
       {
         source: "/conventions",
         destination: "/conventions-trade-shows",
@@ -51,7 +60,8 @@ const nextConfig = {
     return [
       // Cache static assets hard (great for Core Web Vitals)
       {
-        source: "/:all*(svg|jpg|jpeg|png|gif|webp|avif|ico|mp4|webm|css|js|map|woff|woff2)",
+        source:
+          "/:all*(svg|jpg|jpeg|png|gif|webp|avif|ico|mp4|webm|css|js|map|woff|woff2)",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
@@ -64,8 +74,10 @@ const nextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
-          // If you embed iframes (YouTube), don't use a strict CSP here unless you know exactly what to allow.
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
         ],
       },
     ];
