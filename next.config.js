@@ -7,15 +7,13 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
-    remotePatterns: [
-      // Add domains here ONLY if you load remote images with next/image
-      // { protocol: "https", hostname: "i.ytimg.com" },
-    ],
+    remotePatterns: [],
   },
 
   async redirects() {
     return [
-      // ✅ OLD HTML URLs (from Google Search Console) → NEW Next.js pages
+      // 🔴 LEGACY HTML CLEANUP (SEO)
+      { source: "/index.html", destination: "/", permanent: true },
       {
         source: "/contact-las-vegas-drone-shows.html",
         destination: "/contact",
@@ -32,7 +30,10 @@ const nextConfig = {
         permanent: true,
       },
 
-      // ✅ Current / preferred slugs
+      // Catch-all safety net: ANY .html → same path without .html
+      { source: "/:path*.html", destination: "/:path*", permanent: true },
+
+      // 🟢 PREFERRED SLUG CONSOLIDATION
       {
         source: "/drone-light-shows",
         destination: "/las-vegas-drone-light-shows",
@@ -43,11 +44,7 @@ const nextConfig = {
         destination: "/las-vegas-drone-light-shows",
         permanent: true,
       },
-      {
-        source: "/wedding",
-        destination: "/weddings",
-        permanent: true,
-      },
+      { source: "/wedding", destination: "/weddings", permanent: true },
       {
         source: "/conventions",
         destination: "/conventions-trade-shows",
@@ -58,7 +55,7 @@ const nextConfig = {
 
   async headers() {
     return [
-      // Cache static assets hard (great for Core Web Vitals)
+      // ⚡ AGGRESSIVE STATIC CACHING
       {
         source:
           "/:all*(svg|jpg|jpeg|png|gif|webp|avif|ico|mp4|webm|css|js|map|woff|woff2)",
@@ -67,7 +64,7 @@ const nextConfig = {
         ],
       },
 
-      // Reasonable security headers (safe for SEO)
+      // 🔐 SAFE SECURITY HEADERS
       {
         source: "/(.*)",
         headers: [
@@ -85,3 +82,4 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+

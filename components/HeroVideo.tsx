@@ -1,44 +1,32 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-type HeroVideoProps = {
-  title: React.ReactNode; // lets you pass styled spans like you do now
+type HeroImageProps = {
+  title: React.ReactNode;
   subtitle?: React.ReactNode;
-  bottomLine?: React.ReactNode; // your “Modern alternative…” line
+  bottomLine?: React.ReactNode;
   primaryCta?: { href: string; label: string };
   secondaryCta?: { href: string; label: string };
-  poster?: string; // IMPORTANT for performance
-  videoSrc?: string; // default fireworks
-  heightClassName?: string; // override per page if you want
+  imageSrc?: string;
+  heightClassName?: string;
 };
 
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
-export default function HeroVideo({
+export default function HeroImage({
   title,
   subtitle,
   bottomLine,
   primaryCta,
   secondaryCta,
-  poster = "/osmoalt1.png",
-  videoSrc = "/fireworks_clip.mp4",
+  imageSrc = "/osmosignalt1.png",
   heightClassName = "h-[72vh] sm:h-[85vh]",
-}: HeroVideoProps) {
-  // Defer video load until AFTER first paint so FCP/LCP are fast (mobile + Lighthouse)
-  const [showVideo, setShowVideo] = useState(false);
-
-  useEffect(() => {
-    // next tick after mount = avoids video becoming the LCP element in Lighthouse
-    setShowVideo(true);
-  }, []);
-
+}: HeroImageProps) {
   return (
     <section className="w-full">
       <div className="relative w-full bg-black">
-        {/* Always render a fast poster layer so content paints instantly */}
         <div
           className={[
             "w-full bg-black",
@@ -46,32 +34,17 @@ export default function HeroVideo({
             "relative overflow-hidden",
           ].join(" ")}
         >
-          {/* Poster image (instant LCP instead of video) */}
+          {/* Background Image */}
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: `url(${poster})`,
+              backgroundImage: `url(${imageSrc})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               filter: "brightness(1.1) contrast(1.1) saturate(1.1)",
             }}
             aria-hidden="true"
           />
-
-          {/* Video loads AFTER first paint */}
-          {showVideo ? (
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="none"
-              poster={poster}
-              className="absolute inset-0 w-full h-full object-cover bg-black"
-            >
-              <source src={videoSrc} type="video/mp4" />
-            </video>
-          ) : null}
 
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/20 pointer-events-none" />
@@ -93,7 +66,7 @@ export default function HeroVideo({
                 {title}
               </h1>
 
-              {subtitle ? (
+              {subtitle && (
                 <p
                   className="
                     text-gray-100
@@ -107,13 +80,13 @@ export default function HeroVideo({
                 >
                   {subtitle}
                 </p>
-              ) : null}
+              )}
             </div>
 
             <div className="flex-1" />
 
             {/* BOTTOM LINE */}
-            {bottomLine ? (
+            {bottomLine && (
               <div className="pb-3 sm:pb-6 text-center">
                 <h2
                   className="
@@ -128,17 +101,17 @@ export default function HeroVideo({
                   {bottomLine}
                 </h2>
               </div>
-            ) : null}
+            )}
           </div>
         </div>
       </div>
 
-      {/* CTA BAR (under video) */}
+      {/* CTA BAR */}
       {(primaryCta || secondaryCta) && (
         <div className="px-4 sm:px-6">
           <div className="max-w-5xl mx-auto flex justify-center pt-4 sm:pt-6 pb-8 sm:pb-12">
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full">
-              {primaryCta ? (
+              {primaryCta && (
                 <Link
                   href={primaryCta.href}
                   className="
@@ -154,9 +127,9 @@ export default function HeroVideo({
                 >
                   {primaryCta.label}
                 </Link>
-              ) : null}
+              )}
 
-              {secondaryCta ? (
+              {secondaryCta && (
                 <Link
                   href={secondaryCta.href}
                   className="
@@ -167,7 +140,7 @@ export default function HeroVideo({
                 >
                   {secondaryCta.label}
                 </Link>
-              ) : null}
+              )}
             </div>
           </div>
         </div>

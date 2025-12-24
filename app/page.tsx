@@ -224,7 +224,7 @@ export default function HomePage() {
                     "linear-gradient(to right, #FF3B3B, white, #FF3B3B)",
                 }}
               >
-                VEGAS
+               LAS VEGAS
               </span>
               <span className="text-white">DRONE</span>
               <span
@@ -240,7 +240,7 @@ export default function HomePage() {
           }
           subtitle={
             <>
-              Custom <strong>Las Vegas drone light shows</strong> for weddings,
+              Custom <strong>Las Vegas drone light shows</strong> for
               conventions, corporate events, festivals, and brand activations —
               animated logos, names, and dates with{" "}
               <strong>100–1000+ drones</strong>.
@@ -281,14 +281,18 @@ export default function HomePage() {
         <div className="relative w-full bg-black">
           {/* image immediately under the hero's bottom line */}
           <div className="w-full flex justify-center pt-2 sm:pt-3 pb-4 sm:pb-6">
-            <Image
-              src="/osmosignalt1.png"
-              alt="Drone light show in Las Vegas"
-              width={1200}
-              height={675}
-              className="w-full max-w-5xl rounded-xl shadow-lg object-cover"
-              loading="lazy"
-            />
+          <div className="w-full flex justify-center pt-2 sm:pt-3 pb-4 sm:pb-6">
+  <div className="relative w-full max-w-5xl aspect-video rounded-xl shadow-lg overflow-hidden">
+    <iframe
+      src="https://player.vimeo.com/video/1147748380?autoplay=1&muted=1&loop=1&background=1&playsinline=1&controls=0"
+      className="absolute inset-0 w-full h-full"
+      allow="autoplay; fullscreen; picture-in-picture"
+      aria-hidden="true"
+      loading="lazy"
+    />
+  </div>
+</div>
+
           </div>
 
           {/* text directly under image */}
