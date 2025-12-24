@@ -1,7 +1,4 @@
 {
-  "/conventions-trade-shows/page": "app/conventions-trade-shows/page.js",
-  "/blog/page": "app/blog/page.js",
-  "/page": "app/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/blog/why-venues-are-choosing-drone-light-shows/page": "app/blog/why-venues-are-choosing-drone-light-shows/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js"
 }
