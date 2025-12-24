@@ -1,85 +1,35 @@
 {
   "pages": {
-    "/_not-found/page": [
-      "static/chunks/webpack-4f9b217595cee257.js",
-      "static/chunks/fd9d1056-13baa9b2029d31fe.js",
-      "static/chunks/117-f1440ad76292f941.js",
-      "static/chunks/main-app-119d2ba0c834610c.js",
-      "static/chunks/app/_not-found/page-b62982a1b0a6c401.js"
+    "/contact/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/contact/page.js"
     ],
     "/layout": [
-      "static/chunks/webpack-4f9b217595cee257.js",
-      "static/chunks/fd9d1056-13baa9b2029d31fe.js",
-      "static/chunks/117-f1440ad76292f941.js",
-      "static/chunks/main-app-119d2ba0c834610c.js",
-      "static/css/e1b3843f1727474c.css",
-      "static/chunks/972-3262c6c8d53b1757.js",
-      "static/chunks/app/layout-3f1a17241403b9d6.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
     ],
-    "/contact/page": [
-      "static/chunks/webpack-4f9b217595cee257.js",
-      "static/chunks/fd9d1056-13baa9b2029d31fe.js",
-      "static/chunks/117-f1440ad76292f941.js",
-      "static/chunks/main-app-119d2ba0c834610c.js",
-      "static/chunks/972-3262c6c8d53b1757.js",
-      "static/chunks/app/contact/page-190f259e023038d2.js"
-    ],
-    "/faq/page": [
-      "static/chunks/webpack-4f9b217595cee257.js",
-      "static/chunks/fd9d1056-13baa9b2029d31fe.js",
-      "static/chunks/117-f1440ad76292f941.js",
-      "static/chunks/main-app-119d2ba0c834610c.js",
-      "static/chunks/972-3262c6c8d53b1757.js",
-      "static/chunks/app/faq/page-7c90f7a9624ced96.js"
+    "/blog/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/blog/page.js"
     ],
     "/conventions-trade-shows/page": [
-      "static/chunks/webpack-4f9b217595cee257.js",
-      "static/chunks/fd9d1056-13baa9b2029d31fe.js",
-      "static/chunks/117-f1440ad76292f941.js",
-      "static/chunks/main-app-119d2ba0c834610c.js",
-      "static/chunks/972-3262c6c8d53b1757.js",
-      "static/chunks/app/conventions-trade-shows/page-c25ed3866b59dce7.js"
-    ],
-    "/drone-advertising/page": [
-      "static/chunks/webpack-4f9b217595cee257.js",
-      "static/chunks/fd9d1056-13baa9b2029d31fe.js",
-      "static/chunks/117-f1440ad76292f941.js",
-      "static/chunks/main-app-119d2ba0c834610c.js",
-      "static/chunks/972-3262c6c8d53b1757.js",
-      "static/chunks/app/drone-advertising/page-19636c0363ac2087.js"
-    ],
-    "/chatbot/page": [
-      "static/chunks/webpack-4f9b217595cee257.js",
-      "static/chunks/fd9d1056-13baa9b2029d31fe.js",
-      "static/chunks/117-f1440ad76292f941.js",
-      "static/chunks/main-app-119d2ba0c834610c.js",
-      "static/css/a1f33707fd8fdf10.css",
-      "static/chunks/972-3262c6c8d53b1757.js",
-      "static/chunks/app/chatbot/page-0912469508228d8c.js"
-    ],
-    "/weddings/page": [
-      "static/chunks/webpack-4f9b217595cee257.js",
-      "static/chunks/fd9d1056-13baa9b2029d31fe.js",
-      "static/chunks/117-f1440ad76292f941.js",
-      "static/chunks/main-app-119d2ba0c834610c.js",
-      "static/chunks/972-3262c6c8d53b1757.js",
-      "static/chunks/app/weddings/page-d73a064131f2b71b.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/conventions-trade-shows/page.js"
     ],
     "/page": [
-      "static/chunks/webpack-4f9b217595cee257.js",
-      "static/chunks/fd9d1056-13baa9b2029d31fe.js",
-      "static/chunks/117-f1440ad76292f941.js",
-      "static/chunks/main-app-119d2ba0c834610c.js",
-      "static/chunks/972-3262c6c8d53b1757.js",
-      "static/chunks/app/page-9d8267ea3ad04561.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
     ],
-    "/las-vegas-drone-light-shows/page": [
-      "static/chunks/webpack-4f9b217595cee257.js",
-      "static/chunks/fd9d1056-13baa9b2029d31fe.js",
-      "static/chunks/117-f1440ad76292f941.js",
-      "static/chunks/main-app-119d2ba0c834610c.js",
-      "static/chunks/972-3262c6c8d53b1757.js",
-      "static/chunks/app/las-vegas-drone-light-shows/page-c10c928769ba7659.js"
+    "/blog/why-venues-are-choosing-drone-light-shows/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/blog/why-venues-are-choosing-drone-light-shows/page.js"
     ]
   }
 }

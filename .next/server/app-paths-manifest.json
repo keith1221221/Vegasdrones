@@ -1,12 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/faq/page": "app/faq/page.js",
   "/conventions-trade-shows/page": "app/conventions-trade-shows/page.js",
-  "/api/chat/route": "app/api/chat/route.js",
-  "/drone-advertising/page": "app/drone-advertising/page.js",
-  "/chatbot/page": "app/chatbot/page.js",
-  "/weddings/page": "app/weddings/page.js",
+  "/blog/page": "app/blog/page.js",
   "/page": "app/page.js",
-  "/las-vegas-drone-light-shows/page": "app/las-vegas-drone-light-shows/page.js"
+  "/contact/page": "app/contact/page.js",
+  "/blog/why-venues-are-choosing-drone-light-shows/page": "app/blog/why-venues-are-choosing-drone-light-shows/page.js"
 }

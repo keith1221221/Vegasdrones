@@ -1,150 +1,328 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Script from "next/script";
+import HeroVideo from "@/components/HeroVideo";
+
+const SITE_NAME = "Vegas Drones";
+const SITE_URL = "https://www.vegasdrones.com";
+const OG_IMAGE = "/alienhead1.png"; // swap to a dedicated OG image later if you want
+
+// Brand reds (neon-ish, looks great on black)
+const BRAND_RED = "#FF3B3B";
+const BRAND_RED_LIGHT = "#FF6A6A";
 
 export const metadata: Metadata = {
-  title: "Las Vegas Drone Light Shows & Aerial Advertising",
+  metadataBase: new URL(SITE_URL),
+  title: "Las Vegas Drone Light Shows & Aerial Advertising | Vegas Drones",
   description:
-    "Vegas Drones creates spectacular custom drone light shows in Las Vegas for weddings, conventions, corporate events, festivals, and brand activations.",
+    "Vegas Drones produces spectacular custom drone light shows in Las Vegas for weddings, conventions, corporate events, festivals, and brand activations. 100–500+ drones with cinematic, logo-ready storytelling.",
   keywords: [
     "Las Vegas drone light shows",
     "drone light show Las Vegas",
     "Vegas drone shows",
-    "wedding drone light show",
-    "corporate drone show",
-    "convention drone show",
+    "wedding drone light show Las Vegas",
+    "corporate drone show Las Vegas",
+    "convention drone show Las Vegas",
     "drone advertising Las Vegas",
-    "aerial light show Vegas",
+    "aerial advertising Las Vegas",
+    "CES drone show",
+    "IMEX drone show",
+    "SHOT Show drone show",
+    "brand activation drone show",
+    "drone light show near me Las Vegas",
   ],
-  alternates: {
-    canonical: "https://www.vegasdrones.com/",
+  alternates: { canonical: SITE_URL },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   openGraph: {
     title: "Las Vegas Drone Light Shows & Aerial Advertising | Vegas Drones",
     description:
-      "Book custom 100–500+ drone light shows for weddings, conventions, festivals, and brand activations across Las Vegas.",
-    url: "https://www.vegasdrones.com/",
-    siteName: "Vegas Drones",
+      "Book custom 100–500+ drone light shows in Las Vegas for weddings, conventions, corporate events, festivals, and high-impact brand activations.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     images: [
       {
-        url: "/alienhead1.png",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
         alt: "Vegas Drones aerial light show over Las Vegas",
       },
     ],
     type: "website",
+    locale: "en_US",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Las Vegas Drone Light Shows & Aerial Advertising | Vegas Drones",
+    description:
+      "Custom 100–500+ drone light shows in Las Vegas for weddings, conventions, and brand activations.",
+    images: [OG_IMAGE],
+  },
+  category: "business",
 };
 
 export default function HomePage() {
+  const jsonLdLocalBusiness = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Vegas Drones",
+    url: SITE_URL,
+    image: `${SITE_URL}${OG_IMAGE}`,
+    description:
+      "Vegas Drones produces custom drone light shows and aerial advertising in Las Vegas for weddings, conventions, corporate events, festivals, and brand activations.",
+    areaServed: [
+      { "@type": "City", name: "Las Vegas" },
+      { "@type": "AdministrativeArea", name: "Nevada" },
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Las Vegas",
+      addressRegion: "NV",
+      addressCountry: "US",
+    },
+    sameAs: [
+      // Add socials when ready:
+      // "https://www.instagram.com/...",
+      // "https://www.facebook.com/...",
+      // "https://www.linkedin.com/company/..."
+    ],
+    makesOffer: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Drone Light Shows",
+          serviceType: "Drone light show production",
+          areaServed: { "@type": "City", name: "Las Vegas" },
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Aerial Advertising",
+          serviceType: "Drone advertising / aerial brand activations",
+          areaServed: { "@type": "City", name: "Las Vegas" },
+        },
+      },
+    ],
+  };
+
+  const jsonLdService = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Las Vegas Drone Light Shows",
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Vegas Drones",
+      url: SITE_URL,
+    },
+    areaServed: { "@type": "City", name: "Las Vegas" },
+    serviceType: "Drone light show production",
+    description:
+      "Custom drone light shows for weddings, conventions, corporate events, festivals, and brand activations in Las Vegas. 100–500+ drones, logos, names, dates, and cinematic storytelling.",
+  };
+
+  const jsonLdFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How much does a drone light show in Las Vegas cost?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Pricing depends on drone count, show length, location logistics, and creative complexity. Use our instant quote to get an estimate and recommended drone count.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How many drones do I need for my event?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Drone count depends on the venue scale, viewing distance, and design complexity. Typical shows range from 100 to 500+ drones for maximum impact.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can you animate a logo or custom message?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. We create custom formations like logos, names, dates, icons, and animated sequences tailored to your event theme.",
+        },
+      },
+    ],
+  };
+
   return (
-    <main className="bg-black text-white">
-      {/* ================= HERO SECTION ================= */}
-      <section className="w-full pt-24">
-        <div className="relative w-full">
-          <img
-            src="/osmosignalt1.png"
-            alt="Las Vegas drone light show over the Strip"
-            className="w-full h-auto max-h-[90vh] object-cover"
-          />
+    <div className="bg-black text-white">
+      {/* ===== Structured Data (SEO) ===== */}
+      <Script
+        id="ld-localbusiness"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdLocalBusiness) }}
+      />
+      <Script
+        id="ld-service"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdService) }}
+      />
+      <Script
+        id="ld-faq"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+      />
 
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 px-4">
-          <h1
-  className="font-orbitron whitespace-nowrap text-white font-bold
-  text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-center
-  drop-shadow-[0_0_12px_rgba(0,255,255,0.55)]"
->
-  Las Vegas Drone Shows
-</h1>
+      {/* ================= HERO SECTION (VIDEO + OVERLAY) ================= */}
+      <div className="relative">
+        {/* IMPORTANT: remove duplicate button by NOT passing primaryCta to HeroVideo */}
+        <HeroVideo
+          title={
+            <>
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, #FF3B3B, white, #FF3B3B)",
+                }}
+              >
+                VEGAS
+              </span>
+              <span className="text-white">DRONE</span>
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, #FF6A6A, #FF3B3B, #FF6A6A)",
+                }}
+              >
+                SHOWS
+              </span>
+            </>
+          }
+          subtitle={
+            <>
+              Las Vegas drone light shows for holidays, conventions, corporate events,
+              festivals, and high-impact brand activations — custom logos, names,
+              dates, and cinematic storytelling with{" "}
+              <strong>100–1000+ drones</strong>.
+            </>
+          }
+          bottomLine={
+            <>A Modern, Crowd-Winning Alternative to Fireworks — Built for Las Vegas</>
+          }
+        />
 
-          </div>
-        </div>
-      </section>
-{/* ================= WAVE DIVIDER ================= */}
+      {/* ONE button, overlaid at the bottom of the fireworks video */}
+<div className="pointer-events-none absolute left-0 right-0 bottom-20">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-4 sm:pb-6 relative">
+    {/* modern separator line — moved UP */}
+    <div className="pointer-events-none absolute left-0 right-0 bottom-1 -translate-y-28 sm:-translate-y-32">
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+    </div>
 
-<h2 className="font-orbitron text-xl sm:text-2xl md:text-3xl font-bold
-  text-center text-white mt-6 mb-4
-  drop-shadow-[0_0_10px_rgba(0,255,255,0.35)]">
-  Drone Light Shows for Weddings, Events & Brand Activations
-</h2>
+    {/* CTA button — also moved UP, but still LOWER than the line */}
+    <div className="pointer-events-auto absolute left-0 right-0 bottom-0 -translate-y-10 sm:-translate-y-12 flex justify-center">
+      <Link
+        href="/contact"
+        className="inline-flex items-center justify-center text-black font-bold py-4 px-7 rounded-full shadow-lg transform hover:scale-105 transition font-orbitron"
+        style={{
+          backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
+          boxShadow: "0 0 25px rgba(255,59,59,0.35)",
+        }}
+      >
+        Get a Las Vegas Quote
+      </Link>
+    </div>
+  </div>
+</div>
 
 
-      
-      {/* ================= AI CHATBOT CTA ================= */}
-            {/* ================= AI ASSISTANT ================= */}
-            <section className="relative py-24 px-4 sm:px-6 bg-gradient-to-b from-gray-900 to-black">
-        <div className="text-center max-w-4xl mx-auto">
-          <h3 className="font-orbitron text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white
-            drop-shadow-[0_0_12px_rgba(0,255,255,0.55)]">
-            Meet the Vegas Drones AI Assistant
-          </h3>
+      </div>
 
-          <p className="text-gray-300 text-lg mb-12">
-            Instantly get pricing, availability, drone counts, and custom show ideas for
-            your Las Vegas event.
-          </p>
+      {/* ================= INTERNAL LINKING (SEO CORE) + BUTTON ONLY ================= */}
+<section className="w-full bg-black">
+  <div className="relative w-full bg-black">
+    {/* image immediately under the hero's bottom line */}
+    <div className="w-full flex justify-center pt-2 sm:pt-3 pb-4 sm:pb-6">
+      <img
+        src="/osmosignalt1.png"
+        alt="Drone light show in Las Vegas"
+        className="w-full max-w-5xl rounded-xl shadow-lg object-cover"
+        loading="lazy"
+      />
+    </div>
 
-          {/* Alien Head */}
-          <div className="flex justify-center mb-10">
-            <Link href="/chatbot" className="relative group">
-              {/* Glow */}
-              <div className="absolute inset-0 scale-110 bg-[#4DFFFF] opacity-30 rounded-full blur-3xl group-hover:opacity-50 transition" />
-              <div className="absolute inset-0 scale-125 bg-[#4DFFFF] opacity-20 rounded-full blur-2xl" />
-
-              {/* Image */}
-              <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full border-2 border-[#4DFFFF] shadow-[0_0_25px_rgba(77,255,255,0.7)] overflow-hidden">
-                <img
-                  src="/alienhead1.png"
-                  alt="Vegas Drones AI Assistant"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-
-              {/* Rotating ring */}
-              <div className="absolute inset-0 rounded-full border border-[#4DFFFF]/50 animate-spin-slow" />
-            </Link>
-          </div>
-
-          {/* CTA Button */}
-          <Link
-            href="/chatbot"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#4DFFFF] to-green-400
-              text-black font-bold py-4 px-8 rounded-full transition-all duration-300
-              shadow-lg hover:shadow-[0_0_25px_rgba(77,255,255,0.6)]
-              transform hover:scale-105 font-orbitron"
-          >
-            <i className="fas fa-robot text-xl" />
-            Chat with AI Assistant
-          </Link>
-        </div>
-      </section>
-
-{/* ================= INTERNAL LINKING (SEO CORE) ================= */}
-<section className="px-4 sm:px-6 py-10">
-        <p className="text-gray-300 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed">
+    {/* text directly under image */}
+    <div className="px-4 sm:px-6 pb-10">
+      <div className="max-w-4xl mx-auto text-center">
+        <p
+          className="
+            text-gray-100
+            text-lg sm:text-xl md:text-2xl
+            leading-relaxed sm:leading-loose
+            drop-shadow-[0_0_14px_rgba(0,0,0,0.9)]
+          "
+        >
           Vegas Drones specializes in{" "}
-          <Link href="/drone-light-shows" className="text-[#4DFFFF] hover:underline">
+          <Link
+            href="/drone-light-shows"
+            className="text-white underline decoration-white/40 hover:decoration-white"
+          >
             Las Vegas drone light shows
           </Link>{" "}
-          for weddings, corporate events, conventions, festivals, and high-impact brand
-          activations. Explore our{" "}
-          <Link href="/weddings" className="text-[#4DFFFF] hover:underline">
-            wedding drone light shows
+          designed for festivals, corporate events, and city-scale experiences.
+          Planning a venue or expo? Explore{" "}
+          <Link
+            href="/conventions-trade-shows"
+            className="text-white underline decoration-white/40 hover:decoration-white"
+          >
+            convention &amp; trade show drone shows
           </Link>{" "}
-          for unforgettable celebrations, discover how our{" "}
-          <Link href="/drone-advertising" className="text-[#4DFFFF] hover:underline">
+          or learn how{" "}
+          <Link
+            href="/drone-advertising"
+            className="text-white underline decoration-white/40 hover:decoration-white"
+          >
             drone advertising
           </Link>{" "}
-          elevates brands, or learn more about our{" "}
-          <Link href="/conventions-trade-shows" className="text-[#4DFFFF] hover:underline">
-            convention & trade show drone shows
-          </Link>{" "}
-          for CES, IMEX, SHOT Show, and major Las Vegas expos.
+          can power brand activations. For unforgettable celebrations, see{" "}
+          <Link
+            href="/weddings"
+            className="text-white underline decoration-white/40 hover:decoration-white"
+          >
+            event drone light shows
+          </Link>
+          .
         </p>
-      </section>
-      
 
+        <div className="mt-8 flex justify-center">
+          <Link
+            href="/chatbot"
+            className="inline-flex items-center justify-center text-black font-bold py-4 px-8 rounded-full transform hover:scale-105 transition font-orbitron"
+            style={{
+              backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
+              boxShadow: "0 0 30px rgba(255,59,59,0.45)",
+            }}
+          >
+            Chat with our assistant
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+       
       {/* ================= FEATURES ================= */}
       <section className="py-16 px-4 sm:px-6">
         <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-14">
@@ -153,16 +331,19 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           <Feature icon="leaf" title="Eco-Friendly">
-            Quiet, smokeless drone displays with zero fallout.
+            Quiet, smokeless displays with zero fallout — perfect for Vegas venues.
           </Feature>
+
           <Feature icon="brain" title="Fully Custom Shows">
-            Logos, names, dates, icons, and animated storytelling.
+            Logos, names, dates, icons, and animated sequences built to your theme.
           </Feature>
+
           <Feature icon="star" title="High-Impact Visuals">
-            Built for crowd reaction and social sharing.
+            Designed for crowd reaction, social sharing, and premium brand moments.
           </Feature>
+
           <Feature icon="city" title="Vegas-Based Crew">
-            100% local operators who know Las Vegas airspace.
+            Local operators who know Las Vegas airspace, venues, and logistics.
           </Feature>
         </div>
       </section>
@@ -170,15 +351,11 @@ export default function HomePage() {
       {/* ================= VIDEO GALLERY ================= */}
       <section className="py-20 px-6 bg-gray-900">
         <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-16">
-          Our Drone Light Shows
+          Recent Drone Light Shows
         </h2>
 
         <div className="max-w-4xl mx-auto space-y-10">
-          {[
-            "yEAZil9cE2U",
-            "XvxnQlQjztE",
-            "kpqUduaDwK8",
-          ].map((id) => (
+          {["yEAZil9cE2U", "XvxnQlQjztE", "kpqUduaDwK8"].map((id) => (
             <div key={id} className="aspect-video relative">
               <iframe
                 src={`https://www.youtube.com/embed/${id}?rel=0`}
@@ -191,24 +368,53 @@ export default function HomePage() {
             </div>
           ))}
         </div>
+
+        <div className="text-center mt-12">
+          <Link
+            href="/drone-light-shows"
+            className="inline-flex items-center justify-center px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition font-orbitron"
+          >
+            See More Shows
+          </Link>
+        </div>
       </section>
 
       {/* ================= CTA ================= */}
       <section className="py-16 text-center px-6">
         <h2 className="font-orbitron text-3xl md:text-4xl font-bold mb-6">
-          Ready to Light Up the Sky?
+          Ready to Light Up the Las Vegas Sky?
         </h2>
-        <p className="text-lg text-gray-300 mb-8">
-          Contact us today to plan your custom drone light show in Las Vegas.
+        <p className="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
+          Tell us your date, venue area, and goals — we’ll recommend drone count,
+          show length, and custom sequences for maximum impact.
         </p>
-        <Link
-          href="/contact"
-          className="inline-block px-10 py-4 bg-[#4DFFFF] text-black font-bold rounded-full hover:bg-white transition font-orbitron"
-        >
-          Get Started
-        </Link>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="/contact"
+            className="inline-block px-10 py-4 text-black font-bold rounded-full transition font-orbitron hover:bg-white"
+            style={{
+              backgroundColor: BRAND_RED,
+              boxShadow: "0 0 25px rgba(255,59,59,0.35)",
+            }}
+          >
+            Get Started
+          </Link>
+
+          <Link
+            href="/chatbot"
+            className="inline-block px-10 py-4 border border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition font-orbitron"
+          >
+            Ask how it works 
+          </Link>
+        </div>
+
+        <p className="text-gray-400 mt-6 text-sm">
+          Operated by Skylight Ads LLC • Las Vegas-based • FAA Part 107 • Insured
+          operations
+        </p>
       </section>
-    </main>
+    </div>
   );
 }
 
@@ -224,7 +430,7 @@ function Feature({
 }) {
   return (
     <div className="text-center p-8 bg-gray-900 rounded-3xl border border-gray-800 shadow-lg">
-      <i className={`fas fa-${icon} text-4xl text-[#4DFFFF] mb-4`} />
+      <i className={`fas fa-${icon} text-4xl text-white mb-4`} />
       <h3 className="font-orbitron text-xl font-bold mb-3">{title}</h3>
       <p className="text-gray-300">{children}</p>
     </div>
