@@ -91,12 +91,7 @@ export default function HomePage() {
       addressRegion: "NV",
       addressCountry: "US",
     },
-    sameAs: [
-      // Add socials when ready:
-      // "https://www.instagram.com/...",
-      // "https://www.facebook.com/...",
-      // "https://www.linkedin.com/company/..."
-    ],
+    sameAs: [],
     makesOffer: [
       {
         "@type": "Offer",
@@ -211,9 +206,8 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
       />
 
-      {/* ================= HERO SECTION (VIDEO + OVERLAY) ================= */}
+      {/* ================= HERO SECTION ================= */}
       <div className="relative">
-        {/* IMPORTANT: remove duplicate button by NOT passing primaryCta to HeroVideo */}
         <HeroVideo
           title={
             <>
@@ -224,7 +218,7 @@ export default function HomePage() {
                     "linear-gradient(to right, #FF3B3B, white, #FF3B3B)",
                 }}
               >
-               LAS VEGAS
+                LAS VEGAS
               </span>
               <span className="text-white">DRONE</span>
               <span
@@ -238,29 +232,32 @@ export default function HomePage() {
               </span>
             </>
           }
+          // ✅ Push ONLY the subtitle down on mobile so it overlays the fireworks area
           subtitle={
-            <>
-              Custom <strong>Las Vegas drone light shows</strong> for
-              conventions, corporate events, festivals, and brand activations —
-              animated logos, names, and dates with{" "}
-              <strong>100–1000+ drones</strong>.
-            </>
+            
+            <div className="hidden sm:block">
+              Custom <strong>Las Vegas drone light shows</strong> for conventions, corporate
+              events, festivals, and brand activations — animated logos, names, and dates
+              with <strong>100–1000+ drones</strong>.
+            </div>
           }
+          
           bottomLine={
-            <>A Modern, Crowd-Winning Alternative to Fireworks — Built for Las Vegas</>
+            <span className="block mt-6 sm:mt-12 md:mt-32">
+              A Modern, Crowd-Winning Alternative to Fireworks — Built for Las Vegas
+            </span>
           }
+          
+          
         />
 
         {/* ONE button, overlaid at the bottom of the fireworks video */}
-        <div className="pointer-events-none absolute left-0 right-0 bottom-20">
+        <div className="pointer-events-none absolute left-0 right-0 bottom-11">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-4 sm:pb-6 relative">
-            {/* modern separator line — moved UP */}
-            <div className="pointer-events-none absolute left-0 right-0 bottom-1 -translate-y-28 sm:-translate-y-32">
-              <div className="h-px w-full bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-            </div>
+            
 
             {/* CTA button — also moved UP, but still LOWER than the line */}
-            <div className="pointer-events-auto absolute left-0 right-0 bottom-0 -translate-y-10 sm:-translate-y-12 flex justify-center">
+            <div className="pointer-events-auto absolute left-0 right-0 bottom-0 -translate-y-7 sm:-translate-y-12 flex justify-center">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center text-black font-bold py-4 px-7 rounded-full shadow-lg transform hover:scale-105 transition font-orbitron"
@@ -276,12 +273,12 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ================= INTERNAL LINKING (SEO CORE) + BUTTON ONLY ================= */}
+      {/* ================= INTERNAL LINKING (SEO CORE) ================= */}
       <section className="w-full bg-black">
         <div className="relative w-full bg-black">
-          {/* image immediately under the hero's bottom line */}
-          <div className="w-full flex justify-center pt-2 sm:pt-3 pb-4 sm:pb-6">
-          <div className="w-full flex justify-center pt-2 sm:pt-3 pb-4 sm:pb-6">
+          {/* Vimeo video immediately under the hero's bottom line */}
+         {/* Vimeo video immediately under the hero's bottom line */}
+<div className="w-full flex justify-center pt-2 sm:pt-3 pb-4 sm:pb-6">
   <div className="relative w-full max-w-5xl aspect-video rounded-xl shadow-lg overflow-hidden">
     <iframe
       src="https://player.vimeo.com/video/1147748380?autoplay=1&muted=1&loop=1&background=1&playsinline=1&controls=0"
@@ -293,9 +290,8 @@ export default function HomePage() {
   </div>
 </div>
 
-          </div>
 
-          {/* text directly under image */}
+          {/* text directly under video */}
           <div className="px-4 sm:px-6 pb-10">
             <div className="max-w-4xl mx-auto text-center">
               <p

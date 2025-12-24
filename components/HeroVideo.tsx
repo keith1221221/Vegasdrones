@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 type HeroImageProps = {
   title: React.ReactNode;
@@ -22,29 +23,32 @@ export default function HeroImage({
   primaryCta,
   secondaryCta,
   imageSrc = "/osmosignalt1.png",
-  heightClassName = "h-[72vh] sm:h-[85vh]",
+  heightClassName = "h-[40vh] sm:h-[85vh]",
 }: HeroImageProps) {
   return (
     <section className="w-full">
       <div className="relative w-full bg-black">
-        <div
-          className={[
-            "w-full bg-black",
-            heightClassName,
-            "relative overflow-hidden",
-          ].join(" ")}
-        >
-          {/* Background Image */}
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url(${imageSrc})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              filter: "brightness(1.1) contrast(1.1) saturate(1.1)",
-            }}
-            aria-hidden="true"
-          />
+      <div
+  className={[
+    "w-full bg-black",
+    heightClassName,
+    "relative overflow-hidden",
+    "ring-4 ring-green-500", // ✅ PROOF WRAPPER
+  ].join(" ")}
+>
+
+          <Image
+  src={imageSrc}
+  alt=""
+  fill
+  priority
+  sizes="100vw"
+  className="object-contain sm:object-cover"
+  style={{
+    filter: "brightness(1.1) contrast(1.1) saturate(1.1)",
+  }}
+/>
+
 
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/20 pointer-events-none" />
@@ -66,7 +70,7 @@ export default function HeroImage({
                 {title}
               </h1>
 
-              {subtitle && (
+              {subtitle ? (
                 <p
                   className="
                     text-gray-100
@@ -80,13 +84,13 @@ export default function HeroImage({
                 >
                   {subtitle}
                 </p>
-              )}
+              ) : null}
             </div>
 
             <div className="flex-1" />
 
             {/* BOTTOM LINE */}
-            {bottomLine && (
+            {bottomLine ? (
               <div className="pb-3 sm:pb-6 text-center">
                 <h2
                   className="
@@ -101,7 +105,7 @@ export default function HeroImage({
                   {bottomLine}
                 </h2>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </div>
@@ -111,7 +115,7 @@ export default function HeroImage({
         <div className="px-4 sm:px-6">
           <div className="max-w-5xl mx-auto flex justify-center pt-4 sm:pt-6 pb-8 sm:pb-12">
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full">
-              {primaryCta && (
+              {primaryCta ? (
                 <Link
                   href={primaryCta.href}
                   className="
@@ -127,9 +131,9 @@ export default function HeroImage({
                 >
                   {primaryCta.label}
                 </Link>
-              )}
+              ) : null}
 
-              {secondaryCta && (
+              {secondaryCta ? (
                 <Link
                   href={secondaryCta.href}
                   className="
@@ -140,7 +144,7 @@ export default function HeroImage({
                 >
                   {secondaryCta.label}
                 </Link>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
