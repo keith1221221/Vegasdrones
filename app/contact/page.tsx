@@ -5,6 +5,14 @@ import { useState } from "react";
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
+// Safe GA helper (won't crash if gtag isn't loaded yet)
+function track(eventName: string, params: Record<string, any> = {}) {
+  if (typeof window === "undefined") return;
+  const gtag = (window as any).gtag;
+  if (typeof gtag !== "function") return;
+  gtag("event", eventName, params);
+}
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -22,6 +30,15 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Track submit attempt
+    track("contact_submit_attempt", {
+      form_name: "contact",
+      has_name: !!formData.name?.trim(),
+      has_email: !!formData.email?.trim(),
+      message_length: (formData.message || "").length,
+    });
+
     setIsSubmitting(true);
 
     try {
@@ -34,9 +51,27 @@ export default function Contact() {
       if (response.ok) {
         setSubmitted(true);
         setFormData({ name: "", email: "", message: "" });
+
+        // GA4 recommended conversion event for lead forms
+        track("generate_lead", {
+          method: "formspree",
+          form_name: "contact",
+        });
+      } else {
+        // Non-200 response
+        track("contact_submit_error", {
+          form_name: "contact",
+          status: response.status,
+          status_text: response.statusText,
+        });
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Form submission error:", error);
+
+      track("contact_submit_error", {
+        form_name: "contact",
+        error_message: error?.message || "unknown_error",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -138,6 +173,13 @@ export default function Contact() {
                     backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
                     boxShadow: "0 0 30px rgba(255,59,59,0.45)",
                   }}
+                  onClick={() =>
+                    track("cta_click", {
+                      cta_text: "Send Message",
+                      cta_location: "Contact form",
+                      destination: "form_submit",
+                    })
+                  }
                 >
                   {isSubmitting ? "Submitting..." : "Send Message"}
                 </button>
@@ -150,7 +192,8 @@ export default function Contact() {
           </div>
 
           <p className="text-center text-gray-500 text-xs mt-10">
-            Operated by Skylight Ads LLC • Las Vegas-based crew • FAA Part 107 • Insured operations
+            Operated by Skylight Ads LLC • Las Vegas-based crew • FAA Part 107 •
+            Insured operations
           </p>
         </div>
       </section>

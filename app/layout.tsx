@@ -1,10 +1,14 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const GA_MEASUREMENT_ID = "G-1D4607FKY3";
+const CLARITY_PROJECT_ID = "uqbi5fbzep";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.vegasdrones.com"),
@@ -72,11 +76,7 @@ export const viewport: Viewport = {
   themeColor: "#000000",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -102,6 +102,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Fonts */}
         <link
           href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@400;600;700&display=swap"
           rel="stylesheet"
@@ -110,10 +111,91 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         />
+
+        {/* LocalBusiness JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
+
+        {/* Microsoft Clarity */}
+        <Script
+          id="microsoft-clarity"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "${CLARITY_PROJECT_ID}");
+            `,
+          }}
+        />
+
+        {/* GA4 */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = window.gtag || gtag;
+
+            // If you ever add a cookie banner later, this keeps you compliant by defaulting to denied.
+            // You can change these to 'granted' if you're not using consent mode.
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              analytics_storage: 'granted'
+            });
+
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}', {
+              send_page_view: true
+            });
+
+            // ===== "Cheat code" tracking: outbound links + file downloads =====
+            const fileExtRegex = /\\.(pdf|docx?|xlsx?|pptx?|zip|rar)$/i;
+
+            function isExternalLink(a) {
+              try {
+                const url = new URL(a.href);
+                return url.hostname && url.hostname !== window.location.hostname;
+              } catch (e) {
+                return false;
+              }
+            }
+
+            document.addEventListener('click', function(e) {
+              const a = e.target && e.target.closest ? e.target.closest('a') : null;
+              if (!a || !a.href) return;
+
+              // File downloads
+              if (fileExtRegex.test(a.href)) {
+                window.gtag('event', 'file_download', {
+                  file_name: a.href.split('/').pop(),
+                  link_url: a.href
+                });
+                return;
+              }
+
+              // Outbound clicks
+              if (isExternalLink(a)) {
+                window.gtag('event', 'click_outbound', {
+                  link_url: a.href,
+                  link_text: (a.textContent || '').trim().slice(0, 120)
+                });
+              }
+            }, { capture: true });
+          `}
+        </Script>
+
+        {/* OPTIONAL EXTRA TRACKERS (paste IDs later)
+            - LinkedIn Insight Tag (B2B conversions)
+            - Meta Pixel (retargeting)
+        */}
       </head>
 
       <body className={`${inter.className} bg-black text-white`}>
