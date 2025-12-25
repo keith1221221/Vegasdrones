@@ -10,6 +10,7 @@ module.exports = {
       fontFamily: {
         'orbitron': ['Orbitron', 'sans-serif'],
         'poppins': ['Poppins', 'sans-serif'],
+        inter: ["var(--font-inter)"],
       },
       colors: {
         'neon-cyan': '#00ffcc',

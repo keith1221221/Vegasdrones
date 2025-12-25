@@ -1,11 +1,31 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Orbitron, Poppins } from "next/font/google";
 import Script from "next/script";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-orbitron",
+  preload: true, // critical for above-the-fold
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  variable: "--font-poppins",
+  preload: false, // less critical
+});
 
 const GA_MEASUREMENT_ID = "G-1D4607FKY3";
 const CLARITY_PROJECT_ID = "uqbi5fbzep";
@@ -100,23 +120,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${orbitron.variable} ${poppins.variable}`}>
       <head>
-        {/* Fonts */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        />
-
-        {/* LocalBusiness JSON-LD */}
+        {/* ✅ LocalBusiness JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
+
+        {/* ✅ Font Awesome (NON-BLOCKING) */}
+        {/* ✅ Font Awesome (NON-BLOCKING) */}
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  media="print"
+  onLoad={(e) => {
+    (e.currentTarget as HTMLLinkElement).media = "all";
+  }}
+/>
+<noscript>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+</noscript>
+
 
         {/* Microsoft Clarity */}
         <Script
@@ -144,19 +173,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             function gtag(){dataLayer.push(arguments);}
             window.gtag = window.gtag || gtag;
 
-            // If you ever add a cookie banner later, this keeps you compliant by defaulting to denied.
-            // You can change these to 'granted' if you're not using consent mode.
             gtag('consent', 'default', {
               ad_storage: 'denied',
               analytics_storage: 'granted'
             });
 
             gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}', {
-              send_page_view: true
-            });
+            gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });
 
-            // ===== "Cheat code" tracking: outbound links + file downloads =====
             const fileExtRegex = /\\.(pdf|docx?|xlsx?|pptx?|zip|rar)$/i;
 
             function isExternalLink(a) {
@@ -172,7 +196,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               const a = e.target && e.target.closest ? e.target.closest('a') : null;
               if (!a || !a.href) return;
 
-              // File downloads
               if (fileExtRegex.test(a.href)) {
                 window.gtag('event', 'file_download', {
                   file_name: a.href.split('/').pop(),
@@ -181,7 +204,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 return;
               }
 
-              // Outbound clicks
               if (isExternalLink(a)) {
                 window.gtag('event', 'click_outbound', {
                   link_url: a.href,
@@ -191,11 +213,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }, { capture: true });
           `}
         </Script>
-
-        {/* OPTIONAL EXTRA TRACKERS (paste IDs later)
-            - LinkedIn Insight Tag (B2B conversions)
-            - Meta Pixel (retargeting)
-        */}
       </head>
 
       <body className={`${inter.className} bg-black text-white`}>
