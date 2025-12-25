@@ -377,38 +377,55 @@ export default function HomePage() {
           </Feature>
         </div>
       </section>
+{/* ================= SHOW PREVIEWS (FAST / NO IFRAME) ================= */}
+<section className="py-20 px-6 bg-gray-900">
+  <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-16">
+    Real Drone Light Shows We’ve Produced
+  </h2>
 
-      {/* ================= VIDEO GALLERY ================= */}
-      <section className="py-20 px-6 bg-gray-900">
-        <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-16">
-          Recent Drone Light Shows
-        </h2>
+  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    {[
+      { src: "/shows/seal beach.jpg", alt: "Seal Beach drone light show" },
+      { src: "/shows/sign.jpg", alt: "Custom drone sign in the sky" },
+      { src: "/shows/dragon.jpg", alt: "Animated dragon drone light show" },
+    ].map((img) => (
+      <Link
+        key={img.src}
+        href="/see-our-shows"
+        className="group relative block aspect-video overflow-hidden rounded-2xl shadow-2xl border border-gray-800"
+      >
+        <Image
+          src={img.src}
+          alt={img.alt}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
 
-        <div className="max-w-4xl mx-auto space-y-10">
-          {["yEAZil9cE2U", "XvxnQlQjztE", "kpqUduaDwK8"].map((id) => (
-            <div key={id} className="aspect-video relative">
-              <iframe
-                src={`https://www.youtube.com/embed/${id}?rel=0`}
-                title="Vegas Drones light show"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-                className="w-full h-full rounded-[2rem] shadow-2xl border border-gray-700"
-              />
-            </div>
-          ))}
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition" />
+
+        {/* Play indicator */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="px-6 py-3 rounded-full bg-black/70 text-white font-orbitron text-sm tracking-wide">
+            View Show
+          </div>
         </div>
+      </Link>
+    ))}
+  </div>
 
-        <div className="text-center mt-12">
-          <Link
-            href="/drone-light-shows"
-            className="inline-flex items-center justify-center px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition font-orbitron"
-          >
-            See More Shows
-          </Link>
-        </div>
-      </section>
+  <div className="text-center mt-14">
+    <Link
+      href="/see-our-shows"
+      className="inline-flex items-center justify-center px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition font-orbitron"
+    >
+      See All Drone Shows
+    </Link>
+  </div>
+</section>
 
+     
       {/* ================= CTA ================= */}
       <section className="py-16 text-center px-6">
         <h2 className="font-orbitron text-3xl md:text-4xl font-bold mb-6">
