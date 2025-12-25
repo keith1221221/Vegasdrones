@@ -42,7 +42,7 @@ export default function HeroImage({
           {/* HERO IMAGE — LCP */}
           <Image
             src={imageSrc}
-            alt="Las Vegas Drone Light Shows"
+            alt="Las Vegas Drone Light Show Company"
             fill
             priority
             sizes="100vw"
@@ -61,10 +61,10 @@ export default function HeroImage({
               </h1>
             </div>
 
-            {/* SUBTITLE — CENTERED BOTH AXES */}
+            {/* SUBTITLE — CENTERED BOTH AXES (DIV wrapper to avoid hydration errors) */}
             {subtitle ? (
-              <div className="flex-1 flex  justify-center px-4">
-                <p
+              <div className="flex-1 flex items-center justify-center px-4">
+                <div
                   className="
                     text-gray-100
                     max-w-3xl mx-auto
@@ -75,16 +75,17 @@ export default function HeroImage({
                   "
                 >
                   {subtitle}
-                </p>
+                </div>
               </div>
             ) : (
               <div className="flex-1" />
             )}
 
-            {/* BOTTOM LINE */}
+            {/* BOTTOM LINE (tagline) */}
             {bottomLine ? (
-              <div className="pb-3 sm:pb-6 text-center">
-                <h2
+             <div className="pb-0 text-center">
+
+                <p
                   className="
                     font-orbitron
                     text-lg sm:text-2xl md:text-3xl
@@ -95,7 +96,7 @@ export default function HeroImage({
                   "
                 >
                   {bottomLine}
-                </h2>
+                </p>
               </div>
             ) : null}
           </div>

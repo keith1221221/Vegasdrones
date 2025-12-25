@@ -228,7 +228,7 @@ export default function HomePage() {
                   backgroundImage: "linear-gradient(to right, #FF6A6A, #FF3B3B, #FF6A6A)",
                 }}
               >
-                SHOWS
+                SHOW COMPANY
               </span>
             </>
           }
@@ -244,7 +244,7 @@ export default function HomePage() {
           }
           
           bottomLine={
-            <span className="block mt-6 sm:mt-12 md:mt-32">
+            <span className="block mt-12 sm:mt-12 md:mt-10">
               A Modern, Crowd-Winning Alternative to Fireworks — Built for Las Vegas
             </span>
           }
