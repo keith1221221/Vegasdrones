@@ -129,23 +129,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
 
         {/* ✅ Font Awesome (NON-BLOCKING) */}
-        {/* ✅ Font Awesome (NON-BLOCKING) */}
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  media="print"
-  onLoad={(e) => {
-    (e.currentTarget as HTMLLinkElement).media = "all";
-  }}
-/>
-<noscript>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  />
-</noscript>
-
+        
 
         {/* Microsoft Clarity */}
         <Script
