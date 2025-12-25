@@ -1,14 +1,18 @@
-"use client";
-
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import type { ReactNode } from "react";
+
+type Cta = {
+  href: string;
+  label: string;
+};
 
 type HeroImageProps = {
-  title: React.ReactNode;
-  subtitle?: React.ReactNode;
-  bottomLine?: React.ReactNode;
-  primaryCta?: { href: string; label: string };
-  secondaryCta?: { href: string; label: string };
+  title: ReactNode;
+  subtitle?: ReactNode;
+  bottomLine?: ReactNode;
+  primaryCta?: Cta;
+  secondaryCta?: Cta;
   imageSrc?: string;
   heightClassName?: string;
 };
@@ -28,66 +32,54 @@ export default function HeroImage({
   return (
     <section className="w-full">
       <div className="relative w-full bg-black">
-      <div
-  className={[
-    "w-full bg-black",
-    heightClassName,
-    "relative overflow-hidden",
-  ].join(" ")}
->
-
-
+        <div
+          className={[
+            "w-full bg-black",
+            heightClassName,
+            "relative overflow-hidden",
+          ].join(" ")}
+        >
+          {/* HERO IMAGE — LCP */}
           <Image
-  src={imageSrc}
-  alt=""
-  fill
-  priority
-  sizes="100vw"
-  className="object-contain sm:object-cover"
-  style={{
-    filter: "brightness(1.1) contrast(1.1) saturate(1.1)",
-  }}
-/>
-
+            src={imageSrc}
+            alt="Las Vegas Drone Light Shows"
+            fill
+            priority
+            sizes="100vw"
+            className="object-contain sm:object-cover"
+          />
 
           {/* Overlay */}
-          <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-black/30 pointer-events-none" />
 
-          {/* Content */}
+          {/* CONTENT (SERVER-RENDERED TEXT) */}
           <div className="absolute inset-0 px-4 sm:px-6 flex flex-col">
-            {/* TOP */}
-            <div className="pt-4 sm:pt-8 text-center">
-              <h1
-                className="
-                  font-orbitron font-bold
-                  text-3xl sm:text-5xl lg:text-6xl
-                  leading-tight
-                  drop-shadow-[0_0_14px_rgba(0,0,0,0.85)]
-                  flex flex-wrap justify-center gap-x-3
-                  px-3
-                "
-              >
+            {/* TOP TITLE */}
+            <div className="pt-10 sm:pt-20 text-center">
+              <h1 className="font-orbitron font-bold text-3xl sm:text-5xl lg:text-6xl leading-tight text-center drop-shadow-[0_0_14px_rgba(0,0,0,0.85)] px-3">
                 {title}
               </h1>
+            </div>
 
-              {subtitle ? (
+            {/* SUBTITLE — CENTERED BOTH AXES */}
+            {subtitle ? (
+              <div className="flex-1 flex  justify-center px-4">
                 <p
                   className="
                     text-gray-100
-                    mt-3 sm:mt-4
                     max-w-3xl mx-auto
                     text-base sm:text-xl md:text-2xl
                     leading-relaxed
+                    text-center
                     drop-shadow-[0_0_14px_rgba(0,0,0,0.85)]
-                    px-3
                   "
                 >
                   {subtitle}
                 </p>
-              ) : null}
-            </div>
-
-            <div className="flex-1" />
+              </div>
+            ) : (
+              <div className="flex-1" />
+            )}
 
             {/* BOTTOM LINE */}
             {bottomLine ? (

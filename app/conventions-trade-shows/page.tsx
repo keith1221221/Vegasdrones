@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Header from "@/components/Header";
+import HeroImage from "@/components/HeroImage.server";
 
 export const metadata = {
   title: "Las Vegas Convention & Trade Show Drone Shows | Vegas Drones",
@@ -40,116 +41,153 @@ export const viewport = {
 
 // Vegas brand red
 const BRAND_RED = "#FF3B3B";
+const BRAND_RED_LIGHT = "#FF6A6A";
 
 export default function ConventionsPage() {
   return (
     <>
       <Header />
 
-      <main className="min-h-screen bg-black text-white pt-32 pb-16 px-6 font-poppins">
-        <div className="max-w-5xl mx-auto text-center">
+      <main className="min-h-screen bg-black text-white font-poppins">
+        {/* HERO */}
+        <HeroImage
+          imageSrc="/osmosignalt1.png"
+          heightClassName="h-[70vh] sm:h-[88vh]"
+          title={
+            <>
+              <span className="text-[#FF3B3B]">DRONE</span>{" "}
+              <span className="text-white">SHOWS FOR</span>{" "}
+              <span className="text-[#FF3B3B]">CONVENTIONS</span>
+            </>
+          }
+          subtitle={
+            <>
+              Turn the Las Vegas sky into a branded canvas —{" "}
+              <strong>logos</strong>, <strong>messaging</strong>, and{" "}
+              <strong>high-impact aerial activations</strong> built for product
+              launches, casinos, nightlife, and major events.
+            </>
+          }
+          bottomLine={
+            <>
+              A Billboard in the Sky — Built for Las Vegas Brand Activations
+            </>
+          }
+          primaryCta={{ href: "/contact", label: "Request Convention Pricing" }}
+          secondaryCta={{ href: "/drone-advertising", label: "Drone Advertising" }}
+        />
 
-          {/* Page Title */}
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#FF3B3B] mb-6 font-orbitron">
-            Drone Shows for Conventions & Trade Shows
-          </h1>
+        {/* CONTENT */}
+        <section className="px-6 py-16">
+          <div className="max-w-5xl mx-auto">
+            {/* Intro */}
+            <div className="text-center max-w-3xl mx-auto">
+              <h1 className="sr-only">
+                Drone Shows for Conventions & Trade Shows in Las Vegas
+              </h1>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Las Vegas hosts more conventions and trade shows than any city on
+                earth — and standing out in a sea of exhibitors is a challenge.
+                Our custom drone light shows create unforgettable brand moments
+                that draw crowds, generate social buzz, and elevate your presence
+                at outdoor convention venues, expo centers, and after-hours
+                activations.
+              </p>
+            </div>
 
-          {/* Intro Paragraph */}
-          <p className="text-lg text-gray-300 leading-relaxed mb-10 max-w-3xl mx-auto">
-            Las Vegas hosts more conventions and trade shows than any city on earth —
-            and standing out in a sea of exhibitors is a challenge. Our custom drone
-            light shows create unforgettable brand moments that draw crowds, generate
-            social media buzz, and elevate your presence at outdoor convention venues,
-            expo centers, and after-hours activations.
-          </p>
+            {/* Image */}
+            <div className="w-full flex justify-center mt-12 mb-16">
+              <img
+                src="/lions.png"
+                alt="Drone show at Las Vegas convention"
+                className="w-full max-w-3xl rounded-2xl shadow-2xl border border-gray-800"
+                loading="lazy"
+              />
+            </div>
 
-          {/* Image */}
-          <div className="w-full flex justify-center mb-12">
-            <img
-              src="/lions.png"
-              alt="Drone show at Las Vegas convention"
-              className="w-full max-w-3xl rounded-xl shadow-lg"
-            />
+            {/* Sections */}
+            <div className="space-y-12">
+              <section className="max-w-3xl mx-auto">
+                <h2 className="text-3xl font-bold text-[#FF3B3B] mb-4 font-orbitron text-center">
+                  The Ultimate Convention Attention-Grabber
+                </h2>
+                <p className="text-gray-300 leading-relaxed">
+                  Whether you&apos;re launching a product, hosting a client event,
+                  promoting a booth, or activating a sponsorship, a drone light
+                  show delivers massive visual impact. We design formations that
+                  highlight your brand, logo, colors, and messaging — scheduled
+                  for maximum visibility during convention evenings and peak foot
+                  traffic.
+                </p>
+              </section>
+
+              <section className="max-w-3xl mx-auto">
+                <h2 className="text-3xl font-bold text-[#FF3B3B] mb-4 font-orbitron text-center">
+                  Why Drone Shows Work for Trade Shows
+                </h2>
+                <ul className="list-disc list-inside space-y-3 text-gray-300">
+                  <li>Draw crowds from every direction — even outside the venue</li>
+                  <li>Promote new products with animated sky graphics</li>
+                  <li>Display your company logo, name, or tagline in the sky</li>
+                  <li>Perfect for outdoor exhibitor events or after-hours activations</li>
+                  <li>Fully customizable to match your brand identity</li>
+                  <li>FAA Part 107 certified operations with full safety protocols</li>
+                </ul>
+              </section>
+
+              <section className="max-w-3xl mx-auto">
+                <h2 className="text-3xl font-bold text-[#FF3B3B] mb-4 font-orbitron text-center">
+                  Ideal for Major Las Vegas Conventions
+                </h2>
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  We’ve tailored drone shows for events across Las Vegas, including:
+                </p>
+                <ul className="list-disc list-inside space-y-3 text-gray-300">
+                  <li>CES – Consumer Electronics Show</li>
+                  <li>SHOT Show</li>
+                  <li>SEMA</li>
+                  <li>MAGIC / Fashion Market</li>
+                  <li>NAB Show</li>
+                  <li>Money 20/20</li>
+                  <li>World of Concrete</li>
+                  <li>IMEX America</li>
+                </ul>
+              </section>
+
+              <section className="max-w-3xl mx-auto">
+                <h2 className="text-3xl font-bold text-[#FF3B3B] mb-4 font-orbitron text-center">
+                  Fully Custom, Brand-Forward Drone Shows
+                </h2>
+                <p className="text-gray-300 leading-relaxed">
+                  We manage the entire production — from creative concept and
+                  animation design to FAA coordination and on-site execution. Logo
+                  formations, text effects, animated transitions, and 3D motion can
+                  all be built into your show. Fleets scale from 50 to 500+ drones
+                  based on venue size and visual goals.
+                </p>
+              </section>
+            </div>
+
+            {/* Bottom CTA */}
+            <div className="text-center mt-16">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center px-10 py-4 text-black font-semibold text-lg rounded-full transition font-orbitron hover:scale-105"
+                style={{
+                  backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
+                  boxShadow: "0 0 25px rgba(255,59,59,0.35)",
+                }}
+              >
+                Request Convention Pricing
+              </Link>
+
+              <p className="text-gray-400 mt-4 text-sm">
+                Tell us your event date, venue, and brand goals — we’ll recommend a
+                drone count and a plan that fits.
+              </p>
+            </div>
           </div>
-
-          {/* Section 1 */}
-          <section className="mb-12 text-left max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-[#FF3B3B] mb-3 font-orbitron text-center">
-              The Ultimate Convention Attention-Grabber
-            </h2>
-            <p className="text-gray-300 leading-relaxed">
-              Whether you're launching a product, hosting a client event, promoting
-              a booth, or activating a sponsorship, a drone light show delivers
-              massive visual impact. We design formations that highlight your brand,
-              logo, colors, and messaging — scheduled for maximum visibility during
-              convention evenings and peak foot traffic.
-            </p>
-          </section>
-
-          {/* Section 2 */}
-          <section className="mb-12 text-left max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-[#FF3B3B] mb-3 font-orbitron text-center">
-              Why Drone Shows Work for Trade Shows
-            </h2>
-            <ul className="list-disc list-inside space-y-3 text-gray-300">
-              <li>Draw crowds from every direction — even outside the venue</li>
-              <li>Promote new products with animated sky graphics</li>
-              <li>Display your company logo, name, or tagline in the sky</li>
-              <li>Perfect for outdoor exhibitor events or after-hours activations</li>
-              <li>Fully customizable to match your brand identity</li>
-              <li>FAA Part 107 certified operations with full safety protocols</li>
-            </ul>
-          </section>
-
-          {/* Section 3 */}
-          <section className="mb-12 text-left max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-[#FF3B3B] mb-3 font-orbitron text-center">
-              Ideal for Major Las Vegas Conventions
-            </h2>
-            <p className="text-gray-300 leading-relaxed mb-4">
-              We’ve tailored drone shows for events across Las Vegas, including:
-            </p>
-            <ul className="list-disc list-inside space-y-3 text-gray-300">
-              <li>CES – Consumer Electronics Show</li>
-              <li>SHOT Show</li>
-              <li>SEMA</li>
-              <li>MAGIC / Fashion Market</li>
-              <li>NAB Show</li>
-              <li>Money 20/20</li>
-              <li>World of Concrete</li>
-              <li>IMEX America</li>
-            </ul>
-          </section>
-
-          {/* Section 4 */}
-          <section className="mb-12 text-left max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-[#FF3B3B] mb-3 font-orbitron text-center">
-              Fully Custom, Brand-Forward Drone Shows
-            </h2>
-            <p className="text-gray-300 leading-relaxed">
-              We manage the entire production — from creative concept and animation
-              design to FAA coordination and on-site execution. Logo formations,
-              text effects, animated transitions, and 3D motion can all be built
-              into your show. Fleets scale from 50 to 500+ drones based on venue
-              size and visual goals.
-            </p>
-          </section>
-
-          {/* CTA */}
-          <div className="text-center mt-16">
-            <Link
-              href="/contact"
-              className="inline-block px-10 py-4 text-black font-semibold text-lg rounded-full transition font-orbitron hover:scale-105"
-              style={{
-                backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED})`,
-                boxShadow: "0 0 25px rgba(255,59,59,0.35)",
-              }}
-            >
-              Request Convention Pricing
-            </Link>
-          </div>
-
-        </div>
+        </section>
       </main>
     </>
   );

@@ -11,25 +11,25 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/events/page": [
+    "/las-vegas-drone-light-shows/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/events/page.js"
-    ],
-    "/holidays/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/holidays/page.js"
+      "static/chunks/app/las-vegas-drone-light-shows/page.js"
     ],
     "/drone-advertising/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/drone-advertising/page.js"
     ],
-    "/las-vegas-drone-light-shows/page": [
+    "/holidays/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/las-vegas-drone-light-shows/page.js"
+      "static/chunks/app/holidays/page.js"
+    ],
+    "/events/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/events/page.js"
     ],
     "/conventions-trade-shows/page": [
       "static/chunks/webpack.js",
@@ -46,10 +46,11 @@
       "static/chunks/main-app.js",
       "static/chunks/app/blog/page.js"
     ],
-    "/_not-found/page": [
+    "/chatbot/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/css/app/chatbot/page.css",
+      "static/chunks/app/chatbot/page.js"
     ]
   }
 }

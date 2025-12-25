@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
-import HeaderVideo from "@/components/HeroVideo";
+import HeaderVideo from "@/components/HeroImage.server";
 
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";

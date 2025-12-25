@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Header from "@/components/Header";
-import HeroVideo from "@/components/HeroVideo";
+import HeroVideo from "@/components/HeroImage.server";
 
 export const metadata = {
   title: "Las Vegas Drone Advertising | Aerial Brand Activations | Vegas Drones",

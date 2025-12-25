@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import Script from "next/script";
 import Image from "next/image";
-import HeroVideo from "@/components/HeroVideo";
+import HeroImage from "@/components/HeroImage.server";
 
 const SITE_NAME = "Vegas Drones";
 const SITE_URL = "https://www.vegasdrones.com";
@@ -186,9 +186,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-black text-white">
-      {/* Real SEO H1 (hidden) */}
-      <h1 className="sr-only">Las Vegas Drone Light Shows</h1>
-
+     
       {/* ===== Structured Data (SEO) ===== */}
       <Script
         id="ld-localbusiness"
@@ -208,30 +206,33 @@ export default function HomePage() {
 
       {/* ================= HERO SECTION ================= */}
       <div className="relative">
-        <HeroVideo
+        <HeroImage
           title={
             <>
-              <span
-                className="bg-clip-text text-transparent"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to right, #FF3B3B, white, #FF3B3B)",
-                }}
-              >
-                LAS VEGAS
+              {/* LINE 1 */}
+              <span className="block text-center">
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage: "linear-gradient(to right, #FF3B3B, white, #FF3B3B)",
+                  }}
+                >
+                  LAS VEGAS DRONE
+                </span>
               </span>
-              <span className="text-white">DRONE</span>
+          
+              {/* LINE 2 */}
               <span
-                className="bg-clip-text text-transparent"
+                className="block text-center bg-clip-text text-transparent"
                 style={{
-                  backgroundImage:
-                    "linear-gradient(to right, #FF6A6A, #FF3B3B, #FF6A6A)",
+                  backgroundImage: "linear-gradient(to right, #FF6A6A, #FF3B3B, #FF6A6A)",
                 }}
               >
                 SHOWS
               </span>
             </>
           }
+          
           // ✅ Push ONLY the subtitle down on mobile so it overlays the fireworks area
           subtitle={
             
@@ -252,7 +253,7 @@ export default function HomePage() {
         />
 
         {/* ONE button, overlaid at the bottom of the fireworks video */}
-        <div className="pointer-events-none absolute left-0 right-0 bottom-11">
+        <div className="pointer-events-none absolute left-0 right-0 bottom-10">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-4 sm:pb-6 relative">
             
 
@@ -337,14 +338,14 @@ export default function HomePage() {
 
               <div className="mt-8 flex justify-center">
                 <Link
-                  href="/drone-light-shows"
+                  href="/chatbot"
                   className="inline-flex items-center justify-center text-black font-bold py-4 px-8 rounded-full transform hover:scale-105 transition font-orbitron"
                   style={{
                     backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
                     boxShadow: "0 0 30px rgba(255,59,59,0.45)",
                   }}
                 >
-                  See Shows &amp; Options
+                  Chat with us 
                 </Link>
               </div>
             </div>

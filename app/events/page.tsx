@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
-import HeroVideo from "@/components/HeroVideo";
+import HeroVideo from "@/components/HeroImage.server";
 
 const SITE_URL = "https://www.vegasdrones.com";
 const BRAND_RED = "#FF3B3B";
