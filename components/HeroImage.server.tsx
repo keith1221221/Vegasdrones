@@ -26,7 +26,7 @@ export default function HeroImage({
   bottomLine,
   primaryCta,
   secondaryCta,
-  imageSrc = "/osmosignalt1.png",
+  imageSrc = "/osmosignalt1.webp",
   heightClassName = "h-[40vh] sm:h-[85vh]",
 }: HeroImageProps) {
   return (

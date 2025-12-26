@@ -1,8 +1,9 @@
 {
-  "/holidays/page": "app/holidays/page.js",
-  "/drone-advertising/page": "app/drone-advertising/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/conventions-trade-shows/page": "app/conventions-trade-shows/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/events/page": "app/events/page.js"
+  "/las-vegas-drone-light-shows/page": "app/las-vegas-drone-light-shows/page.js",
+  "/drone-advertising/page": "app/drone-advertising/page.js",
+  "/holidays/page": "app/holidays/page.js",
+  "/events/page": "app/events/page.js",
+  "/conventions-trade-shows/page": "app/conventions-trade-shows/page.js"
 }
