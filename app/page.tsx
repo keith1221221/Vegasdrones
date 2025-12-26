@@ -244,7 +244,7 @@ export default function HomePage() {
         />
 
         {/* TAGLINE OVERLAY — overlaps hero + top of the video */}
-        <div className="pointer-events-none absolute left-0 right-0 -bottom-10 sm:-bottom-14 z-20 text-center px-4">
+        <div className="pointer-events-none absolute left-0 right-0 -bottom-10 sm:-bottom-14 z-10 text-center px-4">
           <p className="font-orbitron text-white font-bold text-lg sm:text-2xl md:text-3xl drop-shadow-[0_0_14px_rgba(0,0,0,0.9)]">
             A Modern, Crowd-Winning Alternative to Fireworks — Built for Las Vegas
           </p>
@@ -252,10 +252,10 @@ export default function HomePage() {
 
         {/* CTA button overlay — stable across iPhone Safari */}
         <div
-          className="pointer-events-none absolute left-0 right-0 bottom-10 z-30 flex justify-center"
+          className="pointer-events-none absolute left-0 right-0 bottom-40 z-30 flex justify-center"
           style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         >
-          <div className="pointer-events-auto translate-y-4 sm:-translate-y-8">
+          <div className="pointer-events-auto translate-y-4 sm:-translate-y--0">
             <Link
               href="/contact"
               className="

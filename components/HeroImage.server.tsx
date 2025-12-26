@@ -55,7 +55,7 @@ export default function HeroImage({
           {/* CONTENT (SERVER-RENDERED TEXT) */}
           <div className="absolute inset-0 px-4 sm:px-6 flex flex-col">
             {/* TOP TITLE */}
-            <div className="pt-10 sm:pt-20 text-center">
+            <div className="pt-6 sm:pt-14 text-center">
               <h1 className="font-orbitron font-bold text-3xl sm:text-5xl lg:text-6xl leading-tight text-center drop-shadow-[0_0_14px_rgba(0,0,0,0.85)] px-3">
                 {title}
               </h1>
@@ -63,7 +63,8 @@ export default function HeroImage({
 
             {/* SUBTITLE — CENTERED BOTH AXES (DIV wrapper to avoid hydration errors) */}
             {subtitle ? (
-              <div className="flex-1 flex items-center justify-center px-4">
+             <div className="flex-1 flex items-end justify-center px-4 pb-10 sm:pb-4">
+
                 <div
                   className="
                     text-gray-100

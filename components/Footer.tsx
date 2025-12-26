@@ -38,14 +38,7 @@ export default function Footer() {
                   Blog
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/faq"
-                  className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors"
-                >
-                  FAQs
-                </Link>
-              </li>
+              
               <li>
                 <Link
                   href="/contact"
