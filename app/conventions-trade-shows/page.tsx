@@ -1,8 +1,16 @@
 import Link from "next/link";
-import Header from "@/components/Header";
-import HeroImage from "@/components/HeroImage.server";
+import type { Metadata } from "next";
+import Script from "next/script";
+import HeroVideo from "@/components/HeroImage.server";
 
-export const metadata = {
+const SITE_URL = "https://www.vegasdrones.com";
+const OG_IMAGE = "/alienhead1.png";
+
+// Vegas brand red
+const BRAND_RED = "#FF3B3B";
+const BRAND_RED_LIGHT = "#FF6A6A";
+
+export const metadata: Metadata = {
   title: "Las Vegas Convention & Trade Show Drone Shows | Vegas Drones",
   description:
     "Stand out at Las Vegas conventions and trade shows with custom drone light shows. Perfect for brand activations, outdoor displays, and high-impact crowd engagement.",
@@ -16,15 +24,16 @@ export const metadata = {
     "SHOT Show drone display",
     "Las Vegas expo drone light show",
   ],
+  alternates: { canonical: `${SITE_URL}/conventions-trade-shows` },
   openGraph: {
     title: "Las Vegas Convention & Trade Show Drone Shows | Vegas Drones",
     description:
       "Attract crowds and elevate your brand at Las Vegas conventions with stunning custom drone light shows.",
-    url: "https://www.vegasdrones.com/conventions-trade-shows",
+    url: `${SITE_URL}/conventions-trade-shows`,
     siteName: "Vegas Drones",
     images: [
       {
-        url: "https://www.vegasdrones.com/og-image.jpg",
+        url: `${SITE_URL}${OG_IMAGE}`,
         width: 1200,
         height: 630,
         alt: "Vegas Drones Convention Drone Show",
@@ -39,45 +48,78 @@ export const viewport = {
   maximumScale: 1,
 };
 
-// Vegas brand red
-const BRAND_RED = "#FF3B3B";
-const BRAND_RED_LIGHT = "#FF6A6A";
-
 export default function ConventionsPage() {
+  // Optional FAQ schema (kept light; you can expand later)
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Can you show our logo or product in the sky?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. We can animate logos, product icons, messaging, and multi-scene sequences designed for maximum readability and crowd reaction.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you handle venue coordination and FAA compliance?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. We handle planning, safety, airspace coordination, and venue logistics as part of production.",
+        },
+      },
+    ],
+  };
+
   return (
-    <>
-      <Header />
+    <div className="bg-black text-white">
+      {/* FAQ Schema (JSON-LD) */}
+      <Script
+        id="ld-faq-conventions"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
+      {/* HERO — match the Drone Light Shows page style */}
+      <HeroVideo
+        title={
+          <>
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED})`,
+              }}
+            >
+              LAS VEGAS
+            </span>
+            <span className="text-white"> CONVENTION </span>
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: `linear-gradient(to right, ${BRAND_RED_LIGHT}, ${BRAND_RED}, ${BRAND_RED_LIGHT})`,
+              }}
+            >
+              DRONE SHOWS
+            </span>
+          </>
+        }
+        subtitle={
+          <>
+            Turn the Las Vegas sky into a branded canvas —{" "}
+            <strong>logos</strong>, <strong>messaging</strong>, and{" "}
+            <strong>high-impact aerial activations</strong> built for product
+            launches, casinos, nightlife, and major events.
+          </>
+        }
+        bottomLine={<>A Billboard in the Sky — Built for Las Vegas Brand Activations</>}
+        primaryCta={{ href: "/contact", label: "Request Convention Pricing" }}
+        secondaryCta={{ href: "/drone-advertising", label: "Drone Advertising" }}
+      />
+
+      {/* CONTENT */}
       <main className="min-h-screen bg-black text-white font-poppins">
-        {/* HERO */}
-        <HeroImage
-          imageSrc="/osmosignalt1.png"
-          heightClassName="h-[70vh] sm:h-[88vh]"
-          title={
-            <>
-              <span className="text-[#FF3B3B]">DRONE</span>{" "}
-              <span className="text-white">SHOWS FOR</span>{" "}
-              <span className="text-[#FF3B3B]">CONVENTIONS</span>
-            </>
-          }
-          subtitle={
-            <>
-              Turn the Las Vegas sky into a branded canvas —{" "}
-              <strong>logos</strong>, <strong>messaging</strong>, and{" "}
-              <strong>high-impact aerial activations</strong> built for product
-              launches, casinos, nightlife, and major events.
-            </>
-          }
-          bottomLine={
-            <>
-              A Billboard in the Sky — Built for Las Vegas Brand Activations
-            </>
-          }
-          primaryCta={{ href: "/contact", label: "Request Convention Pricing" }}
-          secondaryCta={{ href: "/drone-advertising", label: "Drone Advertising" }}
-        />
-
-        {/* CONTENT */}
         <section className="px-6 py-16">
           <div className="max-w-5xl mx-auto">
             {/* Intro */}
@@ -129,7 +171,9 @@ export default function ConventionsPage() {
                   <li>Draw crowds from every direction — even outside the venue</li>
                   <li>Promote new products with animated sky graphics</li>
                   <li>Display your company logo, name, or tagline in the sky</li>
-                  <li>Perfect for outdoor exhibitor events or after-hours activations</li>
+                  <li>
+                    Perfect for outdoor exhibitor events or after-hours activations
+                  </li>
                   <li>Fully customizable to match your brand identity</li>
                   <li>FAA Part 107 certified operations with full safety protocols</li>
                 </ul>
@@ -189,6 +233,6 @@ export default function ConventionsPage() {
           </div>
         </section>
       </main>
-    </>
+    </div>
   );
 }

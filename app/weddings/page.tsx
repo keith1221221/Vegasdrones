@@ -13,6 +13,9 @@ export const metadata = {
     "custom drone light show",
     "Vegas Drones wedding",
   ],
+  alternates: {
+    canonical: "https://www.vegasdrones.com/weddings",
+  },
   openGraph: {
     title: "Las Vegas Wedding Drone Light Shows | Vegas Drones",
     description:
@@ -47,10 +50,9 @@ export default function WeddingsPage() {
 
       <main className="min-h-screen bg-black text-white pt-32 pb-16 px-6 font-poppins">
         <div className="max-w-5xl mx-auto text-center">
-
           {/* PAGE TITLE */}
           <h1 className="text-4xl sm:text-5xl font-bold mb-6 font-orbitron">
-            <span className="text-white">WEDDING </span>
+            <span className="text-white">LAS VEGAS WEDDING </span>
             <span
               className="bg-clip-text text-transparent"
               style={{
@@ -62,12 +64,12 @@ export default function WeddingsPage() {
           </h1>
 
           <p className="text-lg text-gray-300 leading-relaxed mb-12 max-w-3xl mx-auto">
-            Romantic, personalized wedding finales in Las Vegas — names, date, and a
-            signature sequence designed for the moment everyone remembers.
+            Romantic, personalized wedding finales in Las Vegas — names, date, and
+            a signature sequence designed for the moment everyone remembers.
           </p>
 
           {/* WEDDING VIDEO HERO */}
-          <div className="relative w-full h-[70vh] overflow-hidden rounded-2xl mb-14">
+          <div className="relative w-full h-[70vh] overflow-hidden rounded-2xl mb-6">
             {/* Blurred background video */}
             <video
               src="/weddingclip2.mp4"
@@ -94,10 +96,39 @@ export default function WeddingsPage() {
             </div>
           </div>
 
+          {/* VIDEO SUPPORTING COPY (SEO) */}
+          <p className="text-gray-300 leading-relaxed mb-14 max-w-3xl mx-auto">
+            Watch a real <strong>Las Vegas wedding drone light show</strong> moment —
+            a romantic sky finale designed for guest reactions, photo/video capture,
+            and a clean, smoke-free celebration.
+          </p>
+
+          {/* QUICK INTERNAL LINKS (SEO + UX) */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
+            <Link
+              href="/drone-light-shows"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/25 text-white hover:bg-white/10 transition font-orbitron"
+            >
+              How drone shows work
+            </Link>
+            <Link
+              href="/see-our-shows"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/25 text-white hover:bg-white/10 transition font-orbitron"
+            >
+              See more shows
+            </Link>
+            <Link
+              href="/faq"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/25 text-white hover:bg-white/10 transition font-orbitron"
+            >
+              FAQ
+            </Link>
+          </div>
+
           {/* SECTION 1 */}
           <section className="mb-12 text-left max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold text-[#FF3B3B] mb-3 font-orbitron text-center">
-              A Signature Wedding Moment
+              Las Vegas Wedding Drone Light Shows
             </h2>
             <p className="text-gray-300 leading-relaxed">
               Whether it’s a first dance under the stars or a grand send-off, a drone
@@ -134,6 +165,47 @@ export default function WeddingsPage() {
               <li>Extra custom elements</li>
               <li>Holiday overlays (NYE, Christmas weddings)</li>
             </ul>
+          </section>
+
+          {/* OPTIONAL MINI-FAQ (HIGH ROI FOR SEO) */}
+          <section className="mb-12 text-left max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-[#FF3B3B] mb-6 font-orbitron text-center">
+              Wedding Drone Show FAQ
+            </h2>
+
+            <div className="space-y-6 text-gray-300">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-2 font-orbitron">
+                  How much does a wedding drone show cost in Las Vegas?
+                </h3>
+                <p className="leading-relaxed">
+                  Pricing depends on drone count, show length, location logistics, and
+                  creative complexity. Share your date and venue area and we’ll recommend
+                  the right drone count and provide a clear quote.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold text-white mb-2 font-orbitron">
+                  Can you put our names and wedding date in the sky?
+                </h3>
+                <p className="leading-relaxed">
+                  Yes — names and date are the most popular wedding elements. We can also
+                  create hearts, rings, monograms, and custom icons that match your theme.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold text-white mb-2 font-orbitron">
+                  Is it safe and legal to fly a wedding drone show in Las Vegas?
+                </h3>
+                <p className="leading-relaxed">
+                  Yes, when handled by a certified operator following FAA rules and venue
+                  requirements. We operate under FAA Part 107 and coordinate planning and
+                  safety for your event.
+                </p>
+              </div>
+            </div>
           </section>
 
           {/* CTA */}

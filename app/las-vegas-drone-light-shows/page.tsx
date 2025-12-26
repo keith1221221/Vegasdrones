@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     "Premium drone light shows in Las Vegas for holidays, corporate events, festivals, and brand activations. Fully custom designs, FAA-compliant operations, and unforgettable aerial entertainment.",
   keywords: [
     "Las Vegas drone light show",
+    "Las Vegas drone light show company",
     "drone light show Las Vegas",
     "wedding drone light show",
     "corporate drone show",
@@ -123,9 +124,9 @@ export default function DroneLightShowsPage() {
                 backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED})`,
               }}
             >
-              LAS VEGAS
+              LAS VEGAS 
             </span>
-            <span className="text-white">DRONE</span>
+            <span className="text-white"> DRONE </span>
             <span
               className="bg-clip-text text-transparent"
               style={{

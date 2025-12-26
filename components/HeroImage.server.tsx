@@ -61,10 +61,9 @@ export default function HeroImage({
               </h1>
             </div>
 
-            {/* SUBTITLE — CENTERED BOTH AXES (DIV wrapper to avoid hydration errors) */}
+            {/* SUBTITLE — OVER IMAGE (DESKTOP ONLY) */}
             {subtitle ? (
-             <div className="flex-1 flex items-end justify-center px-4 pb-10 sm:pb-4">
-
+              <div className="hidden sm:flex flex-1 items-end justify-center px-4 pb-4">
                 <div
                   className="
                     text-gray-100
@@ -82,24 +81,25 @@ export default function HeroImage({
               <div className="flex-1" />
             )}
 
-            {/* BOTTOM LINE (tagline) */}
-            {bottomLine ? (
-             <div className="pb-0 text-center">
+            
+            {/* BOTTOM LINE (tagline) — pinned to bottom of hero */}
+{bottomLine ? (
+  <div className="mt-auto pb-6 sm:pb-10 text-center">
+    <p
+      className="
+        font-orbitron
+        text-lg sm:text-2xl md:text-3xl
+        font-bold
+        text-white
+        drop-shadow-[0_0_14px_rgba(0,0,0,0.9)]
+        px-2
+      "
+    >
+      {bottomLine}
+    </p>
+  </div>
+) : null}
 
-                <p
-                  className="
-                    font-orbitron
-                    text-lg sm:text-2xl md:text-3xl
-                    font-bold
-                    text-white
-                    drop-shadow-[0_0_14px_rgba(0,0,0,0.9)]
-                    px-2
-                  "
-                >
-                  {bottomLine}
-                </p>
-              </div>
-            ) : null}
           </div>
         </div>
       </div>
