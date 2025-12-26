@@ -204,8 +204,8 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
       />
 
-      {/* ================= HERO SECTION ================= */}
-      <div className="relative">
+            {/* ================= HERO SECTION ================= */}
+            <div className="relative">
         <HeroImage
           title={
             <>
@@ -214,65 +214,71 @@ export default function HomePage() {
                 <span
                   className="bg-clip-text text-transparent"
                   style={{
-                    backgroundImage: "linear-gradient(to right, #FF3B3B, white, #FF3B3B)",
+                    backgroundImage:
+                      "linear-gradient(to right, #FF3B3B, white, #FF3B3B)",
                   }}
                 >
                   LAS VEGAS DRONE
                 </span>
               </span>
-          
+
               {/* LINE 2 */}
               <span
                 className="block text-center bg-clip-text text-transparent"
                 style={{
-                  backgroundImage: "linear-gradient(to right, #FF6A6A, #FF3B3B, #FF6A6A)",
+                  backgroundImage:
+                    "linear-gradient(to right, #FF6A6A, #FF3B3B, #FF6A6A)",
                 }}
               >
                 SHOW COMPANY
               </span>
             </>
           }
-          
-          // ✅ Push ONLY the subtitle down on mobile so it overlays the fireworks area
           subtitle={
-            
             <div className="hidden sm:block">
-              Custom <strong>Las Vegas drone light shows</strong> for conventions, corporate
-              events, festivals, and brand activations — animated logos, names, and dates
-              with <strong>100–1000+ drones</strong>.
+              Custom <strong>Las Vegas drone light shows</strong> for conventions,
+              corporate events, festivals, and brand activations — animated logos,
+              names, and dates with <strong>100–1000+ drones</strong>.
             </div>
           }
-          
-          bottomLine={
-            <span className="block mt-12 sm:mt-12 md:mt-10">
-              A Modern, Crowd-Winning Alternative to Fireworks — Built for Las Vegas
-            </span>
-          }
-          
-          
         />
 
-        {/* ONE button, overlaid at the bottom of the fireworks video */}
-        <div className="pointer-events-none absolute left-0 right-0 bottom-10">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-4 sm:pb-6 relative">
-            
+        {/* TAGLINE OVERLAY — overlaps hero + top of the video */}
+        <div className="pointer-events-none absolute left-0 right-0 -bottom-10 sm:-bottom-14 z-20 text-center px-4">
+          <p className="font-orbitron text-white font-bold text-lg sm:text-2xl md:text-3xl drop-shadow-[0_0_14px_rgba(0,0,0,0.9)]">
+            A Modern, Crowd-Winning Alternative to Fireworks — Built for Las Vegas
+          </p>
+        </div>
 
-            {/* CTA button — also moved UP, but still LOWER than the line */}
-            <div className="pointer-events-auto absolute left-0 right-0 bottom-0 -translate-y-7 sm:-translate-y-12 flex justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center text-black font-bold py-4 px-7 rounded-full shadow-lg transform hover:scale-105 transition font-orbitron"
-                style={{
-                  backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
-                  boxShadow: "0 0 25px rgba(255,59,59,0.35)",
-                }}
-              >
-                Get a Quote
-              </Link>
-            </div>
+        {/* CTA button overlay — stable across iPhone Safari */}
+        <div
+          className="pointer-events-none absolute left-0 right-0 bottom-10 z-30 flex justify-center"
+          style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+        >
+          <div className="pointer-events-auto translate-y-4 sm:-translate-y-8">
+            <Link
+              href="/contact"
+              className="
+                inline-flex items-center justify-center
+                text-black font-bold
+                py-4 px-7
+                min-w-[220px]
+                rounded-full
+                shadow-lg
+                transform hover:scale-105 transition
+                font-orbitron
+              "
+              style={{
+                backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
+                boxShadow: "0 0 25px rgba(255,59,59,0.35)",
+              }}
+            >
+              Get a Quote
+            </Link>
           </div>
         </div>
       </div>
+
 
       {/* ================= INTERNAL LINKING (SEO CORE) ================= */}
       <section className="w-full bg-black">
