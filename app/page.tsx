@@ -186,6 +186,19 @@ export default function HomePage() {
         }
       },
       {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.vegasdrones.com/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.vegasdrones.com/"
+          }
+        ]
+      },
+      
+      {
         "@type": "Question",
         "name": "What happens if it’s windy?",
         "acceptedAnswer": {
@@ -193,6 +206,7 @@ export default function HomePage() {
           "text":
             "Safety comes first. We monitor conditions and plan conservative go/no-go thresholds. If weather impacts the flight window, we’ll coordinate the best available options with your venue and schedule."
         }
+
       }
     ]
   }
