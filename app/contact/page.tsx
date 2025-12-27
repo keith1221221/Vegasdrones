@@ -71,7 +71,10 @@ export default function Contact() {
         }),
       });
 
-      if (response.ok) {
+      // Treat any 2xx response as success (Formspree often returns 202)
+      if (response.status >= 200 && response.status < 300) {
+        console.log("Formspree success status:", response.status);
+
         setSubmitted(true);
         setFormData({
           name: "",
@@ -82,23 +85,24 @@ export default function Contact() {
           wbraid: formData.wbraid,
         });
 
-        // GA4 recommended conversion event for lead forms
+        // GA4 lead conversion
         track("generate_lead", {
           method: "formspree",
           form_name: "contact",
+          response_status: response.status,
           has_gclid: !!formData.gclid,
           has_gbraid: !!formData.gbraid,
           has_wbraid: !!formData.wbraid,
         });
 
-        // Optional: helpful debugging signal (keeps everything else the same)
+        // Optional debugging signal
         track("lead_with_click_id", {
           has_gclid: !!formData.gclid,
           has_gbraid: !!formData.gbraid,
           has_wbraid: !!formData.wbraid,
         });
       } else {
-        // Non-200 response
+        // Non-success response
         track("contact_submit_error", {
           form_name: "contact",
           status: response.status,
