@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
@@ -18,9 +18,26 @@ export default function Contact() {
     name: "",
     email: "",
     message: "",
+    gclid: "",
+    gbraid: "",
+    wbraid: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  // Capture Google Ads click ids (offline conversion tracking)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const params = new URLSearchParams(window.location.search);
+
+    setFormData((prev) => ({
+      ...prev,
+      gclid: params.get("gclid") || "",
+      gbraid: params.get("gbraid") || "",
+      wbraid: params.get("wbraid") || "",
+    }));
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -37,6 +54,9 @@ export default function Contact() {
       has_name: !!formData.name?.trim(),
       has_email: !!formData.email?.trim(),
       message_length: (formData.message || "").length,
+      has_gclid: !!formData.gclid,
+      has_gbraid: !!formData.gbraid,
+      has_wbraid: !!formData.wbraid,
     });
 
     setIsSubmitting(true);
@@ -45,17 +65,37 @@ export default function Contact() {
       const response = await fetch("https://formspree.io/f/myzyaqbw", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          source: "website_contact_form",
+        }),
       });
 
       if (response.ok) {
         setSubmitted(true);
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+          gclid: formData.gclid,
+          gbraid: formData.gbraid,
+          wbraid: formData.wbraid,
+        });
 
         // GA4 recommended conversion event for lead forms
         track("generate_lead", {
           method: "formspree",
           form_name: "contact",
+          has_gclid: !!formData.gclid,
+          has_gbraid: !!formData.gbraid,
+          has_wbraid: !!formData.wbraid,
+        });
+
+        // Optional: helpful debugging signal (keeps everything else the same)
+        track("lead_with_click_id", {
+          has_gclid: !!formData.gclid,
+          has_gbraid: !!formData.gbraid,
+          has_wbraid: !!formData.wbraid,
         });
       } else {
         // Non-200 response
@@ -63,6 +103,9 @@ export default function Contact() {
           form_name: "contact",
           status: response.status,
           status_text: response.statusText,
+          has_gclid: !!formData.gclid,
+          has_gbraid: !!formData.gbraid,
+          has_wbraid: !!formData.wbraid,
         });
       }
     } catch (error: any) {
@@ -71,6 +114,9 @@ export default function Contact() {
       track("contact_submit_error", {
         form_name: "contact",
         error_message: error?.message || "unknown_error",
+        has_gclid: !!formData.gclid,
+        has_gbraid: !!formData.gbraid,
+        has_wbraid: !!formData.wbraid,
       });
     } finally {
       setIsSubmitting(false);
@@ -87,8 +133,8 @@ export default function Contact() {
         </h1>
 
         <p className="mt-4 text-gray-200 text-base sm:text-lg leading-relaxed">
-          Fastest way to get pricing: share your date, venue area, and what you want
-          to show (logo, names, messaging, holiday theme, etc.).
+          Fastest way to get pricing: share your date, venue area, and what you
+          want to show (logo, names, messaging, holiday theme, etc.).
         </p>
 
         <div className="mt-8 flex justify-center">
