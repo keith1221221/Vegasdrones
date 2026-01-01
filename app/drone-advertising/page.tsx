@@ -1,8 +1,16 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import Script from "next/script";
 import Header from "@/components/Header";
 import HeroVideo from "@/components/HeroImage.server";
 
-export const metadata = {
+const SITE_URL = "https://www.vegasdrones.com";
+
+// Vegas brand reds
+const BRAND_RED = "#FF3B3B";
+const BRAND_RED_LIGHT = "#FF6A6A";
+
+export const metadata: Metadata = {
   title: "Las Vegas Drone Advertising | Aerial Brand Activations | Vegas Drones",
   description:
     "Drone advertising in Las Vegas: branded aerial light shows, sky logos, and high-impact activations for product launches, casinos, nightlife, and major events. Fully custom, FAA-compliant operations.",
@@ -16,15 +24,16 @@ export const metadata = {
     "drone light show advertising",
     "Vegas Drones advertising",
   ],
+  alternates: { canonical: `${SITE_URL}/drone-advertising` },
   openGraph: {
     title: "Las Vegas Drone Advertising | Vegas Drones",
     description:
       "High-impact drone advertising and brand activations in Las Vegas — logos, messaging, and unforgettable aerial moments.",
-    url: "https://www.vegasdrones.com/drone-advertising",
+    url: `${SITE_URL}/drone-advertising`,
     siteName: "Vegas Drones",
     images: [
       {
-        url: "https://www.vegasdrones.com/og-image.jpg",
+        url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: "Vegas Drones Drone Advertising",
@@ -39,14 +48,37 @@ export const viewport = {
   maximumScale: 1,
 };
 
-// Vegas brand reds
-const BRAND_RED = "#FF3B3B";
-const BRAND_RED_LIGHT = "#FF6A6A";
-
 export default function DroneAdvertisingPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${SITE_URL}/drone-advertising#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Drone Advertising",
+        item: `${SITE_URL}/drone-advertising`,
+      },
+    ],
+  };
+
   return (
     <>
       <Header />
+
+      {/* Breadcrumb Schema */}
+      <Script
+        id="ld-breadcrumbs-drone-advertising"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       <HeroVideo
         title={

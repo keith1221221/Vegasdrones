@@ -83,135 +83,135 @@ export default function HomePage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
-  {
-    "@type": "ProfessionalService",
-    "@id": "https://www.vegasdrones.com/#business",
-    "name": "Vegas Drones",
-    "url": "https://www.vegasdrones.com",
-    "image": "https://www.vegasdrones.com/alienhead1.png",
-    "description":
-      "Vegas Drones produces custom drone light shows and aerial advertising in Las Vegas for weddings, conventions, corporate events, festivals, and brand activations.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Las Vegas",
-      "addressRegion": "NV",
-      "postalCode": "89101",
-      "addressCountry": "US"
-    },
-    "areaServed": [
-      { "@type": "City", "name": "Las Vegas" },
-      { "@type": "City", "name": "Henderson" },
-      { "@type": "City", "name": "Boulder City" },
-      { "@type": "City", "name": "Mesquite" },
-      { "@type": "City", "name": "Laughlin" },
-      { "@type": "AdministrativeArea", "name": "Nevada" }
-    ],
-    "sameAs": [
-      "https://www.facebook.com/61570074433959",
-      "https://www.instagram.com/vegas_drones",
-      "https://twitter.com/DronesVegas",
-      "https://www.linkedin.com/company/vegas-drones"
-    ]
-  },
+              {
+                "@type": "ProfessionalService",
+                "@id": `${SITE_URL}/#business`,
+                name: "Vegas Drones",
+                url: SITE_URL,
+                image: `${SITE_URL}/alienhead1.png`,
+                description:
+                  "Vegas Drones produces custom drone light shows and aerial advertising in Las Vegas for weddings, conventions, corporate events, festivals, and brand activations.",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Las Vegas",
+                  addressRegion: "NV",
+                  postalCode: "89101",
+                  addressCountry: "US",
+                },
+                areaServed: [
+                  { "@type": "City", name: "Las Vegas" },
+                  { "@type": "City", name: "Henderson" },
+                  { "@type": "City", name: "Boulder City" },
+                  { "@type": "City", name: "Mesquite" },
+                  { "@type": "City", name: "Laughlin" },
+                  { "@type": "AdministrativeArea", name: "Nevada" },
+                ],
+                sameAs: [
+                  "https://www.facebook.com/61570074433959",
+                  "https://www.instagram.com/vegas_drones",
+                  "https://twitter.com/DronesVegas",
+                  "https://www.linkedin.com/company/vegas-drones",
+                ],
+              },
 
-  {
-    "@type": "Service",
-    "@id": `${SITE_URL}/#service-drone-light-shows`,
-    "name": "Las Vegas Drone Light Shows",
-    "serviceType": "Drone light show production",
-    "provider": { "@id": `${SITE_URL}/#business` },
-    "areaServed": { "@type": "City", "name": "Las Vegas" },
-    "description":
-      "Custom drone light shows for weddings, conventions, corporate events, festivals, and brand activations in Las Vegas. 100–1000+ drones, logos, names, dates, and cinematic storytelling."
-  },
+              {
+                "@type": "Service",
+                "@id": `${SITE_URL}/#service-drone-light-shows`,
+                name: "Las Vegas Drone Light Shows",
+                serviceType: "Drone light show production",
+                provider: { "@id": `${SITE_URL}/#business` },
+                areaServed: { "@type": "City", name: "Las Vegas" },
+                description:
+                  "Custom drone light shows for weddings, conventions, corporate events, festivals, and brand activations in Las Vegas. 100–1000+ drones, logos, names, dates, and cinematic storytelling.",
+              },
 
-  {
-    "@type": "Service",
-    "@id": `${SITE_URL}/#service-aerial-advertising`,
-    "name": "Aerial Advertising",
-    "serviceType": "Drone advertising / aerial brand activations",
-    "provider": { "@id": `${SITE_URL}/#business` },
-    "areaServed": { "@type": "City", "name": "Las Vegas" },
-    "description":
-      "High-impact aerial drone advertising and brand activations in Las Vegas for conventions, product launches, festivals, and special events."
-  },
+              {
+                "@type": "Service",
+                "@id": `${SITE_URL}/#service-aerial-advertising`,
+                name: "Aerial Advertising",
+                serviceType: "Drone advertising / aerial brand activations",
+                provider: { "@id": `${SITE_URL}/#business` },
+                areaServed: { "@type": "City", name: "Las Vegas" },
+                description:
+                  "High-impact aerial drone advertising and brand activations in Las Vegas for conventions, product launches, festivals, and special events.",
+              },
 
-  {
-    "@type": "FAQPage",
-    "@id": `${SITE_URL}/#faq`,
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How much does a drone light show in Las Vegas cost?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text":
-            "Pricing depends on drone count, show length, location logistics, and creative complexity. Tell us your date and venue area and we’ll recommend the right drone count and provide a clear quote."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How many drones do I need for my event?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text":
-            "Drone count depends on venue scale, viewing distance, and design complexity. Most Las Vegas drone shows start around 100 drones and scale up to 1000+ for maximum impact."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can you animate a logo or custom message?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text":
-            "Yes. We create custom formations like logos, names, dates, icons, and animated sequences tailored to your event theme and brand."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How far in advance should I book a Las Vegas drone show?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text":
-            "The earlier the better—popular dates book out. For best availability and time for custom design approvals, we recommend reserving your date as soon as your venue and timeline are confirmed."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are drone light shows legal in Las Vegas?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text":
-            "Yes—when flown by a certified operator following FAA rules and local venue requirements. Vegas Drones operates FAA Part 107 and handles planning, safety, and flight compliance for your event."
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.vegasdrones.com/#breadcrumb",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.vegasdrones.com/"
-          }
-        ]
-      },
-      
-      {
-        "@type": "Question",
-        "name": "What happens if it’s windy?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text":
-            "Safety comes first. We monitor conditions and plan conservative go/no-go thresholds. If weather impacts the flight window, we’ll coordinate the best available options with your venue and schedule."
-        }
+              // ✅ BreadcrumbList is its own item (NOT inside FAQPage.mainEntity)
+              {
+                "@type": "BreadcrumbList",
+                "@id": `${SITE_URL}/#breadcrumb`,
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: `${SITE_URL}/`,
+                  },
+                ],
+              },
 
-      }
-    ]
-  }
-]
-
+              // ✅ FAQPage.mainEntity contains ONLY Questions
+              {
+                "@type": "FAQPage",
+                "@id": `${SITE_URL}/#faq`,
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: "How much does a drone light show in Las Vegas cost?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text:
+                        "Pricing depends on drone count, show length, location logistics, and creative complexity. Tell us your date and venue area and we’ll recommend the right drone count and provide a clear quote.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "How many drones do I need for my event?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text:
+                        "Drone count depends on venue scale, viewing distance, and design complexity. Most Las Vegas drone shows start around 100 drones and scale up to 1000+ for maximum impact.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Can you animate a logo or custom message?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text:
+                        "Yes. We create custom formations like logos, names, dates, icons, and animated sequences tailored to your event theme and brand.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "How far in advance should I book a Las Vegas drone show?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text:
+                        "The earlier the better—popular dates book out. For best availability and time for custom design approvals, we recommend reserving your date as soon as your venue and timeline are confirmed.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Are drone light shows legal in Las Vegas?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text:
+                        "Yes—when flown by a certified operator following FAA rules and local venue requirements. Vegas Drones operates FAA Part 107 and handles planning, safety, and flight compliance for your event.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "What happens if it’s windy?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text:
+                        "Safety comes first. We monitor conditions and plan conservative go/no-go thresholds. If weather impacts the flight window, we’ll coordinate the best available options with your venue and schedule.",
+                    },
+                  },
+                ],
+              },
+            ],
           }),
         }}
       />

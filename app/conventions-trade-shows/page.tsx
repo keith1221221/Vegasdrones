@@ -11,6 +11,7 @@ const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Las Vegas Convention & Trade Show Drone Shows | Vegas Drones",
   description:
     "Stand out at Las Vegas conventions and trade shows with custom drone light shows. Perfect for brand activations, outdoor displays, and high-impact crowd engagement.",
@@ -53,6 +54,7 @@ export default function ConventionsPage() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": `${SITE_URL}/conventions-trade-shows#faq`,
     mainEntity: [
       {
         "@type": "Question",
@@ -73,6 +75,27 @@ export default function ConventionsPage() {
     ],
   };
 
+  // ✅ Breadcrumb schema (separate from FAQ)
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${SITE_URL}/conventions-trade-shows#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Conventions & Trade Shows",
+        item: `${SITE_URL}/conventions-trade-shows`,
+      },
+    ],
+  };
+
   return (
     <div className="bg-black text-white">
       {/* FAQ Schema (JSON-LD) */}
@@ -80,6 +103,13 @@ export default function ConventionsPage() {
         id="ld-faq-conventions"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      {/* Breadcrumb Schema (JSON-LD) */}
+      <Script
+        id="ld-breadcrumbs-conventions"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       {/* HERO — match the Drone Light Shows page style */}
@@ -109,8 +139,9 @@ export default function ConventionsPage() {
           <>
             Turn the Las Vegas sky into a branded canvas —{" "}
             <strong>logos</strong>, <strong>messaging</strong>, and{" "}
-            <strong>high-impact aerial activations</strong> built for product
-            launches, casinos, nightlife, and major events.
+            <strong>high-impact aerial activations</strong> built for{" "}
+            <strong>conventions</strong>, <strong>trade shows</strong>,{" "}
+            product launches, and after-hours activations.
           </>
         }
         bottomLine={<>A Billboard in the Sky — Built for Las Vegas Brand Activations</>}

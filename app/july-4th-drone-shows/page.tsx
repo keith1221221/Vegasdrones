@@ -1,31 +1,44 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Script from "next/script";
 import Header from "@/components/Header";
+
+const SITE_URL = "https://www.vegasdrones.com";
+const OG_IMAGE = "/alienhead1.png";
 
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "July 4th Drone Light Shows in Las Vegas | Vegas Drones",
   description:
     "Book a July 4th drone light show in Las Vegas. A venue-safe, crowd-winning alternative to fireworks — patriotic animations, custom city messaging, and fully FAA-compliant production.",
   alternates: {
-    canonical: "https://www.vegasdrones.com/july-4th-drone-shows",
+    canonical: `${SITE_URL}/july-4th-drone-shows`,
   },
   openGraph: {
     title: "July 4th Drone Light Shows in Las Vegas | Vegas Drones",
     description:
       "A modern alternative to fireworks for July 4th events in Las Vegas — patriotic drone animations, custom messaging, and venue-safe execution.",
-    url: "https://www.vegasdrones.com/july-4th-drone-shows",
+    url: `${SITE_URL}/july-4th-drone-shows`,
     siteName: "Vegas Drones",
     images: [
       {
-        url: "https://www.vegasdrones.com/alienhead1.png",
+        url: `${SITE_URL}${OG_IMAGE}`,
         width: 1200,
         height: 630,
         alt: "July 4th drone light show in Las Vegas",
       },
     ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "July 4th Drone Light Shows in Las Vegas | Vegas Drones",
+    description:
+      "A modern alternative to fireworks for July 4th events in Las Vegas — patriotic drone animations, custom messaging, and venue-safe execution.",
+    images: [`${SITE_URL}${OG_IMAGE}`],
   },
   robots: {
     index: true,
@@ -40,16 +53,48 @@ export const viewport = {
 };
 
 export default function July4thDroneShowsPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${SITE_URL}/july-4th-drone-shows#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Holidays",
+        item: `${SITE_URL}/holidays`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "July 4th Drone Shows",
+        item: `${SITE_URL}/july-4th-drone-shows`,
+      },
+    ],
+  };
+
   return (
     <>
       <Header />
+
+      {/* Breadcrumb Schema */}
+      <Script
+        id="ld-breadcrumbs-july4"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       <main className="bg-black text-white font-poppins">
         {/* HERO (NO VIDEO) */}
         <section className="relative overflow-hidden">
           {/* Background image */}
           <div className="relative h-[72vh] sm:h-[82vh] w-full">
-            
             {/* Dark overlay */}
             <div className="absolute inset-0 bg-black/65" />
             {/* Soft vignette */}
@@ -57,9 +102,8 @@ export default function July4thDroneShowsPage() {
 
             {/* Hero content */}
             <div className="relative z-10 h-full flex items-center justify-center text-center">
-  <div className="max-w-6xl mx-auto px-6 w-full flex justify-center">
-    <div className="max-w-3xl">
-
+              <div className="max-w-6xl mx-auto px-6 w-full flex justify-center">
+                <div className="max-w-3xl">
                   <h1 className="font-orbitron font-bold text-4xl sm:text-6xl leading-tight">
                     <span className="text-white">JULY 4TH</span>{" "}
                     <span
@@ -79,35 +123,34 @@ export default function July4thDroneShowsPage() {
                   </p>
 
                   {/* Modern line + CTA */}
-<div className="mt-8">
-  <div className="mx-auto h-px w-full max-w-xl bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+                  <div className="mt-8">
+                    <div className="mx-auto h-px w-full max-w-xl bg-gradient-to-r from-transparent via-white/25 to-transparent" />
 
-  {/* Center buttons */}
-  <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center items-center">
-    <Link
-      href="/contact"
-      className="inline-flex items-center justify-center text-black font-bold py-4 px-10 rounded-full shadow-lg transform hover:scale-105 transition font-orbitron"
-      style={{
-        backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
-        boxShadow: "0 0 30px rgba(255,59,59,0.45)",
-      }}
-    >
-      Get July 4th Pricing
-    </Link>
+                    {/* Center buttons */}
+                    <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center items-center">
+                      <Link
+                        href="/contact"
+                        className="inline-flex items-center justify-center text-black font-bold py-4 px-10 rounded-full shadow-lg transform hover:scale-105 transition font-orbitron"
+                        style={{
+                          backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
+                          boxShadow: "0 0 30px rgba(255,59,59,0.45)",
+                        }}
+                      >
+                        Get July 4th Pricing
+                      </Link>
 
-    <Link
-      href="/holidays"
-      className="inline-flex items-center justify-center py-4 px-10 rounded-full font-orbitron font-bold border border-white/25 text-white hover:bg-white/10 transition"
-    >
-      Back to Holidays
-    </Link>
-  </div>
+                      <Link
+                        href="/holidays"
+                        className="inline-flex items-center justify-center py-4 px-10 rounded-full font-orbitron font-bold border border-white/25 text-white hover:bg-white/10 transition"
+                      >
+                        Back to Holidays
+                      </Link>
+                    </div>
 
-  <p className="mt-4 text-sm text-gray-300 text-center">
-    Venue-safe • No fallout • Low staff burden • FAA Part 107 operations
-  </p>
-</div>
-
+                    <p className="mt-4 text-sm text-gray-300 text-center">
+                      Venue-safe • No fallout • Low staff burden • FAA Part 107 operations
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

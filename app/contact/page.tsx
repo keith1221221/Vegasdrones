@@ -1,6 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Script from "next/script";
+
+const SITE_URL = "https://www.vegasdrones.com";
+const PAGE_PATH = "/contact";
+const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
@@ -25,6 +30,27 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  // Breadcrumb schema (JSON-LD)
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${PAGE_URL}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Contact",
+        item: PAGE_URL,
+      },
+    ],
+  };
+
   // Capture Google Ads click ids (offline conversion tracking)
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -48,7 +74,7 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Track submit attempt
+    // Track submit attempt (covers clicks + Enter key submissions)
     track("contact_submit_attempt", {
       form_name: "contact",
       has_name: !!formData.name?.trim(),
@@ -129,6 +155,13 @@ export default function Contact() {
 
   return (
     <main className="min-h-screen bg-black text-white font-poppins pt-28 px-6">
+      {/* ✅ Breadcrumb Schema */}
+      <Script
+        id="ld-breadcrumbs-contact"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       {/* HERO */}
       <section className="relative max-w-3xl mx-auto text-center pb-10">
         <h1 className="font-orbitron font-bold text-4xl sm:text-5xl leading-tight">
@@ -223,13 +256,6 @@ export default function Contact() {
                     backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
                     boxShadow: "0 0 30px rgba(255,59,59,0.45)",
                   }}
-                  onClick={() =>
-                    track("cta_click", {
-                      cta_text: "Send Message",
-                      cta_location: "Contact form",
-                      destination: "form_submit",
-                    })
-                  }
                 >
                   {isSubmitting ? "Submitting..." : "Send Message"}
                 </button>

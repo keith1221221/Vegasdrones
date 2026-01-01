@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Script from "next/script";
 import Header from "@/components/Header";
 import HeroVideo from "@/components/HeroImage.server";
 
@@ -37,9 +38,71 @@ export const viewport = {
 };
 
 export default function EventsPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${SITE_URL}/events#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Events",
+        item: `${SITE_URL}/events`,
+      },
+    ],
+  };
+
+  // Optional but helpful: tells Google this page is a hub linking to event categories
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${SITE_URL}/events#event-types`,
+    name: "Las Vegas Drone Show Event Types",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        url: `${SITE_URL}/corporate-events`,
+        name: "Corporate Events",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        url: `${SITE_URL}/weddings`,
+        name: "Weddings",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        url: `${SITE_URL}/private-events`,
+        name: "Private Events",
+      },
+    ],
+  };
+
   return (
     <>
       <Header />
+
+      {/* Breadcrumb Schema */}
+      <Script
+        id="ld-breadcrumbs-events"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
+      {/* Optional ItemList Schema */}
+      <Script
+        id="ld-itemlist-events"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
 
       {/* HERO */}
       <div className="relative">
@@ -70,18 +133,7 @@ export default function EventsPage() {
           primaryCta={{ href: "/contact", label: "Get Event Pricing" }}
         />
 
-        {/* Overlay CTA at bottom of hero (single button) */}
-        <div className="pointer-events-none absolute left-0 right-0 bottom-0">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-5 sm:pb-7">
-            <div className="mb-3 sm:mb-4">
-              <div className="h-px w-full bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-            </div>
-
-            <div className="pointer-events-auto flex justify-center">
-            
-            </div>
-          </div>
-        </div>
+        {/* Removed empty overlay CTA block (it was rendering an empty container) */}
       </div>
 
       {/* CONTENT */}

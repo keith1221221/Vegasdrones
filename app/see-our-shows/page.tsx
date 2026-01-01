@@ -1,10 +1,40 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import Script from "next/script";
 
-export const metadata = {
+const SITE_URL = "https://www.vegasdrones.com";
+const OG_IMAGE = "/alienhead1.png";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "See Our Drone Light Shows | Vegas Drones",
   description:
     "Watch real drone light shows produced by Vegas Drones in Las Vegas and beyond. Proof videos from live events, festivals, and brand activations.",
-  alternates: { canonical: "https://www.vegasdrones.com/see-our-shows" },
+  alternates: { canonical: `${SITE_URL}/see-our-shows` },
+  openGraph: {
+    title: "See Our Drone Light Shows | Vegas Drones",
+    description:
+      "Real footage from live events — festivals, brand activations, and city-scale productions.",
+    url: `${SITE_URL}/see-our-shows`,
+    siteName: "Vegas Drones",
+    images: [
+      {
+        url: `${SITE_URL}${OG_IMAGE}`,
+        width: 1200,
+        height: 630,
+        alt: "Vegas Drones drone light show",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "See Our Drone Light Shows | Vegas Drones",
+    description:
+      "Watch real drone light shows produced by Vegas Drones in Las Vegas and beyond.",
+    images: [`${SITE_URL}${OG_IMAGE}`],
+  },
+  robots: { index: true, follow: true },
 };
 
 const BRAND_RED = "#FF3B3B";
@@ -34,8 +64,35 @@ const VIDEOS = [
 ];
 
 export default function SeeOurShowsPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${SITE_URL}/see-our-shows#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "See Our Shows",
+        item: `${SITE_URL}/see-our-shows`,
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-black text-white pt-28 pb-20 px-4 sm:px-6">
+      {/* Breadcrumb Schema */}
+      <Script
+        id="ld-breadcrumbs-see-our-shows"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       <div className="max-w-6xl mx-auto">
         {/* PAGE HEADER */}
         <header className="text-center mb-14">
@@ -79,21 +136,18 @@ export default function SeeOurShowsPage() {
               <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-gray-800">
                 <iframe
                   className="absolute inset-0 w-full h-full"
-                  src={`https://www.youtube.com/embed/${video.id}?rel=0`}
+                  src={`https://www.youtube.com/embed/${video.id}?rel=0&modestbranding=1&playsinline=1`}
                   title={`${video.title} | Vegas Drones`}
                   loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
               </div>
 
               <div className="mt-4 text-center">
-                <h2 className="font-orbitron text-lg font-bold">
-                  {video.title}
-                </h2>
-                <p className="text-gray-400 text-sm mt-1">
-                  {video.location}
-                </p>
+                <h2 className="font-orbitron text-lg font-bold">{video.title}</h2>
+                <p className="text-gray-400 text-sm mt-1">{video.location}</p>
               </div>
             </div>
           ))}
@@ -112,12 +166,14 @@ export default function SeeOurShowsPage() {
             Get Pricing for Your Event
           </Link>
           <p className="text-gray-400 text-sm mt-4">
-            Tell us your date, venue area, and goals — we’ll recommend the right drone count.
+            Tell us your date, venue area, and goals — we’ll recommend the right
+            drone count.
           </p>
         </div>
 
         <div className="text-center text-gray-500 text-sm mt-14">
-          Operated by Skylight Ads LLC • Las Vegas-based • FAA Part 107 • Insured operations
+          Operated by Skylight Ads LLC • Las Vegas-based • FAA Part 107 • Insured
+          operations
         </div>
       </div>
     </main>

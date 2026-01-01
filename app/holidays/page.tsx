@@ -1,7 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Script from "next/script";
 import Header from "@/components/Header";
 import HeaderVideo from "@/components/HeroImage.server";
+
+const SITE_URL = "https://www.vegasdrones.com";
+const OG_IMAGE = "/alienhead1.png";
 
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
@@ -10,70 +14,160 @@ export const metadata: Metadata = {
   title: "Holiday Drone Light Shows in Las Vegas | Vegas Drones",
   description:
     "Celebrate major holidays in Las Vegas with custom drone light shows. July 4th, Memorial Day, Labor Day, and Christmas drone shows — fully custom, venue-safe, and FAA compliant.",
+  alternates: { canonical: `${SITE_URL}/holidays` },
+  openGraph: {
+    title: "Holiday Drone Light Shows in Las Vegas | Vegas Drones",
+    description:
+      "July 4th, Memorial Day, Labor Day & Christmas drone light shows in Las Vegas — a modern, venue-friendly alternative to fireworks.",
+    url: `${SITE_URL}/holidays`,
+    siteName: "Vegas Drones",
+    images: [
+      {
+        url: `${SITE_URL}${OG_IMAGE}`,
+        width: 1200,
+        height: 630,
+        alt: "Vegas Drones holiday drone light show",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Holiday Drone Light Shows in Las Vegas | Vegas Drones",
+    description:
+      "July 4th, Memorial Day, Labor Day & Christmas drone light shows in Las Vegas — a modern, venue-friendly alternative to fireworks.",
+    images: [`${SITE_URL}${OG_IMAGE}`],
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function HolidaysPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${SITE_URL}/holidays#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${SITE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Holidays",
+        item: `${SITE_URL}/holidays`,
+      },
+    ],
+  };
+
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${SITE_URL}/holidays#holiday-pages`,
+    name: "Holiday Drone Show Pages",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        url: `${SITE_URL}/july-4th-drone-shows`,
+        name: "July 4th Drone Light Shows",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        url: `${SITE_URL}/memorial-day-drone-shows`,
+        name: "Memorial Day Drone Shows",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        url: `${SITE_URL}/labor-day-drone-shows`,
+        name: "Labor Day Drone Shows",
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        url: `${SITE_URL}/christmas-drone-light-shows`,
+        name: "Christmas Drone Light Shows",
+      },
+    ],
+  };
+
   return (
     <>
       <Header />
 
+      {/* Breadcrumb + ItemList Schema */}
+      <Script
+        id="ld-breadcrumbs-holidays"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="ld-itemlist-holidays"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+
       {/* HERO */}
-     {/* HERO */}
-<div className="relative">
-  <HeaderVideo
-    title={
-      <>
-        <span className="text-white">HOLIDAY </span>
-        <span
-          className="bg-clip-text text-transparent no-underline"
-          style={{
-            backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED})`,
-            textDecoration: "none",
-          }}
-        >
-          DRONE SHOWS
-        </span>
-      </>
-    }
-    subtitle={
-      <>
-        July 4th, Memorial Day, Labor Day &amp; Christmas drone light shows in
-        Las Vegas — a modern, venue-friendly alternative to fireworks.
-      </>
-    }
-  />
+      <div className="relative">
+        <HeaderVideo
+          title={
+            <>
+              <span className="text-white">HOLIDAY </span>
+              <span
+                className="bg-clip-text text-transparent no-underline"
+                style={{
+                  backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED})`,
+                  textDecoration: "none",
+                }}
+              >
+                DRONE SHOWS
+              </span>
+            </>
+          }
+          subtitle={
+            <>
+              July 4th, Memorial Day, Labor Day &amp; Christmas drone light shows in
+              Las Vegas — a modern, venue-friendly alternative to fireworks.
+            </>
+          }
+        />
 
-  {/* SINGLE CTA — moved higher into hero */}
-  <div className="pointer-events-none absolute left-0 right-0 bottom-16 sm:bottom-20">
-    <div className="max-w-6xl mx-auto px-4 sm:px-6">
-      {/* modern line */}
-      <div className="mb-4">
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-      </div>
+        {/* SINGLE CTA — moved higher into hero */}
+        <div className="pointer-events-none absolute left-0 right-0 bottom-16 sm:bottom-20">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            {/* modern line */}
+            <div className="mb-4">
+              <div className="h-px w-full bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+            </div>
 
-      {/* CTA */}
-      <div className="pointer-events-auto flex justify-center">
-        <Link
-          href="/contact"
-          className="inline-flex items-center justify-center text-black font-bold py-4 px-10 rounded-full shadow-lg transform hover:scale-105 transition font-orbitron"
-          style={{
-            backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
-            boxShadow: "0 0 30px rgba(255,59,59,0.45)",
-          }}
-        >
-          Get Holiday Pricing
-        </Link>
+            {/* CTA */}
+            <div className="pointer-events-auto flex justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center text-black font-bold py-4 px-10 rounded-full shadow-lg transform hover:scale-105 transition font-orbitron"
+                style={{
+                  backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
+                  boxShadow: "0 0 30px rgba(255,59,59,0.45)",
+                }}
+              >
+                Get Holiday Pricing
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
       {/* CONTENT */}
       <main className="bg-black text-white px-6 pt-8 pb-16 font-poppins ">
         <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-6 font-orbitron text-[#FF3B3B]">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6 font-orbitron text-[#FF3B3B]">
             A Better Alternative to Fireworks for Holiday Events
           </h2>
+
           {/* Holiday image */}
           <div className="w-full flex justify-center mb-10">
             <img
@@ -83,8 +177,6 @@ export default function HolidaysPage() {
               loading="lazy"
             />
           </div>
-
-         
 
           <p className="text-gray-300 leading-relaxed max-w-3xl mx-auto mb-10">
             Drone light shows give venues a safer, cleaner, and more controlled way to
@@ -101,7 +193,6 @@ export default function HolidaysPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <Link
                 href="/july-4th-drone-shows"
-             
                 className="group rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition"
               >
                 <div className="font-orbitron text-xl text-white mb-2 group-hover:text-white">

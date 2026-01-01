@@ -1,7 +1,16 @@
 import Link from "next/link";
 import Header from "@/components/Header";
+import Script from "next/script";
+
+const SITE_URL = "https://www.vegasdrones.com";
+const OG_IMAGE = "/alienhead1.png";
+
+// Brand reds
+const BRAND_RED = "#FF3B3B";
+const BRAND_RED_LIGHT = "#FF6A6A";
 
 export const metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Las Vegas Wedding Drone Light Shows | Vegas Drones",
   description:
     "Make your wedding unforgettable with a custom drone light show in Las Vegas. Names, wedding date, and a signature finale — fully customized and FAA-compliant.",
@@ -14,23 +23,32 @@ export const metadata = {
     "Vegas Drones wedding",
   ],
   alternates: {
-    canonical: "https://www.vegasdrones.com/weddings",
+    canonical: `${SITE_URL}/weddings`,
   },
   openGraph: {
     title: "Las Vegas Wedding Drone Light Shows | Vegas Drones",
     description:
       "Custom wedding drone light shows in Las Vegas — names, date, and a stunning finale your guests will never forget.",
-    url: "https://www.vegasdrones.com/weddings",
+    url: `${SITE_URL}/weddings`,
     siteName: "Vegas Drones",
+    type: "website",
     images: [
       {
-        url: "https://www.vegasdrones.com/alienhead1.png",
+        url: `${SITE_URL}${OG_IMAGE}`,
         width: 1200,
         height: 630,
         alt: "Vegas Drones Wedding Drone Light Show",
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Las Vegas Wedding Drone Light Shows | Vegas Drones",
+    description:
+      "Custom wedding drone light shows in Las Vegas — names, date, and a stunning finale your guests will never forget.",
+    images: [`${SITE_URL}${OG_IMAGE}`],
+  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport = {
@@ -39,14 +57,48 @@ export const viewport = {
   maximumScale: 1,
 };
 
-// Brand reds
-const BRAND_RED = "#FF3B3B";
-const BRAND_RED_LIGHT = "#FF6A6A";
-
 export default function WeddingsPage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How much does a wedding drone show cost in Las Vegas?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Pricing depends on drone count, show length, location logistics, and creative complexity. Share your date and venue area and we’ll recommend the right drone count and provide a clear quote.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can you put our names and wedding date in the sky?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes — names and date are the most popular wedding elements. We can also create hearts, rings, monograms, and custom icons that match your theme.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is it safe and legal to fly a wedding drone show in Las Vegas?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, when handled by a certified operator following FAA rules and venue requirements. We operate under FAA Part 107 and coordinate planning and safety for your event.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <Header />
+
+      {/* FAQ Schema */}
+      <Script
+        id="ld-faq-weddings"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       <main className="min-h-screen bg-black text-white pt-32 pb-16 px-6 font-poppins">
         <div className="max-w-5xl mx-auto text-center">
@@ -64,8 +116,8 @@ export default function WeddingsPage() {
           </h1>
 
           <p className="text-lg text-gray-300 leading-relaxed mb-12 max-w-3xl mx-auto">
-            Romantic, personalized wedding finales in Las Vegas — names, date, and
-            a signature sequence designed for the moment everyone remembers.
+            Romantic, personalized wedding finales in Las Vegas — names, date, and a
+            signature sequence designed for the moment everyone remembers.
           </p>
 
           {/* WEDDING VIDEO HERO */}
@@ -77,6 +129,8 @@ export default function WeddingsPage() {
               muted
               loop
               playsInline
+              preload="metadata"
+              poster="/alienhead1.png"
               className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl brightness-50"
             />
 
@@ -91,6 +145,8 @@ export default function WeddingsPage() {
                 muted
                 loop
                 playsInline
+                preload="metadata"
+                poster="/alienhead1.png"
                 className="h-full max-h-[65vh] rounded-xl shadow-2xl object-contain"
               />
             </div>
@@ -98,27 +154,30 @@ export default function WeddingsPage() {
 
           {/* VIDEO SUPPORTING COPY (SEO) */}
           <p className="text-gray-300 leading-relaxed mb-14 max-w-3xl mx-auto">
-            Watch a real <strong>Las Vegas wedding drone light show</strong> moment —
-            a romantic sky finale designed for guest reactions, photo/video capture,
-            and a clean, smoke-free celebration.
+            Watch a real <strong>Las Vegas wedding drone light show</strong> moment — a
+            romantic sky finale designed for guest reactions, photo/video capture, and a
+            clean, smoke-free celebration.
           </p>
 
           {/* QUICK INTERNAL LINKS (SEO + UX) */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
             <Link
               href="/drone-light-shows"
+              aria-label="Learn how drone light shows work"
               className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/25 text-white hover:bg-white/10 transition font-orbitron"
             >
               How drone shows work
             </Link>
             <Link
               href="/see-our-shows"
+              aria-label="See more Vegas Drones show videos"
               className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/25 text-white hover:bg-white/10 transition font-orbitron"
             >
               See more shows
             </Link>
             <Link
               href="/faq"
+              aria-label="Read frequently asked questions"
               className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/25 text-white hover:bg-white/10 transition font-orbitron"
             >
               FAQ
@@ -132,9 +191,8 @@ export default function WeddingsPage() {
             </h2>
             <p className="text-gray-300 leading-relaxed">
               Whether it’s a first dance under the stars or a grand send-off, a drone
-              show delivers a breathtaking finale without smoke, noise, or fallout.
-              We create hearts, rings, custom icons, and animations tailored to your
-              style.
+              show delivers a breathtaking finale without smoke, noise, or fallout. We
+              create hearts, rings, custom icons, and animations tailored to your style.
             </p>
           </section>
 
@@ -167,7 +225,7 @@ export default function WeddingsPage() {
             </ul>
           </section>
 
-          {/* OPTIONAL MINI-FAQ (HIGH ROI FOR SEO) */}
+          {/* MINI-FAQ */}
           <section className="mb-12 text-left max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold text-[#FF3B3B] mb-6 font-orbitron text-center">
               Wedding Drone Show FAQ

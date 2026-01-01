@@ -1,11 +1,16 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Script from "next/script";
 import Header from "@/components/Header";
+
+const SITE_URL = "https://www.vegasdrones.com";
+const OG_IMAGE = "/alienhead1.png";
 
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Las Vegas Private Event Drone Shows | Vegas Drones",
   description:
     "Book a private event drone light show in Las Vegas. Birthdays, engagements, proposals, anniversaries, and VIP celebrations — fully custom, venue-safe, and FAA-compliant production.",
@@ -19,22 +24,30 @@ export const metadata: Metadata = {
     "Vegas Drones private events",
   ],
   alternates: {
-    canonical: "https://www.vegasdrones.com/private-events",
+    canonical: `${SITE_URL}/private-events`,
   },
   openGraph: {
     title: "Las Vegas Private Event Drone Shows | Vegas Drones",
     description:
       "Private event drone light shows in Las Vegas — proposals, birthdays, anniversaries, and VIP celebrations with custom names, dates, and icons.",
-    url: "https://www.vegasdrones.com/private-events",
+    url: `${SITE_URL}/private-events`,
     siteName: "Vegas Drones",
     images: [
       {
-        url: "https://www.vegasdrones.com/alienhead1.png",
+        url: `${SITE_URL}${OG_IMAGE}`,
         width: 1200,
         height: 630,
         alt: "Vegas Drones private event drone light show",
       },
     ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Las Vegas Private Event Drone Shows | Vegas Drones",
+    description:
+      "Private event drone light shows in Las Vegas — proposals, birthdays, anniversaries, and VIP celebrations with custom names, dates, and icons.",
+    images: [`${SITE_URL}${OG_IMAGE}`],
   },
   robots: { index: true, follow: true },
 };
@@ -46,9 +59,27 @@ export const viewport = {
 };
 
 export default function PrivateEventsPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${SITE_URL}/private-events#breadcrumb`,
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Events", item: `${SITE_URL}/events` },
+      { "@type": "ListItem", position: 3, name: "Private Events", item: `${SITE_URL}/private-events` },
+    ],
+  };
+
   return (
     <>
       <Header />
+
+      {/* Breadcrumb Schema */}
+      <Script
+        id="ld-breadcrumb-private-events"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       <main className="min-h-screen bg-black text-white pt-32 pb-16 px-6 font-poppins">
         <div className="max-w-5xl mx-auto text-center">

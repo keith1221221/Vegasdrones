@@ -1,30 +1,44 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Script from "next/script";
 import Header from "@/components/Header";
+
+const SITE_URL = "https://www.vegasdrones.com";
+const OG_IMAGE = "/alienhead1.png";
 
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Labor Day Drone Light Shows in Las Vegas | Vegas Drones",
   description:
     "Book a Labor Day drone light show in Las Vegas. A venue-safe, crowd-winning alternative to fireworks for resorts, festivals, and community celebrations — fully custom and FAA compliant.",
   alternates: {
-    canonical: "https://www.vegasdrones.com/labor-day-drone-shows",
+    canonical: `${SITE_URL}/labor-day-drone-shows`,
   },
   openGraph: {
     title: "Labor Day Drone Light Shows in Las Vegas | Vegas Drones",
     description:
       "Labor Day drone light shows in Las Vegas — end-of-summer headline moments for resorts, festivals, and city events. Custom animations and sponsor-ready scenes.",
-    url: "https://www.vegasdrones.com/labor-day-drone-shows",
+    url: `${SITE_URL}/labor-day-drone-shows`,
+    siteName: "Vegas Drones",
+    type: "website",
     images: [
       {
-        url: "https://www.vegasdrones.com/merry_xmas.png",
+        url: `${SITE_URL}${OG_IMAGE}`,
         width: 1200,
         height: 630,
         alt: "Drone light show in Las Vegas",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Labor Day Drone Light Shows in Las Vegas | Vegas Drones",
+    description:
+      "End-of-summer headline drone shows for resorts, festivals, and community events in Las Vegas — venue-safe and sponsor-ready.",
+    images: [`${SITE_URL}${OG_IMAGE}`],
   },
   robots: { index: true, follow: true },
 };
@@ -36,21 +50,39 @@ export const viewport = {
 };
 
 export default function LaborDayDroneShowsPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${SITE_URL}/labor-day-drone-shows#breadcrumb`,
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Holidays", item: `${SITE_URL}/holidays` },
+      { "@type": "ListItem", position: 3, name: "Labor Day", item: `${SITE_URL}/labor-day-drone-shows` },
+    ],
+  };
+
   return (
     <>
       <Header />
+
+      {/* Breadcrumb Schema */}
+      <Script
+        id="ld-breadcrumb-labor-day"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       <main className="bg-black text-white font-poppins">
         {/* HERO (NO VIDEO) */}
         <section className="relative overflow-hidden">
           <div className="relative h-[72vh] sm:h-[82vh] w-full">
-           
+            {/* If you add a Labor Day background image later, place it here */}
+
             <div className="absolute inset-0 bg-black/65" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80" />
 
             <div className="relative z-10 h-full flex items-center">
               <div className="max-w-6xl mx-auto px-6 w-full">
-                {/* CENTER THIS WHOLE HERO BLOCK */}
                 <div className="max-w-3xl mx-auto text-center">
                   <h1 className="font-orbitron font-bold text-4xl sm:text-6xl leading-tight">
                     <span className="text-white">LABOR DAY</span>{" "}
@@ -73,7 +105,6 @@ export default function LaborDayDroneShowsPage() {
                   <div className="mt-8">
                     <div className="mx-auto h-px w-full max-w-xl bg-gradient-to-r from-transparent via-white/25 to-transparent" />
 
-                    {/* CENTER BUTTONS */}
                     <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center items-center">
                       <Link
                         href="/contact"
@@ -117,7 +148,6 @@ export default function LaborDayDroneShowsPage() {
               venues that care about rooftops, signage, pool decks, and guest comfort.
             </p>
 
-            {/* BENEFITS */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-5xl mx-auto mb-14">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
                 <h3 className="font-orbitron text-xl text-white mb-2">Venue-Safe</h3>
@@ -144,7 +174,6 @@ export default function LaborDayDroneShowsPage() {
               </div>
             </div>
 
-            {/* WHAT WE CAN SHOW */}
             <section className="text-left max-w-4xl mx-auto mb-14">
               <h3 className="font-orbitron text-2xl text-[#FF3B3B] mb-5 text-center">
                 What a Labor Day Show Can Include
@@ -158,7 +187,6 @@ export default function LaborDayDroneShowsPage() {
               </ul>
             </section>
 
-            {/* PERFECT FOR */}
             <section className="text-left max-w-4xl mx-auto mb-14">
               <h3 className="font-orbitron text-2xl text-[#FF3B3B] mb-5 text-center">
                 Perfect For
@@ -182,7 +210,6 @@ export default function LaborDayDroneShowsPage() {
               </div>
             </section>
 
-            {/* CTA */}
             <div className="text-center mt-10">
               <Link
                 href="/contact"

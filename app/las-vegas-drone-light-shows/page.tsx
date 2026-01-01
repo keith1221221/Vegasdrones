@@ -10,6 +10,9 @@ const OG_IMAGE = "/alienhead1.png";
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
+// ✅ single source of truth for this page URL (prevents accidental mismatches)
+const PAGE_URL = `${SITE_URL}/las-vegas-drone-light-shows`;
+
 export const metadata: Metadata = {
   title: "Las Vegas Drone Light Shows | Vegas Drones",
   description:
@@ -25,12 +28,12 @@ export const metadata: Metadata = {
     "custom drone show",
     "Vegas Drones",
   ],
-  alternates: { canonical: `${SITE_URL}/drone-light-shows` },
+  alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "Las Vegas Drone Light Shows | Vegas Drones",
     description:
       "Unforgettable drone light shows in Las Vegas — custom designs for weddings, corporate events, festivals, and brand activations.",
-    url: `${SITE_URL}/drone-light-shows`,
+    url: PAGE_URL,
     siteName: "Vegas Drones",
     images: [
       {
@@ -47,6 +50,7 @@ export default function DroneLightShowsPage() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": `${PAGE_URL}#faq`,
     mainEntity: [
       {
         "@type": "Question",
@@ -108,18 +112,19 @@ export default function DroneLightShowsPage() {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${PAGE_URL}#breadcrumb`,
     itemListElement: [
       {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.vegasdrones.com/",
+        item: `${SITE_URL}/`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Drone Light Shows",
-        item: "https://www.vegasdrones.com/las-vegas-drone-light-shows",
+        item: PAGE_URL,
       },
     ],
   };

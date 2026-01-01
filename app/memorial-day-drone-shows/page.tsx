@@ -1,30 +1,44 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Script from "next/script";
 import Header from "@/components/Header";
+
+const SITE_URL = "https://www.vegasdrones.com";
+const OG_IMAGE = "/alienhead1.png";
 
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Memorial Day Drone Light Shows in Las Vegas | Vegas Drones",
   description:
     "Book a Memorial Day drone light show in Las Vegas. A respectful, venue-safe alternative to fireworks — patriotic tributes, custom city messaging, and fully FAA-compliant production.",
   alternates: {
-    canonical: "https://www.vegasdrones.com/memorial-day-drone-shows",
+    canonical: `${SITE_URL}/memorial-day-drone-shows`,
   },
   openGraph: {
     title: "Memorial Day Drone Light Shows in Las Vegas | Vegas Drones",
     description:
       "Memorial Day drone light shows in Las Vegas — respectful patriotic tributes for cities, venues, and ceremonies. Custom messaging and venue-safe execution.",
-    url: "https://www.vegasdrones.com/memorial-day-drone-shows",
+    url: `${SITE_URL}/memorial-day-drone-shows`,
+    siteName: "Vegas Drones",
+    type: "website",
     images: [
       {
-        url: "https://www.vegasdrones.com/merry_xmas.png",
+        url: `${SITE_URL}${OG_IMAGE}`,
         width: 1200,
         height: 630,
         alt: "Memorial Day drone light show in Las Vegas",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Memorial Day Drone Light Shows in Las Vegas | Vegas Drones",
+    description:
+      "Respectful Memorial Day drone light shows in Las Vegas — patriotic tributes, custom messaging, venue-safe execution.",
+    images: [`${SITE_URL}${OG_IMAGE}`],
   },
   robots: { index: true, follow: true },
 };
@@ -36,22 +50,39 @@ export const viewport = {
 };
 
 export default function MemorialDayDroneShowsPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${SITE_URL}/memorial-day-drone-shows#breadcrumb`,
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Holidays", item: `${SITE_URL}/holidays` },
+      { "@type": "ListItem", position: 3, name: "Memorial Day", item: `${SITE_URL}/memorial-day-drone-shows` },
+    ],
+  };
+
   return (
     <>
       <Header />
+
+      {/* Breadcrumb Schema */}
+      <Script
+        id="ld-breadcrumb-memorial-day"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       <main className="bg-black text-white font-poppins">
         {/* HERO (NO VIDEO) */}
         <section className="relative overflow-hidden">
           <div className="relative h-[72vh] sm:h-[82vh] w-full">
-            {/* Swap this image later if you add a Memorial Day-specific graphic */}
-            
+            {/* If you add a Memorial Day background image later, place it here */}
+
             <div className="absolute inset-0 bg-black/65" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80" />
 
             <div className="relative z-10 h-full flex items-center">
               <div className="max-w-6xl mx-auto px-6 w-full">
-                {/* CENTER HERO BLOCK */}
                 <div className="max-w-3xl mx-auto text-center">
                   <h1 className="font-orbitron font-bold text-4xl sm:text-6xl leading-tight">
                     <span className="text-white">MEMORIAL DAY</span>{" "}
@@ -74,7 +105,6 @@ export default function MemorialDayDroneShowsPage() {
                   <div className="mt-8">
                     <div className="mx-auto h-px w-full max-w-xl bg-gradient-to-r from-transparent via-white/25 to-transparent" />
 
-                    {/* CENTER BUTTONS */}
                     <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center items-center">
                       <Link
                         href="/contact"
@@ -119,10 +149,11 @@ export default function MemorialDayDroneShowsPage() {
               and community spaces.
             </p>
 
-            {/* BENEFITS */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-5xl mx-auto mb-14">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <h3 className="font-orbitron text-xl text-white mb-2">Respectful &amp; Controlled</h3>
+                <h3 className="font-orbitron text-xl text-white mb-2">
+                  Respectful &amp; Controlled
+                </h3>
                 <p className="text-gray-300">
                   Precision choreography, clean visuals, and a calm, meaningful pacing
                   that fits ceremonies and tributes.
@@ -146,7 +177,6 @@ export default function MemorialDayDroneShowsPage() {
               </div>
             </div>
 
-            {/* WHAT WE CAN SHOW */}
             <section className="text-left max-w-4xl mx-auto mb-14">
               <h3 className="font-orbitron text-2xl text-[#FF3B3B] mb-5 text-center">
                 What a Memorial Day Show Can Include
@@ -160,7 +190,6 @@ export default function MemorialDayDroneShowsPage() {
               </ul>
             </section>
 
-            {/* PERFECT FOR */}
             <section className="text-left max-w-4xl mx-auto mb-14">
               <h3 className="font-orbitron text-2xl text-[#FF3B3B] mb-5 text-center">
                 Perfect For
@@ -184,7 +213,6 @@ export default function MemorialDayDroneShowsPage() {
               </div>
             </section>
 
-            {/* CTA */}
             <div className="text-center mt-10">
               <Link
                 href="/contact"
