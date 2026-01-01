@@ -46,7 +46,7 @@ export default function EventsPage() {
         <HeroVideo
           title={
             <>
-              <span className="text-white">EVENT</span>{" "}
+              <span className="text-white">LAS VEGAS EVENT</span>{" "}
               <span
                 className="bg-clip-text text-transparent"
                 style={{

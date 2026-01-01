@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     url: "https://www.vegasdrones.com",
     title: "Vegas Drones | Spectacular Drone Light Shows in Las Vegas",
     description:
-      "Custom 100–500+ drone light shows for weddings, corporate events, sports, and festivals in Las Vegas.",
+      "Custom 100–500+ drone light shows for conventions, corporate events, sports, and festivals in Las Vegas.",
     siteName: "Vegas Drones",
     images: [
       {
@@ -86,7 +86,15 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  icons: { icon: "/favicon.ico", apple: "/apple-touch-icon.png" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  
 };
 
 export const viewport: Viewport = {
