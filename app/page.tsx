@@ -6,7 +6,7 @@ import HeroImage from "@/components/HeroImage.server";
 
 const SITE_NAME = "Vegas Drones";
 const SITE_URL = "https://www.vegasdrones.com";
-const OG_IMAGE = "/alienhead1.png"; // swap to a dedicated OG image later if you want
+const OG_IMAGE = "/alienhead1.png";
 
 // Brand reds (neon-ish, looks great on black)
 const BRAND_RED = "#FF3B3B";
@@ -52,12 +52,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: SITE_NAME,
     images: [
-      {
-        url: OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: "Vegas Drones aerial light show over Las Vegas",
-      },
+      { url: OG_IMAGE, width: 1200, height: 630, alt: "Vegas Drones aerial light show over Las Vegas" },
     ],
     type: "website",
     locale: "en_US",
@@ -113,7 +108,6 @@ export default function HomePage() {
                   "https://www.linkedin.com/company/vegas-drones",
                 ],
               },
-
               {
                 "@type": "Service",
                 "@id": `${SITE_URL}/#service-drone-light-shows`,
@@ -124,7 +118,6 @@ export default function HomePage() {
                 description:
                   "Custom drone light shows for weddings, conventions, corporate events, festivals, and brand activations in Las Vegas. 100–1000+ drones, logos, names, dates, and cinematic storytelling.",
               },
-
               {
                 "@type": "Service",
                 "@id": `${SITE_URL}/#service-aerial-advertising`,
@@ -135,22 +128,13 @@ export default function HomePage() {
                 description:
                   "High-impact aerial drone advertising and brand activations in Las Vegas for conventions, product launches, festivals, and special events.",
               },
-
-              // ✅ BreadcrumbList is its own item (NOT inside FAQPage.mainEntity)
               {
                 "@type": "BreadcrumbList",
                 "@id": `${SITE_URL}/#breadcrumb`,
                 itemListElement: [
-                  {
-                    "@type": "ListItem",
-                    position: 1,
-                    name: "Home",
-                    item: `${SITE_URL}/`,
-                  },
+                  { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
                 ],
               },
-
-              // ✅ FAQPage.mainEntity contains ONLY Questions
               {
                 "@type": "FAQPage",
                 "@id": `${SITE_URL}/#faq`,
@@ -217,14 +201,19 @@ export default function HomePage() {
       />
 
       {/* ================= HERO SECTION ================= */}
-      <div className="relative">
+      <section className="relative">
         <HeroImage
           title={
             <>
-              {/* LINE 1 */}
+              {/* Smaller H1 on mobile */}
               <span className="block text-center">
                 <span
-                  className="bg-clip-text text-transparent"
+                  className="
+                    block
+                    text-3xl xs:text-4xl sm:text-5xl md:text-6xl
+                    leading-tight
+                    bg-clip-text text-transparent
+                  "
                   style={{
                     backgroundImage:
                       "linear-gradient(to right, #FF3B3B, white, #FF3B3B)",
@@ -234,9 +223,13 @@ export default function HomePage() {
                 </span>
               </span>
 
-              {/* LINE 2 */}
               <span
-                className="block text-center bg-clip-text text-transparent"
+                className="
+                  block text-center
+                  text-3xl xs:text-4xl sm:text-5xl md:text-6xl
+                  leading-tight
+                  bg-clip-text text-transparent
+                "
                 style={{
                   backgroundImage:
                     "linear-gradient(to right, #FF6A6A, #FF3B3B, #FF6A6A)",
@@ -254,66 +247,64 @@ export default function HomePage() {
             </div>
           }
         />
+      </section>
 
-        {/* TAGLINE OVERLAY — overlaps hero + top of the video */}
-        <div className="pointer-events-none absolute left-0 right-0 -bottom-10 sm:-bottom-14 z-10 text-center px-4">
-          <p className="font-orbitron text-white font-bold text-lg sm:text-2xl md:text-3xl drop-shadow-[0_0_14px_rgba(0,0,0,0.9)]">
-            A Modern, Crowd-Winning Alternative to Fireworks — Built for Las Vegas
-          </p>
+      {/* ================= CTA + TAGLINE (NOW BELOW HERO) ================= */}
+      <section className="bg-black px-4 sm:px-6 pt-4 sm:pt-6 pb-6 sm:pb-10">
+        <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-4">
+          {/* CTA button moved below hero */}
+          <Link
+            href="/contact"
+            className="
+              inline-flex items-center justify-center
+              text-black font-bold
+              py-4 px-7
+              min-w-[220px]
+              rounded-full
+              shadow-lg
+              transform hover:scale-105 transition
+              font-orbitron
+            "
+            style={{
+              backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
+              boxShadow: "0 0 25px rgba(255,59,59,0.35)",
+            }}
+          >
+            Get a Quote
+          </Link>
+
+          {/* Tagline moved down too */}
+          <p className="font-orbitron text-white font-bold text-xl sm:text-3xl md:text-4xl leading-snug drop-shadow-[0_0_14px_rgba(0,0,0,0.9)]">
+  A Modern, Crowd-Winning Alternative to Fireworks — Built for Las Vegas
+</p>
+
+
         </div>
+      </section>
 
-        {/* CTA button overlay — stable across iPhone Safari */}
-        <div
-          className="pointer-events-none absolute left-0 right-0 bottom-40 z-30 flex justify-center"
-          style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
-        >
-          <div className="pointer-events-auto translate-y-32 sm:translate-y-0">
-            <Link
-              href="/contact"
-              className="
-                inline-flex items-center justify-center
-                text-black font-bold
-                py-4 px-7
-                min-w-[220px]
-                rounded-full
-                shadow-lg
-                transform hover:scale-105 transition
-                font-orbitron
-              "
-              style={{
-                backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
-                boxShadow: "0 0 25px rgba(255,59,59,0.35)",
-              }}
-            >
-              Get a Quote
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* ================= INTERNAL LINKING (SEO CORE) ================= */}
+      {/* ================= VIDEO (STABLE + FAST) ================= */}
       <section className="w-full bg-black">
-        <div className="relative w-full bg-black">
-          {/* Vimeo video immediately under the hero's bottom line */}
-          <div className="w-full flex justify-center pt-2 sm:pt-3 pb-4 sm:pb-6">
-            <div className="relative w-full max-w-5xl aspect-video rounded-xl shadow-lg overflow-hidden">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 pb-8 sm:pb-10">
+          <div className="w-full flex justify-center">
+            <div className="relative w-full max-w-5xl aspect-video rounded-2xl shadow-2xl overflow-hidden border border-gray-800">
               <iframe
+                title="Vegas Drones showreel"
                 src="https://player.vimeo.com/video/1147748380?autoplay=1&muted=1&loop=1&background=1&playsinline=1&controls=0"
                 className="absolute inset-0 w-full h-full"
                 allow="autoplay; fullscreen; picture-in-picture"
-                aria-hidden="true"
+                referrerPolicy="strict-origin-when-cross-origin"
                 loading="lazy"
               />
             </div>
           </div>
 
           {/* text directly under video */}
-          <div className="px-4 sm:px-6 pb-10">
+          <div className="mt-6 sm:mt-8">
             <div className="max-w-4xl mx-auto text-center">
               <p
                 className="
                   text-gray-100
-                  text-lg sm:text-xl md:text-2xl
+                  text-base sm:text-lg md:text-xl
                   leading-relaxed sm:leading-loose
                   drop-shadow-[0_0_14px_rgba(0,0,0,0.9)]
                 "
@@ -418,10 +409,8 @@ export default function HomePage() {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
-              {/* Dark overlay */}
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition" />
 
-              {/* Play indicator */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="px-6 py-3 rounded-full bg-black/70 text-white font-orbitron text-sm tracking-wide">
                   View Show

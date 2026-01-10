@@ -3,7 +3,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import "../chatbot.css";
 
@@ -12,8 +12,12 @@ type ChatMessage = {
   content: string;
 };
 
+const BRAND_RED = "#FF3B3B";
+const BRAND_RED_LIGHT = "#FF6A6A";
+
 export default function ChatbotClient() {
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   // Optional initial message (?query=...) and referral tag (?ref=...)
   const initialMessage = searchParams.get("query") || "";
@@ -60,6 +64,15 @@ export default function ChatbotClient() {
       });
     }
   }, [chatHistory]);
+
+  // ESC closes the chatbot
+  useEffect(() => {
+    const onKeyDown = (ev: KeyboardEvent) => {
+      if (ev.key === "Escape") router.push("/");
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [router]);
 
   const toggleTheme = () => setIsDarkMode((prev) => !prev);
 
@@ -121,10 +134,7 @@ export default function ChatbotClient() {
         setChatHistory((prev) => {
           const newHistory = [...prev];
           const lastIndex = newHistory.length - 1;
-          if (
-            lastIndex >= 0 &&
-            newHistory[lastIndex].role === "assistant"
-          ) {
+          if (lastIndex >= 0 && newHistory[lastIndex].role === "assistant") {
             newHistory[lastIndex] = {
               role: "assistant",
               content: assistantReply,
@@ -150,23 +160,62 @@ export default function ChatbotClient() {
     <div
       ref={wrapperRef}
       className={`chatbot-wrapper ${isVisible ? "visible" : ""}`}
+      // Solid immersive background so the underlying page never shows through
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 9999,
+        overflowY: "auto",
+        background:
+          "radial-gradient(circle at top, rgba(255,59,59,0.14), transparent 55%), linear-gradient(to bottom, #000000, #050505, #000000)",
+      }}
     >
       <div className={`chatbot-container ${hasSubmitted ? "compact" : ""}`}>
+        {/* Close X (Vegas Drones red) */}
+        <Link
+          href="/"
+          aria-label="Close chatbot"
+          className="chatbot-close"
+          style={{
+            position: "fixed",
+            top: "16px",
+            right: "16px",
+            width: "44px",
+            height: "44px",
+            borderRadius: "9999px",
+            backgroundImage: `linear-gradient(to right, ${BRAND_RED}, #FFFFFF, ${BRAND_RED_LIGHT})`,
+            color: "#000",
+            fontSize: "22px",
+            fontWeight: 900,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            textDecoration: "none",
+            boxShadow: "0 0 22px rgba(255, 59, 59, 0.55)",
+            zIndex: 12000,
+            transition: "transform 0.15s ease, box-shadow 0.15s ease",
+          }}
+        >
+          ✕
+        </Link>
+
+        {/* Back link (Vegas Drones red) */}
         <Link
           href="/"
           className="back-button"
           style={{
             position: "fixed",
-            top: "20px",
-            left: "20px",
-            color: "#00ffcc",
+            top: "22px",
+            left: "18px",
+            color: BRAND_RED,
             textDecoration: "none",
-            fontSize: "16px",
-            fontWeight: "bold",
-            zIndex: 1000,
+            fontSize: "15px",
+            fontWeight: 800,
+            zIndex: 11000,
+            textShadow: "0 0 14px rgba(255,59,59,0.35)",
           }}
         >
-          ← Back to Home
+          ← Back
         </Link>
 
         <button
@@ -210,14 +259,18 @@ export default function ChatbotClient() {
         </button>
 
         <div className="drone-icon">
-          <img
-            src="/alienhead1.png"
-            alt="Vegas Drones"
-            className="logo-icon"
-          />
+          <img src="/alienhead1.png" alt="Vegas Drones" className="logo-icon" />
         </div>
 
-        <h1>Vegas Drones Chatbot</h1>
+        {/* Title in Vegas Drones red */}
+        <h1
+          style={{
+            color: BRAND_RED,
+            textShadow: "0 0 20px rgba(255,59,59,0.55)",
+          }}
+        >
+          Vegas Drones Chatbot
+        </h1>
 
         {ref && (
           <p className="ref-tag">
@@ -225,9 +278,7 @@ export default function ChatbotClient() {
           </p>
         )}
 
-        {!hasSubmitted && (
-          <p>Ask about our spectacular drone light shows!</p>
-        )}
+        {!hasSubmitted && <p>Ask about our spectacular drone light shows!</p>}
 
         {!hasSubmitted && (
           <div className="suggested-questions">
@@ -237,7 +288,11 @@ export default function ChatbotClient() {
                 onClick={() => handleSubmit(q)}
                 disabled={isLoading}
                 className="suggested-button"
-                style={{ animationDelay: `${0.1 + i * 0.1}s` }}
+                style={{
+                  animationDelay: `${0.1 + i * 0.1}s`,
+                  borderColor: "rgba(255,59,59,0.45)",
+                  background: "rgba(255,59,59,0.08)",
+                }}
               >
                 {q}
               </button>
@@ -288,6 +343,13 @@ export default function ChatbotClient() {
             type="submit"
             disabled={isLoading || !message.trim()}
             className={isLoading ? "loading-pulse" : ""}
+            // Vegas Drones red (replaces default blue)
+            style={{
+              backgroundImage: `linear-gradient(to right, ${BRAND_RED}, #FFFFFF, ${BRAND_RED_LIGHT})`,
+              color: "#000",
+              fontWeight: 900,
+              boxShadow: "0 0 24px rgba(255,59,59,0.55)",
+            }}
           >
             {isLoading ? (
               <div className="loading-spinner">
