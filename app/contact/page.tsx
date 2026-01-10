@@ -10,12 +10,33 @@ const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
+// ✅ Google Ads conversion "send_to" (AW + Label)
+const ADS_SEND_TO = "AW-16857594392/xqxECNvDo5saEJj0qeY-";
+
 // Safe GA helper (won't crash if gtag isn't loaded yet)
 function track(eventName: string, params: Record<string, any> = {}) {
   if (typeof window === "undefined") return;
   const gtag = (window as any).gtag;
   if (typeof gtag !== "function") return;
   gtag("event", eventName, params);
+}
+
+// ✅ Fire Google Ads conversion (guards against double-fire on re-render)
+function trackAdsConversion(sendTo: string) {
+  if (typeof window === "undefined") return;
+
+  const gtag = (window as any).gtag;
+  if (typeof gtag !== "function") return;
+
+  const key = `ads_conv_fired:${sendTo}`;
+  try {
+    if (sessionStorage.getItem(key) === "1") return;
+    gtag("event", "conversion", { send_to: sendTo });
+    sessionStorage.setItem(key, "1");
+  } catch {
+    // If sessionStorage is blocked, still attempt to fire once.
+    gtag("event", "conversion", { send_to: sendTo });
+  }
 }
 
 export default function Contact() {
@@ -100,6 +121,9 @@ export default function Contact() {
       // Treat any 2xx response as success (Formspree often returns 202)
       if (response.status >= 200 && response.status < 300) {
         console.log("Formspree success status:", response.status);
+
+        // ✅ Google Ads lead conversion (fires only on successful submit)
+        trackAdsConversion(ADS_SEND_TO);
 
         setSubmitted(true);
         setFormData({
