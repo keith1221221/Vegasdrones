@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     url: "https://www.vegasdrones.com",
     title: "Vegas Drones | Spectacular Drone Light Shows in Las Vegas",
     description:
-      "Custom 100–500+ drone light shows for conventions, corporate events, sports, and festivals in Las Vegas.",
+      "Custom 100–1000+ drone light shows for conventions, corporate events, sports, and festivals in Las Vegas.",
     siteName: "Vegas Drones",
     images: [
       {
@@ -94,7 +94,6 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-touch-icon.png",
   },
-  
 };
 
 export const viewport: Viewport = {
@@ -128,7 +127,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${orbitron.variable} ${poppins.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${orbitron.variable} ${poppins.variable}`}
+    >
       <head>
         {/* ✅ LocalBusiness JSON-LD */}
         <script
@@ -136,8 +138,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
 
+        {/* ✅ PRELOAD LCP HERO IMAGE (improves LCP on mobile) */}
+        <link
+          rel="preload"
+          as="image"
+          href="/osmosignalt1.webp"
+          fetchPriority="high"
+        />
+
         {/* ✅ Font Awesome (NON-BLOCKING) */}
-        
 
         {/* Microsoft Clarity */}
         <Script
@@ -154,11 +163,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
 
-        {/* GA4 */}
+        {/* gtag loader (includes GA4 + Ads once we config both below) */}
         <Script
-  src="https://www.googletagmanager.com/gtag/js?id=AW-16857594392"
-  strategy="afterInteractive"
-/>
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
 
         <Script id="ga4-init" strategy="afterInteractive">
           {`
@@ -166,19 +175,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             function gtag(){dataLayer.push(arguments);}
             window.gtag = window.gtag || gtag;
 
-           gtag('consent', 'default', {
-  ad_storage: 'granted',
-  analytics_storage: 'granted'
-});
+            gtag('consent', 'default', {
+              ad_storage: 'granted',
+              analytics_storage: 'granted'
+            });
 
-gtag('js', new Date());
+            gtag('js', new Date());
 
-// GA4
-gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });
+            // GA4
+            gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });
 
-// Google Ads (required for reliable conversion detection + audiences)
-gtag('config', 'AW-16857594392');
-
+            // Google Ads (required for reliable conversion detection + audiences)
+            gtag('config', 'AW-16857594392');
 
             const fileExtRegex = /\\.(pdf|docx?|xlsx?|pptx?|zip|rar)$/i;
 

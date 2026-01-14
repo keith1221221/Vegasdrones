@@ -45,35 +45,27 @@ export default function HeroImage({
             alt="Las Vegas Drone Light Show Company"
             fill
             priority
+            fetchPriority="high"
+            loading="eager"
             sizes="100vw"
-            className="object-contain sm:object-cover"
+            quality={75}
+            className="object-cover"
           />
 
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/30 pointer-events-none" />
 
-          {/* CONTENT (SERVER-RENDERED TEXT) */}
+          {/* CONTENT */}
           <div className="absolute inset-0 px-4 sm:px-6 flex flex-col">
-            {/* TOP TITLE */}
             <div className="pt-6 sm:pt-14 text-center">
               <h1 className="font-orbitron font-bold text-3xl sm:text-5xl lg:text-6xl leading-tight text-center drop-shadow-[0_0_14px_rgba(0,0,0,0.85)] px-3">
                 {title}
               </h1>
             </div>
 
-            {/* SUBTITLE — OVER IMAGE (DESKTOP ONLY) */}
             {subtitle ? (
               <div className="hidden sm:flex flex-1 items-end justify-center px-4 pb-4">
-                <div
-                  className="
-                    text-gray-100
-                    max-w-3xl mx-auto
-                    text-base sm:text-xl md:text-2xl
-                    leading-relaxed
-                    text-center
-                    drop-shadow-[0_0_14px_rgba(0,0,0,0.85)]
-                  "
-                >
+                <div className="text-gray-100 max-w-3xl mx-auto text-base sm:text-xl md:text-2xl leading-relaxed text-center drop-shadow-[0_0_14px_rgba(0,0,0,0.85)]">
                   {subtitle}
                 </div>
               </div>
@@ -81,30 +73,17 @@ export default function HeroImage({
               <div className="flex-1" />
             )}
 
-            
-            {/* BOTTOM LINE (tagline) — pinned to bottom of hero */}
-{bottomLine ? (
-  <div className="mt-auto pb-6 sm:pb-10 text-center">
-    <p
-      className="
-        font-orbitron
-        text-lg sm:text-2xl md:text-3xl
-        font-bold
-        text-white
-        drop-shadow-[0_0_14px_rgba(0,0,0,0.9)]
-        px-2
-      "
-    >
-      {bottomLine}
-    </p>
-  </div>
-) : null}
-
+            {bottomLine ? (
+              <div className="mt-auto pb-6 sm:pb-10 text-center">
+                <p className="font-orbitron text-lg sm:text-2xl md:text-3xl font-bold text-white drop-shadow-[0_0_14px_rgba(0,0,0,0.9)] px-2">
+                  {bottomLine}
+                </p>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
 
-      {/* CTA BAR */}
       {(primaryCta || secondaryCta) && (
         <div className="px-4 sm:px-6">
           <div className="max-w-5xl mx-auto flex justify-center pt-4 sm:pt-6 pb-8 sm:pb-12">
@@ -112,12 +91,7 @@ export default function HeroImage({
               {primaryCta ? (
                 <Link
                   href={primaryCta.href}
-                  className="
-                    inline-flex justify-center items-center
-                    text-black font-bold py-4 px-7 rounded-full
-                    shadow-lg
-                    transform hover:scale-105 transition font-orbitron
-                  "
+                  className="inline-flex justify-center items-center text-black font-bold py-4 px-7 rounded-full shadow-lg transform hover:scale-105 transition font-orbitron"
                   style={{
                     backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
                     boxShadow: "0 0 25px rgba(255,59,59,0.35)",
@@ -130,11 +104,7 @@ export default function HeroImage({
               {secondaryCta ? (
                 <Link
                   href={secondaryCta.href}
-                  className="
-                    inline-flex justify-center items-center
-                    border border-white/30 text-white font-bold py-4 px-7 rounded-full
-                    hover:bg-white/10 transition font-orbitron
-                  "
+                  className="inline-flex justify-center items-center border border-white/30 text-white font-bold py-4 px-7 rounded-full hover:bg-white/10 transition font-orbitron"
                 >
                   {secondaryCta.label}
                 </Link>
