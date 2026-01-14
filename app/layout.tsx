@@ -156,22 +156,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* GA4 */}
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
-        />
+  src="https://www.googletagmanager.com/gtag/js?id=AW-16857594392"
+  strategy="afterInteractive"
+/>
+
         <Script id="ga4-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             window.gtag = window.gtag || gtag;
 
-            gtag('consent', 'default', {
-              ad_storage: 'denied',
-              analytics_storage: 'granted'
-            });
+           gtag('consent', 'default', {
+  ad_storage: 'granted',
+  analytics_storage: 'granted'
+});
 
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });
+gtag('js', new Date());
+
+// GA4
+gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });
+
+// Google Ads (required for reliable conversion detection + audiences)
+gtag('config', 'AW-16857594392');
+
 
             const fileExtRegex = /\\.(pdf|docx?|xlsx?|pptx?|zip|rar)$/i;
 
