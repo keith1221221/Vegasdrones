@@ -12,7 +12,7 @@ const BRAND_RED_LIGHT = "#FF6A6A";
 
 // ✅ Google Ads conversion "send_to" (AW + Label)
 // NOTE: Label is case-sensitive. Use exactly what Google Ads shows.
-const ADS_SEND_TO = "AW-16857594392/xqxeCNvDo5saEJj0qeY-";
+const ADS_SEND_TO = "AW-16857594392/bGgeCMm730YbEJj0qeY-";
 
 // Safe GA helper (won't crash if gtag isn't loaded yet)
 function track(eventName: string, params: Record<string, any> = {}) {
