@@ -28,6 +28,7 @@ const poppins = Poppins({
 });
 
 const GA_MEASUREMENT_ID = "G-1D4607FKY3";
+const ADS_ID = "AW-16857594392";
 const CLARITY_PROJECT_ID = "uqbi5fbzep";
 
 export const metadata: Metadata = {
@@ -145,9 +146,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="/osmosignalt1.webp"
           fetchPriority="high"
         />
+      </head>
 
-        {/* ✅ Font Awesome (NON-BLOCKING) */}
-
+      <body className={`${inter.className} bg-black text-white`}>
         {/* Microsoft Clarity */}
         <Script
           id="microsoft-clarity"
@@ -163,18 +164,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
 
-        {/* gtag loader (includes GA4 + Ads once we config both below) */}
+        {/* ✅ Load gtag.js using the Google Ads ID for reliable Ads conversion detection */}
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${ADS_ID}`}
           strategy="afterInteractive"
         />
 
-        <Script id="ga4-init" strategy="afterInteractive">
+        {/* ✅ Initialize gtag + configure BOTH GA4 and Google Ads */}
+        <Script id="gtag-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            function gtag(){window.dataLayer.push(arguments);}
             window.gtag = window.gtag || gtag;
 
+            // Consent (you can wire this to a real CMP later)
             gtag('consent', 'default', {
               ad_storage: 'granted',
               analytics_storage: 'granted'
@@ -182,11 +185,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             gtag('js', new Date());
 
-            // GA4
-            gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });
+            // Google Ads config (required for reliable conversion detection + remarketing)
+            gtag('config', '${ADS_ID}');
 
-            // Google Ads (required for reliable conversion detection + audiences)
-            gtag('config', 'AW-16857594392');
+            // GA4 config
+            gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: true });
 
             const fileExtRegex = /\\.(pdf|docx?|xlsx?|pptx?|zip|rar)$/i;
 
@@ -220,9 +223,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }, { capture: true });
           `}
         </Script>
-      </head>
 
-      <body className={`${inter.className} bg-black text-white`}>
         <Header />
         <main className="pt-10 md:pt-14">{children}</main>
         <Footer />
