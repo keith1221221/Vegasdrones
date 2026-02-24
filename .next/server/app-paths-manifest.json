@@ -1,4 +1,10 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js"
+  "/las-vegas-drone-light-shows/page": "app/las-vegas-drone-light-shows/page.js",
+  "/page": "app/page.js",
+  "/conventions-trade-shows/page": "app/conventions-trade-shows/page.js",
+  "/holidays/page": "app/holidays/page.js",
+  "/events/page": "app/events/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/blog/st-patricks-day-drone-light-show-las-vegas-strip/page": "app/blog/st-patricks-day-drone-light-show-las-vegas-strip/page.js"
 }

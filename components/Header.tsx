@@ -14,7 +14,6 @@ export default function Header() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/las-vegas-drone-light-shows", label: "Drone Light Shows" },
-    { href: "/drone-advertising", label: "Drone Advertising" },
     { href: "/holidays", label: "Holidays" },
     { href: "/events", label: "Events" },
     { href: "/conventions-trade-shows", label: "Conventions" },

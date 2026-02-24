@@ -9,9 +9,7 @@ export const metadata: Metadata = {
   title: "Blog | Vegas Drones",
   description:
     "Insights, guides, and venue-ready planning tips for drone light shows in Las Vegas — safety, operations, pricing, and event ideas.",
-  alternates: {
-    canonical: "https://www.vegasdrones.com/blog",
-  },
+  alternates: { canonical: "https://www.vegasdrones.com/blog" },
   openGraph: {
     title: "Blog | Vegas Drones",
     description:
@@ -41,6 +39,15 @@ type Post = {
 
 const posts: Post[] = [
   {
+    title: "St. Patrick’s Day DJ Terrace Party & Drone Light Show on the Las Vegas Strip",
+    description:
+      "A free St. Patrick’s Day celebration at BLVD Las Vegas featuring a DJ terrace party (6–8pm) and a themed drone light show finale over the Strip.",
+    href: "/blog/st-patricks-day-drone-light-show-las-vegas-strip",
+    dateLabel: "February 2026",
+    tag: "Events",
+    readingTime: "3 min read",
+  },
+  {
     title: "Why Venues Are Choosing Drone Light Shows Over Fireworks",
     description:
       "Safety, faster setup, smaller safety zones, cleaner operations, and sponsor-ready branding — why drone shows are the upgrade venues want.",
@@ -49,19 +56,16 @@ const posts: Post[] = [
     tag: "Venues",
     readingTime: "6 min read",
   },
-  // Add more posts here as you publish:
-  // {
-  //   title: "How Much Does a Drone Light Show Cost in Las Vegas?",
-  //   description: "A practical pricing guide for venues, planners, and brands.",
-  //   href: "/blog/drone-light-show-cost-las-vegas",
-  //   dateLabel: "January 2026",
-  //   tag: "Pricing",
-  //   readingTime: "7 min read",
-  // },
 ];
 
 export default function BlogIndexPage() {
   const featured = posts[0];
+  const rest = posts.slice(1);
+
+  const latestGridClass =
+    rest.length <= 1
+      ? "grid grid-cols-1 gap-6 max-w-3xl mx-auto"
+      : "grid grid-cols-1 md:grid-cols-2 gap-6";
 
   return (
     <>
@@ -126,13 +130,14 @@ export default function BlogIndexPage() {
           </div>
         </section>
 
-        {/* FEATURED */}
+        {/* FEATURED (Redesigned, no right-side info box) */}
         {featured && (
           <section className="px-6 pt-6 pb-12">
             <div className="max-w-6xl mx-auto">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-10 shadow-2xl">
-                <div className="flex flex-col lg:flex-row gap-8 items-start">
-                  <div className="flex-1">
+              <div className="rounded-3xl border border-white/10 bg-white/5 shadow-2xl overflow-hidden">
+                <div className="grid grid-cols-1 lg:grid-cols-5">
+                  {/* Left: content */}
+                  <div className="lg:col-span-3 p-6 sm:p-10">
                     <div className="flex flex-wrap items-center gap-2 mb-4">
                       <span className="inline-flex items-center rounded-full border border-white/15 bg-black/30 px-3 py-1 text-xs font-orbitron text-white">
                         Featured
@@ -145,40 +150,66 @@ export default function BlogIndexPage() {
                       </span>
                     </div>
 
-                    <h2 className="font-orbitron text-2xl sm:text-3xl font-bold text-white mb-3">
+                    <h2 className="font-orbitron text-2xl sm:text-4xl font-bold text-white mb-3 leading-tight">
                       {featured.title}
                     </h2>
 
-                    <p className="text-gray-300 leading-relaxed mb-6">
+                    <p className="text-gray-300 leading-relaxed mb-7">
                       {featured.description}
                     </p>
 
-                    <Link
-                      href={featured.href}
-                      className="inline-flex items-center justify-center text-black font-bold py-3.5 px-8 rounded-full shadow-lg transform hover:scale-105 transition font-orbitron"
-                      style={{
-                        backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
-                        boxShadow: "0 0 24px rgba(255,59,59,0.35)",
-                      }}
-                    >
-                      Read the Post
-                    </Link>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Link
+                        href={featured.href}
+                        className="inline-flex items-center justify-center text-black font-bold py-3.5 px-8 rounded-full shadow-lg transform hover:scale-105 transition font-orbitron"
+                        style={{
+                          backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
+                          boxShadow: "0 0 24px rgba(255,59,59,0.35)",
+                        }}
+                      >
+                        Read the Post
+                      </Link>
+
+                      <Link
+                        href="/contact"
+                        className="inline-flex items-center justify-center py-3.5 px-8 rounded-full font-orbitron font-bold border border-white/20 text-white hover:bg-white/10 transition"
+                      >
+                        Book a Show
+                      </Link>
+                    </div>
                   </div>
 
-                  {/* Optional right-side block */}
-                  <div className="w-full lg:w-[22rem] rounded-2xl border border-white/10 bg-black/30 p-5">
-                    <div className="font-orbitron text-sm text-[#FF3B3B] mb-2">
-                      What you’ll find here
+                  {/* Right: visual panel (no image needed) */}
+                  <div className="lg:col-span-2 relative min-h-[220px] lg:min-h-full">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-black to-black" />
+                    <div
+                      className="absolute inset-0 opacity-40"
+                      style={{
+                        backgroundImage: `radial-gradient(circle at 30% 20%, ${BRAND_RED} 0%, transparent 55%)`,
+                      }}
+                    />
+                    <div className="relative h-full p-6 sm:p-8 flex flex-col justify-end">
+                      <div className="text-xs font-orbitron text-white/70 mb-2">
+                        Las Vegas Strip Event
+                      </div>
+                      <div className="text-white font-orbitron text-lg sm:text-xl leading-snug">
+                        DJ terrace party → drone finale over BLVD
+                      </div>
+                      <div className="mt-3 text-sm text-gray-300">
+                        Free public celebration • March 13
+                      </div>
                     </div>
-                    <ul className="text-gray-300 space-y-2 text-sm">
-                      <li>• Venue safety + operations</li>
-                      <li>• Holiday & city event planning</li>
-                      <li>• Sponsor-ready show ideas</li>
-                      <li>• Simple pricing guidance</li>
-                      <li>• Tips for faster approvals</li>
-                    </ul>
                   </div>
                 </div>
+
+                {/* bottom glow line */}
+                <div
+                  className="h-px w-full"
+                  style={{
+                    backgroundImage: `linear-gradient(to right, transparent, ${BRAND_RED}, transparent)`,
+                    opacity: 0.35,
+                  }}
+                />
               </div>
             </div>
           </section>
@@ -196,8 +227,8 @@ export default function BlogIndexPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {posts.map((post) => (
+            <div className={latestGridClass}>
+              {rest.map((post) => (
                 <Link
                   key={post.href}
                   href={post.href}
