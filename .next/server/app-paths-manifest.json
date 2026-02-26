@@ -1,3 +1,4 @@
 {
-  "/page": "app/page.js"
+  "/las-vegas-drone-light-shows/page": "app/las-vegas-drone-light-shows/page.js",
+  "/blog/st-patricks-day-drone-light-show-las-vegas-strip/page": "app/blog/st-patricks-day-drone-light-show-las-vegas-strip/page.js"
 }
