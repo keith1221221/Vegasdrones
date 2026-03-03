@@ -11,25 +11,10 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/blog/page": [
+    "/see-our-shows/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/blog/page.js"
-    ],
-    "/blog/st-patricks-day-drone-light-show-las-vegas-strip/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/blog/st-patricks-day-drone-light-show-las-vegas-strip/page.js"
-    ],
-    "/las-vegas-drone-light-shows/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/las-vegas-drone-light-shows/page.js"
-    ],
-    "/contact/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/contact/page.js"
+      "static/chunks/app/see-our-shows/page.js"
     ]
   }
 }
