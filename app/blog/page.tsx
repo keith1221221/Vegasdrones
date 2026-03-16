@@ -8,12 +8,12 @@ const BRAND_RED_LIGHT = "#FF6A6A";
 export const metadata: Metadata = {
   title: "Blog | Vegas Drones",
   description:
-    "Insights, guides, and venue-ready planning tips for drone light shows in Las Vegas — safety, operations, pricing, and event ideas.",
+    "Insights, guides, event recaps, and venue-ready planning tips for drone light shows in Las Vegas — safety, operations, pricing, and event ideas.",
   alternates: { canonical: "https://www.vegasdrones.com/blog" },
   openGraph: {
     title: "Blog | Vegas Drones",
     description:
-      "Insights and guides for venues, planners, and brands exploring drone light shows in Las Vegas.",
+      "Insights, event recaps, and guides for venues, planners, and brands exploring drone light shows in Las Vegas.",
     url: "https://www.vegasdrones.com/blog",
     siteName: "Vegas Drones",
     images: [
@@ -39,7 +39,18 @@ type Post = {
 
 const posts: Post[] = [
   {
-    title: "St. Patrick’s Day DJ Terrace Party & Drone Light Show on the Las Vegas Strip",
+    title:
+      "St. Patrick’s Day Drone Show on the Las Vegas Strip | BLVD Las Vegas Recap",
+    description:
+      "A post-event recap of the St. Patrick’s Day drone light show at BLVD Las Vegas, featuring a successful Las Vegas Strip activation, event visuals, and recap coverage from Vegas Drones.",
+    href: "/blog/st-patricks-day-drone-show-las-vegas-strip-recap",
+    dateLabel: "March 2026",
+    tag: "Recap",
+    readingTime: "4 min read",
+  },
+  {
+    title:
+      "St. Patrick’s Day DJ Terrace Party & Drone Light Show on the Las Vegas Strip",
     description:
       "A free St. Patrick’s Day celebration at BLVD Las Vegas featuring a DJ terrace party (6–8pm) and a themed drone light show finale over the Strip.",
     href: "/blog/st-patricks-day-drone-light-show-las-vegas-strip",
@@ -100,7 +111,8 @@ export default function BlogIndexPage() {
 
               <p className="mt-5 text-gray-200 text-base sm:text-lg leading-relaxed">
                 Practical, venue-friendly insights on drone light shows: safety zones,
-                operations, branding, scheduling, and planning tips for Las Vegas events.
+                operations, branding, scheduling, event strategy, and real Las Vegas
+                drone show recaps.
               </p>
 
               <div className="mt-8">
@@ -130,7 +142,7 @@ export default function BlogIndexPage() {
           </div>
         </section>
 
-        {/* FEATURED (Redesigned, no right-side info box) */}
+        {/* FEATURED */}
         {featured && (
           <section className="px-6 pt-6 pb-12">
             <div className="max-w-6xl mx-auto">
@@ -179,30 +191,34 @@ export default function BlogIndexPage() {
                     </div>
                   </div>
 
-                  {/* Right: visual panel (no image needed) */}
-                  <div className="lg:col-span-2 relative min-h-[220px] lg:min-h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-black to-black" />
+                  {/* Right: visual panel with clover image */}
+                  <div className="lg:col-span-2 relative min-h-[280px] lg:min-h-full overflow-hidden">
+                    <img
+                      src="/st-patricks-day-drone-show-clover.jpg"
+                      alt="Clover drone formation from St. Patrick’s Day drone show at BLVD Las Vegas"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/20" />
                     <div
-                      className="absolute inset-0 opacity-40"
+                      className="absolute inset-0 opacity-35"
                       style={{
-                        backgroundImage: `radial-gradient(circle at 30% 20%, ${BRAND_RED} 0%, transparent 55%)`,
+                        backgroundImage: `radial-gradient(circle at 35% 20%, ${BRAND_RED} 0%, transparent 55%)`,
                       }}
                     />
                     <div className="relative h-full p-6 sm:p-8 flex flex-col justify-end">
-                      <div className="text-xs font-orbitron text-white/70 mb-2">
-                        Las Vegas Strip Event
+                      <div className="text-xs font-orbitron text-white/75 mb-2">
+                        Las Vegas Strip Event Recap
                       </div>
-                      <div className="text-white font-orbitron text-lg sm:text-xl leading-snug">
-                        DJ terrace party → drone finale over BLVD
+                      <div className="text-white font-orbitron text-lg sm:text-xl leading-snug drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)]">
+                        Real show completed → recap, photos, and video coverage
                       </div>
-                      <div className="mt-3 text-sm text-gray-300">
-                        Free public celebration • March 13
+                      <div className="mt-3 text-sm text-gray-200">
+                        BLVD Las Vegas • March 2026
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* bottom glow line */}
                 <div
                   className="h-px w-full"
                   style={{
@@ -273,7 +289,8 @@ export default function BlogIndexPage() {
             </div>
 
             <p className="text-center text-gray-500 text-xs mt-8">
-              Operated by Skylight Ads LLC • Las Vegas-based crew • FAA Part 107 • Insured operations
+              Operated by Skylight Ads LLC • Las Vegas-based crew • FAA Part 107 •
+              Insured operations
             </p>
           </div>
         </section>
