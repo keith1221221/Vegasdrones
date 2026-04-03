@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/faq",
     "/chatbot",
+    "/privacy",
   ];
 
   return routes.map((path) => ({
