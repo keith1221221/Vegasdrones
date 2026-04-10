@@ -178,7 +178,7 @@ export default function HomePage() {
             <div className="rounded-3xl border border-white/10 bg-black/55 backdrop-blur-md p-6 sm:p-8 shadow-2xl text-center space-y-6">
               <p className="text-gray-100 text-base sm:text-lg md:text-xl leading-relaxed">
                 Vegas Drones specializes in{" "}
-                <Link href="/drone-light-shows" className="text-white underline decoration-white/40 hover:decoration-white">
+                <Link href="/las-vegas-drone-light-shows" className="text-white underline decoration-white/40 hover:decoration-white">
                   Las Vegas drone light shows
                 </Link>{" "}
                 and drone show productions built for the pace and standards of the{" "}
@@ -451,7 +451,7 @@ export default function HomePage() {
 
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
             <PillLink href="/best-drone-show-company-las-vegas">Best drone show company in Las Vegas</PillLink>
-            <PillLink href="/drone-light-shows">How drone light shows work</PillLink>
+            <PillLink href="/las-vegas-drone-light-shows">How drone light shows work</PillLink>
             <PillLink href="/conventions-trade-shows">Convention &amp; trade show drone shows</PillLink>
             <PillLink href="/drone-advertising">Drone advertising in Las Vegas</PillLink>
             <PillLink href="/weddings">Wedding drone shows Las Vegas</PillLink>
@@ -510,7 +510,7 @@ export default function HomePage() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           <ServiceCard
-            href="/drone-light-shows"
+            href="/las-vegas-drone-light-shows"
             icon="✦"
             title="Drone Light Shows"
             desc="100–1,000+ drone aerial displays with custom animations, logos, and cinematic formations for any Las Vegas event."
@@ -618,7 +618,7 @@ export default function HomePage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <CtaButton href="/contact">Get a Quote</CtaButton>
           <Link
-            href="/drone-light-shows"
+            href="/las-vegas-drone-light-shows"
             className="inline-block px-10 py-4 border border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition font-orbitron"
           >
             How it works
@@ -726,7 +726,7 @@ function buildSchemaGraph() {
           "https://www.linkedin.com/company/vegas-drones",
         ],
         makesOffer: [
-          { "@type": "Offer", name: "Las Vegas Drone Light Shows", url: `${SITE_URL}/drone-light-shows`, category: "Drone Light Shows" },
+          { "@type": "Offer", name: "Las Vegas Drone Light Shows", url: `${SITE_URL}/las-vegas-drone-light-shows`, category: "Drone Light Shows" },
           { "@type": "Offer", name: "Convention & Trade Show Drone Shows", url: `${SITE_URL}/conventions-trade-shows`, category: "Convention Entertainment" },
           { "@type": "Offer", name: "Drone Advertising Las Vegas", url: `${SITE_URL}/drone-advertising`, category: "Aerial Advertising" },
           { "@type": "Offer", name: "Wedding Drone Light Shows", url: `${SITE_URL}/weddings`, category: "Wedding Entertainment" },

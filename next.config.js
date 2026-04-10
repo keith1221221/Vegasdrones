@@ -50,6 +50,11 @@ const nextConfig = {
         destination: "/conventions-trade-shows",
         permanent: true,
       },
+      {
+        source: "/corporate-event-entertainment-las-vegas",
+        destination: "/corporate-events",
+        permanent: true,
+      },
     ];
   },
 

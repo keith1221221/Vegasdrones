@@ -122,8 +122,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
     areaServed: "Las Vegas NV",
     sameAs: [
-      "https://www.instagram.com/vegasdrones",
-      "https://www.facebook.com/vegasdrones",
+      "https://www.facebook.com/61570074433959",
+      "https://www.instagram.com/vegas_drones",
+      "https://www.linkedin.com/company/vegas-drones",
+      "https://www.youtube.com/@vegas_drones",
     ],
   };
 

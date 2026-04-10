@@ -2,40 +2,51 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.vegasdrones.com";
+  const now = new Date();
 
   const routes = [
     "/",
     "/las-vegas-drone-light-shows",
+    "/las-vegas-drone-show",
+    "/las-vegas-drone-show-cost",
+    "/best-drone-show-company-las-vegas",
+    "/faa-drone-show-permits-las-vegas",
+    "/drone-shows-vs-fireworks",
     "/drone-advertising",
-    "/drone-light-shows",
     "/events",
     "/corporate-events",
     "/private-events",
+    "/weddings",
     "/conventions-trade-shows",
-
-    // Holidays hub + holiday pages
+    "/see-our-shows",
     "/holidays",
     "/july-4th-drone-shows",
     "/memorial-day-drone-shows",
     "/labor-day-drone-shows",
     "/christmas-drone-light-shows",
-
-    // Blog
     "/blog",
     "/blog/why-venues-are-choosing-drone-light-shows",
-
-    // Utility
+    "/blog/st-patricks-day-drone-light-show-las-vegas-strip",
+    "/blog/st-patricks-day-drone-show-las-vegas-strip-recap",
     "/contact",
     "/faq",
-    "/chatbot",
     "/privacy",
   ];
 
   return routes.map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: new Date(),
-    // optional but fine:
-    changeFrequency: path === "/" ? "daily" : "weekly",
-    priority: path === "/" ? 1 : 0.7,
+    lastModified: now,
+    changeFrequency: path === "/" ? "weekly" : "monthly",
+    priority:
+      path === "/"
+        ? 1
+        : [
+              "/las-vegas-drone-light-shows",
+              "/las-vegas-drone-show",
+              "/corporate-events",
+              "/contact",
+            ].includes(path)
+          ? 0.9
+          : 0.7,
   }));
 }
