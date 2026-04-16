@@ -14,6 +14,9 @@ type HeroImageProps = {
   primaryCta?: Cta;
   secondaryCta?: Cta;
   imageSrc?: string;
+  posterSrc?: string;
+  mobileVideoSrc?: string;
+  desktopVideoSrc?: string;
   heightClassName?: string;
 };
 
@@ -27,8 +30,19 @@ export default function HeroImage({
   primaryCta,
   secondaryCta,
   imageSrc = "/osmosignalt1.webp",
+  posterSrc,
+  mobileVideoSrc,
+  desktopVideoSrc,
   heightClassName = "h-[40vh] sm:h-[85vh]",
 }: HeroImageProps) {
+  const imageVisibilityClass = mobileVideoSrc
+    ? desktopVideoSrc
+      ? "hidden"
+      : "hidden sm:block"
+    : desktopVideoSrc
+      ? "block sm:hidden"
+      : "block";
+
   return (
     <section className="w-full">
       <div className="relative w-full bg-black">
@@ -39,7 +53,7 @@ export default function HeroImage({
             "relative overflow-hidden",
           ].join(" ")}
         >
-          {/* HERO IMAGE — LCP */}
+          {/* HERO MEDIA */}
           <Image
             src={imageSrc}
             alt="Las Vegas Drone Light Show Company"
@@ -49,8 +63,36 @@ export default function HeroImage({
             loading="eager"
             sizes="100vw"
             quality={75}
-            className="object-cover"
+            className={`${imageVisibilityClass} object-cover`}
           />
+
+          {mobileVideoSrc ? (
+            <video
+              className="absolute inset-0 h-full w-full object-cover sm:hidden"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={posterSrc || imageSrc}
+            >
+              <source src={mobileVideoSrc} type="video/mp4" />
+            </video>
+          ) : null}
+
+          {desktopVideoSrc ? (
+            <video
+              className="absolute inset-0 hidden h-full w-full object-cover sm:block"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={posterSrc || imageSrc}
+            >
+              <source src={desktopVideoSrc} type="video/mp4" />
+            </video>
+          ) : null}
 
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/30 pointer-events-none" />

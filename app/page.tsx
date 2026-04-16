@@ -105,6 +105,8 @@ export default function HomePage() {
       ══════════════════════════════════════════════════════════ */}
       <section className="relative">
         <HeroImage
+          mobileVideoSrc="/vd-sizzle-mobile.mp4"
+          posterSrc="/osmosignalt1.webp"
           title={
             <span
               className="block text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight bg-clip-text text-transparent font-orbitron"
