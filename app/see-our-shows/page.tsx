@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import Script from "next/script";
+import { featuredShowcaseClip, showcaseGalleryClips, type ShowcaseClip } from "@/lib/showcaseMedia";
 
 const SITE_URL = "https://www.vegasdrones.com";
 const OG_IMAGE = "/alienhead1.png";
@@ -40,29 +41,6 @@ export const metadata: Metadata = {
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
-const VIDEOS = [
-  {
-    id: "bo3z1mTSc0s",
-    title: "First Friday Drone Show",
-    location: "Downtown Las Vegas",
-  },
-  {
-    id: "yEAZil9cE2U",
-    title: "Festival Drone Light Show",
-    location: "Live Event Production",
-  },
-  {
-    id: "XvxnQlQjztE",
-    title: "Custom Brand Animation",
-    location: "Corporate Activation",
-  },
-  {
-    id: "kpqUduaDwK8",
-    title: "Large-Scale Drone Formation",
-    location: "Outdoor Venue",
-  },
-];
-
 export default function SeeOurShowsPage() {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -100,9 +78,9 @@ export default function SeeOurShowsPage() {
             See Our Drone Shows
           </h1>
           <p className="text-gray-300 mt-4 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
-            Real footage from real events. Below are examples of drone light shows
-            produced by Vegas Drones — including festivals, brand activations,
-            and city-scale productions.
+            Real footage from real events. This page is built as a proof-of-work reel for
+            planners, venues, and brand teams who want to watch actual show energy instead
+            of static mockups.
           </p>
 
           <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
@@ -126,30 +104,69 @@ export default function SeeOurShowsPage() {
           </div>
         </header>
 
-        {/* VIDEO GRID */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {VIDEOS.map((video) => (
-            <div
-              key={video.id}
-              className="bg-gray-900/60 border border-gray-800 rounded-3xl p-4 shadow-2xl"
-            >
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-gray-800">
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src={`https://www.youtube.com/embed/${video.id}?rel=0&modestbranding=1&playsinline=1`}
-                  title={`${video.title} | Vegas Drones`}
-                  loading="lazy"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+        <section className="mb-14 grid gap-8 lg:grid-cols-[1.35fr_0.75fr]">
+          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl">
+            <div className="relative aspect-video overflow-hidden rounded-[1.5rem] border border-white/10 bg-black">
+              <iframe
+                className="absolute inset-0 h-full w-full"
+                src={`https://www.youtube.com/embed/${featuredShowcaseClip.src}?rel=0&modestbranding=1&playsinline=1`}
+                title={`${featuredShowcaseClip.title} | Vegas Drones`}
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+
+            <div className="mt-5 grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
+              <div>
+                <div className="text-xs font-orbitron uppercase tracking-[0.25em] text-[#FF6A6A]">
+                  {featuredShowcaseClip.badge}
+                </div>
+                <h2 className="mt-3 font-orbitron text-2xl font-bold text-white sm:text-3xl">
+                  {featuredShowcaseClip.title}
+                </h2>
+                <p className="mt-2 text-sm uppercase tracking-[0.18em] text-gray-400">
+                  {featuredShowcaseClip.location}
+                </p>
+                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-gray-300 sm:text-base">
+                  {featuredShowcaseClip.description}
+                </p>
               </div>
 
-              <div className="mt-4 text-center">
-                <h2 className="font-orbitron text-lg font-bold">{video.title}</h2>
-                <p className="text-gray-400 text-sm mt-1">{video.location}</p>
-              </div>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full px-7 py-3 text-black font-bold transition hover:scale-105 font-orbitron"
+                style={{
+                  backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
+                  boxShadow: "0 0 22px rgba(255,59,59,0.35)",
+                }}
+              >
+                Build My Show
+              </Link>
             </div>
+          </div>
+
+          <div className="grid gap-4">
+            {[
+              ["Why this matters", "Real footage answers the biggest buyer question immediately: can this company actually produce a show that looks premium live and on camera?"],
+              ["Best fit", "Conventions, civic events, resort activations, festivals, weddings, and branded finales."],
+              ["What to send us", "Date, venue area, audience size, and whether you need logos, names, sponsor visuals, or a holiday theme."],
+            ].map(([title, body]) => (
+              <div
+                key={title}
+                className="rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-6 shadow-xl"
+              >
+                <h3 className="font-orbitron text-lg text-white">{title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-gray-300">{body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+          {showcaseGalleryClips.map((clip) => (
+            <ShowcaseGalleryCard key={clip.id} clip={clip} />
           ))}
         </section>
 
@@ -177,5 +194,58 @@ export default function SeeOurShowsPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+function ShowcaseGalleryCard({ clip }: { clip: ShowcaseClip }) {
+  return (
+    <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-4 shadow-2xl">
+      <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-black">
+        <VideoFrame clip={clip} />
+      </div>
+
+      <div className="mt-5">
+        <div className="text-xs font-orbitron uppercase tracking-[0.25em] text-[#FF6A6A]">
+          {clip.badge}
+        </div>
+        <h2 className="mt-3 font-orbitron text-xl font-bold text-white">{clip.title}</h2>
+        <p className="mt-2 text-sm uppercase tracking-[0.18em] text-gray-400">{clip.location}</p>
+        <p className="mt-4 text-sm leading-relaxed text-gray-300">{clip.description}</p>
+      </div>
+    </div>
+  );
+}
+
+function VideoFrame({ clip }: { clip: ShowcaseClip }) {
+  if (clip.type === "youtube") {
+    return (
+      <div className="relative aspect-video">
+        <iframe
+          className="absolute inset-0 h-full w-full"
+          src={`https://www.youtube.com/embed/${clip.src}?rel=0&modestbranding=1&playsinline=1`}
+          title={`${clip.title} | Vegas Drones`}
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="aspect-video">
+      <video
+        className="h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={clip.poster}
+      >
+        <source src={clip.src} type="video/mp4" />
+      </video>
+    </div>
   );
 }

@@ -18,6 +18,9 @@ type HeroImageProps = {
   mobileVideoSrc?: string;
   desktopVideoSrc?: string;
   heightClassName?: string;
+  imageClassName?: string;
+  mobileVideoClassName?: string;
+  desktopVideoClassName?: string;
 };
 
 const BRAND_RED = "#FF3B3B";
@@ -34,6 +37,9 @@ export default function HeroImage({
   mobileVideoSrc,
   desktopVideoSrc,
   heightClassName = "h-[40vh] sm:h-[85vh]",
+  imageClassName = "object-cover",
+  mobileVideoClassName = "object-cover",
+  desktopVideoClassName = "object-cover",
 }: HeroImageProps) {
   const imageVisibilityClass = mobileVideoSrc
     ? desktopVideoSrc
@@ -63,12 +69,12 @@ export default function HeroImage({
             loading="eager"
             sizes="100vw"
             quality={75}
-            className={`${imageVisibilityClass} object-cover`}
+            className={`${imageVisibilityClass} ${imageClassName}`}
           />
 
           {mobileVideoSrc ? (
             <video
-              className="absolute inset-0 h-full w-full object-cover sm:hidden"
+              className={`absolute inset-0 h-full w-full sm:hidden ${mobileVideoClassName}`}
               autoPlay
               muted
               loop
@@ -82,7 +88,7 @@ export default function HeroImage({
 
           {desktopVideoSrc ? (
             <video
-              className="absolute inset-0 hidden h-full w-full object-cover sm:block"
+              className={`absolute inset-0 hidden h-full w-full sm:block ${desktopVideoClassName}`}
               autoPlay
               muted
               loop

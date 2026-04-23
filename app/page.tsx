@@ -7,10 +7,11 @@
 // ============================================================
 
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import Script from "next/script";
-import Image from "next/image";
 import HeroImage from "@/components/HeroImage.server";
+import { featuredShowcaseClip, homepageShowcaseClips } from "@/lib/showcaseMedia";
 import type React from "react";
 
 const SITE_NAME = "Vegas Drones";
@@ -104,25 +105,60 @@ export default function HomePage() {
           HERO
       ══════════════════════════════════════════════════════════ */}
       <section className="relative">
-        <HeroImage
-          mobileVideoSrc="/vd-sizzle-mobile.mp4"
-          posterSrc="/osmosignalt1.webp"
-          title={
+        <div className="bg-black px-4 pt-6 text-center sm:hidden">
+          <h1 className="font-orbitron font-bold leading-none drop-shadow-[0_0_14px_rgba(0,0,0,0.85)]">
             <span
-              className="block text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight bg-clip-text text-transparent font-orbitron"
+              className="block text-[clamp(1.45rem,6.2vw,2.1rem)] whitespace-nowrap bg-clip-text text-transparent"
               style={{ backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED})` }}
             >
               LAS VEGAS DRONE SHOWS
             </span>
-          }
-          subtitle={
-            <div className="hidden sm:block">
-              Las Vegas's premier drone light show company — cinematic,{" "}
-              <strong>FAA-authorized</strong>,{" "}
-              <strong>100–1,000+ drones</strong> for conventions, resorts, corporate events, and festivals.
+          </h1>
+        </div>
+
+        <div className="bg-black px-4 pb-1 pt-5 sm:hidden">
+          <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-black shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
+            <div className="h-[52vh] min-h-[420px]">
+              <video
+                className="h-full w-full object-cover object-top"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/signweb.jpg"
+              >
+                <source src="/vd-sizzle-mobile.mp4" type="video/mp4" />
+              </video>
             </div>
-          }
-        />
+          </div>
+        </div>
+
+        <div className="hidden sm:block">
+          <HeroImage
+            title={
+              <span
+                className="text-center text-4xl sm:block sm:text-5xl md:text-6xl lg:text-7xl leading-tight bg-clip-text text-transparent font-orbitron"
+                style={{ backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED})` }}
+              >
+                LAS VEGAS DRONE SHOWS
+              </span>
+            }
+            subtitle={
+              <div className="hidden sm:block">
+                Las Vegas's premier drone light show company — cinematic,{" "}
+                <strong>FAA-authorized</strong>,{" "}
+                <strong>100–1,000+ drones</strong> for conventions, resorts, corporate events, and festivals.
+              </div>
+            }
+            imageSrc="/osmosignalt1.webp"
+            posterSrc="/osmosignalt1.webp"
+            desktopVideoSrc="/vd-desk-hero.mp4"
+            heightClassName="h-[40vh] sm:h-[88vh]"
+            imageClassName="object-cover object-[center_28%]"
+            desktopVideoClassName="object-cover object-[center_28%]"
+          />
+        </div>
       </section>
 
       {/* ── CTA + Tagline ────────────────────────────────────────── */}
@@ -154,31 +190,30 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          VIDEO SECTION
+          HERO STILL + SHOW BLOCK
       ══════════════════════════════════════════════════════════ */}
-      <section className="relative w-full overflow-hidden bg-black h-[100svh] md:h-[100dvh]">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vh] min-w-[177.78vh] min-h-[56.25vw]">
-              <iframe
-                title="Vegas Drones showreel — Las Vegas drone light show"
-                src="https://player.vimeo.com/video/1147748380?autoplay=1&muted=1&loop=1&background=1&playsinline=1&controls=0&title=0&byline=0&portrait=0"
-                className="absolute inset-0 w-full h-full"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-                referrerPolicy="strict-origin-when-cross-origin"
-                loading="lazy"
+      <section className="bg-black px-4 pb-8 pt-2 sm:px-6 sm:pb-12">
+        <div className="mx-auto max-w-6xl space-y-6">
+          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-black shadow-[0_28px_80px_rgba(0,0,0,0.5)]">
+            <div className="relative aspect-[16/10] w-full sm:aspect-[16/8]">
+              <Image
+                src="/osmosignalt1.webp"
+                alt="Vegas Drones hero image over the Las Vegas sign"
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/10" />
             </div>
           </div>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/40 pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-[55%] sm:h-[45%] bg-gradient-to-t from-black via-black/75 to-transparent pointer-events-none" />
 
-        <div className="absolute inset-x-0 bottom-0 z-20 px-4 sm:px-6 pb-8 sm:pb-10">
-          <div className="mx-auto max-w-6xl">
-            <div className="rounded-3xl border border-white/10 bg-black/55 backdrop-blur-md p-6 sm:p-8 shadow-2xl text-center space-y-6">
-              <p className="text-gray-100 text-base sm:text-lg md:text-xl leading-relaxed">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-black/65 p-6 text-center shadow-2xl backdrop-blur-md sm:p-8">
+            <div className="space-y-6">
+              <h2 className="font-orbitron text-2xl text-white sm:text-4xl">
+                Watch The Show Before You Read The Pitch
+              </h2>
+              <p className="text-gray-100 text-base leading-relaxed sm:text-lg md:text-xl">
                 Vegas Drones specializes in{" "}
                 <Link href="/las-vegas-drone-light-shows" className="text-white underline decoration-white/40 hover:decoration-white">
                   Las Vegas drone light shows
@@ -198,8 +233,28 @@ export default function HomePage() {
                 </Link>
                 .
               </p>
-              <div className="flex justify-center">
-                <CtaButton href="/contact">Book a Vegas Drone Show</CtaButton>
+              <div className="mx-auto grid max-w-4xl gap-3 text-left text-sm text-gray-200 sm:grid-cols-3">
+                <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                  Featured reel
+                  <div className="mt-1 font-orbitron text-white">Live audience proof</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                  Best for
+                  <div className="mt-1 font-orbitron text-white">Conventions, festivals, resorts</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                  Next step
+                  <div className="mt-1 font-orbitron text-white">Open the full clip gallery</div>
+                </div>
+              </div>
+              <div className="flex flex-col justify-center gap-3 sm:flex-row">
+                <CtaButton href="/see-our-shows">See Our Work</CtaButton>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 font-orbitron text-white transition hover:bg-white/10"
+                >
+                  Book a Vegas Drone Show
+                </Link>
               </div>
             </div>
           </div>
@@ -565,43 +620,85 @@ export default function HomePage() {
           SHOW PREVIEWS
       ══════════════════════════════════════════════════════════ */}
       <section className="py-16 sm:py-20 px-6 bg-black border-t border-gray-800">
-        <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16">
-          See Our Drone Light Shows
-        </h2>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { src: "/shows/seal beach.jpg", alt: "Vegas Drones aerial light show — custom drone formation" },
-            { src: "/shows/sign.jpg", alt: "Custom drone logo formation over Las Vegas" },
-            { src: "/shows/dragon.jpg", alt: "Animated dragon drone light show Las Vegas" },
-          ].map((img) => (
-            <Link
-              key={img.src}
-              href="/see-our-shows"
-              className="group relative block aspect-video overflow-hidden rounded-2xl shadow-2xl border border-gray-800"
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="px-6 py-3 rounded-full bg-black/70 text-white font-orbitron text-sm tracking-wide">
-                  View Show
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center">
+            <div className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-orbitron uppercase tracking-[0.25em] text-gray-200">
+              More Real Clips
+            </div>
+            <h2 className="mt-5 font-orbitron text-3xl md:text-4xl font-bold text-center">
+              Real Clips Beat Static Mockups
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-gray-300 sm:text-lg">
+              The fastest way to trust a drone show company is to watch real footage. These previews
+              move the homepage closer to a showreel and make it easier for planners to see event fit,
+              pacing, and production quality.
+            </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_1.1fr_0.9fr]">
+            {homepageShowcaseClips.map((clip) => (
+              <HomepageClipCard key={clip.id} clip={clip} />
+            ))}
+
+            <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-5 shadow-2xl">
+              <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-black">
+                <div className="aspect-video">
+                  <iframe
+                    className="h-full w-full"
+                    src={`https://www.youtube.com/embed/${featuredShowcaseClip.src}?rel=0&modestbranding=1&playsinline=1`}
+                    title={`${featuredShowcaseClip.title} | Vegas Drones`}
+                    loading="lazy"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
                 </div>
               </div>
+
+              <div className="mt-5">
+                <div className="text-xs font-orbitron uppercase tracking-[0.25em] text-[#FF6A6A]">
+                  {featuredShowcaseClip.badge}
+                </div>
+                <h3 className="mt-3 font-orbitron text-2xl text-white">{featuredShowcaseClip.title}</h3>
+                <p className="mt-2 text-sm uppercase tracking-[0.18em] text-gray-400">
+                  {featuredShowcaseClip.location}
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-gray-300">
+                  {featuredShowcaseClip.description}
+                </p>
+              </div>
+
+              <div className="mt-6 space-y-3 rounded-[1.5rem] border border-white/10 bg-black/40 p-5">
+                <div className="flex items-center justify-between text-sm text-gray-300">
+                  <span>Featured reel</span>
+                  <span className="font-orbitron text-white">Live proof</span>
+                </div>
+                <div className="flex items-center justify-between text-sm text-gray-300">
+                  <span>Best for</span>
+                  <span className="font-orbitron text-white">Festivals, public events, resorts</span>
+                </div>
+                <div className="flex items-center justify-between text-sm text-gray-300">
+                  <span>Next step</span>
+                  <span className="font-orbitron text-white">Watch the full gallery</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/see-our-shows"
+              className="inline-flex items-center justify-center rounded-full px-10 py-4 bg-white text-black font-bold hover:bg-gray-200 transition font-orbitron"
+            >
+              See Full Video Gallery
             </Link>
-          ))}
-        </div>
-        <div className="text-center mt-12 sm:mt-14">
-          <Link
-            href="/see-our-shows"
-            className="inline-flex items-center justify-center px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition font-orbitron"
-          >
-            See All Drone Shows
-          </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-full border border-white/20 px-10 py-4 text-white font-bold hover:bg-white/10 transition font-orbitron"
+            >
+              Ask for Clip Examples by Event Type
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -832,6 +929,51 @@ function MiniBadge({ children }: { children: React.ReactNode }) {
   return (
     <div className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-gray-100 font-orbitron shadow-[0_0_20px_rgba(255,59,59,0.08)]">
       {children}
+    </div>
+  );
+}
+
+function HomepageClipCard({
+  clip,
+}: {
+  clip: (typeof homepageShowcaseClips)[number];
+}) {
+  return (
+    <div className="group overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-5 shadow-2xl">
+      <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-black">
+        <div className="aspect-video">
+          <video
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={clip.poster}
+          >
+            <source src={clip.src} type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <div className="mt-5">
+        <div className="text-xs font-orbitron uppercase tracking-[0.25em] text-[#FF6A6A]">
+          {clip.badge}
+        </div>
+        <h3 className="mt-3 font-orbitron text-2xl text-white">{clip.title}</h3>
+        <p className="mt-2 text-sm uppercase tracking-[0.18em] text-gray-400">{clip.location}</p>
+        <p className="mt-4 text-sm leading-relaxed text-gray-300">{clip.description}</p>
+      </div>
+
+      <div className="mt-6 flex items-center justify-between text-sm text-gray-300">
+        <span>Watch more proof</span>
+        <Link
+          href="/see-our-shows"
+          className="font-orbitron text-white transition group-hover:text-[#FF6A6A]"
+        >
+          Open gallery →
+        </Link>
+      </div>
     </div>
   );
 }

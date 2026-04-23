@@ -13,11 +13,12 @@ export default function Header() {
 
   const navLinks = [
     { href: "/", label: "Home" },
+    { href: "/see-our-shows", label: "Shows" },
     { href: "/las-vegas-drone-light-shows", label: "Drone Light Shows" },
     { href: "/holidays", label: "Holidays" },
     { href: "/events", label: "Events" },
     { href: "/conventions-trade-shows", label: "Conventions" },
-    { href: "/contact", label: "Get A Quote" },
+    { href: "/contact", label: "Get Pricing" },
     { href: "/blog", label: "Blog" },
   ];
 
