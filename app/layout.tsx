@@ -38,12 +38,14 @@ export const metadata: Metadata = {
     template: "%s | Vegas Drones",
   },
   description:
-    "Vegas Drones creates spectacular custom drone light shows in Las Vegas for weddings, corporate events, festivals, and brand activations. Book a breathtaking aerial experience today.",
+    "Vegas Drones creates spectacular custom drone light shows in Las Vegas for conventions, brand activations, corporate events, resorts, weddings, and festivals. Book a FAA-authorized aerial entertainment experience today.",
   keywords: [
     "drone show",
     "drone shows",
     "Las Vegas drone show",
     "Las Vegas drones",
+    "Las Vegas drone light show company",
+    "Las Vegas drone entertainment",
     "wedding drone show",
     "corporate drone show",
     "drone advertising",
@@ -107,13 +109,15 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "ProfessionalService"],
     name: "Vegas Drones",
+    alternateName: ["Skylight Ads LLC", "Skylight Ads, LLC dba Vegas Drones"],
+    legalName: "Skylight Ads LLC",
     url: "https://www.vegasdrones.com",
     logo: "https://www.vegasdrones.com/alienhead1.png",
     image: "https://www.vegasdrones.com/alienhead1.png",
     description:
-      "Custom drone light shows in Las Vegas for weddings, corporate events, conventions, festivals, and brand activations.",
+      "Las Vegas-based drone light show company creating FAA-authorized custom aerial entertainment for conventions, corporate events, resorts, weddings, festivals, and brand activations.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Las Vegas",
@@ -121,6 +125,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       addressCountry: "US",
     },
     areaServed: "Las Vegas NV",
+    serviceType: [
+      "Drone light shows",
+      "Drone advertising",
+      "Convention entertainment",
+      "Brand activations",
+      "Corporate event entertainment",
+    ],
+    knowsAbout: [
+      "Drone light shows",
+      "Las Vegas drone show production",
+      "FAA Part 107 operations",
+      "Convention drone shows",
+      "Branded aerial activations",
+    ],
     sameAs: [
       "https://www.facebook.com/61570074433959",
       "https://www.instagram.com/vegas_drones",

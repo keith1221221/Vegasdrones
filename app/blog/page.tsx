@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "Vegas Drones",
     images: [
       {
-        url: "https://www.vegasdrones.com/og-image.jpg",
+        url: "https://www.vegasdrones.com/alienhead1.png",
         width: 1200,
         height: 630,
         alt: "Vegas Drones Blog",
@@ -35,9 +35,24 @@ type Post = {
   dateLabel: string;
   tag: string;
   readingTime: string;
+  image: string;
+  visualLabel: string;
+  visualCaption: string;
 };
 
 const posts: Post[] = [
+  {
+    title: "1,500-Drone Show for Amazon Prime's The Boys",
+    description:
+      "A Vegas Drones case study covering a 1,500-drone branded entertainment production for Amazon Prime's The Boys and what it signals about large-scale event capability.",
+    href: "/blog/amazon-prime-the-boys-drone-show",
+    dateLabel: "May 2026",
+    tag: "Case Study",
+    readingTime: "5 min read",
+    image: "/the-boys/the-boys-logo.jpg",
+    visualLabel: "Entertainment Brand Activation",
+    visualCaption: "Large-scale proof for entertainment, convention, and resort buyers",
+  },
   {
     title:
       "St. Patrick’s Day Drone Show on the Las Vegas Strip | BLVD Las Vegas Recap",
@@ -47,6 +62,9 @@ const posts: Post[] = [
     dateLabel: "March 2026",
     tag: "Recap",
     readingTime: "4 min read",
+    image: "/st-patricks-day-drone-show-clover.jpg",
+    visualLabel: "Las Vegas Strip Event Recap",
+    visualCaption: "Real show completed -> recap, photos, and video coverage",
   },
   {
     title:
@@ -57,6 +75,9 @@ const posts: Post[] = [
     dateLabel: "February 2026",
     tag: "Events",
     readingTime: "3 min read",
+    image: "/st-patricks-day-drone-show-claddagh.jpg",
+    visualLabel: "Upcoming Strip Activation",
+    visualCaption: "Holiday-themed Las Vegas Strip promotion and event invite",
   },
   {
     title: "Why Venues Are Choosing Drone Light Shows Over Fireworks",
@@ -66,6 +87,9 @@ const posts: Post[] = [
     dateLabel: "December 2025",
     tag: "Venues",
     readingTime: "6 min read",
+    image: "/osmosignalt1.webp",
+    visualLabel: "Venue Strategy",
+    visualCaption: "Operational reasons venues are switching from fireworks to drones",
   },
 ];
 
@@ -194,26 +218,20 @@ export default function BlogIndexPage() {
                   {/* Right: visual panel with clover image */}
                   <div className="lg:col-span-2 relative min-h-[280px] lg:min-h-full overflow-hidden">
                     <img
-                      src="/st-patricks-day-drone-show-clover.jpg"
-                      alt="Clover drone formation from St. Patrick’s Day drone show at BLVD Las Vegas"
+                      src={featured.image}
+                      alt={featured.title}
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/20" />
-                    <div
-                      className="absolute inset-0 opacity-35"
-                      style={{
-                        backgroundImage: `radial-gradient(circle at 35% 20%, ${BRAND_RED} 0%, transparent 55%)`,
-                      }}
-                    />
                     <div className="relative h-full p-6 sm:p-8 flex flex-col justify-end">
                       <div className="text-xs font-orbitron text-white/75 mb-2">
-                        Las Vegas Strip Event Recap
+                        {featured.visualLabel}
                       </div>
                       <div className="text-white font-orbitron text-lg sm:text-xl leading-snug drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)]">
-                        Real show completed → recap, photos, and video coverage
+                        {featured.visualCaption}
                       </div>
                       <div className="mt-3 text-sm text-gray-200">
-                        BLVD Las Vegas • March 2026
+                        {featured.dateLabel}
                       </div>
                     </div>
                   </div>

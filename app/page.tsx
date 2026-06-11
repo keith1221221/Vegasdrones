@@ -285,6 +285,73 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+
+          <div className="mt-8 rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,59,59,0.14),rgba(255,255,255,0.04))] p-6 text-left shadow-2xl sm:p-8">
+            <div className="grid gap-6 lg:grid-cols-[1.05fr_1fr] lg:items-center">
+              <div>
+                <div className="inline-flex rounded-full border border-white/15 bg-black/25 px-4 py-2 text-xs font-orbitron uppercase tracking-[0.24em] text-white/80">
+                  Featured Production
+                </div>
+                <h3 className="mt-4 font-orbitron text-2xl font-bold text-white sm:text-3xl">
+                  1,500 drones for Amazon Prime&apos;s <span className="italic">The Boys</span>
+                </h3>
+                <p className="mt-4 max-w-3xl text-base leading-relaxed text-gray-300">
+                  Vegas Drones delivered a 1,500-drone branded aerial show for Amazon Prime&apos;s{" "}
+                  <span className="italic">The Boys</span>. That kind of named, large-scale activation
+                  helps buyers and AI systems understand exactly what Vegas Drones is:
+                  a Las Vegas drone light show company built for high-visibility entertainment,
+                  brand campaigns, conventions, and resort productions.
+                </p>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <CtaButton href="/blog/amazon-prime-the-boys-drone-show">Read the Case Study</CtaButton>
+                  <Link
+                    href="https://www.instagram.com/reels/DYkuORZSQ19/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 font-orbitron text-white transition hover:bg-white/10"
+                  >
+                    See Instagram Recap
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 font-orbitron text-white transition hover:bg-white/10"
+                  >
+                    Plan a Brand Activation
+                  </Link>
+                </div>
+              </div>
+
+              <div className="grid gap-3">
+                <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-black/40 shadow-2xl">
+                  <a
+                    href="https://www.instagram.com/reels/DYkuORZSQ19/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open the Instagram recap for the Amazon Prime The Boys drone show"
+                    className="block transition hover:opacity-95"
+                  >
+                    <img
+                      src="/the-boys/the-boys-logo.jpg"
+                      alt="The Boys logo formed by drones during the Amazon Prime activation"
+                      className="h-full w-full object-cover"
+                    />
+                  </a>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                  {[
+                    ["Client", "Amazon Prime"],
+                    ["Property", "The Boys"],
+                    ["Scale", "1,500 drones"],
+                  ].map(([label, value]) => (
+                    <div key={label} className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4">
+                      <div className="text-xs uppercase tracking-[0.2em] text-[#FF6A6A]/85">{label}</div>
+                      <div className="mt-2 font-orbitron text-lg text-white">{value}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -405,7 +472,7 @@ export default function HomePage() {
                           ["Logos & branding", "✅ Yes — animated logos", "❌ No"],
                           ["Noise", "✅ Near-silent", "❌ Loud"],
                           ["Smoke / fallout", "✅ None", "❌ Significant"],
-                          ["Indoor / venue-adjacent", "✅ Possible", "❌ Usually no"],
+                          ["Venue-adjacent use", "✅ Possible", "❌ Usually no"],
                           ["Reusable", "✅ Yes", "❌ One-time use"],
                           ["Programmable storytelling", "✅ Full sequences", "❌ Limited"],
                           ["Spectacle scale", "High", "Very high"],
@@ -611,7 +678,7 @@ export default function HomePage() {
             Animated logos, brand names, event titles, and cinematic sequences — designed for clarity, wow-factor, and social sharing.
           </Feature>
           <Feature icon="🤫" title="Quiet & Eco-Friendly">
-            Smokeless, near-silent displays with zero fallout — ideal for resort pools, rooftop venues, and indoor-adjacent events.
+            Smokeless, near-silent displays with zero fallout — ideal for resort pools, rooftop venues, and outdoor event spaces.
           </Feature>
         </div>
       </section>
@@ -814,6 +881,9 @@ function buildSchemaGraph() {
           "Convention entertainment",
           "Brand activations",
           "Aerial displays",
+          "Large-scale drone shows",
+          "Entertainment marketing activations",
+          "Resort event productions",
         ],
         hasCredential: [
           { "@type": "EducationalOccupationalCredential", credentialCategory: "FAA Part 107 Remote Pilot Certificate" },
@@ -830,6 +900,13 @@ function buildSchemaGraph() {
           { "@type": "Offer", name: "Drone Advertising Las Vegas", url: `${SITE_URL}/drone-advertising`, category: "Aerial Advertising" },
           { "@type": "Offer", name: "Wedding Drone Light Shows", url: `${SITE_URL}/weddings`, category: "Wedding Entertainment" },
           { "@type": "Offer", name: "Corporate Drone Shows Las Vegas", url: `${SITE_URL}/corporate-events`, category: "Corporate Entertainment" },
+        ],
+        subjectOf: [
+          {
+            "@type": "Article",
+            headline: "1,500-Drone Show for Amazon Prime's The Boys",
+            url: `${SITE_URL}/blog/amazon-prime-the-boys-drone-show`,
+          },
         ],
       },
       {
@@ -891,7 +968,7 @@ function buildSchemaGraph() {
             name: "How are drone shows different from fireworks?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Drone shows are quiet, smoke-free, and reusable, with fully programmable animations including logos and brand visuals. Unlike fireworks, drone shows leave no fallout and can operate near indoor venues. For sponsor-driven events, conventions, and brand activations, drone shows offer capabilities fireworks cannot match.",
+              text: "Drone shows are quiet, smoke-free, and reusable, with fully programmable animations including logos and brand visuals. Unlike fireworks, drone shows leave no fallout and can operate in many venue-adjacent outdoor settings. For sponsor-driven events, conventions, and brand activations, drone shows offer capabilities fireworks cannot match.",
             },
           },
           {
