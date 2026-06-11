@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import Script from "next/script";
-import Header from "@/components/Header";
 import HeroVideo from "@/components/HeroImage.server";
 
 const SITE_URL = "https://www.vegasdrones.com";
@@ -71,8 +70,6 @@ export default function DroneAdvertisingPage() {
 
   return (
     <>
-      <Header />
-
       {/* Breadcrumb Schema */}
       <Script
         id="ld-breadcrumbs-drone-advertising"

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -11,8 +10,6 @@ export const metadata: Metadata = {
 export default function WhyVenuesDroneShows() {
   return (
     <>
-      <Header />
-
       <main className="bg-black text-white px-6 py-16 font-poppins">
         <article className="max-w-4xl mx-auto">
           <header className="mb-10">

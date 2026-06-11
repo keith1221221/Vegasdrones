@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
 import Link from "next/link";
 
 const BRAND_RED = "#FF3B3B";
@@ -104,8 +103,6 @@ export default function BlogIndexPage() {
 
   return (
     <>
-      <Header />
-
       <main className="bg-black text-white font-poppins">
         {/* HERO */}
         <section className="relative overflow-hidden px-6 pt-14 pb-10">

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.vegasdrones.com"),
   title: {
     default: "Vegas Drones | Spectacular Drone Light Shows in Las Vegas",
-    template: "%s | Vegas Drones",
+    template: "%s",
   },
   description:
     "Vegas Drones creates spectacular custom drone light shows in Las Vegas for conventions, brand activations, corporate events, resorts, weddings, and festivals. Book a FAA-authorized aerial entertainment experience today.",

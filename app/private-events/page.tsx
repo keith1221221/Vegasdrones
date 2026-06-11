@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import Script from "next/script";
-import Header from "@/components/Header";
 
 const SITE_URL = "https://www.vegasdrones.com";
 const OG_IMAGE = "/alienhead1.png";
@@ -72,8 +71,6 @@ export default function PrivateEventsPage() {
 
   return (
     <>
-      <Header />
-
       {/* Breadcrumb Schema */}
       <Script
         id="ld-breadcrumb-private-events"

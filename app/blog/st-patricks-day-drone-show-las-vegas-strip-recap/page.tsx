@@ -9,7 +9,7 @@ const YOUTUBE_EMBED = "https://www.youtube.com/embed/n6gK3TqB1QM";
 
 export const metadata: Metadata = {
   title:
-    "St. Patrick’s Day Drone Show on the Las Vegas Strip | BLVD Las Vegas Recap",
+    "St. Patrick’s Day Drone Show on the Las Vegas Strip | BLVD Las Vegas Recap | Vegas Drones",
   description:
     "Vegas Drones recaps the St. Patrick’s Day drone light show at BLVD Las Vegas on the Las Vegas Strip with highlight video and photos from the event.",
   alternates: {

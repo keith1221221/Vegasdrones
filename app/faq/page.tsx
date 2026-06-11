@@ -1,8 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 
 interface FAQItem {
   question: string
@@ -47,8 +45,6 @@ export default function FAQ() {
 
   return (
     <>
-      <Header />
-
       <main>
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-black pt-20 px-4 sm:px-6">
@@ -124,8 +120,6 @@ export default function FAQ() {
           </a>
         </section>
       </main>
-
-      <Footer />
     </>
   )
 }

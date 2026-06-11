@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Header from "@/components/Header";
 import Script from "next/script";
 
 const SITE_URL = "https://www.vegasdrones.com";
@@ -91,8 +90,6 @@ export default function WeddingsPage() {
 
   return (
     <>
-      <Header />
-
       {/* FAQ Schema */}
       <Script
         id="ld-faq-weddings"
