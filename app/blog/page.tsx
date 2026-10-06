@@ -41,6 +41,15 @@ type Post = {
 
 const posts: Post[] = [
   {
+    title: "150 Drones Celebrate the College of American Pathologists Foundation",
+    description: "Custom CAP Foundation lettering, a pathology heart, and two clips from the 150-drone show at the INDUSTRIAL in Las Vegas.",
+    href: "/blog/college-of-american-pathologists-drone-show-las-vegas",
+    dateLabel: "October 2026", tag: "Recap", readingTime: "2 min read",
+    image: "/shows/college-of-american-pathologists/pathology-heart.jpg",
+    visualLabel: "CAP Foundation · Las Vegas",
+    visualCaption: "150 drones putting pathology at the heart of the evening",
+  },
+  {
     title: "155 Drones Light Up Mobilize Recovery’s Narcan at Night",
     description: "Real photos and short clips from the 155-drone Recovery Night Lights show at the INDUSTRIAL in Las Vegas on September 12, 2026.",
     href: "/blog/mobilize-recovery-narcan-at-night-drone-show-las-vegas",
