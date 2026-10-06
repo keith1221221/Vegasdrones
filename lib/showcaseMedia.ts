@@ -77,26 +77,14 @@ export const showcaseGalleryClips: ShowcaseClip[] = [
     badge: "Scale Reel",
   },
   {
-    id: "holiday-finale-loop",
-    title: "Holiday Finale Loop",
-    location: "Las Vegas Event Production",
+    id: "pioche-labor-day",
+    title: "Pioche Labor Day Drone Show",
+    location: "Pioche, Nevada",
     description:
-      "Short-form motion content that works well for social previews and on-site event hype.",
-    type: "local",
-    src: "/fireworks_clip.mp4",
-    poster: "/st-patricks-day-drone-show-claddagh.jpg",
-    badge: "Local Clip",
-  },
-  {
-    id: "blvd-st-patricks-day",
-    title: "BLVD St. Patrick's Day Drone Show",
-    location: "Las Vegas Strip",
-    description:
-      "A themed Las Vegas Strip activation with holiday-driven visuals, crowd-facing energy, and short-form event proof.",
-    type: "local",
-    src: "/fireworks_clip.mp4",
-    poster: "/st-patricks-day-drone-show-clover.jpg",
-    badge: "Holiday Activation",
+      "155 drones celebrate Pioche Labor Day with custom town lettering and patriotic formations. Watch the show from our 2026 Nevada community celebration.",
+    type: "youtube",
+    src: "2g8EMWCjCeg",
+    badge: "Labor Day Show",
   },
   {
     id: "wedding-loop",
