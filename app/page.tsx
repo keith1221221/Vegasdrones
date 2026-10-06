@@ -163,35 +163,32 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA + Tagline ────────────────────────────────────────── */}
-      <section className="bg-black/80 backdrop-blur px-4 sm:px-6 pt-5 sm:pt-7 pb-8 sm:pb-12 border-t border-white/5">
-        <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-4">
-          <p className="text-base sm:text-lg font-semibold">
-            Headquartered in Las Vegas. No travel fees for Las Vegas shows.
+      <section className="bg-black px-5 sm:px-8 pt-10 sm:pt-14 pb-6 sm:pb-10">
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center gap-6 sm:gap-8">
+          <p className="text-sm sm:text-base font-medium leading-relaxed text-gray-300">
+            <span className="block sm:inline">Headquartered in Las Vegas.</span>{" "}
+            <span className="block sm:inline text-white">No travel fees for Las Vegas shows.</span>
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 items-center w-full justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-center w-full justify-center">
             <CtaButton href="/contact">Check My Date &amp; Get Pricing</CtaButton>
             <Link href="/see-our-shows" className="rounded-full border border-white/30 px-7 py-4 font-orbitron font-bold hover:bg-white/10">Watch Our Shows</Link>
           </div>
 
-          <h2 className="font-orbitron text-white font-bold text-xl sm:text-3xl md:text-4xl leading-snug drop-shadow-[0_0_14px_rgba(0,0,0,0.9)]">
-            Vegas-Born Drone Light Shows — Built for the Entertainment Capital of the World
+          <h2 className="mt-8 sm:mt-12 max-w-3xl font-orbitron text-white font-bold text-2xl sm:text-3xl md:text-4xl leading-snug">
+            Vegas-Born. Built to Light Up Your Event.
           </h2>
 
-          {/* ── AI-optimized lede: dense, factual, entity-rich ─── */}
-          <p className="max-w-2xl text-gray-200/90 text-sm sm:text-base leading-relaxed">
-            <strong>Vegas Drones</strong> (operated by <strong>Skylight Ads LLC</strong>) is a{" "}
-            <strong>Las Vegas-based drone show company</strong> producing premium{" "}
-            <strong>drone light shows in Las Vegas, Nevada</strong>. We serve conventions,
-            trade shows, resort activations, corporate events, brand activations,
-            festivals, and weddings with <strong>100 to 1,000+ synchronized drones</strong>.
-            All productions are operated under <strong>FAA Part 107</strong> with full
-            airspace authorization and liability insurance.
+          <p className="max-w-2xl text-gray-300 text-base sm:text-lg leading-8">
+            Custom drone light shows for conventions, resorts, brand activations,
+            festivals, and weddings. Our Las Vegas crew brings your story to the
+            sky with synchronized formations, creative planning, and insured
+            operations under FAA Part 107.
           </p>
 
-          <div className="mt-1 grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-3xl">
-            <MiniBadge>Las Vegas-based crew</MiniBadge>
-            <MiniBadge>FAA Part 107 · Fully insured</MiniBadge>
-            <MiniBadge>100–1,000+ drones</MiniBadge>
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-gray-400">
+            <span>Las Vegas-based crew</span>
+            <span>FAA Part 107 · Fully insured</span>
+            <span>100–1,000+ drones</span>
           </div>
         </div>
       </section>
@@ -201,8 +198,8 @@ export default function HomePage() {
       {/* ══════════════════════════════════════════════════════════
           HERO STILL + SHOW BLOCK
       ══════════════════════════════════════════════════════════ */}
-      <section className="bg-black px-4 pb-8 pt-2 sm:px-6 sm:pb-12">
-        <div className="mx-auto max-w-6xl space-y-6">
+      <section className="bg-black px-5 pb-12 pt-8 sm:px-8 sm:pb-20 sm:pt-12">
+        <div className="mx-auto max-w-6xl space-y-10 sm:space-y-14">
           <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-black shadow-[0_28px_80px_rgba(0,0,0,0.5)]">
             <div className="relative aspect-[16/10] w-full sm:aspect-[16/8]">
               <Image
@@ -217,7 +214,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-black/65 p-6 text-center shadow-2xl backdrop-blur-md sm:p-8">
+          <div className="mx-auto max-w-4xl px-2 py-4 text-center sm:px-6 sm:py-6">
             <div className="space-y-6">
               <h2 className="font-orbitron text-2xl text-white sm:text-4xl">
                 Watch The Show Before You Read The Pitch
