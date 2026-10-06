@@ -1,4 +1,3 @@
-import RecentShows from "@/components/RecentShows";
 import Link from "next/link";
 import type { Metadata } from "next";
 import Script from "next/script";
@@ -103,8 +102,6 @@ export default function SeeOurShowsPage() {
             </Link>
           </div>
         </header>
-
-        <RecentShows />
 
         <section className="mb-14 grid gap-8 lg:grid-cols-[1.35fr_0.75fr]">
           <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl">
