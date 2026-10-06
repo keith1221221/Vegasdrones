@@ -39,7 +39,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
           <Link href="/" className="flex items-center">
             <span
-              className="font-orbitron text-xl sm:text-2xl font-bold"
+              className="font-orbitron text-base sm:text-2xl font-bold"
               style={{ color: BRAND_RED }}
             >
               VEGAS DRONES
@@ -68,6 +68,9 @@ export default function Header() {
             })}
           </nav>
 
+          <div className="flex items-center gap-3 md:hidden">
+            <Link href="/contact" onClick={() => setIsOpen(false)} className="rounded-full bg-[#FF3B3B] px-3 py-2 text-xs font-bold text-black">Get Pricing</Link>
+
           {/* Mobile menu toggle */}
           <button
             type="button"
@@ -78,6 +81,7 @@ export default function Header() {
           >
             {isOpen ? "✕" : "☰"}
           </button>
+          </div>
         </div>
       </header>
 

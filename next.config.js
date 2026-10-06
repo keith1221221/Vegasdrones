@@ -30,6 +30,17 @@ const nextConfig = {
         permanent: true,
       },
 
+      {
+        source: "/gallery-las-vegas-drone-light-show.html",
+        destination: "/see-our-shows",
+        permanent: true,
+      },
+      {
+        source: "/gallery-las-vegas-drone-light-show",
+        destination: "/see-our-shows",
+        permanent: true,
+      },
+
       // Catch-all safety net: ANY .html → same path without .html
       { source: "/:path*.html", destination: "/:path*", permanent: true },
 

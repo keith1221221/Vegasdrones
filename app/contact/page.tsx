@@ -51,6 +51,7 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   // Breadcrumb schema (JSON-LD)
   const breadcrumbSchema = {
@@ -95,6 +96,8 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    setSubmitError("");
 
     // Track submit attempt (covers clicks + Enter key submissions)
     track("contact_submit_attempt", {
@@ -108,11 +111,14 @@ export default function Contact() {
     });
 
     setIsSubmitting(true);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
 
     try {
       const response = await fetch("https://formspree.io/f/myzyaqbw", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           ...formData,
           source: "website_contact_form",
@@ -153,6 +159,7 @@ export default function Contact() {
           has_wbraid: !!formData.wbraid,
         });
       } else {
+        setSubmitError("Your inquiry could not be sent. Your details are still here. Please try again.");
         // Non-success response
         track("contact_submit_error", {
           form_name: "contact",
@@ -164,7 +171,7 @@ export default function Contact() {
         });
       }
     } catch (error: any) {
-      console.error("Form submission error:", error);
+      setSubmitError("We couldn’t confirm your inquiry was sent. Your details are still here. Please try again or email us below.");
 
       track("contact_submit_error", {
         form_name: "contact",
@@ -174,6 +181,7 @@ export default function Contact() {
         has_wbraid: !!formData.wbraid,
       });
     } finally {
+      clearTimeout(timeout);
       setIsSubmitting(false);
     }
   };
@@ -195,8 +203,12 @@ export default function Contact() {
         </h1>
 
         <p className="mt-4 text-gray-200 text-base sm:text-lg leading-relaxed">
-          Fastest way to get pricing: share your date, venue area, and what you
-          want to show (logo, names, messaging, holiday theme, etc.).
+          Tell us your event date, venue, and creative ideas. We’ll help you plan
+          a drone show and provide pricing tailored to your event.
+        </p>
+
+        <p className="mt-4 font-semibold text-white">
+          Headquartered in Las Vegas. No travel fees for Las Vegas shows.
         </p>
 
         <div className="mt-8 flex justify-center">
@@ -209,10 +221,7 @@ export default function Contact() {
         <div className="max-w-2xl mx-auto">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-10 shadow-2xl">
             <h2 className="font-orbitron text-2xl sm:text-3xl font-bold text-center">
-              <span className="text-white">GET </span>
-              <span className="text-[#FF3B3B]">HOLDS</span>
-              <span className="text-white"> + </span>
-              <span className="text-[#FF3B3B]">PRICING</span>
+              CHECK MY DATE &amp; GET PRICING
             </h2>
 
             <p className="text-center text-gray-300 mt-3 mb-8">
@@ -220,23 +229,26 @@ export default function Contact() {
             </p>
 
             {submitted ? (
-              <div className="text-center p-8 rounded-2xl border border-white/10 bg-black/30">
+              <div role="status" className="text-center p-8 rounded-2xl border border-white/10 bg-black/30">
                 <h3 className="text-xl font-bold text-white mb-2 font-orbitron">
                   Message received ✅
                 </h3>
                 <p className="text-gray-300">
-                  Thanks — we’ll get back to you shortly.
+                  Thanks for contacting Vegas Drones. We’ll review your event details
+                  and follow up at the email address you provided.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} aria-busy={isSubmitting} className="space-y-5">
                 <div>
-                  <label className="block text-white mb-2 font-medium">
+                  <label htmlFor="contact-name" className="block text-white mb-2 font-medium">
                     Your Name
                   </label>
                   <input
                     type="text"
+                    id="contact-name"
                     name="name"
+                    autoComplete="name"
                     required
                     value={formData.name}
                     onChange={handleChange}
@@ -245,12 +257,14 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-white mb-2 font-medium">
+                  <label htmlFor="contact-email" className="block text-white mb-2 font-medium">
                     Email
                   </label>
                   <input
                     type="email"
+                    id="contact-email"
                     name="email"
+                    autoComplete="email"
                     required
                     value={formData.email}
                     onChange={handleChange}
@@ -259,10 +273,11 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-white mb-2 font-medium">
+                  <label htmlFor="contact-message" className="block text-white mb-2 font-medium">
                     Message
                   </label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     required
                     rows={7}
@@ -273,6 +288,12 @@ export default function Contact() {
                   />
                 </div>
 
+                {submitError && (
+                  <p role="alert" className="rounded-xl border border-red-400/50 bg-red-950/40 p-4 text-red-100">
+                    {submitError}
+                  </p>
+                )}
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -282,7 +303,7 @@ export default function Contact() {
                     boxShadow: "0 0 30px rgba(255,59,59,0.45)",
                   }}
                 >
-                  {isSubmitting ? "Submitting..." : "Send Message"}
+                  {isSubmitting ? "Sending inquiry…" : "Request Pricing & Availability"}
                 </button>
 
                 <p className="text-xs text-gray-400 text-center">
@@ -291,6 +312,10 @@ export default function Contact() {
               </form>
             )}
           </div>
+
+          <p className="mt-6 text-center text-gray-300">
+            Prefer email? <a className="text-white underline underline-offset-4" href="mailto:keith@vegasdrones.com">keith@vegasdrones.com</a>
+          </p>
 
           <p className="text-center text-gray-500 text-xs mt-10">
             Operated by Skylight Ads LLC • Las Vegas-based crew • FAA Part 107 •

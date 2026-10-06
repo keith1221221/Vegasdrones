@@ -1,3 +1,4 @@
+import RecentShows from "@/components/RecentShows";
 import Link from "next/link";
 import type { Metadata } from "next";
 import Script from "next/script";
@@ -78,9 +79,8 @@ export default function SeeOurShowsPage() {
             See Our Drone Shows
           </h1>
           <p className="text-gray-300 mt-4 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
-            Real footage from real events. This page is built as a proof-of-work reel for
-            planners, venues, and brand teams who want to watch actual show energy instead
-            of static mockups.
+            Explore custom formations from live Vegas Drones productions,
+            from Las Vegas events to Nevada community celebrations.
           </p>
 
           <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
@@ -92,7 +92,7 @@ export default function SeeOurShowsPage() {
                 boxShadow: "0 0 25px rgba(255,59,59,0.35)",
               }}
             >
-              Get a Quote
+              Check My Date &amp; Get Pricing
             </Link>
 
             <Link
@@ -103,6 +103,8 @@ export default function SeeOurShowsPage() {
             </Link>
           </div>
         </header>
+
+        <RecentShows />
 
         <section className="mb-14 grid gap-8 lg:grid-cols-[1.35fr_0.75fr]">
           <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl">

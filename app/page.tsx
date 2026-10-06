@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import Script from "next/script";
+import RecentShows from "@/components/RecentShows";
 import HeroImage from "@/components/HeroImage.server";
 import { featuredShowcaseClip, homepageShowcaseClips } from "@/lib/showcaseMedia";
 import type React from "react";
@@ -154,7 +155,7 @@ export default function HomePage() {
             imageSrc="/osmosignalt1.webp"
             posterSrc="/osmosignalt1.webp"
             desktopVideoSrc="/vd-desk-hero.mp4"
-            heightClassName="h-[40vh] sm:h-[88vh]"
+            heightClassName="h-[40vh] sm:h-[72vh]"
             imageClassName="object-cover object-[center_28%]"
             desktopVideoClassName="object-cover object-[center_28%]"
           />
@@ -164,11 +165,17 @@ export default function HomePage() {
       {/* ── CTA + Tagline ────────────────────────────────────────── */}
       <section className="bg-black/80 backdrop-blur px-4 sm:px-6 pt-5 sm:pt-7 pb-8 sm:pb-12 border-t border-white/5">
         <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-4">
-          <CtaButton href="/contact">Get a Quote</CtaButton>
+          <p className="text-base sm:text-lg font-semibold">
+            Headquartered in Las Vegas. No travel fees for Las Vegas shows.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 items-center w-full justify-center">
+            <CtaButton href="/contact">Check My Date &amp; Get Pricing</CtaButton>
+            <Link href="/see-our-shows" className="rounded-full border border-white/30 px-7 py-4 font-orbitron font-bold hover:bg-white/10">Watch Our Shows</Link>
+          </div>
 
-          <h1 className="font-orbitron text-white font-bold text-xl sm:text-3xl md:text-4xl leading-snug drop-shadow-[0_0_14px_rgba(0,0,0,0.9)]">
+          <h2 className="font-orbitron text-white font-bold text-xl sm:text-3xl md:text-4xl leading-snug drop-shadow-[0_0_14px_rgba(0,0,0,0.9)]">
             Vegas-Born Drone Light Shows — Built for the Entertainment Capital of the World
-          </h1>
+          </h2>
 
           {/* ── AI-optimized lede: dense, factual, entity-rich ─── */}
           <p className="max-w-2xl text-gray-200/90 text-sm sm:text-base leading-relaxed">
@@ -188,6 +195,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <RecentShows />
 
       {/* ══════════════════════════════════════════════════════════
           HERO STILL + SHOW BLOCK
@@ -782,7 +791,13 @@ export default function HomePage() {
           FAA-authorized, fully insured, and built for the Entertainment Capital of the World.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <CtaButton href="/contact">Get a Quote</CtaButton>
+          <p className="text-base sm:text-lg font-semibold">
+            Headquartered in Las Vegas. No travel fees for Las Vegas shows.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 items-center w-full justify-center">
+            <CtaButton href="/contact">Check My Date &amp; Get Pricing</CtaButton>
+            <Link href="/see-our-shows" className="rounded-full border border-white/30 px-7 py-4 font-orbitron font-bold hover:bg-white/10">Watch Our Shows</Link>
+          </div>
           <Link
             href="/las-vegas-drone-light-shows"
             className="inline-block px-10 py-4 border border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition font-orbitron"
