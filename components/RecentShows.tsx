@@ -6,8 +6,8 @@ const shows = [
     location: "The INDUSTRIAL · Las Vegas, Nevada",
     description: "155 drones brought recovery messages, custom lettering, and a sunrise formation to the Las Vegas sky.",
     href: "/blog/mobilize-recovery-narcan-at-night-drone-show-las-vegas",
-    video: "/shows/mobilize-recovery/sunrise.mp4",
-    poster: "/shows/mobilize-recovery/sunrise-poster.jpg",
+    video: "/shows/mobilize-recovery/breathe.mp4",
+    poster: "/shows/mobilize-recovery/breathe.jpg",
   },
   {
     title: "Pioche Labor Day 2026",
