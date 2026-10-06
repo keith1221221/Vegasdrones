@@ -41,6 +41,24 @@ type Post = {
 
 const posts: Post[] = [
   {
+    title: "155 Drones Light Up Mobilize Recovery’s Narcan at Night",
+    description: "Real photos and short clips from the 155-drone Recovery Night Lights show at the INDUSTRIAL in Las Vegas on September 12, 2026.",
+    href: "/blog/mobilize-recovery-narcan-at-night-drone-show-las-vegas",
+    dateLabel: "September 2026", tag: "Recap", readingTime: "3 min read",
+    image: "/shows/mobilize-recovery/narcan-at-night.jpg",
+    visualLabel: "Mobilize Recovery · Las Vegas",
+    visualCaption: "155 drones carrying a message of recovery into the night sky",
+  },
+  {
+    title: "Pioche Labor Day 2026: A 155-Drone Celebration",
+    description: "Pioche’s name, an American flag, an eagle, and more: five photos and two clips from the 155-drone Labor Day show in Nevada.",
+    href: "/blog/pioche-labor-day-2026-drone-show",
+    dateLabel: "September 2026", tag: "Recap", readingTime: "3 min read",
+    image: "/shows/pioche-labor-day/pioche.jpg",
+    visualLabel: "Pioche · Nevada",
+    visualCaption: "155 drones celebrating a Nevada community’s Labor Day tradition",
+  },
+  {
     title: "1,500-Drone Show for Amazon Prime's The Boys",
     description:
       "A Vegas Drones case study covering a 1,500-drone branded entertainment production for Amazon Prime's The Boys and what it signals about large-scale event capability.",

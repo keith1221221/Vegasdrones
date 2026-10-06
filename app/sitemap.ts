@@ -25,6 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/labor-day-drone-shows",
     "/christmas-drone-light-shows",
     "/blog",
+    "/blog/pioche-labor-day-2026-drone-show",
+    "/blog/mobilize-recovery-narcan-at-night-drone-show-las-vegas",
     "/blog/amazon-prime-the-boys-drone-show",
     "/blog/why-venues-are-choosing-drone-light-shows",
     "/blog/st-patricks-day-drone-light-show-las-vegas-strip",
