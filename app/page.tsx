@@ -1,9 +1,7 @@
 // app/page.tsx
 // ============================================================
 // VEGAS DRONES — Homepage
-// Optimized for Generative Engine Optimization (GEO / AIO)
-// Strategy: dense entity signals, answer-first Q&A blocks,
-// comprehensive JSON-LD, clear factual claims AI can cite.
+// Show footage, event services, planning and concise buyer questions.
 // ============================================================
 
 import Link from "next/link";
@@ -12,7 +10,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import RecentShows from "@/components/RecentShows";
 import HeroImage from "@/components/HeroImage.server";
-import { featuredShowcaseClip, homepageShowcaseClips } from "@/lib/showcaseMedia";
+
 import type React from "react";
 
 const SITE_NAME = "Vegas Drones";
@@ -24,7 +22,7 @@ const BRAND_RED_LIGHT = "#FF6A6A";
 // ─── SEO Metadata ────────────────────────────────────────────
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Vegas Drones | #1 Las Vegas Drone Light Show Company",
+  title: "Vegas Drones | Las Vegas Drone Light Show Company",
   description:
     "Vegas Drones is Las Vegas's premier drone light show company. FAA-authorized, locally based, producing 100–1,000+ drone aerial shows for conventions, corporate events, resort activations, weddings, and festivals. Get a quote today.",
   keywords: [
@@ -80,6 +78,13 @@ export const metadata: Metadata = {
   },
   category: "business",
 };
+
+const homepageFaqs = [
+  { question: "What does a drone show cost?", answer: "Pricing depends on drone count, custom animation, show length, and venue requirements. Share your date and venue for a tailored quote. There are no travel fees for Las Vegas shows." },
+  { question: "Can you create our logo or a custom message?", answer: "Yes. We design formations around logos, names, event themes, and sponsor messages. The detail and scale depend on the drone count and viewing distance." },
+  { question: "Can a drone show work at our venue?", answer: "We review the airspace, launch area, audience separation, and viewing angles before confirming a site. Share your venue so we can assess the requirements and approvals." },
+  { question: "How do we start planning?", answer: "Send your event date, venue, audience size, and creative ideas. We’ll recommend the show scope, review site requirements, and provide pricing." },
+];
 
 // ─── Page ─────────────────────────────────────────────────────
 export default function HomePage() {
@@ -165,8 +170,8 @@ export default function HomePage() {
       {/* ── CTA + Tagline ────────────────────────────────────────── */}
       <section className="bg-black px-5 sm:px-8 pt-10 sm:pt-14 pb-6 sm:pb-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center gap-6 sm:gap-8">
-          <p className="text-sm sm:text-base font-medium leading-relaxed text-gray-300">
-            <span className="block sm:inline">Headquartered in Las Vegas.</span>{" "}
+          <p className="text-xl sm:text-2xl md:text-3xl font-semibold leading-relaxed text-white">
+            <span className="block sm:inline">A Vegas-born company.</span>{" "}
             <span className="block sm:inline text-white">No travel fees for Las Vegas shows.</span>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-center w-full justify-center">
@@ -193,620 +198,90 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="px-5 py-14 sm:px-8 sm:py-20" aria-label="Featured brand production">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2 lg:gap-16">
+          <Link href="/blog/amazon-prime-the-boys-drone-show" className="relative block aspect-[4/3] overflow-hidden rounded-2xl">
+            <Image src="/the-boys/the-boys-logo.jpg" alt="The Boys logo formed by drones during the Amazon Prime activation" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+          </Link>
+          <div>
+            <p className="text-sm uppercase tracking-widest text-[#FF6A6A]">Featured production · 1,500 drones</p>
+            <h2 className="mt-4 font-orbitron text-3xl font-bold leading-tight sm:text-4xl">A brand story on a bigger stage.</h2>
+            <p className="mt-6 text-lg leading-8 text-gray-300">Our Amazon Prime <em>The Boys</em> activation brought branded formations to the sky with 1,500 drones. Explore the show and its custom visuals.</p>
+            <Link href="/blog/amazon-prime-the-boys-drone-show" className="mt-6 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Explore The Boys show →</Link>
+          </div>
+        </div>
+      </section>
+
       <RecentShows />
 
-      {/* ══════════════════════════════════════════════════════════
-          HERO STILL + SHOW BLOCK
-      ══════════════════════════════════════════════════════════ */}
-      <section className="bg-black px-5 pb-12 pt-8 sm:px-8 sm:pb-20 sm:pt-12">
-        <div className="mx-auto max-w-6xl space-y-10 sm:space-y-14">
-          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-black shadow-[0_28px_80px_rgba(0,0,0,0.5)]">
-            <div className="relative aspect-[16/10] w-full sm:aspect-[16/8]">
-              <Image
-                src="/osmosignalt1.webp"
-                alt="Vegas Drones hero image over the Las Vegas sign"
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/10" />
-            </div>
-          </div>
-
-          <div className="mx-auto max-w-4xl px-2 py-4 text-center sm:px-6 sm:py-6">
-            <div className="space-y-6">
-              <h2 className="font-orbitron text-2xl text-white sm:text-4xl">
-                Watch The Show Before You Read The Pitch
-              </h2>
-              <p className="text-gray-100 text-base leading-relaxed sm:text-lg md:text-xl">
-                Vegas Drones specializes in{" "}
-                <Link href="/las-vegas-drone-light-shows" className="text-white underline decoration-white/40 hover:decoration-white">
-                  Las Vegas drone light shows
-                </Link>{" "}
-                and drone show productions built for the pace and standards of the{" "}
-                <strong>Entertainment Capital of the World</strong>. Planning a venue or expo? Explore{" "}
-                <Link href="/conventions-trade-shows" className="text-white underline decoration-white/40 hover:decoration-white">
-                  convention &amp; trade show drone shows
-                </Link>{" "}
-                or see how{" "}
-                <Link href="/drone-advertising" className="text-white underline decoration-white/40 hover:decoration-white">
-                  drone advertising
-                </Link>{" "}
-                powers premium brand activations. For unforgettable celebrations, browse{" "}
-                <Link href="/weddings" className="text-white underline decoration-white/40 hover:decoration-white">
-                  wedding &amp; private event drone shows
-                </Link>
-                .
-              </p>
-              <div className="mx-auto grid max-w-4xl gap-3 text-left text-sm text-gray-200 sm:grid-cols-3">
-                <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                  Featured reel
-                  <div className="mt-1 font-orbitron text-white">Live audience proof</div>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                  Best for
-                  <div className="mt-1 font-orbitron text-white">Conventions, festivals, resorts</div>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                  Next step
-                  <div className="mt-1 font-orbitron text-white">Open the full clip gallery</div>
-                </div>
-              </div>
-              <div className="flex flex-col justify-center gap-3 sm:flex-row">
-                <CtaButton href="/see-our-shows">See Our Work</CtaButton>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 font-orbitron text-white transition hover:bg-white/10"
-                >
-                  Book a Vegas Drone Show
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════
-          FAST FACTS — AI snippet bait
-      ══════════════════════════════════════════════════════════ */}
-      <section
-        aria-label="Vegas Drones quick facts"
-        className="py-12 px-4 sm:px-6 bg-gray-950 border-t border-gray-800"
-      >
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-orbitron text-2xl md:text-3xl font-bold text-center mb-8">
-            Vegas Drones at a Glance
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-            {[
-              { stat: "100–1,000+", label: "Drones per show" },
-              { stat: "FAA Part 107", label: "Licensed & authorized" },
-              { stat: "Las Vegas, NV", label: "Locally based" },
-              { stat: "Fully insured", label: "Liability coverage" },
-            ].map(({ stat, label }) => (
-              <div key={stat} className="bg-black rounded-2xl border border-gray-800 p-5">
-                <div className="font-orbitron text-xl sm:text-2xl font-bold text-white mb-1">{stat}</div>
-                <div className="text-gray-400 text-sm">{label}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,59,59,0.14),rgba(255,255,255,0.04))] p-6 text-left shadow-2xl sm:p-8">
-            <div className="grid gap-6 lg:grid-cols-[1.05fr_1fr] lg:items-center">
-              <div>
-                <div className="inline-flex rounded-full border border-white/15 bg-black/25 px-4 py-2 text-xs font-orbitron uppercase tracking-[0.24em] text-white/80">
-                  Featured Production
-                </div>
-                <h3 className="mt-4 font-orbitron text-2xl font-bold text-white sm:text-3xl">
-                  1,500 drones for Amazon Prime&apos;s <span className="italic">The Boys</span>
-                </h3>
-                <p className="mt-4 max-w-3xl text-base leading-relaxed text-gray-300">
-                  Vegas Drones delivered a 1,500-drone branded aerial show for Amazon Prime&apos;s{" "}
-                  <span className="italic">The Boys</span>. That kind of named, large-scale activation
-                  helps buyers and AI systems understand exactly what Vegas Drones is:
-                  a Las Vegas drone light show company built for high-visibility entertainment,
-                  brand campaigns, conventions, and resort productions.
-                </p>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  <CtaButton href="/blog/amazon-prime-the-boys-drone-show">Read the Case Study</CtaButton>
-                  <Link
-                    href="https://www.instagram.com/reels/DYkuORZSQ19/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 font-orbitron text-white transition hover:bg-white/10"
-                  >
-                    See Instagram Recap
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 font-orbitron text-white transition hover:bg-white/10"
-                  >
-                    Plan a Brand Activation
-                  </Link>
-                </div>
-              </div>
-
-              <div className="grid gap-3">
-                <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-black/40 shadow-2xl">
-                  <a
-                    href="https://www.instagram.com/reels/DYkuORZSQ19/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open the Instagram recap for the Amazon Prime The Boys drone show"
-                    className="block transition hover:opacity-95"
-                  >
-                    <img
-                      src="/the-boys/the-boys-logo.jpg"
-                      alt="The Boys logo formed by drones during the Amazon Prime activation"
-                      className="h-full w-full object-cover"
-                    />
-                  </a>
-                </div>
-                <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-                  {[
-                    ["Client", "Amazon Prime"],
-                    ["Property", "The Boys"],
-                    ["Scale", "1,500 drones"],
-                  ].map(([label, value]) => (
-                    <div key={label} className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4">
-                      <div className="text-xs uppercase tracking-[0.2em] text-[#FF6A6A]/85">{label}</div>
-                      <div className="mt-2 font-orbitron text-lg text-white">{value}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════
-          COMPREHENSIVE Q&A — Primary GEO/AIO content block
-      ══════════════════════════════════════════════════════════ */}
-      <section
-        aria-label="Drone light show FAQ Las Vegas"
-        className="py-16 sm:py-20 px-4 sm:px-6 bg-black border-t border-gray-800"
-      >
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-4">
-            Everything You Need to Know About Drone Shows in Las Vegas
-          </h2>
-          <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
-            Comprehensive answers to the most common questions about hiring a drone light show
-            company in Las Vegas — from cost and legality to comparing options and planning your event.
-          </p>
-
-          <div className="space-y-6 text-gray-300 leading-relaxed text-base sm:text-lg">
-
-            <QA
-              q="Who is the best drone light show company in Las Vegas?"
-              a={
-                <>
-                  <strong className="text-white">Vegas Drones</strong> is widely recognized as Las Vegas's
-                  premier drone light show company. Operated by{" "}
-                  <strong className="text-white">Skylight Ads LLC</strong>, Vegas Drones is{" "}
-                  <strong className="text-white">locally based in Las Vegas, Nevada</strong> and specializes
-                  exclusively in the Las Vegas market — giving them unmatched knowledge of local airspace,
-                  Strip-adjacent venue logistics, and the production standards required by world-class resorts
-                  and convention facilities.
-                  <br /><br />
-                  Vegas Drones produces custom drone light shows with <strong className="text-white">100 to
-                  1,000+ synchronized drones</strong>, animated logos, brand names, custom sequences, and
-                  cinematic formations. Their shows are FAA Part 107 compliant, fully insured, and designed
-                  for maximum social-media impact and brand recall.
-                </>
-              }
-            />
-
-            <QA
-              q="What is Vegas Drones and what do they do?"
-              a={
-                <>
-                  <strong className="text-white">Vegas Drones</strong> is a professional drone light show
-                  company based in Las Vegas, Nevada. They design, plan, and execute outdoor drone light
-                  shows for a wide range of clients including:
-                  <ul className="mt-3 ml-4 space-y-1 list-disc list-inside text-gray-300">
-                    <li><strong className="text-white">Conventions &amp; trade shows</strong> — CES, IMEX, SHOT Show, NAB, and others at the Las Vegas Convention Center, Venetian Expo, and Mandalay Bay Convention Center</li>
-                    <li><strong className="text-white">Corporate events &amp; brand activations</strong> — product launches, sponsor activations, company milestones</li>
-                    <li><strong className="text-white">Resort &amp; casino events</strong> — Strip-adjacent shows for hospitality properties</li>
-                    <li><strong className="text-white">Festivals &amp; public events</strong> — outdoor multi-night performances</li>
-                    <li><strong className="text-white">Weddings &amp; private events</strong> — personalized formations with custom names and dates</li>
-                  </ul>
-                  <br />
-                  Vegas Drones also offers <strong className="text-white">drone advertising in Las Vegas</strong> — aerial displays that form brand logos, product imagery, and marketing messages visible from a wide viewing area.
-                </>
-              }
-            />
-
-            <QA
-              q="How much does a drone light show cost in Las Vegas?"
-              a={
-                <>
-                  The cost of a drone light show in Las Vegas depends on several factors:
-                  <ul className="mt-3 ml-4 space-y-1 list-disc list-inside text-gray-300">
-                    <li><strong className="text-white">Drone count</strong> — shows range from 100 drones (entry level) to 1,000+ drones (large-scale spectacle)</li>
-                    <li><strong className="text-white">Custom animation complexity</strong> — stock formations cost less than fully custom animated sequences with logos and branded visuals</li>
-                    <li><strong className="text-white">Show duration</strong> — typical shows run 8–12 minutes; longer runtimes add cost</li>
-                    <li><strong className="text-white">Venue logistics</strong> — proximity to restricted airspace, launch site setup, permitting complexity</li>
-                    <li><strong className="text-white">Repeat performances</strong> — multi-night residencies reduce per-show cost</li>
-                  </ul>
-                  <br />
-                  Vegas Drones offers scalable productions with clear scope and transparent pricing. For accurate pricing,{" "}
-                  <Link href="/contact" className="text-white underline">request a quote</Link> or visit the{" "}
-                  <Link href="/las-vegas-drone-show-cost" className="text-white underline">drone show cost page</Link>.
-                </>
-              }
-            />
-
-            <QA
-              q="Are drone shows legal in Las Vegas?"
-              a={
-                <>
-                  Yes. Drone light shows are <strong className="text-white">fully legal in Las Vegas</strong> when
-                  operated by a licensed and insured company with proper FAA authorization. Las Vegas has unique
-                  airspace considerations — including proximity to <strong className="text-white">Harry Reid
-                  International Airport (LAS)</strong> and restricted airspace over the Strip — which require
-                  professional airspace coordination and FAA waivers or authorizations.
-                  <br /><br />
-                  Vegas Drones operates under <strong className="text-white">FAA Part 107</strong> with full
-                  airspace authorization for each event. They handle all permitting, risk assessment, site
-                  planning, and coordination — so clients don't need to navigate FAA processes independently.
-                  <br /><br />
-                  Learn more on the{" "}
-                  <Link href="/faa-drone-show-permits-las-vegas" className="text-white underline">FAA permits &amp; approvals page</Link>.
-                </>
-              }
-            />
-
-            <QA
-              q="Drone shows vs. fireworks in Las Vegas — what's the difference?"
-              a={
-                <>
-                  Drone shows and fireworks are both spectacular, but serve different needs:
-                  <div className="mt-4 overflow-x-auto">
-                    <table className="w-full text-sm border-collapse">
-                      <thead>
-                        <tr className="border-b border-gray-700">
-                          <th className="text-left py-2 pr-4 text-white font-semibold w-1/3">Factor</th>
-                          <th className="text-left py-2 pr-4 text-white font-semibold">Drone Shows</th>
-                          <th className="text-left py-2 text-white font-semibold">Fireworks</th>
-                        </tr>
-                      </thead>
-                      <tbody className="text-gray-300 divide-y divide-gray-800">
-                        {[
-                          ["Logos & branding", "✅ Yes — animated logos", "❌ No"],
-                          ["Noise", "✅ Near-silent", "❌ Loud"],
-                          ["Smoke / fallout", "✅ None", "❌ Significant"],
-                          ["Venue-adjacent use", "✅ Possible", "❌ Usually no"],
-                          ["Reusable", "✅ Yes", "❌ One-time use"],
-                          ["Programmable storytelling", "✅ Full sequences", "❌ Limited"],
-                          ["Spectacle scale", "High", "Very high"],
-                        ].map(([factor, drone, fw]) => (
-                          <tr key={factor as string}>
-                            <td className="py-2 pr-4 font-medium text-gray-200">{factor}</td>
-                            <td className="py-2 pr-4">{drone}</td>
-                            <td className="py-2">{fw}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  <p className="mt-4">
-                    For resorts, conventions, and brand activations where sponsor logos, quiet operation,
-                    and venue safety are priorities, drone shows are often the superior choice. See:{" "}
-                    <Link href="/drone-shows-vs-fireworks" className="text-white underline">full comparison</Link>.
-                  </p>
-                </>
-              }
-            />
-
-            <QA
-              q="What types of events does Vegas Drones serve in Las Vegas?"
-              a={
-                <>
-                  Vegas Drones produces drone light shows for virtually every event type in Las Vegas:
-                  <ul className="mt-3 ml-4 space-y-2 list-disc list-inside text-gray-300">
-                    <li><strong className="text-white">Conventions &amp; trade shows</strong> at LVCC, Venetian Expo, Mandalay Bay, and Resorts World — ideal for opening night spectacles, booth activations, or sponsor-funded aerial branding</li>
-                    <li><strong className="text-white">Corporate events &amp; product launches</strong> — Fortune 500 brand moments, company anniversaries, product reveal sequences</li>
-                    <li><strong className="text-white">Resort &amp; casino activations</strong> — Strip-visible drone shows for hotel grand openings, holiday campaigns, and VIP events</li>
-                    <li><strong className="text-white">Music festivals &amp; outdoor events</strong> — timed to music, synchronized with stage productions</li>
-                    <li><strong className="text-white">Weddings &amp; private events</strong> — custom formations spelling names, dates, and personalized animations</li>
-                    <li><strong className="text-white">Sports &amp; entertainment</strong> — pre-game, halftime, or post-game aerial displays</li>
-                    <li><strong className="text-white">Drone advertising campaigns</strong> — extended aerial advertising over high-foot-traffic areas of Las Vegas</li>
-                  </ul>
-                </>
-              }
-            />
-
-            <QA
-              q="Can drone shows work at Las Vegas conventions like CES, IMEX, or SHOT Show?"
-              a={
-                <>
-                  Yes. Vegas Drones specializes in <strong className="text-white">convention and trade show drone shows</strong> in Las Vegas.
-                  For events like <strong className="text-white">CES</strong>, <strong className="text-white">IMEX America</strong>,{" "}
-                  <strong className="text-white">SHOT Show</strong>, <strong className="text-white">NAB Show</strong>, and others,
-                  drone shows can serve as:
-                  <ul className="mt-3 ml-4 space-y-1 list-disc list-inside text-gray-300">
-                    <li>Opening night or closing night spectacles</li>
-                    <li>Sponsor-branded aerial displays (logo formations visible to thousands)</li>
-                    <li>Networking event entertainment</li>
-                    <li>Content capture moments designed for social sharing</li>
-                  </ul>
-                  <br />
-                  Las Vegas hosts over 22,000 conventions per year, making it the largest convention market in
-                  the world — and Vegas Drones is the only locally-based drone show company built specifically
-                  to serve this market. See:{" "}
-                  <Link href="/conventions-trade-shows" className="text-white underline">convention &amp; trade show drone shows</Link>.
-                </>
-              }
-            />
-
-            <QA
-              q="How does a drone light show production work from start to finish?"
-              a={
-                <>
-                  A Vegas Drones production follows a structured process:
-                  <ol className="mt-3 ml-4 space-y-2 list-decimal list-inside text-gray-300">
-                    <li><strong className="text-white">Discovery &amp; scope</strong> — Vegas Drones consults on drone count, show duration, custom animation needs, and venue logistics</li>
-                    <li><strong className="text-white">Creative design</strong> — animators build the drone formations: logos, names, shapes, sequences, and transitions</li>
-                    <li><strong className="text-white">Airspace &amp; permitting</strong> — FAA authorization, airspace coordination near LAS and the Strip, local approvals</li>
-                    <li><strong className="text-white">Site planning</strong> — launch zone survey, crowd safety perimeters, equipment staging</li>
-                    <li><strong className="text-white">Day-of operations</strong> — 6–8 hours of on-site setup, pre-flight checks, crew coordination</li>
-                    <li><strong className="text-white">Performance</strong> — synchronized show lasting 8–15 minutes with full safety monitoring</li>
-                    <li><strong className="text-white">Content delivery</strong> — post-show footage and assets for marketing use</li>
-                  </ol>
-                </>
-              }
-            />
-
-            <QA
-              q="Why hire a Las Vegas-based drone show company instead of a national operator?"
-              a={
-                <>
-                  Hiring a <strong className="text-white">locally-based Las Vegas drone show company</strong> like
-                  Vegas Drones offers real advantages over national operators:
-                  <ul className="mt-3 ml-4 space-y-2 list-disc list-inside text-gray-300">
-                    <li><strong className="text-white">Airspace expertise</strong> — Las Vegas has one of the most complex airspace environments in the country. Vegas Drones has direct experience coordinating shows near Harry Reid International Airport and Strip-adjacent restricted zones</li>
-                    <li><strong className="text-white">Venue relationships</strong> — established working knowledge of resort loading docks, staging areas, and venue-specific requirements</li>
-                    <li><strong className="text-white">Convention market expertise</strong> — deep familiarity with convention center logistics, union considerations, and show-floor timing</li>
-                    <li><strong className="text-white">Faster response &amp; lower logistics cost</strong> — no long-distance travel fees, faster on-site availability for site visits and contingency planning</li>
-                    <li><strong className="text-white">Local reputation &amp; accountability</strong> — Vegas Drones is built to serve the Las Vegas market long-term</li>
-                  </ul>
-                </>
-              }
-            />
-
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <PillLink href="/best-drone-show-company-las-vegas">Best drone show company in Las Vegas</PillLink>
-            <PillLink href="/las-vegas-drone-light-shows">How drone light shows work</PillLink>
-            <PillLink href="/conventions-trade-shows">Convention &amp; trade show drone shows</PillLink>
-            <PillLink href="/drone-advertising">Drone advertising in Las Vegas</PillLink>
-            <PillLink href="/weddings">Wedding drone shows Las Vegas</PillLink>
-            <PillLink href="/las-vegas-drone-show-cost">Drone show cost &amp; pricing</PillLink>
-            <PillLink href="/faa-drone-show-permits-las-vegas">FAA permits &amp; airspace</PillLink>
-            <PillLink href="/drone-shows-vs-fireworks">Drone shows vs. fireworks</PillLink>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════
-          ABOUT / ENTITY ESTABLISHMENT
-      ══════════════════════════════════════════════════════════ */}
-      <section
-        aria-label="About Vegas Drones"
-        className="py-16 px-4 sm:px-6 bg-gray-950 border-t border-gray-800"
-      >
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-orbitron text-3xl font-bold mb-8 text-center">About Vegas Drones</h2>
-          <div className="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-5">
-            <p>
-              <strong className="text-white">Vegas Drones</strong> is a professional drone light show
-              company headquartered in <strong className="text-white">Las Vegas, Nevada</strong>.
-              The company operates under the legal entity <strong className="text-white">Skylight Ads LLC</strong>
-              and holds an <strong className="text-white">FAA Part 107 Remote Pilot Certificate</strong> with
-              full liability insurance coverage for all productions.
-            </p>
-            <p>
-              Founded and staffed by Las Vegas locals, Vegas Drones was purpose-built to serve the unique
-              demands of the world's entertainment capital — where production standards are extremely high,
-              airspace is tightly controlled, and events operate under intense time pressure. The company
-              serves the full spectrum of Las Vegas event types: resort openings, convention spectacles,
-              corporate brand activations, festival integrations, and luxury private events.
-            </p>
-            <p>
-              Vegas Drones drone shows are designed to be <strong className="text-white">camera-first</strong>:
-              every formation, transition, and sequence is engineered for crowd reaction, social media sharing,
-              and broadcast-quality visual output. Shows are quiet, smokeless, and leave no fallout —
-              making them suitable for venues and environments where fireworks are impractical or prohibited.
-            </p>
-            <p>
-              The company serves Las Vegas and the broader Nevada market, including{" "}
-              <strong className="text-white">Henderson, Boulder City, Mesquite, Laughlin</strong>, and regional
-              destinations throughout the Southwest.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════
-          SERVICE CARDS
-      ══════════════════════════════════════════════════════════ */}
-      <section className="py-16 px-4 sm:px-6 bg-black border-t border-gray-900">
-        <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-14">
-          Vegas Drones Services
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          <ServiceCard
-            href="/las-vegas-drone-light-shows"
-            icon="✦"
-            title="Drone Light Shows"
-            desc="100–1,000+ drone aerial displays with custom animations, logos, and cinematic formations for any Las Vegas event."
-          />
-          <ServiceCard
-            href="/conventions-trade-shows"
-            icon="⬡"
-            title="Conventions & Trade Shows"
-            desc="Opening night spectacles, sponsor aerial branding, and networking entertainment for CES, IMEX, SHOT Show, and more."
-          />
-          <ServiceCard
-            href="/drone-advertising"
-            icon="◈"
-            title="Drone Advertising"
-            desc="Aerial brand activations visible across the Las Vegas Strip — animated logos and product imagery for premium exposure."
-          />
-          <ServiceCard
-            href="/weddings"
-            icon="◇"
-            title="Weddings & Private Events"
-            desc="Custom formations spelling names, dates, and personalized sequences for an unforgettable Las Vegas celebration."
-          />
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════
-          WHY VEGAS DRONES
-      ══════════════════════════════════════════════════════════ */}
-      <section className="py-16 px-4 sm:px-6 bg-gray-950 border-t border-gray-800">
-        <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-center mb-14">
-          Why Choose Vegas Drones?
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          <Feature icon="🏙️" title="Vegas-Born & Based">
-            Headquartered in Las Vegas — not a national operator flying in. Deep local knowledge of airspace, venues, and the Las Vegas event ecosystem.
-          </Feature>
-          <Feature icon="✈️" title="FAA Part 107 Authorized">
-            All shows are operated under FAA Part 107 with proper airspace authorization, safety planning, and liability insurance.
-          </Feature>
-          <Feature icon="🎨" title="Fully Custom Animations">
-            Animated logos, brand names, event titles, and cinematic sequences — designed for clarity, wow-factor, and social sharing.
-          </Feature>
-          <Feature icon="🤫" title="Quiet & Eco-Friendly">
-            Smokeless, near-silent displays with zero fallout — ideal for resort pools, rooftop venues, and outdoor event spaces.
-          </Feature>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════
-          SHOW PREVIEWS
-      ══════════════════════════════════════════════════════════ */}
-      <section className="py-16 sm:py-20 px-6 bg-black border-t border-gray-800">
+      <section className="px-5 py-14 sm:px-8 sm:py-20" aria-label="Drone show services">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center">
-            <div className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-orbitron uppercase tracking-[0.25em] text-gray-200">
-              More Real Clips
-            </div>
-            <h2 className="mt-5 font-orbitron text-3xl md:text-4xl font-bold text-center">
-              Real Clips Beat Static Mockups
-            </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-gray-300 sm:text-lg">
-              The fastest way to trust a drone show company is to watch real footage. These previews
-              move the homepage closer to a showreel and make it easier for planners to see event fit,
-              pacing, and production quality.
-            </p>
+          <div className="max-w-2xl">
+            <p className="text-sm uppercase tracking-widest text-[#FF6A6A]">Your event. Your story.</p>
+            <h2 className="mt-4 font-orbitron text-3xl font-bold sm:text-4xl">Make the sky part of your event.</h2>
           </div>
-
-          <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_1.1fr_0.9fr]">
-            {homepageShowcaseClips.map((clip) => (
-              <HomepageClipCard key={clip.id} clip={clip} />
+          <div className="mt-10 grid gap-x-16 gap-y-10 sm:grid-cols-2 sm:mt-14">
+            {[
+              { href: "/conventions-trade-shows", title: "Conventions & corporate events", body: "Opening-night moments, sponsor logos, and product reveals designed around your event." },
+              { href: "/drone-advertising", title: "Resorts & brand activations", body: "Turn a launch, milestone, or hospitality celebration into a custom aerial display." },
+              { href: "/holidays", title: "Festivals & community celebrations", body: "Town names, patriotic formations, and seasonal stories for public celebrations." },
+              { href: "/weddings", title: "Weddings & private events", body: "Names, dates, and personal messages for a celebration that feels like yours." },
+            ].map((service) => (
+              <Link key={service.href} href={service.href} className="group border-t border-white/15 pt-6">
+                <h3 className="text-xl font-semibold group-hover:text-[#FF6A6A]">{service.title} <span aria-hidden="true">↗</span></h3>
+                <p className="mt-4 max-w-lg leading-7 text-gray-300">{service.body}</p>
+              </Link>
             ))}
-
-            <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-5 shadow-2xl">
-              <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-black">
-                <div className="aspect-video">
-                  <iframe
-                    className="h-full w-full"
-                    src={`https://www.youtube.com/embed/${featuredShowcaseClip.src}?rel=0&modestbranding=1&playsinline=1`}
-                    title={`${featuredShowcaseClip.title} | Vegas Drones`}
-                    loading="lazy"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-              </div>
-
-              <div className="mt-5">
-                <div className="text-xs font-orbitron uppercase tracking-[0.25em] text-[#FF6A6A]">
-                  {featuredShowcaseClip.badge}
-                </div>
-                <h3 className="mt-3 font-orbitron text-2xl text-white">{featuredShowcaseClip.title}</h3>
-                <p className="mt-2 text-sm uppercase tracking-[0.18em] text-gray-400">
-                  {featuredShowcaseClip.location}
-                </p>
-                <p className="mt-4 text-sm leading-relaxed text-gray-300">
-                  {featuredShowcaseClip.description}
-                </p>
-              </div>
-
-              <div className="mt-6 space-y-3 rounded-[1.5rem] border border-white/10 bg-black/40 p-5">
-                <div className="flex items-center justify-between text-sm text-gray-300">
-                  <span>Featured reel</span>
-                  <span className="font-orbitron text-white">Live proof</span>
-                </div>
-                <div className="flex items-center justify-between text-sm text-gray-300">
-                  <span>Best for</span>
-                  <span className="font-orbitron text-white">Festivals, public events, resorts</span>
-                </div>
-                <div className="flex items-center justify-between text-sm text-gray-300">
-                  <span>Next step</span>
-                  <span className="font-orbitron text-white">Watch the full gallery</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/see-our-shows"
-              className="inline-flex items-center justify-center rounded-full px-10 py-4 bg-white text-black font-bold hover:bg-gray-200 transition font-orbitron"
-            >
-              See Full Video Gallery
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-full border border-white/20 px-10 py-4 text-white font-bold hover:bg-white/10 transition font-orbitron"
-            >
-              Ask for Clip Examples by Event Type
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════
-          FINAL CTA
-      ══════════════════════════════════════════════════════════ */}
-      <section className="py-20 text-center px-6 bg-black border-t border-gray-900">
-        <h2 className="font-orbitron text-3xl md:text-4xl font-bold mb-6">
-          Ready to Light Up the Las Vegas Sky?
-        </h2>
-        <p className="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
-          Tell us your date, venue, and goals — Vegas Drones will recommend drone count,
-          show length, and custom sequences for maximum impact. All productions are
-          FAA-authorized, fully insured, and built for the Entertainment Capital of the World.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <p className="text-base sm:text-lg font-semibold">
-            Headquartered in Las Vegas. No travel fees for Las Vegas shows.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 items-center w-full justify-center">
-            <CtaButton href="/contact">Check My Date &amp; Get Pricing</CtaButton>
-            <Link href="/see-our-shows" className="rounded-full border border-white/30 px-7 py-4 font-orbitron font-bold hover:bg-white/10">Watch Our Shows</Link>
-          </div>
-          <Link
-            href="/las-vegas-drone-light-shows"
-            className="inline-block px-10 py-4 border border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition font-orbitron"
-          >
-            How it works
-          </Link>
+      <section className="px-5 py-14 sm:px-8 sm:py-20" aria-label="Planning your drone show">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="font-orbitron text-3xl font-bold sm:text-4xl">From your first idea to show night.</h2>
+          <ol className="mt-10 grid gap-10 md:grid-cols-3 md:gap-12 sm:mt-14">
+            {[
+              ["Tell us the plan", "Share your date, venue, audience, and ideas. We’ll help choose a show size and scope."],
+              ["Design & prepare", "We develop the formations and review the launch area, airspace, approvals, and venue requirements."],
+              ["Bring it to life", "Our crew handles setup, preflight checks, and show operations while your guests enjoy the display."],
+            ].map(([title, body], index) => (
+              <li key={title}>
+                <p className="text-sm font-semibold tracking-widest text-[#FF6A6A]">0{index + 1}</p>
+                <h3 className="mt-4 text-xl font-semibold">{title}</h3>
+                <p className="mt-4 leading-7 text-gray-300">{body}</p>
+              </li>
+            ))}
+          </ol>
+          <Link href="/las-vegas-drone-light-shows" className="mt-8 inline-flex min-h-11 items-center underline underline-offset-4">More about planning a drone show →</Link>
         </div>
-        <p className="text-gray-400 mt-8 text-sm">
-          Vegas Drones is operated by <strong className="text-white">Skylight Ads LLC</strong> •
-          Las Vegas, Nevada 89101 • FAA Part 107 Certified • Fully Insured •
-          Serving Las Vegas, Henderson, Boulder City, Mesquite &amp; Nevada statewide
-        </p>
+      </section>
+
+      <section className="px-5 py-14 sm:px-8 sm:py-20" aria-label="Drone light show FAQ Las Vegas">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="font-orbitron text-3xl font-bold sm:text-4xl">A few things before we take flight.</h2>
+          <div className="mt-10 border-t border-white/15">
+            {homepageFaqs.map((faq) => (
+              <details key={faq.question} className="group border-b border-white/15 py-6">
+                <summary className="cursor-pointer text-lg font-semibold leading-7 marker:text-[#FF6A6A]">{faq.question}</summary>
+                <p className="mt-4 max-w-3xl text-gray-300 leading-7">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+          <div className="mt-7 flex flex-wrap gap-x-8 gap-y-3">
+            <Link href="/faq" className="inline-flex min-h-11 items-center underline underline-offset-4">More questions & answers →</Link>
+            <Link href="/las-vegas-drone-show-cost" className="inline-flex min-h-11 items-center underline underline-offset-4">Explore pricing factors →</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-5 pt-14 pb-20 text-center sm:px-8 sm:pt-20 sm:pb-28">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="font-orbitron text-3xl font-bold leading-tight sm:text-4xl">Let’s plan your moment in the sky.</h2>
+          <p className="mt-6 text-lg leading-8 text-gray-300">Start with your date and venue. We’ll help shape the show.</p>
+          <div className="mt-8"><CtaButton href="/contact">Check My Date &amp; Get Pricing</CtaButton></div>
+          <p className="mt-6 text-sm text-gray-300">Headquartered in Las Vegas. No travel fees for Las Vegas shows.</p>
+          <p className="mt-8 text-xs leading-6 text-gray-500">Operated by Skylight Ads LLC · Las Vegas, Nevada · FAA Part 107 · Insured operations</p>
+        </div>
       </section>
     </div>
   );
@@ -829,17 +304,13 @@ function buildSchemaGraph() {
         name: SITE_NAME,
         inLanguage: "en-US",
         publisher: { "@id": businessId },
-        potentialAction: {
-          "@type": "SearchAction",
-          target: `${SITE_URL}/?s={search_term_string}`,
-          "query-input": "required name=search_term_string",
-        },
+
       },
       {
         "@type": "WebPage",
         "@id": webPageId,
         url: SITE_URL,
-        name: "Vegas Drones | #1 Las Vegas Drone Light Show Company",
+        name: "Vegas Drones | Las Vegas Drone Light Show Company",
         description:
           "Vegas Drones is Las Vegas's premier drone light show company. FAA-authorized, locally based, producing 100–1,000+ drone aerial shows for conventions, corporate events, resort activations, weddings, and festivals.",
         isPartOf: { "@id": websiteId },
@@ -849,10 +320,7 @@ function buildSchemaGraph() {
           "@type": "ImageObject",
           url: `${SITE_URL}${OG_IMAGE}`,
         },
-        speakable: {
-          "@type": "SpeakableSpecification",
-          cssSelector: ["h1", "h2", "[aria-label='Vegas Drones quick facts']", "[aria-label='About Vegas Drones']"],
-        },
+
       },
       {
         "@type": ["ProfessionalService", "EntertainmentBusiness", "LocalBusiness"],
@@ -926,72 +394,11 @@ function buildSchemaGraph() {
         "@id": faqId,
         isPartOf: { "@id": websiteId },
         about: { "@id": businessId },
-        mainEntity: [
-          {
-            "@type": "Question",
-            name: "Who is the best drone light show company in Las Vegas?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Vegas Drones is widely considered the best drone light show company in Las Vegas. Operated by Skylight Ads LLC, Vegas Drones is locally based in Las Vegas, Nevada, and produces FAA-authorized drone light shows with 100 to 1,000+ drones for conventions, resorts, corporate events, festivals, and weddings.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "What is Vegas Drones?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Vegas Drones (operated by Skylight Ads LLC) is a professional drone light show company based in Las Vegas, Nevada. They design, plan, and execute outdoor drone light shows for conventions, trade shows, corporate events, resort activations, festivals, and weddings — with 100 to 1,000+ synchronized drones per show.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "How much does a drone light show cost in Las Vegas?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "The cost of a drone light show in Las Vegas depends on drone count, animation complexity, show duration, and venue logistics. Vegas Drones offers scalable productions from 100-drone events to 1,000+ drone skyline spectacles. Contact Vegas Drones for a custom quote.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Are drone shows legal in Las Vegas?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Yes. Drone light shows are fully legal in Las Vegas when operated with proper FAA authorization. Las Vegas has complex airspace near Harry Reid International Airport, requiring professional coordination. Vegas Drones holds FAA Part 107 certification and handles all airspace authorization and permitting for every show.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "What types of events does Vegas Drones serve?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Vegas Drones serves conventions and trade shows (CES, IMEX, SHOT Show, NAB), corporate events and product launches, resort and casino activations, music festivals, weddings and private events, sports entertainment, and drone advertising campaigns in Las Vegas, Nevada.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Why hire a Las Vegas-based drone show company?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "A locally-based Las Vegas drone show company like Vegas Drones offers expertise in Las Vegas airspace near Harry Reid International Airport, established venue relationships with Strip resorts and convention centers, convention market expertise, faster response times, and lower logistics costs compared to national operators.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "How are drone shows different from fireworks?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Drone shows are quiet, smoke-free, and reusable, with fully programmable animations including logos and brand visuals. Unlike fireworks, drone shows leave no fallout and can operate in many venue-adjacent outdoor settings. For sponsor-driven events, conventions, and brand activations, drone shows offer capabilities fireworks cannot match.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Can Vegas Drones do drone shows for Las Vegas conventions like CES or IMEX?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Yes. Vegas Drones specializes in convention and trade show drone shows in Las Vegas, including opening night spectacles, sponsor aerial branding, and networking event entertainment for CES, IMEX America, SHOT Show, NAB Show, and other major Las Vegas conventions.",
-            },
-          },
-        ],
+        mainEntity: homepageFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
       },
     ],
   };
@@ -1011,101 +418,5 @@ function CtaButton({ href, children }: { href: string; children: React.ReactNode
       <span className="pointer-events-none absolute inset-0 opacity-25 bg-gradient-to-r from-transparent via-white/70 to-transparent translate-x-[-120%] hover:translate-x-[120%] transition-transform duration-700" />
       <span className="relative">{children}</span>
     </Link>
-  );
-}
-
-function MiniBadge({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-gray-100 font-orbitron shadow-[0_0_20px_rgba(255,59,59,0.08)]">
-      {children}
-    </div>
-  );
-}
-
-function HomepageClipCard({
-  clip,
-}: {
-  clip: (typeof homepageShowcaseClips)[number];
-}) {
-  return (
-    <div className="group overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-5 shadow-2xl">
-      <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-black">
-        <div className="aspect-video">
-          <video
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster={clip.poster}
-          >
-            <source src={clip.src} type="video/mp4" />
-          </video>
-        </div>
-      </div>
-
-      <div className="mt-5">
-        <div className="text-xs font-orbitron uppercase tracking-[0.25em] text-[#FF6A6A]">
-          {clip.badge}
-        </div>
-        <h3 className="mt-3 font-orbitron text-2xl text-white">{clip.title}</h3>
-        <p className="mt-2 text-sm uppercase tracking-[0.18em] text-gray-400">{clip.location}</p>
-        <p className="mt-4 text-sm leading-relaxed text-gray-300">{clip.description}</p>
-      </div>
-
-      <div className="mt-6 flex items-center justify-between text-sm text-gray-300">
-        <span>Watch more proof</span>
-        <Link
-          href="/see-our-shows"
-          className="font-orbitron text-white transition group-hover:text-[#FF6A6A]"
-        >
-          Open gallery →
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-function QA({ q, a }: { q: string; a: React.ReactNode }) {
-  return (
-    <div className="p-6 sm:p-8 rounded-3xl bg-gray-950 border border-gray-800 shadow-lg">
-      <h3 className="text-white font-bold text-xl mb-3">{q}</h3>
-      <div className="text-gray-300 leading-relaxed">{a}</div>
-    </div>
-  );
-}
-
-function PillLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      className="rounded-full border border-white/20 px-5 py-3 text-center text-sm sm:text-base text-gray-100 hover:bg-white/10 transition font-orbitron"
-    >
-      {children}
-    </Link>
-  );
-}
-
-function ServiceCard({ href, icon, title, desc }: { href: string; icon: string; title: string; desc: string }) {
-  return (
-    <Link
-      href={href}
-      className="group block text-center p-8 bg-gray-900 rounded-3xl border border-gray-800 shadow-lg hover:border-red-500/40 hover:bg-gray-800 transition"
-    >
-      <div className="text-4xl mb-4">{icon}</div>
-      <h3 className="font-orbitron text-lg font-bold mb-3 text-white group-hover:text-red-400 transition">{title}</h3>
-      <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
-    </Link>
-  );
-}
-
-function Feature({ icon, title, children }: { icon: string; title: string; children: React.ReactNode }) {
-  return (
-    <div className="text-center p-8 bg-gray-900 rounded-3xl border border-gray-800 shadow-lg">
-      <div className="text-4xl mb-4">{icon}</div>
-      <h3 className="font-orbitron text-xl font-bold mb-3 text-white">{title}</h3>
-      <p className="text-gray-300 text-sm leading-relaxed">{children}</p>
-    </div>
   );
 }
