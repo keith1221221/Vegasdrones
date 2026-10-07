@@ -8,14 +8,14 @@ const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
 export const metadata: Metadata = {
-  title: "What Does a Drone Show Cost? | Starting from $8,000 | Vegas Drones",
+  title: "Drone Show Pricing | Weddings from $7,000, Custom from $11,000 | Vegas Drones",
   description:
-    "Custom drone shows starting from $8,000. A Vegas-born company with no travel fees for Las Vegas shows. Explore pricing factors and get a tailored event quote.",
+    "Stock wedding shows starting at $7,000. Custom drone shows starting at $11,000. No travel fees for Las Vegas shows. Get a tailored event quote.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "Drone Shows Starting from $8,000 | Vegas Drones",
+    title: "Wedding & Custom Drone Show Pricing | Vegas Drones",
     description:
-      "Drone shows starting from $8,000, with custom quotes based on show size, creative scope and venue requirements. No travel fees for Las Vegas shows.",
+      "Stock wedding shows starting at $7,000 and custom shows starting at $11,000. Final pricing depends on show size, creative scope and venue requirements.",
     url: PAGE_URL,
     siteName: "Vegas Drones",
     images: [
@@ -51,7 +51,7 @@ export default function LasVegasDroneShowCostPage() {
         name: "How much does a Vegas Drones show cost?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Vegas Drones shows start from $8,000. The final quote depends on drone count, creative scope, show duration, event date and venue requirements. There are no travel fees for Las Vegas shows.",
+          text: "Stock wedding shows start at $7,000. Custom drone shows start at $11,000. The final quote depends on drone count, creative scope, show duration, event date and venue requirements. There are no travel fees for Las Vegas shows.",
         },
       },
       {
@@ -100,8 +100,24 @@ export default function LasVegasDroneShowCostPage() {
             What Does a <span className="text-[#FF6A6A]">Drone Show Cost?</span>
           </h1>
 
-          <p className="mt-8 text-lg text-gray-300">Custom drone shows starting at</p>
-          <p className="mt-2 font-orbitron text-6xl font-bold sm:text-7xl">$8,000</p>
+          <div className="mt-10 grid gap-10 sm:grid-cols-2 sm:gap-8">
+            <div>
+              <h2 className="text-xl font-semibold">Stock Wedding Show</h2>
+              <p className="mt-3 text-sm text-gray-400">Starting at</p>
+              <p className="mt-2 font-orbitron text-5xl font-bold sm:text-6xl">$7,000</p>
+              <p className="mx-auto mt-4 max-w-xs leading-relaxed text-gray-300">
+                A pre-designed drone show for your wedding celebration.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-xl font-semibold">Custom Drone Show</h2>
+              <p className="mt-3 text-sm text-gray-400">Starting at</p>
+              <p className="mt-2 font-orbitron text-5xl font-bold sm:text-6xl">$11,000</p>
+              <p className="mx-auto mt-4 max-w-xs leading-relaxed text-gray-300">
+                A show designed around your story, brand, or event.
+              </p>
+            </div>
+          </div>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-300">
             A starting point for planning your event. Your final quote is tailored
             to the show size, creative scope, event date, and venue requirements.
