@@ -1,421 +1,103 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import Script from "next/script";
-import HeroVideo from "@/components/HeroImage.server";
 
 const SITE_URL = "https://www.vegasdrones.com";
-const OG_IMAGE = "/alienhead1.png";
-
-const BRAND_RED = "#FF3B3B";
-const BRAND_RED_LIGHT = "#FF6A6A";
-
 const PAGE_URL = `${SITE_URL}/las-vegas-drone-light-shows`;
+const MEDIA = "/shows/drone-light-shows";
 
 export const metadata: Metadata = {
-  title: "Las Vegas Drone Light Shows | Vegas Drones",
-  description:
-    "Premium drone light shows in Las Vegas for holidays, corporate events, festivals, and brand activations. Fully custom designs, FAA-compliant operations, and unforgettable aerial entertainment.",
-  keywords: [
-    "Las Vegas drone light show",
-    "Las Vegas drone light show company",
-    "drone light show Las Vegas",
-    "wedding drone light show",
-    "corporate drone show",
-    "festival drone show",
-    "brand activation drone show",
-    "custom drone show",
-    "Vegas Drones",
-  ],
+  title: "Las Vegas Drone Light Shows | Custom Shows & Event Planning",
+  description: "See real drone show footage and behind-the-scenes photos from Vegas Drones. Learn about custom formations, venue planning, production, and pricing starting at $6,000.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "Las Vegas Drone Light Shows | Vegas Drones",
-    description:
-      "Unforgettable drone light shows in Las Vegas — custom designs for weddings, corporate events, festivals, and brand activations.",
+    description: "From the launch grid to your message in the sky: explore custom drone shows and how to plan one for your event.",
     url: PAGE_URL,
     siteName: "Vegas Drones",
-    images: [
-      {
-        url: `${SITE_URL}${OG_IMAGE}`,
-        width: 1200,
-        height: 630,
-        alt: "Vegas Drones Drone Light Show",
-      },
-    ],
+    images: [{ url: `${SITE_URL}${MEDIA}/butcher-audience.jpg`, width: 1920, height: 1280, alt: "Guests filming the Billy Butcher drone formation during The Boys show" }],
   },
 };
 
+const faqs = [
+  { question: "How much does a drone light show cost?", answer: "Shows start at $6,000. Your final quote depends on drone count, creative complexity, show length, event date, and venue requirements. There are no travel fees for Las Vegas shows." },
+  { question: "How many drones does my show need?", answer: "The right count depends on the detail in your designs, the scale of the display, and the viewing distance. Simple icons and lettering need a different approach from detailed portraits. Share your ideas and venue so we can recommend a suitable scope." },
+  { question: "Can you create our logo, a name, or a custom animation?", answer: "Yes. We design custom lettering, logos, icons, themed scenes, and animated sequences. We review the artwork and adapt it to a drone formation that reads clearly from the audience’s viewing area." },
+  { question: "Can a drone show work at any venue?", answer: "Every site needs a review. Airspace, available launch and landing space, audience separation, obstacles, and viewing angles all affect feasibility. Send the venue address before committing to a show location." },
+  { question: "What happens if the weather changes?", answer: "Weather can affect whether a show can fly safely. We discuss weather considerations and contingency arrangements during planning, and the operations team assesses conditions before flight." },
+  { question: "When should I start planning?", answer: "Contact us as soon as you have a proposed date and venue. Creative development, site review, coordination, and any required approvals need time. We’ll review your timeline before confirming availability and scope." },
+];
+
+function QuoteButton() {
+  return <Link href="/contact" className="inline-flex min-h-12 items-center justify-center rounded-full bg-gradient-to-r from-[#FF3B3B] via-white to-[#FF6A6A] px-7 py-4 font-semibold text-black transition hover:brightness-110">Check My Date &amp; Get Pricing</Link>;
+}
+
+function Photo({ file, alt, caption }: { file: string; alt: string; caption: string }) {
+  return <figure><Image src={`${MEDIA}/${file}`} alt={alt} width={1920} height={1280} sizes="(max-width: 767px) 100vw, 50vw" className="h-auto w-full rounded-2xl" /><figcaption className="mt-3 text-sm leading-6 text-gray-400">{caption}</figcaption></figure>;
+}
+
 export default function DroneLightShowsPage() {
-  const faqSchema = {
+  const schema = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": `${PAGE_URL}#faq`,
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "How much does a drone light show cost in Las Vegas?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Drone light show pricing depends on drone count, show length, customization, and venue logistics.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How many drones do I need for a Las Vegas drone light show?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "The right drone count depends on your venue size and what you want to show. Smaller fleets can deliver clean icons and simple text, while larger fleets enable higher detail, smoother animation, and bigger visuals.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Are drone light shows legal in Las Vegas?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Yes. Drone light shows are legal when operated by FAA Part 107 certified pilots with appropriate airspace authorization and event coordination.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How far in advance should I book a drone light show?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Booking several weeks to a few months in advance is recommended, especially for holidays and peak event dates.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can you display names, dates, or logos in the sky?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Yes. We create custom formations and animations including names, dates, logos, icons, and multi-scene sequences.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What kinds of events are drone light shows best for?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Drone light shows are popular for weddings, corporate events, festivals, sports events, hotel activations, and major holidays.",
-        },
-      },
+    "@graph": [
+      { "@type": "FAQPage", "@id": `${PAGE_URL}#faq`, mainEntity: faqs.map(({ question, answer }) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) },
+      { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL }, { "@type": "ListItem", position: 2, name: "Drone Light Shows", item: PAGE_URL }] },
     ],
   };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "@id": `${PAGE_URL}#breadcrumb`,
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: `${SITE_URL}/`,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Drone Light Shows",
-        item: PAGE_URL,
-      },
-    ],
-  };
-
   return (
-    <div className="bg-black text-white">
-      <Script
-        id="ld-faq-drone-light-shows"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-
-      <Script
-        id="ld-breadcrumbs-drone-light-shows"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-
-      <HeroVideo
-        title={
-          <>
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED})`,
-              }}
-            >
-              LAS VEGAS
-            </span>
-            <span className="text-white"> DRONE </span>
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: `linear-gradient(to right, ${BRAND_RED_LIGHT}, ${BRAND_RED}, ${BRAND_RED_LIGHT})`,
-              }}
-            >
-              LIGHT SHOWS
-            </span>
-          </>
-        }
-        subtitle={
-          <>
-            Premium, fully custom drone light shows for holidays, corporate events,
-            festivals, and brand activations — designed for clean logos, readable
-            text, and big crowd reaction.
-          </>
-        }
-        bottomLine={<>A High-Impact Alternative to Fireworks — Built for Las Vegas</>}
-        primaryCta={{ href: "/contact", label: "Get Pricing" }}
-      />
-
-      <main className="px-6 pb-20 pt-10 sm:pt-14 font-poppins">
-        <div className="max-w-5xl mx-auto">
-          <section className="text-center">
-            <h1 className="sr-only">Drone Light Shows in Las Vegas</h1>
-
-            <p className="text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
-              <span style={{ color: BRAND_RED }}>
-                Turn your event into a true Las Vegas spectacle.
-              </span>{" "}
-              We produce drone light shows that deliver breathtaking aerial
-              animations, logos, and custom storytelling — synchronized, scalable,
-              and built to create unforgettable moments. Looking for a broader
-              overview of what a{" "}
-              <Link
-                href="/las-vegas-drone-show"
-                className="underline underline-offset-4 hover:text-white"
-              >
-                Las Vegas drone show
-              </Link>{" "}
-              can do for your venue or event?
-            </p>
-          </section>
-
-          <div className="text-center mt-14">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center text-black font-bold py-4 px-10 rounded-full transform hover:scale-105 transition font-orbitron"
-              style={{
-                backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
-                boxShadow: "0 0 25px rgba(255,59,59,0.35)",
-              }}
-            >
-              Request Drone Show Information
-            </Link>
-          </div>
-
-          <section className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-8">
-            <h2 className="font-orbitron text-2xl sm:text-3xl font-bold text-white">
-              Looking for a Las Vegas Drone Show?
-            </h2>
-
-            <p className="mt-4 max-w-3xl text-gray-300 leading-relaxed">
-              If you're researching a <strong>Las Vegas drone show</strong> for a hotel,
-              festival, corporate event, sports venue, holiday celebration, or private
-              activation, visit our main city page for a broader overview of how drone
-              shows work in Las Vegas, where they fit best, and recent event examples.
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-4">
-              <Link
-                href="/las-vegas-drone-show"
-                className="inline-flex items-center justify-center text-black font-bold py-3.5 px-7 rounded-full transition font-orbitron"
-                style={{
-                  backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
-                  boxShadow: "0 0 22px rgba(255,59,59,0.3)",
-                }}
-              >
-                Explore Las Vegas Drone Shows
-              </Link>
-
-              <Link
-                href="/blog/st-patricks-day-drone-show-las-vegas-strip-recap"
-                className="inline-flex items-center justify-center py-3.5 px-7 rounded-full font-orbitron font-bold border border-white/20 text-white hover:bg-white/10 transition"
-              >
-                View Recent Event Recap
-              </Link>
-            </div>
-          </section>
-
-          <section className="mt-16 grid gap-8 md:grid-cols-3">
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5">
-              <div className="aspect-[4/5] bg-neutral-900">
-                <img
-                  src="/st-patricks-day-drone-show-clover.jpg"
-                  alt="Clover formation from a Las Vegas drone light show by Vegas Drones"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5">
-              <div className="aspect-[4/5] bg-neutral-900">
-                <img
-                  src="/st-patricks-day-drone-show-claddagh.jpg"
-                  alt="Claddagh formation from a St Patrick's Day drone light show in Las Vegas"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5">
-              <div className="aspect-[4/5] bg-neutral-900">
-                <img
-                  src="/st-patricks-day-drone-show-leprechaun.jpg"
-                  alt="Leprechaun formation from a Las Vegas drone light show event"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-          </section>
-
-          <section className="mt-16 grid gap-8 md:grid-cols-2">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
-              <h2 className="font-orbitron text-2xl font-bold text-white">
-                Custom Drone Light Shows for Las Vegas Events
-              </h2>
-              <p className="mt-4 text-gray-300 leading-relaxed">
-                Las Vegas drone light shows are ideal for hotels, resorts, casinos,
-                festivals, conventions, corporate events, sports venues, weddings,
-                and branded activations. Because every scene is programmable, visuals
-                can be tailored to logos, names, dates, holiday themes, sponsor
-                messaging, and multi-scene aerial storytelling.
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
-              <h2 className="font-orbitron text-2xl font-bold text-white">
-                Why Choose a Drone Light Show Instead of Fireworks?
-              </h2>
-              <p className="mt-4 text-gray-300 leading-relaxed">
-                A drone light show offers a modern visual experience with precise
-                choreography, repeatable animations, and sponsor-friendly branding.
-                For many venues and event planners, drone shows provide a clean,
-                premium-looking entertainment option that stands out both in person
-                and across social media.
-              </p>
-            </div>
-          </section>
-
-          <section className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-8">
-            <h2 className="font-orbitron text-2xl sm:text-3xl font-bold text-white">
-              Recent Las Vegas Drone Show Example
-            </h2>
-
-            <p className="mt-4 max-w-3xl text-gray-300 leading-relaxed">
-              See our recent St. Patrick’s Day drone light show recap from BLVD Las Vegas
-              on the Las Vegas Strip. This completed event includes video, photos,
-              and recap coverage from a real Las Vegas drone light show activation.
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-4">
-              <Link
-                href="/blog/st-patricks-day-drone-show-las-vegas-strip-recap"
-                className="inline-flex items-center justify-center text-black font-bold py-3.5 px-7 rounded-full transition font-orbitron"
-                style={{
-                  backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
-                }}
-              >
-                View Event Recap
-              </Link>
-
-              <Link
-                href="/blog"
-                className="inline-flex items-center justify-center py-3.5 px-7 rounded-full font-orbitron font-bold border border-white/20 text-white hover:bg-white/10 transition"
-              >
-                Browse More Blog Posts
-              </Link>
-            </div>
-          </section>
-
-          <section className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-8">
-            <h2 className="font-orbitron text-2xl sm:text-3xl font-bold text-white">
-              Frequently Asked Questions
-            </h2>
-
-            <div className="mt-8 grid gap-6 md:grid-cols-2">
-              <div>
-                <h3 className="text-lg font-semibold text-white">
-                  How much does a drone light show cost in Las Vegas?
-                </h3>
-                <p className="mt-2 text-gray-300 leading-relaxed">
-                  Pricing depends on drone count, show length, design complexity,
-                  venue logistics, and the amount of customization required.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-semibold text-white">
-                  Are drone light shows legal in Las Vegas?
-                </h3>
-                <p className="mt-2 text-gray-300 leading-relaxed">
-                  Yes. Drone light shows are legal when operated by FAA Part 107
-                  certified pilots with proper airspace authorization and event planning.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-semibold text-white">
-                  Can you display logos, names, and dates in the sky?
-                </h3>
-                <p className="mt-2 text-gray-300 leading-relaxed">
-                  Yes. We can create custom formations and animated scenes featuring
-                  branding, names, dates, icons, and themed visuals.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-semibold text-white">
-                  What kinds of events are drone light shows best for?
-                </h3>
-                <p className="mt-2 text-gray-300 leading-relaxed">
-                  Drone light shows are popular for weddings, festivals, hotel
-                  activations, corporate events, sports venues, public celebrations,
-                  and major holiday events.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="mt-16 text-center">
-            <h2 className="font-orbitron text-2xl sm:text-3xl font-bold text-white">
-              Ready to Plan a Drone Light Show?
-            </h2>
-
-            <p className="mt-4 max-w-3xl mx-auto text-gray-300 leading-relaxed">
-              Tell us about your event date, venue, and vision. We’ll help you
-              explore the right drone count, creative direction, and next steps
-              for a custom Las Vegas drone light show.
-            </p>
-
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center text-black font-bold py-4 px-10 rounded-full transform hover:scale-105 transition font-orbitron"
-                style={{
-                  backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
-                  boxShadow: "0 0 25px rgba(255,59,59,0.35)",
-                }}
-              >
-                Get Pricing
-              </Link>
-
-              <Link
-                href="/las-vegas-drone-show"
-                className="inline-flex items-center justify-center py-4 px-10 rounded-full font-orbitron font-bold border border-white/20 text-white hover:bg-white/10 transition"
-              >
-                Explore Las Vegas Drone Shows
-              </Link>
-            </div>
-          </section>
+    <main className="bg-black text-white font-poppins">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
+      <header className="mx-auto max-w-6xl px-5 pb-12 pt-10 sm:px-8 sm:pt-16">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#FF6A6A]">Custom aerial entertainment · Las Vegas</p>
+          <h1 className="mt-5 font-orbitron text-3xl font-bold leading-tight sm:text-5xl lg:text-6xl">Las Vegas <span className="text-[#FF6A6A]">Drone Light Shows</span></h1>
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-300 sm:text-xl">Your logo. Your story. Your moment in the sky. We create custom drone shows for conventions, resorts, festivals, celebrations, and brand activations.</p>
+          <div className="mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row"><QuoteButton /><Link href="#how-it-works" className="inline-flex min-h-12 items-center px-5 font-semibold underline underline-offset-4">See how a show comes together ↓</Link></div>
+          <p className="mt-5 text-sm text-gray-300">No travel fees for Las Vegas shows. We actually live here.</p>
         </div>
-      </main>
-    </div>
+        <figure className="mt-10 sm:mt-14">
+          <Image src={`${MEDIA}/butcher-audience.jpg`} alt="Guests filming a Billy Butcher drone portrait and One Last Go lettering during The Boys production" width={1920} height={1280} priority sizes="(max-width: 1200px) 100vw, 1152px" className="h-auto w-full rounded-2xl" />
+          <figcaption className="mt-3 text-sm text-gray-400">A custom character formation from The Boys production, captured with guests filming the moment.</figcaption>
+        </figure>
+      </header>
+
+      <div className="mx-auto max-w-6xl px-5 pb-20 sm:px-8 sm:pb-28">
+        <section id="how-it-works" className="scroll-mt-28 grid items-center gap-10 py-12 md:grid-cols-2 sm:py-16">
+          <div><h2 className="font-orbitron text-2xl font-bold sm:text-3xl">What is a drone light show?</h2><p className="mt-5 leading-8 text-gray-300">A drone light show uses a fleet of aircraft fitted with lights to create coordinated images and movement in the sky. Each drone becomes a point of light in a larger formation. Positions, colors, and transitions work together to turn those points into lettering, logos, shapes, and animated scenes.</p><p className="mt-4 leading-8 text-gray-300">The experience is designed around your audience’s viewing area. A recognizable logo, a short message, or a sequence of themed scenes can tell a story that fits your event.</p></div>
+          <Photo file="oi-lettering.jpg" alt="Drones spelling Oi, Listen Up in bright lettering above the mountains" caption="Custom lettering from The Boys show: individual lights combine into a readable message." />
+        </section>
+
+        <section className="py-12 sm:py-16">
+          <h2 className="font-orbitron text-2xl font-bold sm:text-3xl">From an idea to a coordinated flight</h2>
+          <p className="mt-5 max-w-3xl leading-8 text-gray-300">The visible show is the result of creative design and practical site planning. Here’s how we work through a production with you.</p>
+          <div className="mt-9 grid gap-8 md:grid-cols-3">
+            {[
+              ["01", "Start with the event", "We discuss your date, location, audience, budget, and the message you want people to remember. A venue review helps establish what is feasible before the creative scope is confirmed."],
+              ["02", "Shape the story", "We develop the visual direction around your branding or theme. Drone count, viewing distance, and scene complexity help determine which designs will read clearly in the sky."],
+              ["03", "Prepare and produce", "We coordinate the production plan, site logistics, and applicable flight requirements. On site, the crew prepares the fleet, checks conditions, and manages the launch and landing area."],
+            ].map(([number, title, text]) => <div key={number} className="border-t border-white/20 pt-6"><p className="text-sm text-[#FF6A6A]">{number}</p><h3 className="mt-3 text-xl font-bold">{title}</h3><p className="mt-4 leading-7 text-gray-300">{text}</p></div>)}
+          </div>
+          <div className="mt-12 grid gap-8 md:grid-cols-2">
+            <Photo file="crew-preparation.jpg" alt="Crew members wearing headsets preparing drones arranged in rows before The Boys show" caption="Behind the scenes: the crew prepares the fleet before the audience sees the aerial display." />
+            <Photo file="launch-grid.jpg" alt="A large grid of green-lit drones with a crew member holding a light wand beside the launch area" caption="The launch grid is part of the production site and needs space separate from the audience." />
+          </div>
+          <figure className="mt-10"><video controls playsInline preload="none" poster={`${MEDIA}/the-boys-launch-poster.jpg`} className="aspect-video w-full rounded-2xl bg-black" aria-label="The Boys drone show launch grid footage"><source src={`${MEDIA}/the-boys-launch.mp4`} type="video/mp4" />Your browser cannot play this video. <a href={`${MEDIA}/the-boys-launch.mp4`}>Watch the launch grid clip</a>.</video><figcaption className="mt-3 text-sm leading-6 text-gray-400">Watch the illuminated launch grid from The Boys production before the aerial formations.</figcaption></figure>
+          <Link href="/blog/amazon-prime-the-boys-drone-show" className="mt-6 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Explore The Boys show story →</Link>
+        </section>
+
+        <section className="grid items-center gap-10 py-12 md:grid-cols-[1.3fr_0.7fr] sm:py-16">
+          <div><h2 className="font-orbitron text-2xl font-bold sm:text-3xl">What can we create in the sky?</h2><p className="mt-5 leading-8 text-gray-300">Think beyond a single logo. A show can move through brand colors, recognizable icons, names, dates, characters, and a closing message. The goal is a sequence that feels connected to your event.</p><p className="mt-4 leading-8 text-gray-300">More drones give us more points to work with, but the right design matters just as much. We help match the level of detail to the fleet and viewing area rather than treating every image as equally suitable.</p><p className="mt-4 leading-8 text-gray-300">This gingerbread clip shows how a simple seasonal character can become an animated moment for a holiday audience.</p><div className="mt-6 flex flex-wrap gap-x-6 gap-y-3"><Link href="/conventions-trade-shows" className="underline underline-offset-4">Convention shows →</Link><Link href="/holidays" className="underline underline-offset-4">Holiday shows →</Link><Link href="/events" className="underline underline-offset-4">Event shows →</Link></div></div>
+          <figure className="mx-auto w-full max-w-xs"><video controls playsInline preload="none" poster={`${MEDIA}/gingerbread-poster.jpg`} className="aspect-[9/16] w-full rounded-2xl bg-black object-contain" aria-label="Animated gingerbread drone formation at a holiday event"><source src={`${MEDIA}/gingerbread.mp4`} type="video/mp4" />Your browser cannot play this video. <a href={`${MEDIA}/gingerbread.mp4`}>Watch the gingerbread clip</a>.</video><figcaption className="mt-3 text-sm leading-6 text-gray-400">A gingerbread formation brings a holiday theme to life.</figcaption></figure>
+        </section>
+
+        <section className="grid gap-10 border-y border-white/15 py-12 md:grid-cols-2 sm:py-16">
+          <div><h2 className="font-orbitron text-2xl font-bold sm:text-3xl">What does your venue need?</h2><p className="mt-5 leading-8 text-gray-300">Start with an address and a proposed viewing area. We assess the airspace, launch and landing space, obstacles, audience separation, and sightlines. A venue that looks ideal in photos still needs a site review.</p><p className="mt-4 leading-8 text-gray-300">Weather and operating conditions also affect the production. We discuss coordination and contingency arrangements while planning your event.</p><Link href="/contact" className="mt-5 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Ask us to review your venue →</Link></div>
+          <div><h2 className="font-orbitron text-2xl font-bold sm:text-3xl">How much does a show cost?</h2><p className="mt-5 text-3xl font-bold text-[#FF6A6A]">Starting at $6,000</p><p className="mt-4 leading-8 text-gray-300">Your quote is tailored to the drone count, creative scope, show length, date, and venue requirements. The large production shown here illustrates what is possible; it is not an example of the starting-price package.</p><p className="mt-4 leading-8 text-gray-300">No travel fees for Las Vegas shows. Send your event details and we’ll recommend a scope that fits your goals.</p><Link href="/las-vegas-drone-show-cost" className="mt-5 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Explore drone show pricing →</Link></div>
+        </section>
+
+        <section id="faq" className="py-12 sm:py-16"><h2 className="font-orbitron text-2xl font-bold sm:text-3xl">Planning questions, answered</h2><div className="mt-8">{faqs.map(({question,answer}) => <details key={question} className="border-b border-white/15 py-5"><summary className="cursor-pointer pr-4 text-lg font-semibold">{question}</summary><p className="mt-4 max-w-3xl leading-8 text-gray-300">{answer}</p></details>)}</div></section>
+        <section className="pt-8 text-center"><h2 className="font-orbitron text-2xl font-bold sm:text-4xl">Let’s build a show around your event.</h2><p className="mx-auto mt-5 max-w-2xl leading-8 text-gray-300">Share your date, venue, and creative ideas. We’ll help you understand the options and the next steps.</p><div className="mt-7"><QuoteButton /></div><Link href="/see-our-shows" className="mt-6 inline-flex min-h-11 items-center underline underline-offset-4">See more completed shows →</Link></section>
+      </div>
+    </main>
   );
 }

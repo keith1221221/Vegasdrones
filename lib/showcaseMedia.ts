@@ -57,14 +57,14 @@ export const showcaseGalleryClips: ShowcaseClip[] = [
     badge: "Convention Reel",
   },
   {
-    id: "festival-drone-show",
-    title: "Festival Drone Light Show",
-    location: "Live Event Production",
+    id: "pioche-labor-day",
+    title: "Pioche Labor Day Drone Show",
+    location: "Pioche, Nevada",
     description:
-      "Large-audience visuals designed for outdoor festivals and community-facing entertainment.",
+      "155 drones celebrate Pioche Labor Day with custom town lettering and patriotic formations. Watch the show from our 2026 Nevada community celebration.",
     type: "youtube",
-    src: "yEAZil9cE2U",
-    badge: "Festival Reel",
+    src: "2g8EMWCjCeg",
+    badge: "Labor Day Show",
   },
   {
     id: "large-scale-formation",
@@ -77,14 +77,14 @@ export const showcaseGalleryClips: ShowcaseClip[] = [
     badge: "Scale Reel",
   },
   {
-    id: "pioche-labor-day",
-    title: "Pioche Labor Day Drone Show",
-    location: "Pioche, Nevada",
+    id: "festival-drone-show",
+    title: "Seal Beach Christmas Parade Drone Show",
+    location: "Seal Beach, California",
     description:
-      "155 drones celebrate Pioche Labor Day with custom town lettering and patriotic formations. Watch the show from our 2026 Nevada community celebration.",
+      "155 drones bring festive aerial formations to the Seal Beach Christmas Parade.",
     type: "youtube",
-    src: "2g8EMWCjCeg",
-    badge: "Labor Day Show",
+    src: "yEAZil9cE2U",
+    badge: "Holiday Show",
   },
   {
     id: "wedding-loop",

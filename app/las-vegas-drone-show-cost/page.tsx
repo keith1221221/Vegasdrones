@@ -8,14 +8,14 @@ const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
 export const metadata: Metadata = {
-  title: "Las Vegas Drone Show Cost | Pricing Factors | Vegas Drones",
+  title: "What Does a Drone Show Cost? | Starting at $6,000 | Vegas Drones",
   description:
-    "Las Vegas drone show cost depends on drone count, custom animation, venue logistics, and event timing. Learn the main pricing factors and request a tailored quote from Vegas Drones.",
+    "Custom drone shows starting at $6,000. A Vegas-born company with no travel fees for Las Vegas shows. Explore pricing factors and get a tailored event quote.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "Las Vegas Drone Show Cost | Vegas Drones",
+    title: "Drone Shows Starting at $6,000 | Vegas Drones",
     description:
-      "Understand the main pricing factors behind a Las Vegas drone show, from fleet size to airspace complexity and creative scope.",
+      "Drone shows starting at $6,000, with custom quotes based on show size, creative scope and venue requirements. No travel fees for Las Vegas shows.",
     url: PAGE_URL,
     siteName: "Vegas Drones",
     images: [
@@ -46,6 +46,14 @@ export default function LasVegasDroneShowCostPage() {
     "@type": "FAQPage",
     "@id": `${PAGE_URL}#faq`,
     mainEntity: [
+      {
+        "@type": "Question",
+        name: "How much does a Vegas Drones show cost?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Vegas Drones shows start at $6,000. The final quote depends on drone count, creative scope, show duration, event date and venue requirements. There are no travel fees for Las Vegas shows.",
+        },
+      },
       {
         "@type": "Question",
         name: "What affects Las Vegas drone show pricing?",
@@ -88,25 +96,23 @@ export default function LasVegasDroneShowCostPage() {
 
       <div className="mx-auto max-w-4xl">
         <section className="text-center">
-          <h1 className="font-orbitron text-4xl font-bold sm:text-5xl">
-            <span className="text-white">LAS VEGAS DRONE SHOW </span>
-            <span
-              className="bg-clip-text text-transparent"
-              style={{ backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})` }}
-            >
-              COST
-            </span>
+          <h1 className="font-orbitron text-4xl font-bold leading-tight sm:text-5xl">
+            What Does a <span className="text-[#FF6A6A]">Drone Show Cost?</span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-300">
-            Drone show pricing in Las Vegas is shaped by fleet size, creative scope, event timing,
-            and venue logistics. Vegas Drones builds custom proposals around what you actually need
-            rather than forcing every event into a one-size-fits-all package.
+          <p className="mt-8 text-lg text-gray-300">Custom drone shows starting at</p>
+          <p className="mt-2 font-orbitron text-6xl font-bold sm:text-7xl">$6,000</p>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-300">
+            A starting point for planning your event. Your final quote is tailored
+            to the show size, creative scope, event date, and venue requirements.
           </p>
+          <p className="mt-5 font-semibold text-white">A Vegas-born company. No travel fees for Las Vegas shows.</p>
+          <Link href="/contact" className="mt-8 inline-flex items-center justify-center rounded-full bg-[#FF3B3B] px-8 py-4 font-bold text-black hover:bg-[#FF6A6A]">Check My Date &amp; Get Pricing</Link>
+          <p className="mt-4 text-sm text-gray-400">Share your date, venue, and ideas. We’ll recommend a show that fits.</p>
         </section>
 
-        <section className="mt-16 grid gap-6 md:grid-cols-2">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+        <section className="mt-20 grid gap-12 md:grid-cols-2">
+          <div className="border-t border-white/15 pt-8">
             <h2 className="font-orbitron text-2xl font-bold text-white">Primary Pricing Factors</h2>
             <ul className="mt-4 list-disc space-y-3 pl-5 text-gray-300">
               <li>Drone count and visual detail level</li>
@@ -118,7 +124,7 @@ export default function LasVegasDroneShowCostPage() {
             </ul>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+          <div className="border-t border-white/15 pt-8">
             <h2 className="font-orbitron text-2xl font-bold text-white">How To Get Accurate Pricing</h2>
             <p className="mt-4 leading-relaxed text-gray-300">
               The fastest path to a useful quote is sharing your date, venue or venue area, estimated
@@ -128,7 +134,7 @@ export default function LasVegasDroneShowCostPage() {
           </div>
         </section>
 
-        <section className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-8">
+        <section className="mt-16 border-t border-white/15 pt-8">
           <h2 className="font-orbitron text-2xl font-bold text-white">Why Las Vegas Pricing Can Vary</h2>
           <p className="mt-4 leading-relaxed text-gray-300">
             Las Vegas is not a generic event market. Strip-adjacent properties, resort venues,
@@ -147,13 +153,13 @@ export default function LasVegasDroneShowCostPage() {
               boxShadow: "0 0 25px rgba(255,59,59,0.35)",
             }}
           >
-            Request Pricing
+            Get My Custom Quote
           </Link>
           <Link
-            href="/las-vegas-drone-light-shows"
+            href="/see-our-shows"
             className="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 font-orbitron font-bold text-white transition hover:bg-white/10"
           >
-            Explore Drone Light Shows
+            Watch Our Shows
           </Link>
         </div>
       </div>

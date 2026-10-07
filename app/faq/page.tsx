@@ -10,7 +10,7 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     question: "How much does a drone light show cost?",
-    answer: "Our pricing starts at $5,000 for a standard wedding drone light show, including three custom elements."
+    answer: "Drone shows start at $6,000. Final pricing depends on drone count, creative scope, show duration, event date, and venue requirements. No travel fees for Las Vegas shows. Contact us for a tailored quote."
   },
   {
     question: "Are drone light shows safe?",

@@ -1,7 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import Script from "next/script";
-import HeroVideo from "@/components/HeroImage.server";
 
 const SITE_URL = "https://www.vegasdrones.com";
 const OG_IMAGE = "/alienhead1.png";
@@ -112,71 +112,93 @@ export default function ConventionsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      {/* HERO — match the Drone Light Shows page style */}
-      <HeroVideo
-        title={
-          <>
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED})`,
-              }}
-            >
-              LAS VEGAS
-            </span>
-            <span className="text-white"> CONVENTION </span>
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: `linear-gradient(to right, ${BRAND_RED_LIGHT}, ${BRAND_RED}, ${BRAND_RED_LIGHT})`,
-              }}
-            >
-              DRONE SHOWS
-            </span>
-          </>
-        }
-        subtitle={
-          <>
-            Turn the Las Vegas sky into a branded canvas —{" "}
-            <strong>logos</strong>, <strong>messaging</strong>, and{" "}
-            <strong>high-impact aerial activations</strong> built for{" "}
-            <strong>conventions</strong>, <strong>trade shows</strong>,{" "}
-            product launches, and after-hours activations.
-          </>
-        }
-        bottomLine={<>A Billboard in the Sky — Built for Las Vegas Brand Activations</>}
-        primaryCta={{ href: "/contact", label: "Request Convention Pricing" }}
-        secondaryCta={{ href: "/drone-advertising", label: "Drone Advertising" }}
-      />
-
-      {/* CONTENT */}
       <main className="min-h-screen bg-black text-white font-poppins">
-        <section className="px-6 py-16">
-          <div className="max-w-5xl mx-auto">
-            {/* Intro */}
-            <div className="text-center max-w-3xl mx-auto">
-              <h1 className="sr-only">
-                Drone Shows for Conventions & Trade Shows in Las Vegas
+        <section className="px-5 pb-16 pt-10 sm:px-8 sm:pt-16">
+          <div className="mx-auto max-w-6xl">
+            <div className="mx-auto max-w-4xl text-center">
+              <h1 className="font-orbitron text-3xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                Las Vegas Convention <span className="text-[#FF6A6A]">Drone Shows</span>
               </h1>
-              <p className="text-lg text-gray-300 leading-relaxed">
-                Las Vegas hosts more conventions and trade shows than any city on
-                earth — and standing out in a sea of exhibitors is a challenge.
-                Our custom drone light shows create unforgettable brand moments
-                that draw crowds, generate social buzz, and elevate your presence
-                at outdoor convention venues, expo centers, and after-hours
-                activations.
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-300 sm:text-xl">
+                Bring your organization’s story into the sky with custom logos,
+                messaging, and aerial formations for convention receptions,
+                trade shows, and after-hours events.
               </p>
+              <div className="mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <Link href="/contact" className="inline-flex min-h-12 items-center justify-center rounded-full px-7 py-4 font-semibold text-black" style={{ backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})` }}>
+                  Request Convention Pricing
+                </Link>
+                <Link href="/drone-advertising" className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/30 px-7 py-4 font-semibold hover:bg-white/10">
+                  Drone Advertising
+                </Link>
+              </div>
             </div>
 
-            {/* Image */}
-            <div className="w-full flex justify-center mt-12 mb-16">
-              <img
-                src="/lions.png"
-                alt="Drone show at Las Vegas convention"
-                className="w-full max-w-3xl rounded-2xl shadow-2xl border border-gray-800"
-                loading="lazy"
-              />
-            </div>
+            <section className="mb-16 mt-10 grid items-center gap-8 sm:mt-12 md:grid-cols-2 sm:mb-20" aria-labelledby="shot-show-heading">
+              <figure>
+                <Image src="/shows/conventions/shot-show.jpg" alt="SHOT Show lettering formed by white drones inside green circular formations" width={1920} height={1080} sizes="(max-width: 767px) 100vw, 50vw" className="h-auto w-full rounded-2xl" />
+                <figcaption className="mt-3 text-sm leading-6 text-gray-400">Custom SHOT Show lettering in the night sky.</figcaption>
+              </figure>
+              <div>
+                <p className="text-sm text-[#FF6A6A]">Las Vegas · Trade show production</p>
+                <h2 id="shot-show-heading" className="mt-3 font-orbitron text-2xl font-bold sm:text-3xl">SHOT Show in the Sky</h2>
+                <p className="mt-5 leading-8 text-gray-300">Recognizable event lettering gives a convention show a clear connection to the gathering. This SHOT Show formation combines the event name with circular imagery — an example of how custom designs can carry your identity into the sky.</p>
+                <Link href="https://www.youtube.com/watch?v=Ru2m7T49XwU" className="mt-5 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Watch the SHOT Show footage →</Link>
+              </div>
+            </section>
+
+            {/* Real event examples */}
+            <section className="mb-16 sm:mb-20" aria-labelledby="event-examples-heading">
+              <div className="mx-auto max-w-3xl text-center">
+                <h2 id="event-examples-heading" className="font-orbitron text-2xl font-bold sm:text-3xl">
+                  Your Message, Brought to Life
+                </h2>
+                <p className="mt-4 leading-7 text-gray-300">
+                  Explore two Las Vegas productions that turned an organization’s
+                  identity and message into custom aerial formations.
+                </p>
+              </div>
+              <div className="mt-10 grid gap-12 md:grid-cols-2 md:gap-10">
+                {[
+                  {
+                    title: "College of American Pathologists Foundation",
+                    count: 150,
+                    description: "For the License to Give event, 150 drones formed CAP Foundation lettering and a heart around Pathology — bringing the organization’s identity into the Las Vegas sky.",
+                    relevance: "Planning a conference reception? See how custom lettering and imagery can reflect your organization.",
+                    href: "/blog/college-of-american-pathologists-drone-show-las-vegas",
+                    video: "/shows/college-of-american-pathologists/countdown-heart.mp4",
+                    poster: "/shows/college-of-american-pathologists/countdown-heart-poster.jpg",
+                  },
+                  {
+                    title: "Mobilize Recovery: Narcan at Night",
+                    count: 155,
+                    description: "155 drones displayed Narcan at Night lettering, Recovery Month messaging, and a Breathe formation — translating the event’s recovery theme into a visual story.",
+                    relevance: "Hosting an event around a cause? See how a show can carry your message beyond a logo.",
+                    href: "/blog/mobilize-recovery-narcan-at-night-drone-show-las-vegas",
+                    video: "/shows/mobilize-recovery/breathe.mp4",
+                    poster: "/shows/mobilize-recovery/breathe.jpg",
+                  },
+                ].map((show) => (
+                  <article key={show.href} className="min-w-0">
+                    <video
+                      className="aspect-video w-full rounded-2xl bg-black object-contain"
+                      controls playsInline preload="none" poster={show.poster}
+                      aria-label={`${show.title} drone show highlight`}
+                    >
+                      <source src={show.video} type="video/mp4" />
+                      Your browser cannot play this video. <a href={show.video}>Watch the highlight</a>.
+                    </video>
+                    <p className="mt-6 text-sm text-[#FF6A6A]">The INDUSTRIAL · Las Vegas · {show.count} drones</p>
+                    <h3 className="mt-2 text-xl font-bold">{show.title}</h3>
+                    <p className="mt-4 leading-7 text-gray-300">{show.description}</p>
+                    <p className="mt-4 leading-7 text-gray-400">{show.relevance}</p>
+                    <Link href={show.href} className="mt-5 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">
+                      See the full show story<span className="sr-only">: {show.title}</span> →
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            </section>
 
             {/* Sections */}
             <div className="space-y-12">

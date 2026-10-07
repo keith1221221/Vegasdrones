@@ -80,7 +80,7 @@ export const metadata: Metadata = {
 };
 
 const homepageFaqs = [
-  { question: "What does a drone show cost?", answer: "Pricing depends on drone count, custom animation, show length, and venue requirements. Share your date and venue for a tailored quote. There are no travel fees for Las Vegas shows." },
+  { question: "What does a drone show cost?", answer: "Drone shows start at $6,000. Final pricing depends on drone count, custom animation, show length, and venue requirements. Share your date and venue for a tailored quote. There are no travel fees for Las Vegas shows." },
   { question: "Can you create our logo or a custom message?", answer: "Yes. We design formations around logos, names, event themes, and sponsor messages. The detail and scale depend on the drone count and viewing distance." },
   { question: "Can a drone show work at our venue?", answer: "We review the airspace, launch area, audience separation, and viewing angles before confirming a site. Share your venue so we can assess the requirements and approvals." },
   { question: "How do we start planning?", answer: "Send your event date, venue, audience size, and creative ideas. We’ll recommend the show scope, review site requirements, and provide pricing." },
@@ -170,18 +170,18 @@ export default function HomePage() {
       {/* ── CTA + Tagline ────────────────────────────────────────── */}
       <section className="bg-black px-5 sm:px-8 pt-10 sm:pt-14 pb-6 sm:pb-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center gap-6 sm:gap-8">
-          <p className="text-xl sm:text-2xl md:text-3xl font-semibold leading-relaxed text-white">
-            <span className="block sm:inline">A Vegas-born company.</span>{" "}
-            <span className="block sm:inline text-white">No travel fees for Las Vegas shows.</span>
-          </p>
+          <h2 className="max-w-3xl font-orbitron text-white font-bold text-2xl sm:text-3xl md:text-4xl leading-snug">
+            Vegas-Born. Built to Light Up Your Event.
+          </h2>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-center w-full justify-center">
             <CtaButton href="/contact">Check My Date &amp; Get Pricing</CtaButton>
             <Link href="/see-our-shows" className="rounded-full border border-white/30 px-7 py-4 font-orbitron font-bold hover:bg-white/10">Watch Our Shows</Link>
           </div>
 
-          <h2 className="mt-8 sm:mt-12 max-w-3xl font-orbitron text-white font-bold text-2xl sm:text-3xl md:text-4xl leading-snug">
-            Vegas-Born. Built to Light Up Your Event.
-          </h2>
+          <p className="mt-8 sm:mt-12 text-xl sm:text-2xl md:text-3xl font-semibold leading-relaxed text-white">
+            <span className="block">No travel fees for Las Vegas shows.</span>
+            <span className="block">We actually live here.</span>
+          </p>
 
           <p className="max-w-2xl text-gray-300 text-base sm:text-lg leading-8">
             Custom drone light shows for conventions, resorts, brand activations,
