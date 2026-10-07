@@ -13,9 +13,9 @@ const BRAND_RED_LIGHT = "#FF6A6A";
 const PAGE_URL = `${SITE_URL}/las-vegas-drone-show`;
 
 export const metadata: Metadata = {
-  title: "Book a Las Vegas Drone Show | Starting at $6,000 | Vegas Drones",
+  title: "Book a Las Vegas Drone Show | Starting from $8,000 | Vegas Drones",
   description:
-    "Book a custom Las Vegas drone show starting at $6,000. See real productions, review venue planning and booking steps, and request a quote. No travel fees for Las Vegas shows.",
+    "Book a custom Las Vegas drone show starting from $8,000. See real productions, review venue planning and booking steps, and request a quote. No travel fees for Las Vegas shows.",
   keywords: [
     "Las Vegas drone show",
     "drone show Las Vegas",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "Book a Las Vegas Drone Show | Starting at $6,000 | Vegas Drones",
+    title: "Book a Las Vegas Drone Show | Starting from $8,000 | Vegas Drones",
     description:
       "Custom Las Vegas drone shows for hotels, festivals, corporate events, sports venues, and public celebrations.",
     url: PAGE_URL,
@@ -160,7 +160,7 @@ export default function LasVegasDroneShowPage() {
           </>
         }
         bottomLine={
-          <>Shows starting at $6,000 · No travel fees for Las Vegas shows</>
+          <>Shows starting from $8,000 · No travel fees for Las Vegas shows</>
         }
         imageSrc="/osmosignalt1.webp"
         posterSrc="/osmosignalt1.webp"
@@ -186,7 +186,7 @@ export default function LasVegasDroneShowPage() {
           </section>
 
           <section className="mt-14 grid gap-10 border-y border-white/15 py-10 md:grid-cols-2">
-            <div><h2 className="font-orbitron text-2xl font-bold">What does it cost to hire a drone show?</h2><p className="mt-5 text-3xl font-bold text-[#FF6A6A]">Starting at $6,000</p><p className="mt-4 leading-8 text-gray-300">Your quote reflects the drone count, custom designs, show length, event date, and venue requirements. We recommend the scope after reviewing what you want to create and where your audience will watch.</p><Link href="/las-vegas-drone-show-cost" className="mt-5 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">See drone show pricing factors →</Link></div>
+            <div><h2 className="font-orbitron text-2xl font-bold">What does it cost to hire a drone show?</h2><p className="mt-5 text-3xl font-bold text-[#FF6A6A]">Starting from $8,000</p><p className="mt-4 leading-8 text-gray-300">Your quote reflects the drone count, custom designs, show length, event date, and venue requirements. We recommend the scope after reviewing what you want to create and where your audience will watch.</p><Link href="/las-vegas-drone-show-cost" className="mt-5 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">See drone show pricing factors →</Link></div>
             <div><h2 className="font-orbitron text-2xl font-bold">A local crew, a show built around you</h2><p className="mt-5 leading-8 text-gray-300">No travel fees for Las Vegas shows. We actually live here. Our work brings custom lettering, branded formations, and themed scenes to events of different sizes.</p><p className="mt-4 leading-8 text-gray-300">The completed productions below demonstrate different creative approaches. Their drone counts do not define what is included in the starting price.</p></div>
           </section>
           <section className="mt-16" aria-labelledby="booking-heading">

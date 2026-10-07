@@ -80,7 +80,7 @@ export const metadata: Metadata = {
 };
 
 const homepageFaqs = [
-  { question: "What does a drone show cost?", answer: "Drone shows start at $6,000. Final pricing depends on drone count, custom animation, show length, and venue requirements. Share your date and venue for a tailored quote. There are no travel fees for Las Vegas shows." },
+  { question: "What does a drone show cost?", answer: "Drone shows start from $8,000. Final pricing depends on drone count, custom animation, show length, and venue requirements. Share your date and venue for a tailored quote. There are no travel fees for Las Vegas shows." },
   { question: "Can you create our logo or a custom message?", answer: "Yes. We design formations around logos, names, event themes, and sponsor messages. The detail and scale depend on the drone count and viewing distance." },
   { question: "Can a drone show work at our venue?", answer: "We review the airspace, launch area, audience separation, and viewing angles before confirming a site. Share your venue so we can assess the requirements and approvals." },
   { question: "How do we start planning?", answer: "Send your event date, venue, audience size, and creative ideas. We’ll recommend the show scope, review site requirements, and provide pricing." },
@@ -191,7 +191,7 @@ export default function HomePage() {
           </p>
 
           <div className="mt-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-gray-400">
-            <Link href="/las-vegas-drone-show-cost" className="underline underline-offset-4 text-white">Shows starting at $6,000 →</Link>
+            <Link href="/las-vegas-drone-show-cost" className="underline underline-offset-4 text-white">Shows starting from $8,000 →</Link>
             <span>Las Vegas-based crew</span>
             <span>FAA Part 107 · Fully insured</span>
             <span>100–1,000+ drones</span>

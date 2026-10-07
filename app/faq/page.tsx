@@ -10,7 +10,7 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     question: "How much does a drone light show cost?",
-    answer: "Drone shows start at $6,000. Final pricing depends on drone count, creative scope, show duration, event date, and venue requirements. No travel fees for Las Vegas shows. Contact us for a tailored quote."
+    answer: "Drone shows start from $8,000. Final pricing depends on drone count, creative scope, show duration, event date, and venue requirements. No travel fees for Las Vegas shows. Contact us for a tailored quote."
   },
   {
     question: "Are drone light shows safe?",

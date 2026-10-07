@@ -8,14 +8,14 @@ const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
 export const metadata: Metadata = {
-  title: "What Does a Drone Show Cost? | Starting at $6,000 | Vegas Drones",
+  title: "What Does a Drone Show Cost? | Starting from $8,000 | Vegas Drones",
   description:
-    "Custom drone shows starting at $6,000. A Vegas-born company with no travel fees for Las Vegas shows. Explore pricing factors and get a tailored event quote.",
+    "Custom drone shows starting from $8,000. A Vegas-born company with no travel fees for Las Vegas shows. Explore pricing factors and get a tailored event quote.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "Drone Shows Starting at $6,000 | Vegas Drones",
+    title: "Drone Shows Starting from $8,000 | Vegas Drones",
     description:
-      "Drone shows starting at $6,000, with custom quotes based on show size, creative scope and venue requirements. No travel fees for Las Vegas shows.",
+      "Drone shows starting from $8,000, with custom quotes based on show size, creative scope and venue requirements. No travel fees for Las Vegas shows.",
     url: PAGE_URL,
     siteName: "Vegas Drones",
     images: [
@@ -51,7 +51,7 @@ export default function LasVegasDroneShowCostPage() {
         name: "How much does a Vegas Drones show cost?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Vegas Drones shows start at $6,000. The final quote depends on drone count, creative scope, show duration, event date and venue requirements. There are no travel fees for Las Vegas shows.",
+          text: "Vegas Drones shows start from $8,000. The final quote depends on drone count, creative scope, show duration, event date and venue requirements. There are no travel fees for Las Vegas shows.",
         },
       },
       {
@@ -101,7 +101,7 @@ export default function LasVegasDroneShowCostPage() {
           </h1>
 
           <p className="mt-8 text-lg text-gray-300">Custom drone shows starting at</p>
-          <p className="mt-2 font-orbitron text-6xl font-bold sm:text-7xl">$6,000</p>
+          <p className="mt-2 font-orbitron text-6xl font-bold sm:text-7xl">$8,000</p>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-300">
             A starting point for planning your event. Your final quote is tailored
             to the show size, creative scope, event date, and venue requirements.

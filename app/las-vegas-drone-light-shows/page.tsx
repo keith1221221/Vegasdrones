@@ -8,7 +8,7 @@ const MEDIA = "/shows/drone-light-shows";
 
 export const metadata: Metadata = {
   title: "Las Vegas Drone Light Shows | Custom Shows & Event Planning",
-  description: "See real drone show footage and behind-the-scenes photos from Vegas Drones. Learn about custom formations, venue planning, production, and pricing starting at $6,000.",
+  description: "See real drone show footage and behind-the-scenes photos from Vegas Drones. Learn about custom formations, venue planning, production, and pricing starting from $8,000.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "Las Vegas Drone Light Shows | Vegas Drones",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 const faqs = [
-  { question: "How much does a drone light show cost?", answer: "Shows start at $6,000. Your final quote depends on drone count, creative complexity, show length, event date, and venue requirements. There are no travel fees for Las Vegas shows." },
+  { question: "How much does a drone light show cost?", answer: "Shows start from $8,000. Your final quote depends on drone count, creative complexity, show length, event date, and venue requirements. There are no travel fees for Las Vegas shows." },
   { question: "How many drones does my show need?", answer: "The right count depends on the detail in your designs, the scale of the display, and the viewing distance. Simple icons and lettering need a different approach from detailed portraits. Share your ideas and venue so we can recommend a suitable scope." },
   { question: "Can you create our logo, a name, or a custom animation?", answer: "Yes. We design custom lettering, logos, icons, themed scenes, and animated sequences. We review the artwork and adapt it to a drone formation that reads clearly from the audience’s viewing area." },
   { question: "Can a drone show work at any venue?", answer: "Every site needs a review. Airspace, available launch and landing space, audience separation, obstacles, and viewing angles all affect feasibility. Send the venue address before committing to a show location." },
@@ -92,7 +92,7 @@ export default function DroneLightShowsPage() {
 
         <section className="grid gap-10 border-y border-white/15 py-12 md:grid-cols-2 sm:py-16">
           <div><h2 className="font-orbitron text-2xl font-bold sm:text-3xl">What does your venue need?</h2><p className="mt-5 leading-8 text-gray-300">Start with an address and a proposed viewing area. We assess the airspace, launch and landing space, obstacles, audience separation, and sightlines. A venue that looks ideal in photos still needs a site review.</p><p className="mt-4 leading-8 text-gray-300">Weather and operating conditions also affect the production. We discuss coordination and contingency arrangements while planning your event.</p><Link href="/contact" className="mt-5 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Ask us to review your venue →</Link></div>
-          <div><h2 className="font-orbitron text-2xl font-bold sm:text-3xl">How much does a show cost?</h2><p className="mt-5 text-3xl font-bold text-[#FF6A6A]">Starting at $6,000</p><p className="mt-4 leading-8 text-gray-300">Your quote is tailored to the drone count, creative scope, show length, date, and venue requirements. The large production shown here illustrates what is possible; it is not an example of the starting-price package.</p><p className="mt-4 leading-8 text-gray-300">No travel fees for Las Vegas shows. Send your event details and we’ll recommend a scope that fits your goals.</p><Link href="/las-vegas-drone-show-cost" className="mt-5 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Explore drone show pricing →</Link></div>
+          <div><h2 className="font-orbitron text-2xl font-bold sm:text-3xl">How much does a show cost?</h2><p className="mt-5 text-3xl font-bold text-[#FF6A6A]">Starting from $8,000</p><p className="mt-4 leading-8 text-gray-300">Your quote is tailored to the drone count, creative scope, show length, date, and venue requirements. The large production shown here illustrates what is possible; it is not an example of the starting-price package.</p><p className="mt-4 leading-8 text-gray-300">No travel fees for Las Vegas shows. Send your event details and we’ll recommend a scope that fits your goals.</p><Link href="/las-vegas-drone-show-cost" className="mt-5 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Explore drone show pricing →</Link></div>
         </section>
 
         <section id="faq" className="py-12 sm:py-16"><h2 className="font-orbitron text-2xl font-bold sm:text-3xl">Planning questions, answered</h2><div className="mt-8">{faqs.map(({question,answer}) => <details key={question} className="border-b border-white/15 py-5"><summary className="cursor-pointer pr-4 text-lg font-semibold">{question}</summary><p className="mt-4 max-w-3xl leading-8 text-gray-300">{answer}</p></details>)}</div></section>
