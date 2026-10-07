@@ -227,6 +227,8 @@ export default function HolidaysPage() {
             </div>
           </section>
 
+          <p className="mx-auto mb-12 max-w-3xl text-gray-300">Shows start at $6,000. <Link href="/las-vegas-drone-show-cost" className="text-white underline underline-offset-4">See holiday drone show pricing factors →</Link></p>
+
           {/* Holiday list */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left max-w-4xl mx-auto mb-16">
             <div>

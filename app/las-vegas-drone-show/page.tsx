@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import Script from "next/script";
 import HeroVideo from "@/components/HeroImage.server";
@@ -12,9 +13,9 @@ const BRAND_RED_LIGHT = "#FF6A6A";
 const PAGE_URL = `${SITE_URL}/las-vegas-drone-show`;
 
 export const metadata: Metadata = {
-  title: "Las Vegas Drone Show | Events, Venues & Festivals | Vegas Drones",
+  title: "Book a Las Vegas Drone Show | Starting at $6,000 | Vegas Drones",
   description:
-    "Las Vegas drone show company for hotels, festivals, corporate events, sports venues, and public celebrations. Learn how drone shows work in Las Vegas, see recent examples, and request pricing.",
+    "Book a custom Las Vegas drone show starting at $6,000. See real productions, review venue planning and booking steps, and request a quote. No travel fees for Las Vegas shows.",
   keywords: [
     "Las Vegas drone show",
     "drone show Las Vegas",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "Las Vegas Drone Show | Events, Venues & Festivals | Vegas Drones",
+    title: "Book a Las Vegas Drone Show | Starting at $6,000 | Vegas Drones",
     description:
       "Custom Las Vegas drone shows for hotels, festivals, corporate events, sports venues, and public celebrations.",
     url: PAGE_URL,
@@ -154,21 +155,27 @@ export default function LasVegasDroneShowPage() {
         }
         subtitle={
           <>
-            A broader guide to Las Vegas drone shows for hotels, festivals,
-            corporate events, sports venues, and public celebrations — with recent
-            examples, planning context, and next steps.
+            Book a custom drone show for your convention, resort, festival, or
+            celebration. Share your date, venue, and ideas — we’ll help shape the show.
           </>
         }
         bottomLine={
-          <>A modern entertainment format built for Las Vegas events, venues, and brand visibility</>
+          <>Shows starting at $6,000 · No travel fees for Las Vegas shows</>
         }
-        primaryCta={{ href: "/contact", label: "Get Pricing" }}
+        imageSrc="/osmosignalt1.webp"
+        posterSrc="/osmosignalt1.webp"
+        mobileVideoSrc="/vd-sizzle-mobile.mp4"
+        desktopVideoSrc="/vd-desk-hero.mp4"
+        desktopVideoClassName="object-cover object-[center_28%]"
+        heightClassName="h-[50vh] sm:h-[75vh]"
+        primaryCta={{ href: "/contact", label: "Check My Date & Get a Quote" }}
+        secondaryCta={{ href: "/las-vegas-drone-show-cost", label: "Explore Pricing" }}
       />
 
       <main className="px-6 pb-20 pt-10 sm:pt-14 font-poppins">
         <div className="max-w-5xl mx-auto">
           <section className="text-center">
-            <h1 className="sr-only">Las Vegas Drone Show</h1>
+
 
             <p className="text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
               <span style={{ color: BRAND_RED }}>A Las Vegas drone show</span> can
@@ -178,21 +185,24 @@ export default function LasVegasDroneShowPage() {
             </p>
           </section>
 
-          <div className="text-center mt-14">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center text-black font-bold py-4 px-10 rounded-full transform hover:scale-105 transition font-orbitron"
-              style={{
-                backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
-                boxShadow: "0 0 25px rgba(255,59,59,0.35)",
-              }}
-            >
-              Request Drone Show Information
-            </Link>
-          </div>
+          <section className="mt-14 grid gap-10 border-y border-white/15 py-10 md:grid-cols-2">
+            <div><h2 className="font-orbitron text-2xl font-bold">What does it cost to hire a drone show?</h2><p className="mt-5 text-3xl font-bold text-[#FF6A6A]">Starting at $6,000</p><p className="mt-4 leading-8 text-gray-300">Your quote reflects the drone count, custom designs, show length, event date, and venue requirements. We recommend the scope after reviewing what you want to create and where your audience will watch.</p><Link href="/las-vegas-drone-show-cost" className="mt-5 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">See drone show pricing factors →</Link></div>
+            <div><h2 className="font-orbitron text-2xl font-bold">A local crew, a show built around you</h2><p className="mt-5 leading-8 text-gray-300">No travel fees for Las Vegas shows. We actually live here. Our work brings custom lettering, branded formations, and themed scenes to events of different sizes.</p><p className="mt-4 leading-8 text-gray-300">The completed productions below demonstrate different creative approaches. Their drone counts do not define what is included in the starting price.</p></div>
+          </section>
+          <section className="mt-16" aria-labelledby="booking-heading">
+            <h2 id="booking-heading" className="font-orbitron text-2xl font-bold sm:text-3xl">How to book your Las Vegas drone show</h2>
+            <ol className="mt-8 grid gap-8 md:grid-cols-3">
+              {[
+                ["1. Send your event details", "Tell us your date, venue address, audience size, budget, and any logos or ideas you want to feature."],
+                ["2. Review the venue and creative scope", "We assess the site and discuss designs, fleet size, coordination, and the proposed timeline before confirming a production plan."],
+                ["3. Confirm your tailored quote", "We outline the proposed scope and arrangements so you can review what you’re booking and the next steps for production."],
+              ].map(([title, text]) => <li key={title} className="border-t border-white/20 pt-5"><h3 className="text-lg font-bold">{title}</h3><p className="mt-4 leading-7 text-gray-300">{text}</p></li>)}
+            </ol>
+            <Link href="/contact" className="mt-6 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Send your date and venue →</Link>
+          </section>
 
           <section className="mt-16 grid gap-8 md:grid-cols-2">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+            <div className="border-t border-white/15 pt-8">
               <h2 className="font-orbitron text-2xl font-bold text-white">
                 Las Vegas Drone Shows for Events and Venues
               </h2>
@@ -205,7 +215,7 @@ export default function LasVegasDroneShowPage() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+            <div className="border-t border-white/15 pt-8">
               <h2 className="font-orbitron text-2xl font-bold text-white">
                 Why Las Vegas Is a Strong Market for Drone Shows
               </h2>
@@ -218,71 +228,24 @@ export default function LasVegasDroneShowPage() {
             </div>
           </section>
 
-          <section className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-8">
-            <h2 className="font-orbitron text-2xl sm:text-3xl font-bold text-white">
-              Recent Las Vegas Drone Show Example
-            </h2>
-
-            <p className="mt-4 max-w-3xl text-gray-300 leading-relaxed">
-              See our recent St. Patrick’s Day drone show recap from BLVD Las Vegas
-              on the Las Vegas Strip. This completed event includes recap coverage,
-              photos, and video from a real Las Vegas drone show activation.
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-4">
-              <Link
-                href="/blog/st-patricks-day-drone-show-las-vegas-strip-recap"
-                className="inline-flex items-center justify-center text-black font-bold py-3.5 px-7 rounded-full transition font-orbitron"
-                style={{
-                  backgroundImage: `linear-gradient(to right, ${BRAND_RED}, white, ${BRAND_RED_LIGHT})`,
-                }}
-              >
-                View Event Recap
-              </Link>
-
-              <Link
-                href="/blog"
-                className="inline-flex items-center justify-center py-3.5 px-7 rounded-full font-orbitron font-bold border border-white/20 text-white hover:bg-white/10 transition"
-              >
-                Browse More Blog Posts
-              </Link>
+          <section className="mt-16" aria-labelledby="completed-heading">
+            <h2 id="completed-heading" className="font-orbitron text-2xl font-bold sm:text-3xl">Completed shows. Different stories.</h2>
+            <div className="mt-8 grid gap-10 md:grid-cols-3">
+              {[
+                {title:"CAP Foundation", count:"150 drones", image:"/shows/college-of-american-pathologists/pathology-heart.jpg", alt:"Pathology lettering inside a heart-shaped drone formation", text:"Custom foundation lettering and a heart around Pathology for the License to Give event in Las Vegas.", href:"/blog/college-of-american-pathologists-drone-show-las-vegas"},
+                {title:"Mobilize Recovery", count:"155 drones", image:"/shows/mobilize-recovery/breathe.jpg", alt:"Breathe lettering surrounded by a circular drone formation", text:"Recovery messaging and themed formations for Narcan at Night in Las Vegas.", href:"/blog/mobilize-recovery-narcan-at-night-drone-show-las-vegas"},
+                {title:"Pioche Labor Day", count:"155 drones", image:"/shows/pioche-labor-day/labor-day-2026.jpg", alt:"Drones spelling Labor Day 2026 at the Pioche celebration", text:"Town lettering and patriotic imagery for a Nevada community celebration.", href:"/blog/pioche-labor-day-2026-drone-show"},
+              ].map(show => <article key={show.href}><Image src={show.image} alt={show.alt} width={1920} height={1080} sizes="(max-width: 767px) 100vw, 33vw" className="aspect-video w-full rounded-2xl object-contain" /><p className="mt-5 text-sm text-[#FF6A6A]">{show.count}</p><h3 className="mt-2 text-xl font-bold">{show.title}</h3><p className="mt-4 leading-7 text-gray-300">{show.text}</p><Link href={show.href} className="mt-4 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">See the show story<span className="sr-only">: {show.title}</span> →</Link></article>)}
             </div>
           </section>
-
-          <section className="mt-16 grid gap-8 md:grid-cols-3">
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5">
-              <div className="aspect-[4/5] bg-neutral-900">
-                <img
-                  src="/st-patricks-day-drone-show-clover.jpg"
-                  alt="Clover formation from a Las Vegas drone show by Vegas Drones"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5">
-              <div className="aspect-[4/5] bg-neutral-900">
-                <img
-                  src="/st-patricks-day-drone-show-claddagh.jpg"
-                  alt="Claddagh formation from a St Patrick's Day drone show in Las Vegas"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5">
-              <div className="aspect-[4/5] bg-neutral-900">
-                <img
-                  src="/st-patricks-day-drone-show-leprechaun.jpg"
-                  alt="Leprechaun formation from a Las Vegas drone show event"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
+          <section className="mt-16 border-t border-white/15 pt-10">
+            <h2 className="font-orbitron text-2xl font-bold sm:text-3xl">Check your venue before committing</h2>
+            <p className="mt-5 max-w-3xl leading-8 text-gray-300">A clear audience view is only one part of the site review. We also assess the airspace, launch and landing area, obstacles, and audience separation. Space requirements depend on the fleet and site; send your address and any site plans so we can review your location.</p>
+            <p className="mt-4 max-w-3xl leading-8 text-gray-300">Start planning as soon as you have a proposed date. Creative development, coordination, and applicable approvals take time. We discuss weather considerations and contingency arrangements during planning.</p>
           </section>
 
           <section className="mt-16 grid gap-8 md:grid-cols-2">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+            <div className="border-t border-white/15 pt-8">
               <h2 className="font-orbitron text-2xl font-bold text-white">
                 Drone Shows vs Fireworks in Las Vegas
               </h2>
@@ -294,7 +257,7 @@ export default function LasVegasDroneShowPage() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+            <div className="border-t border-white/15 pt-8">
               <h2 className="font-orbitron text-2xl font-bold text-white">
                 How Drone Shows Work
               </h2>
@@ -307,7 +270,7 @@ export default function LasVegasDroneShowPage() {
             </div>
           </section>
 
-          <section className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-8">
+          <section className="mt-16 border-t border-white/15 pt-8">
             <h2 className="font-orbitron text-2xl sm:text-3xl font-bold text-white">
               Need More Detail on Custom Drone Light Shows?
             </h2>
@@ -347,7 +310,7 @@ export default function LasVegasDroneShowPage() {
             </div>
           </section>
 
-          <section className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-8">
+          <section className="mt-16 border-t border-white/15 pt-8">
             <h2 className="font-orbitron text-2xl sm:text-3xl font-bold text-white">
               Frequently Asked Questions
             </h2>

@@ -22,6 +22,8 @@ export default function Footer() {
               Quick Links
             </h3>
             <ul className="space-y-2">
+              <li><Link href="/las-vegas-drone-show" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Book a Las Vegas Drone Show</Link></li>
+              <li><Link href="/las-vegas-drone-show-cost" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Pricing</Link></li>
               <li>
                 <Link
                   href="/"

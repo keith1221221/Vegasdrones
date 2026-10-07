@@ -265,6 +265,8 @@ export default function ConventionsPage() {
               </section>
             </div>
 
+            <p className="mt-14 text-center text-gray-300">Shows start at $6,000. <Link href="/las-vegas-drone-show-cost" className="text-white underline underline-offset-4">Explore pricing and what affects your quote →</Link></p>
+
             {/* Bottom CTA */}
             <div className="text-center mt-16">
               <Link

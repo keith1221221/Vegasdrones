@@ -18,7 +18,8 @@ export default function Header() {
     { href: "/holidays", label: "Holidays" },
     { href: "/events", label: "Events" },
     { href: "/conventions-trade-shows", label: "Conventions" },
-    { href: "/contact", label: "Get Pricing" },
+    { href: "/las-vegas-drone-show-cost", label: "Pricing" },
+    { href: "/contact", label: "Get a Quote" },
     { href: "/blog", label: "Blog" },
   ];
 
@@ -26,7 +27,7 @@ export default function Header() {
     const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
 
     return [
-      "font-orbitron text-sm sm:text-base transition",
+      "font-orbitron text-sm transition",
       isActive
         ? "text-white border-b-2 pb-1"
         : "hover:text-white",
@@ -47,7 +48,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden xl:flex items-center gap-4">
             {navLinks.map((l) => {
               const isActive =
                 l.href === "/" ? pathname === "/" : pathname.startsWith(l.href);
@@ -68,14 +69,14 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="flex items-center gap-3 md:hidden">
+          <div className="flex items-center gap-3 xl:hidden">
             <Link href="/contact" onClick={() => setIsOpen(false)} className="rounded-full bg-[#FF3B3B] px-3 py-2 text-xs font-bold text-black">Get Pricing</Link>
 
           {/* Mobile menu toggle */}
           <button
             type="button"
             onClick={() => setIsOpen((prev) => !prev)}
-            className="md:hidden text-3xl leading-none"
+            className="xl:hidden text-3xl leading-none"
             style={{ color: BRAND_RED }}
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
@@ -87,10 +88,10 @@ export default function Header() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="fixed inset-0 z-40 bg-black/95 md:hidden flex flex-col">
+        <div className="fixed inset-0 z-40 bg-black/95 xl:hidden flex flex-col">
           <div className="h-16" />
 
-          <div className="flex-1 flex flex-col items-center justify-center gap-6">
+          <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center gap-4 py-4">
             {navLinks.map((l) => {
               const isActive =
                 l.href === "/" ? pathname === "/" : pathname.startsWith(l.href);
@@ -99,7 +100,7 @@ export default function Header() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="font-orbitron text-2xl transition hover:text-white"
+                  className="font-orbitron text-xl transition hover:text-white"
                   style={{ color: isActive ? "white" : BRAND_RED }}
                   onClick={() => setIsOpen(false)}
                 >

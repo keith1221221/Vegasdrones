@@ -191,6 +191,7 @@ export default function HomePage() {
           </p>
 
           <div className="mt-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-gray-400">
+            <Link href="/las-vegas-drone-show-cost" className="underline underline-offset-4 text-white">Shows starting at $6,000 →</Link>
             <span>Las Vegas-based crew</span>
             <span>FAA Part 107 · Fully insured</span>
             <span>100–1,000+ drones</span>
