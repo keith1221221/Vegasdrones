@@ -10,7 +10,7 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     question: "How much does a drone light show cost?",
-    answer: "Drone shows start from $8,000. Final pricing depends on drone count, creative scope, show duration, event date, and venue requirements. No travel fees for Las Vegas shows. Contact us for a tailored quote."
+    answer: "Drone shows start from $8,000. The final quote depends on drone count, creative scope, show duration, event date and venue requirements. There are no travel fees for Las Vegas shows."
   },
   {
     question: "Are drone light shows safe?",
@@ -96,6 +96,11 @@ export default function FAQ() {
                       <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
                         {item.answer}
                       </p>
+                      {index === 0 && (
+                        <a href="/las-vegas-drone-show-cost" className="mt-3 inline-block text-white underline underline-offset-4">
+                          See drone show pricing and quote factors
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

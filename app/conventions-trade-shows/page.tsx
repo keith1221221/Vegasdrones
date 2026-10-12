@@ -234,10 +234,10 @@ export default function ConventionsPage() {
 
               <section className="max-w-3xl mx-auto">
                 <h2 className="text-3xl font-bold text-[#FF3B3B] mb-4 font-orbitron text-center">
-                  Ideal for Major Las Vegas Conventions
+                  Drone Show Opportunities Around Major Las Vegas Conventions
                 </h2>
                 <p className="text-gray-300 leading-relaxed mb-4">
-                  We’ve tailored drone shows for events across Las Vegas, including:
+                  Plan a brand activation, client reception, or off-site event around conventions such as:
                 </p>
                 <ul className="list-disc list-inside space-y-3 text-gray-300">
                   <li>CES – Consumer Electronics Show</li>
@@ -259,7 +259,7 @@ export default function ConventionsPage() {
                   We manage the entire production — from creative concept and
                   animation design to FAA coordination and on-site execution. Logo
                   formations, text effects, animated transitions, and 3D motion can
-                  all be built into your show. Fleets scale from 50 to 500+ drones
+                  all be built into your show. Shows scale from 100 to 1,000+ drones
                   based on venue size and visual goals.
                 </p>
               </section>
