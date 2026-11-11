@@ -6,6 +6,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     "/",
+    "/california-drone-shows",
+    "/arizona-drone-shows",
+    "/utah-drone-shows",
+    "/new-mexico-drone-shows",
+    "/colorado-drone-shows",
+    "/oregon-drone-shows",
+    "/idaho-drone-shows",
     "/las-vegas-drone-light-shows",
     "/las-vegas-drone-show",
     "/las-vegas-drone-show-cost",

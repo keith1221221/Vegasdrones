@@ -7,7 +7,7 @@ const OG_IMAGE = `${SITE_URL}/alienhead1.png`;
 export const metadata: Metadata = {
   title: "Contact Vegas Drones | Drone Show Pricing & Availability",
   description:
-    "Contact Vegas Drones for custom drone light show pricing and availability in Las Vegas. Share your event date, venue, audience, and creative goals to start planning.",
+    "Contact Vegas Drones for custom drone light show pricing and availability for Las Vegas and California events. Share your event date, venue, audience, and creative goals to start planning.",
   alternates: {
     canonical: PAGE_URL,
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Vegas Drones | Drone Show Pricing & Availability",
     description:
-      "Request pricing and availability for a custom Las Vegas drone light show.",
+      "Request pricing and availability for a custom drone light show in Las Vegas or California.",
     url: PAGE_URL,
     siteName: "Vegas Drones",
     type: "website",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact Vegas Drones | Drone Show Pricing",
     description:
-      "Request pricing and availability for a custom Las Vegas drone light show.",
+      "Request pricing and availability for a custom drone light show in Las Vegas or California.",
     images: [OG_IMAGE],
   },
 };

@@ -12,7 +12,7 @@ export default function Footer() {
               Vegas Drones
             </h3>
             <p className="text-sm sm:text-base text-gray-400">
-              Bringing the future of entertainment to Las Vegas with stunning drone light shows.
+              Las Vegas-based drone light shows. Traveling for events in California, Arizona, Utah, New Mexico, Colorado, Oregon, and Idaho.
             </p>
           </div>
 
@@ -22,6 +22,13 @@ export default function Footer() {
               Quick Links
             </h3>
             <ul className="space-y-2">
+              <li><Link href="/california-drone-shows" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">California Drone Shows</Link></li>
+              <li><Link href="/arizona-drone-shows" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Arizona Drone Shows</Link></li>
+              <li><Link href="/utah-drone-shows" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Utah Drone Shows</Link></li>
+              <li><Link href="/new-mexico-drone-shows" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">New Mexico Drone Shows</Link></li>
+              <li><Link href="/colorado-drone-shows" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Colorado Drone Shows</Link></li>
+              <li><Link href="/oregon-drone-shows" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Oregon Drone Shows</Link></li>
+              <li><Link href="/idaho-drone-shows" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Idaho Drone Shows</Link></li>
               <li><Link href="/las-vegas-drone-show" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Book a Las Vegas Drone Show</Link></li>
               <li><Link href="/las-vegas-drone-show-cost" className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors">Pricing</Link></li>
               <li>

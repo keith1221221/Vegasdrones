@@ -7,6 +7,8 @@ const SITE_URL = "https://www.vegasdrones.com";
 const PAGE_PATH = "/contact";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 
+const markets: Record<string, string> = {"california": "California", "arizona": "Arizona", "utah": "Utah", "new-mexico": "New Mexico", "colorado": "Colorado", "oregon": "Oregon", "idaho": "Idaho"};
+
 const BRAND_RED = "#FF3B3B";
 const BRAND_RED_LIGHT = "#FF6A6A";
 
@@ -45,6 +47,11 @@ export default function Contact() {
     name: "",
     email: "",
     message: "",
+    event_city: "",
+    event_date: "",
+    budget: "",
+    market: "",
+    landing_source: "",
     gclid: "",
     gbraid: "",
     wbraid: "",
@@ -82,6 +89,8 @@ export default function Contact() {
 
     setFormData((prev) => ({
       ...prev,
+      market: Object.prototype.hasOwnProperty.call(markets, params.get("market") || "") ? params.get("market")! : "",
+      landing_source: (params.get("source") || "").slice(0, 100),
       gclid: params.get("gclid") || "",
       gbraid: params.get("gbraid") || "",
       wbraid: params.get("wbraid") || "",
@@ -89,7 +98,7 @@ export default function Contact() {
   }, []);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -137,6 +146,11 @@ export default function Contact() {
           name: "",
           email: "",
           message: "",
+          event_city: "",
+          event_date: "",
+          budget: "",
+          market: formData.market,
+          landing_source: formData.landing_source,
           gclid: formData.gclid,
           gbraid: formData.gbraid,
           wbraid: formData.wbraid,
@@ -147,6 +161,8 @@ export default function Contact() {
           method: "formspree",
           form_name: "contact",
           response_status: response.status,
+          market: formData.market || "general",
+          landing_source: formData.landing_source,
           has_gclid: !!formData.gclid,
           has_gbraid: !!formData.gbraid,
           has_wbraid: !!formData.wbraid,
@@ -208,7 +224,7 @@ export default function Contact() {
         </p>
 
         <p className="mt-4 font-semibold text-white">
-          Headquartered in Las Vegas. No travel fees for Las Vegas shows.
+          {markets[formData.market] ? `Planning a ${markets[formData.market]} show? Include your city and venue so we can review feasibility and travel logistics.` : "Headquartered in Las Vegas. No travel fees for Las Vegas shows. We also travel for events in California, Arizona, Utah, New Mexico, Colorado, Oregon, and Idaho. Travel and logistics are scoped in your quote."}
         </p>
 
         <div className="mt-8 flex justify-center">
@@ -272,9 +288,14 @@ export default function Contact() {
                   />
                 </div>
 
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div><label htmlFor="event-city" className="mb-2 block font-medium">Event City &amp; State</label><input id="event-city" name="event_city" autoComplete="off" required value={formData.event_city} onChange={handleChange} placeholder="e.g. San Diego, CA" className="w-full rounded-xl border border-white/15 bg-black/40 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white/20" /></div>
+                  <div><label htmlFor="event-date" className="mb-2 block font-medium">Event Date (optional)</label><input id="event-date" type="date" name="event_date" value={formData.event_date} onChange={handleChange} className="w-full rounded-xl border border-white/15 bg-black/40 px-4 py-3 text-white [color-scheme:dark] focus:outline-none focus:ring-2 focus:ring-white/20" /></div>
+                </div>
+                <div><label htmlFor="event-budget" className="mb-2 block font-medium">Budget Range (optional)</label><select id="event-budget" name="budget" value={formData.budget} onChange={handleChange} className="w-full rounded-xl border border-white/15 bg-black px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white/20"><option value="">Select a range</option><option>Under $10,000</option><option>$10,000–$25,000</option><option>$25,000–$50,000</option><option>$50,000+</option><option>Still deciding</option></select></div>
                 <div>
                   <label htmlFor="contact-message" className="block text-white mb-2 font-medium">
-                    Message
+                    Event Details
                   </label>
                   <textarea
                     id="contact-message"

@@ -124,7 +124,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       addressRegion: "NV",
       addressCountry: "US",
     },
-    areaServed: "Las Vegas NV",
+    areaServed: [
+      { "@type": "City", name: "Las Vegas", address: { "@type": "PostalAddress", addressRegion: "NV", addressCountry: "US" } },
+      { "@type": "State", name: "California" },
+      { "@type": "State", name: "Arizona" },
+      { "@type": "State", name: "Utah" },
+      { "@type": "State", name: "New Mexico" },
+      { "@type": "State", name: "Colorado" },
+      { "@type": "State", name: "Oregon" },
+      { "@type": "State", name: "Idaho" },
+    ],
     serviceType: [
       "Drone light shows",
       "Drone advertising",

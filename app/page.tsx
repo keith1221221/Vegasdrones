@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Vegas Drones | Las Vegas Drone Light Show Company",
   description:
-    "Vegas Drones is Las Vegas's premier drone light show company. FAA-authorized, locally based, producing 100–1,000+ drone aerial shows for conventions, corporate events, resort activations, weddings, and festivals. Get a quote today.",
+    "Vegas Drones is Las Vegas's premier drone light show company. FAA-authorized, locally based, producing custom shows in Nevada, California, Arizona, Utah, New Mexico, Colorado, Oregon, and Idaho. Request event pricing.",
   keywords: [
     "Las Vegas drone light show company",
     "drone show Las Vegas",
@@ -80,6 +80,7 @@ export const metadata: Metadata = {
 };
 
 const homepageFaqs = [
+  { question: "Do you travel outside Las Vegas for drone shows?", answer: "Yes. Our Las Vegas-based team travels for events in California, Arizona, Utah, New Mexico, Colorado, Oregon, and Idaho, as well as Nevada. Send your city, venue, and date so we can review site feasibility and availability. Travel and logistics are scoped in your quote; no travel fees apply to Las Vegas shows." },
   { question: "What does a drone show cost?", answer: "Drone shows start from $8,000. Final pricing depends on drone count, custom animation, show length, and venue requirements. Share your date and venue for a tailored quote. There are no travel fees for Las Vegas shows." },
   { question: "Can you create our logo or a custom message?", answer: "Yes. We design formations around logos, names, event themes, and sponsor messages. The detail and scale depend on the drone count and viewing distance." },
   { question: "Can a drone show work at our venue?", answer: "We review the airspace, launch area, audience separation, and viewing angles before confirming a site. Share your venue so we can assess the requirements and approvals." },
@@ -180,7 +181,7 @@ export default function HomePage() {
 
           <p className="mt-8 sm:mt-12 text-xl sm:text-2xl md:text-3xl font-semibold leading-relaxed text-white">
             <span className="block">No travel fees for Las Vegas shows.</span>
-            <span className="block">We actually live here.</span>
+            <span className="block">Planning elsewhere? Our crew travels.</span>
           </p>
 
           <p className="max-w-2xl text-gray-300 text-base sm:text-lg leading-8">
@@ -213,6 +214,27 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section id="travel" className="mx-auto max-w-6xl scroll-mt-28 px-5 py-12 sm:px-8">
+        <div className="rounded-3xl border border-white/15 bg-white/5 p-8 sm:p-10">
+          <p className="text-sm uppercase tracking-widest text-[#FF6A6A]">Planning beyond Nevada</p>
+          <h2 className="mt-3 font-orbitron text-3xl font-bold">Vegas-born. Ready to travel for your event.</h2>
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-gray-300">We travel for drone light shows in California, Arizona, Utah, New Mexico, Colorado, Oregon, and Idaho, as well as Nevada. Bring a custom aerial finale to your corporate event, brand activation, festival, or wedding. Share your city, venue, and date so we can review availability and site feasibility.</p>
+          <p className="mt-4 max-w-3xl leading-7 text-gray-300">Travel and event logistics are scoped in your quote. No travel fees for Las Vegas shows; travel costs for other locations depend on the venue and production requirements.</p>
+          <div className="mt-6 flex flex-wrap items-center gap-5">
+            <Link href="/contact?source=homepage-travel" className="inline-flex min-h-12 items-center rounded-full bg-[#FF3B3B] px-6 py-3 font-bold hover:bg-[#d92d2d]">Get a Quote for My Location →</Link>
+
+          </div>
+          <nav aria-label="Drone show service areas" className="mt-7 flex flex-wrap gap-x-6 gap-y-2">
+            <Link href="/california-drone-shows" className="inline-flex min-h-11 items-center underline underline-offset-4">California Drone Shows</Link>
+            <Link href="/arizona-drone-shows" className="inline-flex min-h-11 items-center underline underline-offset-4">Arizona Drone Shows</Link>
+            <Link href="/utah-drone-shows" className="inline-flex min-h-11 items-center underline underline-offset-4">Utah Drone Shows</Link>
+            <Link href="/new-mexico-drone-shows" className="inline-flex min-h-11 items-center underline underline-offset-4">New Mexico Drone Shows</Link>
+            <Link href="/colorado-drone-shows" className="inline-flex min-h-11 items-center underline underline-offset-4">Colorado Drone Shows</Link>
+            <Link href="/oregon-drone-shows" className="inline-flex min-h-11 items-center underline underline-offset-4">Oregon Drone Shows</Link>
+            <Link href="/idaho-drone-shows" className="inline-flex min-h-11 items-center underline underline-offset-4">Idaho Drone Shows</Link>
+          </nav>
+        </div>
+      </section>
       <RecentShows />
 
       <section className="px-5 py-14 sm:px-8 sm:py-20" aria-label="Drone show services">
@@ -353,6 +375,13 @@ function buildSchemaGraph() {
           { "@type": "City", name: "Mesquite" },
           { "@type": "City", name: "Laughlin" },
           { "@type": "AdministrativeArea", name: "Nevada" },
+          { "@type": "State", name: "California" },
+          { "@type": "State", name: "Arizona" },
+          { "@type": "State", name: "Utah" },
+          { "@type": "State", name: "New Mexico" },
+          { "@type": "State", name: "Colorado" },
+          { "@type": "State", name: "Oregon" },
+          { "@type": "State", name: "Idaho" },
         ],
         knowsAbout: [
           "Drone light shows",
