@@ -7,12 +7,18 @@ const PAGE_URL = `${SITE_URL}/las-vegas-drone-light-shows`;
 const MEDIA = "/shows/drone-light-shows";
 
 export const metadata: Metadata = {
-  title: "Las Vegas Drone Light Shows | Custom Shows & Event Planning",
-  description: "See real drone show footage and behind-the-scenes photos from Vegas Drones. Learn about custom formations, venue planning, production, and pricing starting from $8,000.",
+  title: "Las Vegas Drone Light Shows | Hire Vegas Drones",
+  description: "Hire a local Las Vegas drone light show company for conventions, resorts, festivals, and corporate events. See real productions and request a custom quote.",
+  twitter: {
+    card: "summary_large_image",
+    title: "Las Vegas Drone Light Shows | Hire Vegas Drones",
+    description: "Hire a local Las Vegas drone light show company for conventions, resorts, festivals, and corporate events. See real productions and request a custom quote.",
+    images: [`${SITE_URL}${MEDIA}/butcher-audience.jpg`],
+  },
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "Las Vegas Drone Light Shows | Vegas Drones",
-    description: "From the launch grid to your message in the sky: explore custom drone shows and how to plan one for your event.",
+    title: "Las Vegas Drone Light Shows | Hire Vegas Drones",
+    description: "Hire a local Las Vegas drone light show company for conventions, resorts, festivals, and corporate events. See real productions and request a custom quote.",
     url: PAGE_URL,
     siteName: "Vegas Drones",
     images: [{ url: `${SITE_URL}${MEDIA}/butcher-audience.jpg`, width: 1920, height: 1280, alt: "Guests filming the Billy Butcher drone formation during The Boys show" }],
@@ -53,12 +59,20 @@ export default function DroneLightShowsPage() {
           <h1 className="mt-5 font-orbitron text-3xl font-bold leading-tight sm:text-5xl lg:text-6xl">Las Vegas <span className="text-[#FF6A6A]">Drone Light Shows</span></h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-300 sm:text-xl">Your logo. Your story. Your moment in the sky. We create custom drone shows for conventions, resorts, festivals, celebrations, and brand activations.</p>
           <div className="mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row"><QuoteButton /><Link href="#how-it-works" className="inline-flex min-h-12 items-center px-5 font-semibold underline underline-offset-4">See how a show comes together ↓</Link></div>
-          <p className="mt-5 text-sm text-gray-300">No travel fees for Las Vegas shows. We actually live here.</p>
+          <p className="mt-5 text-sm text-gray-300"><Link href="/las-vegas-drone-show-cost" className="font-semibold text-white underline underline-offset-4">Shows starting from $8,000</Link><span className="mx-2" aria-hidden="true">·</span>No travel fees for Las Vegas shows.</p>
+          <p className="mt-2 text-sm leading-6 text-gray-400">Pricing is tailored to your event. The featured 1,500-drone production below represents a larger custom scope, not the starting-price package.</p>
         </div>
-        <figure className="mt-10 sm:mt-14">
-          <Image src={`${MEDIA}/butcher-audience.jpg`} alt="Guests filming a Billy Butcher drone portrait and One Last Go lettering during The Boys production" width={1920} height={1280} priority sizes="(max-width: 1200px) 100vw, 1152px" className="h-auto w-full rounded-2xl" />
-          <figcaption className="mt-3 text-sm text-gray-400">A custom character formation from The Boys production, captured with guests filming the moment.</figcaption>
-        </figure>
+        <section aria-label="Featured Vegas Drones productions" className="mt-10 sm:mt-14">
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-4"><div><p className="text-sm font-semibold uppercase tracking-widest text-[#FF6A6A]">Real productions. See what we create.</p><h2 className="mt-3 font-orbitron text-2xl font-bold sm:text-3xl">1,500 drones for Amazon Prime’s The Boys</h2></div><Link href="/blog/amazon-prime-the-boys-drone-show" className="inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Explore the production →</Link></div>
+          <figure>
+            <Image src={`${MEDIA}/butcher-audience.jpg`} alt="Guests filming a Billy Butcher drone portrait and One Last Go lettering during our 1,500-drone Amazon Prime The Boys production" width={1920} height={1280} priority sizes="(max-width: 1200px) 100vw, 1152px" className="aspect-video w-full rounded-2xl object-cover sm:aspect-[2/1]" />
+            <figcaption className="mt-3 text-sm leading-6 text-gray-400">Custom characters, campaign messaging, and a moment guests captured live during our Amazon Prime production.</figcaption>
+          </figure>
+          <div className="mt-9 grid items-center gap-7 md:grid-cols-2">
+            <figure><video controls playsInline preload="none" poster="/shows/college-of-american-pathologists/countdown-heart-poster.jpg" className="aspect-video w-full rounded-2xl bg-black object-contain" aria-label="Watch our 150-drone CAP Foundation show at the INDUSTRIAL in Las Vegas"><source src="/shows/college-of-american-pathologists/countdown-heart.mp4" type="video/mp4" />Your browser cannot play this video. <a href="/shows/college-of-american-pathologists/countdown-heart.mp4">Watch the Las Vegas show clip</a>.</video><figcaption className="mt-3 text-sm leading-6 text-gray-400">Real show footage: CAP Foundation at the INDUSTRIAL, Las Vegas.</figcaption></figure>
+            <div><p className="text-sm uppercase tracking-widest text-[#FF6A6A]">Watch a Las Vegas show · 150 drones</p><h3 className="mt-3 font-orbitron text-2xl font-bold">An organization’s story, written in light.</h3><p className="mt-4 leading-8 text-gray-300">See the countdown and heart sequence from our College of American Pathologists Foundation production at the INDUSTRIAL. Custom imagery brought the event’s identity into the Las Vegas sky.</p><Link href="/blog/college-of-american-pathologists-drone-show-las-vegas" className="mt-4 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">See the show photos &amp; story →</Link></div>
+          </div>
+        </section>
       </header>
 
       <div className="mx-auto max-w-6xl px-5 pb-20 sm:px-8 sm:pb-28">
@@ -91,7 +105,7 @@ export default function DroneLightShowsPage() {
         </section>
 
         <section className="grid gap-10 border-y border-white/15 py-12 md:grid-cols-2 sm:py-16">
-          <div><h2 className="font-orbitron text-2xl font-bold sm:text-3xl">What does your venue need?</h2><p className="mt-5 leading-8 text-gray-300">Start with an address and a proposed viewing area. We assess the airspace, launch and landing space, obstacles, audience separation, and sightlines. A venue that looks ideal in photos still needs a site review.</p><p className="mt-4 leading-8 text-gray-300">Weather and operating conditions also affect the production. We discuss coordination and contingency arrangements while planning your event.</p><Link href="/contact" className="mt-5 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Ask us to review your venue →</Link></div>
+          <div><h2 className="font-orbitron text-2xl font-bold sm:text-3xl">What does your venue need?</h2><p className="mt-5 leading-8 text-gray-300">Start with an address and a proposed viewing area. We assess the airspace, launch and landing space, obstacles, audience separation, and sightlines. A venue that looks ideal in photos still needs a site review.</p><p className="mt-4 leading-8 text-gray-300">Weather and operating conditions also affect the production. We discuss coordination and contingency arrangements while planning your event.</p><div className="mt-5 flex flex-wrap gap-x-6"><Link href="/contact" className="inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Ask us to review your venue →</Link><Link href="/las-vegas-drone-show-venues" className="inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Explore Las Vegas event venues →</Link></div></div>
           <div><h2 className="font-orbitron text-2xl font-bold sm:text-3xl">How much does a show cost?</h2><p className="mt-5 text-3xl font-bold text-[#FF6A6A]">Starting from $8,000</p><p className="mt-4 leading-8 text-gray-300">Your quote is tailored to the drone count, creative scope, show length, date, and venue requirements. The large production shown here illustrates what is possible; it is not an example of the starting-price package.</p><p className="mt-4 leading-8 text-gray-300">No travel fees for Las Vegas shows. Send your event details and we’ll recommend a scope that fits your goals.</p><Link href="/las-vegas-drone-show-cost" className="mt-5 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Explore drone show pricing →</Link></div>
         </section>
 

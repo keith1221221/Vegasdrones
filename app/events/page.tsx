@@ -135,6 +135,11 @@ export default function EventsPage() {
 
       {/* CONTENT */}
       <main className="bg-black text-white px-6 pt-10 sm:pt-12 pb-16 font-poppins -mt-10 sm:-mt-12">
+        <section className="mx-auto mb-10 max-w-5xl rounded-2xl border border-white/15 bg-white/5 p-6 text-center">
+          <h2 className="font-orbitron text-2xl font-bold">Still choosing your venue?</h2>
+          <p className="mt-3 text-gray-300">Explore the INDUSTRIAL and Secret Garden, where we’ve performed, and start planning your own venue-specific show.</p>
+          <Link href="/las-vegas-drone-show-venues" className="mt-4 inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Explore our Las Vegas venue guide →</Link>
+        </section>
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 font-orbitron text-[#FF3B3B]">
             Pick Your Event Type
